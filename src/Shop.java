@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Shop {
     private ArrayList<Card> cardsBought;
     private ArrayList<Card> cardsNotBought;
-    private void imporPlant(){
+    private void importPlant(){
         Plant Peashooter =new Plant(2,2,2,"dfsfs");
         Plant SnowPea =new Plant(3,3,3,"dfsfs");
         Plant Cabbage_pult =new Plant(2,3,2,"dfsfs");

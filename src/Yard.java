@@ -1,9 +1,21 @@
 public class Yard {
-    private Cell yard [][]=new Cell[6][19];
+    private Cell yard[][] = new Cell[6][19];
+    private Cell waterYard[][] = new Cell[2][19];
+
+    private boolean isItWater;
     private boolean isItPerson1Tern;
     private boolean isItPerson2Tern;
     private boolean isItPerson1Win;
     private boolean isItPerson2Win;
+
+
+    public boolean isItWater() {
+        return isItWater;
+    }
+
+    public void setItWater(boolean itWater) {
+        isItWater = itWater;
+    }
 
     public void setYard(Cell[][] yard) {
         this.yard = yard;
@@ -23,10 +35,6 @@ public class Yard {
 
     public void setItPerson2Win(boolean itPerson2Win) {
         isItPerson2Win = itPerson2Win;
-    }
-
-    public Cell[][] getYard() {
-        return yard;
     }
 
     public boolean isItPerson1Tern() {

@@ -1,4 +1,4 @@
-public class Plant {
+public abstract class Plant {
 
     private int sun;
     private int rest;
@@ -51,5 +51,150 @@ public class Plant {
         this.rest = rest;
         this.life = life;
         this.comment = comment;
+    }
+
+    public void attack() {
+
+    }
+
+    public void beAttacked() {
+
+    }
+
+    public void move() {
+
+    }
+
+}
+
+
+class ProducerPlant extends Plant {
+
+    public ProducerPlant(int sun, int rest, int life, String comment) {
+        super(sun, rest, life, comment);
+    }
+
+    public void produce() {
+
+    }
+
+    @Override
+    public void attack() {
+        super.attack();
+    }
+
+    @Override
+    public void beAttacked() {
+        super.beAttacked();
+    }
+
+    @Override
+    public void move() {
+        super.move();
+    }
+}
+
+class shootingPlant extends Plant {
+    @Override
+    public void attack() {
+        super.attack();
+    }
+
+    @Override
+    public void beAttacked() {
+        super.beAttacked();
+    }
+
+    @Override
+    public void move() {
+        super.move();
+    }
+
+    public shootingPlant(int sun, int rest, int life, String comment) {
+        super(sun, rest, life, comment);
+    }
+}
+
+class throwingPlant extends Plant {
+    @Override
+    public void attack() {
+        super.attack();
+    }
+
+    @Override
+    public void beAttacked() {
+        super.beAttacked();
+    }
+
+    @Override
+    public void move() {
+        super.move();
+    }
+
+    public throwingPlant(int sun, int rest, int life, String comment) {
+        super(sun, rest, life, comment);
+    }
+}
+
+class MinePlant extends Plant {
+    public MinePlant(int sun, int rest, int life, String comment) {
+        super(sun, rest, life, comment);
+    }
+
+    @Override
+    public void attack() {
+        super.attack();
+    }
+
+    @Override
+    public void beAttacked() {
+        super.beAttacked();
+    }
+
+    @Override
+    public void move() {
+        super.move();
+    }
+}
+
+class ToPlantOnPlant extends Plant{
+    public ToPlantOnPlant(int sun, int rest, int life, String comment) {
+        super(sun, rest, life, comment);
+    }
+
+    @Override
+    public void attack() {
+        super.attack();
+    }
+
+    @Override
+    public void beAttacked() {
+        super.beAttacked();
+    }
+
+    @Override
+    public void move() {
+        super.move();
+    }
+}
+
+class EatablePlant extends Plant {
+    public EatablePlant(int sun, int rest, int life, String comment) {
+        super(sun, rest, life, comment);
+    }
+
+    @Override
+    public void attack() {
+        super.attack();
+    }
+
+    @Override
+    public void beAttacked() {
+        super.beAttacked();
+    }
+
+    @Override
+    public void move() {
+        super.move();
     }
 }
