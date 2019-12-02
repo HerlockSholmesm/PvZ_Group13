@@ -19,11 +19,6 @@ class RailPlayer extends Player{
 
 }
 
-class Player1 extends PlayerDay {
-}
-
-class Player2 extends ZombiePlayer {
-}
 
 class ZombiePlayer extends Player {
     ArrayList<Zombie> zombies = new ArrayList<Zombie>();
