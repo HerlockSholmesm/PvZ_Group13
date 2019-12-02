@@ -25,6 +25,62 @@ class MainMenu implements Menu{
     }
 }
 
+class LoginMenu implements Menu{
+
+    @Override
+    public void help() {
+
+    }
+
+    @Override
+    public void exit(Menu menu) {
+
+    }
+}
+
+class PlayMenu implements Menu{
+
+    //todo
+    @Override
+    public void help() {
+
+    }
+
+    @Override
+    public void exit(Menu menu) {
+
+    }
+}
+
+class CollectionMenu implements Menu{
+
+    @Override
+    public void help() {
+
+    }
+
+    @Override
+    public void exit(Menu menu) {
+
+    }
+}
+
+class ShopCollection implements Menu{
+
+
+    @Override
+    public void help() {
+
+    }
+
+    @Override
+    public void exit(Menu menu) {
+
+    }
+}
+
+
+
 class LeaderBoard implements Menu{
 
     @Override
