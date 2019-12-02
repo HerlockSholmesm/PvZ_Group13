@@ -15,8 +15,6 @@ public abstract class Game {
     void saveGame() {
     }
 
-
-
     void playerPlays() {
     }
 }
