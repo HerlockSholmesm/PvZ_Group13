@@ -17,7 +17,8 @@ public abstract class Dynamic {
 class DynamicDay extends Dynamic{
     public int attacks;
     public void getZombies(){};
-    public void clock(){};
+    public void clock(){};//Control part must implement the time
+
     public void addCard(){};
     public void addPlant(){};
     public void plant(){};

@@ -21,7 +21,8 @@ public abstract class Game {
 
 
 class DayTypeGame extends Game {
-    public PlayerDay player = new PlayerDay();
+
+    public PlayerDay player;
     public DynamicDay dynamicDay = new DynamicDay();
 
 
@@ -46,7 +47,7 @@ class ZombieTypeGame extends Game {
 }
 
 class TwoAccountTypeGame extends Game {
-    public Player1 player1;
-    public Player2 player2;
+    public Player player1;
+    public Player player2;
     public DynamicPVP dynamicPVP;
 }
