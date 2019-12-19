@@ -1,5 +1,6 @@
 public class Coin {
     private int coinInTheGame;
+    private int coinOutOfTheGame;
 
     public int getCoinInTheGame() {
         return coinInTheGame;
@@ -22,5 +23,5 @@ public class Coin {
         this.coinOutOfTheGame = coinOutOfTheGame;
     }
 
-    private int coinOutOfTheGame;
+
 }

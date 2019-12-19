@@ -1,6 +1,7 @@
 public class Chamanzan {
 
     boolean isAvailable;
+    Cell whichCell;
 
     public Chamanzan(Cell whichCell) {
         this.isAvailable = true;
@@ -23,7 +24,7 @@ public class Chamanzan {
         this.whichCell = whichCell;
     }
 
-    Cell whichCell;
+
     public void use(){
 
     }
