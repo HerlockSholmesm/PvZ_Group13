@@ -2,7 +2,6 @@ public abstract class Zombie extends Card {
 
     private int life;
     private int speed;
-    private String comment;
     private int x;
     private int y;
     Cell cell = new Cell();
@@ -41,13 +40,6 @@ public abstract class Zombie extends Card {
         this.speed = speed;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 
     public int getX() {
         return x;

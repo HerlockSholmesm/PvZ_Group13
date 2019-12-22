@@ -1,11 +1,22 @@
 public class Chamanzan {
 
     boolean isAvailable;
-    Cell whichCell;
+    private Cell whichRow;
+    private Cell waterYard[][] = new Cell[2][19];
+    private Yard yard;
+
+    public Chamanzan(Cell whichCell, Yard yard) {
+        this.whichRow = whichCell;
+        this.yard = yard;
+    }
+
+    public void setWaterYard(Cell[][] waterYard) {
+        this.waterYard = waterYard;
+    }
 
     public Chamanzan(Cell whichCell) {
         this.isAvailable = true;
-        this.whichCell = whichCell;
+        this.whichRow = whichCell;
     }
 
     public boolean isAvailable() {
@@ -17,15 +28,15 @@ public class Chamanzan {
     }
 
     public Cell getWhichCell() {
-        return whichCell;
+        return whichRow;
     }
 
     public void setWhichCell(Cell whichCell) {
-        this.whichCell = whichCell;
+        this.whichRow = whichCell;
     }
 
 
-    public void use(){
+    public void use() {
 
     }
 

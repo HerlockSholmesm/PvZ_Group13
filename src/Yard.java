@@ -3,8 +3,21 @@ public class Yard {
     private Cell waterYard[][] = new Cell[2][19];
 
     private boolean isItWater;
+
+    public Yard() {
+    }
+
     private boolean isItPerson1Tern;
     private boolean isItPerson2Tern;
+
+    public Cell[][] getYard() {
+        return yard;
+    }
+
+    public Cell[][] getWaterYard() {
+        return waterYard;
+    }
+
     private boolean isItPerson1Win;
     private boolean isItPerson2Win;
 
