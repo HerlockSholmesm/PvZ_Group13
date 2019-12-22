@@ -1,4 +1,4 @@
-public abstract class Zombie {
+public abstract class Zombie extends Card {
 
     private int life;
     private int speed;
@@ -7,7 +7,14 @@ public abstract class Zombie {
     private int y;
     Cell cell = new Cell();
     private int defense;
+    private String name;
 
+    public Zombie(int life, int speed, int defense, String name) {
+        this.life = life;
+        this.speed = speed;
+        this.defense = defense;
+        this.name = name;
+    }
 
     public int getLife() {
         return life;
@@ -58,12 +65,13 @@ public abstract class Zombie {
         this.y = y;
     }
 
-    public Zombie(int life, int speed, String comment, int defense) {
+  /*  public Zombie(String name ,int life, int speed, String comment, int defense) {
+        this.name=name;
         this.life = life;
         this.speed = speed;
         this.comment = comment;
         this.defense = defense;
-    }
+    }*/
 
     public void attack() {
 
@@ -95,14 +103,14 @@ class MovingZombie extends Zombie {
         super.move();
     }
 
-    public MovingZombie(int life, int speed, String comment, int defense) {
-        super(life, speed, comment, defense);
+   public MovingZombie(String name ,int life, int speed, int defense) {
+       super(life, speed, defense, name);
     }
 }
 
 class FlyingZombie extends Zombie {
-    public FlyingZombie(int life, int speed, String comment, int defense) {
-        super(life, speed, comment, defense);
+    public FlyingZombie(String name ,int life, int speed, int defense) {
+       super(life, speed, defense, name);
     }
 
     @Override
@@ -137,7 +145,7 @@ class SwimmingZombie extends Zombie {
         super.move();
     }
 
-    public SwimmingZombie(int life, int speed, String comment, int defense) {
-        super(life, speed, comment, defense);
+    public SwimmingZombie(String name ,int life, int speed, int defense) {
+        super(life, speed, defense, name);
     }
 }

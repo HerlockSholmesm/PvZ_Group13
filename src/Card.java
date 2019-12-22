@@ -1,11 +1,10 @@
-public class Card extends Plant {
+
+public abstract class Card {
     private String name;
+    private int price;
     private boolean select;
-
-    public Card(int sun, int rest, int life, String comment) {
-        super(sun, rest, life, comment);
+    public Card() {
     }
-
     public void setSelect(boolean select) {
         this.select = select;
     }

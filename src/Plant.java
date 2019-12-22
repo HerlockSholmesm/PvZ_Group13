@@ -1,10 +1,11 @@
-public abstract class Plant {
+public abstract class Plant extends Card {
 
     private int sun;
     private int rest;
     private int life;
     private String comment;
     private int speed;
+    private String name;
 
     public int getSun() {
         return sun;
@@ -46,11 +47,11 @@ public abstract class Plant {
         this.speed = speed;
     }
 
-    public Plant(int sun, int rest, int life, String comment) {
+    public Plant(String name,int sun, int rest, int life) {
+        this.name=name;
         this.sun = sun;
         this.rest = rest;
         this.life = life;
-        this.comment = comment;
     }
 
     public void attack() {
@@ -70,8 +71,8 @@ public abstract class Plant {
 
 class ProducerPlant extends Plant {
 
-    public ProducerPlant(int sun, int rest, int life, String comment) {
-        super(sun, rest, life, comment);
+    public ProducerPlant(String name,int sun, int rest, int life) {
+        super(name,sun, rest, life);
     }
 
     public void produce() {
@@ -110,8 +111,8 @@ class shootingPlant extends Plant {
         super.move();
     }
 
-    public shootingPlant(int sun, int rest, int life, String comment) {
-        super(sun, rest, life, comment);
+    public shootingPlant(String name,int sun, int rest, int life) {
+        super(name,sun, rest, life);
     }
 }
 
@@ -131,14 +132,15 @@ class throwingPlant extends Plant {
         super.move();
     }
 
-    public throwingPlant(int sun, int rest, int life, String comment) {
-        super(sun, rest, life, comment);
+    public throwingPlant(String name,int sun, int rest, int life) {
+        super(name,sun, rest, life);
     }
 }
 
 class MinePlant extends Plant {
-    public MinePlant(int sun, int rest, int life, String comment) {
-        super(sun, rest, life, comment);
+    public MinePlant(String name,int sun, int rest, int life) {
+
+        super(name ,sun, rest, life);
     }
 
     @Override
@@ -158,8 +160,9 @@ class MinePlant extends Plant {
 }
 
 class ToPlantOnPlant extends Plant{
-    public ToPlantOnPlant(int sun, int rest, int life, String comment) {
-        super(sun, rest, life, comment);
+    public ToPlantOnPlant(String name ,int sun, int rest, int life)
+    {
+        super(name,sun, rest, life);
     }
 
     @Override
@@ -179,8 +182,8 @@ class ToPlantOnPlant extends Plant{
 }
 
 class EatablePlant extends Plant {
-    public EatablePlant(int sun, int rest, int life, String comment) {
-        super(sun, rest, life, comment);
+    public EatablePlant(String name,int sun, int rest, int life) {
+        super(name ,sun, rest, life);
     }
 
     @Override
