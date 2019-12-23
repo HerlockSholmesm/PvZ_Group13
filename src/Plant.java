@@ -3,31 +3,26 @@ public abstract class Plant extends Card {
     private int sun;
     private int rest;
     private int life;
+    private int attackPower;
     private int speed;
     private String name;
+    private Cell cell;
 
     public int getSun() {
         return sun;
     }
 
-    public void setSun(int sun) {
-        this.sun = sun;
-    }
 
     public int getRest() {
         return rest;
     }
 
-    public void setRest(int rest) {
-        this.rest = rest;
+    public void setLife(int life) {
+        this.life = life;
     }
 
     public int getLife() {
         return life;
-    }
-
-    public void setLife(int life) {
-        this.life = life;
     }
 
 
@@ -35,9 +30,6 @@ public abstract class Plant extends Card {
         return speed;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
 
     public Plant(String name,int sun, int rest, int life) {
         this.name=name;

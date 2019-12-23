@@ -2,6 +2,7 @@ public abstract class Zombie extends Card {
 
     private int life;
     private int speed;
+    private int attackPower;
     private int x;
     private int y;
     Cell cell = new Cell();
@@ -24,70 +25,39 @@ public abstract class Zombie extends Card {
         return defense;
     }
 
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
-    public void setLife(int life) {
-        this.life = life;
-    }
-
     public int getSpeed() {
         return speed;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
+    public void setZombie(int x,int y) {
         this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
         this.y = y;
+        cell=new Cell(x,y);
     }
 
-  /*  public Zombie(String name ,int life, int speed, String comment, int defense) {
-        this.name=name;
-        this.life = life;
-        this.speed = speed;
-        this.comment = comment;
-        this.defense = defense;
-    }*/
-
-    public void attack() {
-
+    public void attack(Card card) {
+        card.setLife(card.getLife()-attackPower);
     }
 
-    public void beAttacked() {
-
+    public void beAttacked(Card card) {
+        card.setLife(card.getLife()-attackPower);
     }
 
     public void move() {
-
+        cell=new Cell(x+speed,y);
     }
 
 }
 
 class MovingZombie extends Zombie {
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
     @Override
@@ -106,13 +76,13 @@ class FlyingZombie extends Zombie {
     }
 
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
     @Override
@@ -123,13 +93,13 @@ class FlyingZombie extends Zombie {
 
 class SwimmingZombie extends Zombie {
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
     @Override
