@@ -38,16 +38,12 @@ public abstract class Plant extends Card {
         this.life = life;
     }
 
-    public void attack() {
-
+    public void attack(Card card) {
+        card.setLife(card.getLife()-attackPower);
     }
 
-    public void beAttacked() {
-
-    }
-
-    public void move() {
-
+    public void beAttacked(Card card) {
+        card.setLife(card.getLife()-attackPower);
     }
 
 }
@@ -64,36 +60,28 @@ class ProducerPlant extends Plant {
     }
 
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
-    @Override
-    public void move() {
-        super.move();
-    }
 }
 
 class shootingPlant extends Plant {
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
-    @Override
-    public void move() {
-        super.move();
-    }
 
     public shootingPlant(String name,int sun, int rest, int life) {
         super(name,sun, rest, life);
@@ -102,19 +90,15 @@ class shootingPlant extends Plant {
 
 class throwingPlant extends Plant {
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
-    @Override
-    public void move() {
-        super.move();
-    }
 
     public throwingPlant(String name,int sun, int rest, int life) {
         super(name,sun, rest, life);
@@ -128,19 +112,15 @@ class MinePlant extends Plant {
     }
 
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
-    @Override
-    public void move() {
-        super.move();
-    }
 }
 
 class ToPlantOnPlant extends Plant{
@@ -150,19 +130,15 @@ class ToPlantOnPlant extends Plant{
     }
 
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
-    @Override
-    public void move() {
-        super.move();
-    }
 }
 
 class EatablePlant extends Plant {
@@ -171,17 +147,13 @@ class EatablePlant extends Plant {
     }
 
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
-    @Override
-    public void move() {
-        super.move();
-    }
 }
