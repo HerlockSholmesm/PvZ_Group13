@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class Zombie extends Card {
 
     private int life;
@@ -8,6 +10,33 @@ public abstract class Zombie extends Card {
     Cell cell = new Cell();
     private int defense;
     private String name;
+
+    /**
+     * Sorry Dear Ali I needed all the zombies in an ArrayList
+     */
+    private static final ArrayList<Zombie> allZombies = new ArrayList<>();
+    static {
+        allZombies.add(new MovingZombie("Zombie",2,2,0));
+        allZombies.add(new MovingZombie("Football Zombie",4,3,0));
+        allZombies.add(new MovingZombie("Buckethead Zombie",3,2,0));
+        allZombies.add(new MovingZombie("Conehead Zombie",3,2,0));
+        allZombies.add(new MovingZombie("Zomboni",3,2,0));
+        allZombies.add(new MovingZombie("Bungee Zombie",3,0,0));
+        allZombies.add(new MovingZombie("BalloonZombie",3,2,0));
+        allZombies.add(new MovingZombie("Newspaper Zombie",2,2,2));
+        allZombies.add(new MovingZombie("Target Zombie",3,2,3));
+        allZombies.add(new MovingZombie("Screen Door Zombie",2,2,4));
+        allZombies.add(new MovingZombie("Giga-gargantuar",6,1,0));
+        allZombies.add(new FlyingZombie("Pogo Zombie",2,2,0));
+        allZombies.add(new SwimmingZombie("Snorkel Zombie",2,2,0));
+        allZombies.add(new SwimmingZombie("Dolphin Rider Zombie",2,2,0));
+
+
+    }
+
+    public static ArrayList<Zombie> getAllZombies() {
+        return allZombies;
+    }
 
     public Zombie(int life, int speed, int defense, String name) {
         this.life = life;
@@ -65,14 +94,14 @@ class MovingZombie extends Zombie {
         super.move();
     }
 
-   public MovingZombie(String name ,int life, int speed, int defense) {
-       super(life, speed, defense, name);
+    public MovingZombie(String name, int life, int speed, int defense) {
+        super(life, speed, defense, name);
     }
 }
 
 class FlyingZombie extends Zombie {
-    public FlyingZombie(String name ,int life, int speed, int defense) {
-       super(life, speed, defense, name);
+    public FlyingZombie(String name, int life, int speed, int defense) {
+        super(life, speed, defense, name);
     }
 
     @Override
@@ -107,7 +136,7 @@ class SwimmingZombie extends Zombie {
         super.move();
     }
 
-    public SwimmingZombie(String name ,int life, int speed, int defense) {
+    public SwimmingZombie(String name, int life, int speed, int defense) {
         super(life, speed, defense, name);
     }
 }

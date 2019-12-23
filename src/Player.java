@@ -22,10 +22,37 @@ public abstract class Player {
 
 
 class PlayerDay extends Player {
-    ArrayList<Plant> plants = new ArrayList<Plant>();
+    private ArrayList<Plant> plants = new ArrayList<Plant>();
     private final int validNumOfPlants = 7;
     private final int validNumOfCards = 7;
     private Sun suns;//must init with 2
+    private int wavesOfAttack;
+    private int turn;
+    private ArrayList<Zombie> zombies;
+
+    public ArrayList<Zombie> getZombies() {
+        return zombies;
+    }
+
+    public void setZombies(ArrayList<Zombie> zombies) {
+        this.zombies = zombies;
+    }
+
+    public int getTurn() {
+        return turn;
+    }
+
+    public void addTurn() {
+        turn++;
+    }
+
+    public int getWavesOfAttack() {
+        return wavesOfAttack;
+    }
+
+    public void decreaseWaveOfAttack(){
+        wavesOfAttack--;
+    }
 
     public int getValidNumOfPlants() {
         return validNumOfPlants;
@@ -40,18 +67,20 @@ class PlayerDay extends Player {
     }
 
     public PlayerDay(String name, String password, ArrayList<Card> cards) {
-        this.plants.add(new shootingPlant(2, 2, 2, "Peashooter"));
-        this.plants.add(new shootingPlant(3, 3, 2, "Snow pea"));
-        this.plants.add(new MinePlant(4, 5, 3, "Explode-o-nut"));
-        this.plants.add(new shootingPlant(1, 2, 1, "Scaredy-shroom"));
-        this.plants.add(new MinePlant(2, 4, 0, "Cherry Bomb"));
-        this.plants.add(new shootingPlant(3, 3, 2, "Kernel-pult"));
-        this.plants.add(new ProducerPlant(1, 2, 2, "Sunflower"));
+        this.plants.add(new shootingPlant("Peashooter",2, 2, 2 ));
+        this.plants.add(new shootingPlant("Snow pea",3, 3, 3 ));
+        this.plants.add(new MinePlant("Explode-o-nut",4, 5, 3));
+        this.plants.add(new shootingPlant("Scaredy-shroom",1, 2, 1 ));
+        this.plants.add(new MinePlant("Cherry Bomb",2, 4, 0));
+        this.plants.add(new throwingPlant("Kernel-pult",3, 3, 2 ));
+        this.plants.add(new ProducerPlant("Sunflower",1, 2, 2 ));
         this.suns = new Sun(2);
         this.cards = cards;
         coin.setCoinInTheGame(0);
         coin.setCoinOutOfTheGame(0);
         this.account = new Account(name, password);
+        wavesOfAttack = 3;
+        turn = 0;
     }
     public void addPlant(Plant plant){
         this.plants.add(plant);
@@ -84,10 +113,6 @@ class ZombiePlayer extends Player {
     ArrayList<Zombie> zombies = new ArrayList<Zombie>();
 
 }
-
-/**
- * Commands:
- */
 
 
 
