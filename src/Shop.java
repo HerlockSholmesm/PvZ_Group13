@@ -9,14 +9,14 @@ public class Shop {
     }
 
     private static ArrayList<Plant> plants;
-    private static ArrayList<Zombie> zobbies;
+    private static ArrayList<Zombie> zombies;
 
     public static ArrayList<Plant> getAllPlants() {
         return plants;
     }
 
-    public static ArrayList<Zombie> getZobbies() {
-        return zobbies;
+    public static ArrayList<Zombie> getZombies() {
+        return zombies;
     }
 
 
@@ -108,55 +108,55 @@ public class Shop {
     }
     private void importZombie(){
         Zombie zombie=new MovingZombie( "zombie",2,2,0);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         collection.add(zombie);
         cards.add(zombie);
         zombie =new MovingZombie("Football Zombie",3,4,0);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         collection.add(zombie);
         cards.add(zombie);
         zombie=new MovingZombie("Buckethead Zombie",2,3,0);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         cards.add(zombie);
         zombie=new MovingZombie("Conehead Zombie",2,3,0);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         collection.add(zombie);
         cards.add(zombie);
         zombie=new MovingZombie("Zomboni",2,3,0);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         cards.add(zombie);
         zombie=new MovingZombie("Catapult Zombie",2,3,0);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         cards.add(zombie);
         zombie=new MovingZombie("Bungee Zombie",0,3,0);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         cards.add(zombie);
         collection.add(zombie);
         zombie=new MovingZombie("Balloon Zombie",2,2,0);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         cards.add(zombie);
         collection.add(zombie);
         zombie=new MovingZombie("Newspaper Zombie",2,3,2);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         cards.add(zombie);
         zombie=new MovingZombie("Target Zombie",2,3,3);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         cards.add(zombie);
         zombie=new MovingZombie("Screen Door Zombie",2,2,4);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         cards.add(zombie);
         collection.add(zombie);
         zombie=new MovingZombie("Giga gargantuar",1,6,0);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         cards.add(zombie);
         zombie=new FlyingZombie("Pogo Zombie",2,2,0);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         cards.add(zombie);
         zombie=new SwimmingZombie("Snorkel Zombie",2,2,0);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         cards.add(zombie);
         zombie=new SwimmingZombie("Dolphin Rider Zombie",2,2,0);
-        zobbies.add(zombie);
+        zombies.add(zombie);
         cards.add(zombie);
     }
 
