@@ -1,27 +1,27 @@
+package commands;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-abstract class Command {
-    static ArrayList<Command> allCommand = new ArrayList<>();
+public abstract class LoginCommand {
+    public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
+    public Pattern pattern;
     String input;
-    Pattern pattern;
 
-    Command(String input) {
+    LoginCommand(String input) {
         this.input = input;
     }
 
-    static void createCommands(String input) {
+    public static void createCommands(String input) {
         allCommand.add(new JoinGroup(input));
 
     }
 
     abstract public void action();
-
-
 }
 
-class JoinGroup extends Command {
+class JoinGroup extends LoginCommand {
     private Pattern pattern = Pattern.compile("(\\d+) join group (\\d+)");
 
     JoinGroup(String string) {

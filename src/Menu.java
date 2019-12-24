@@ -127,6 +127,32 @@ class PlayMenu implements Menu{
     }
 }
 
+class CollectionMenu implements Menu{
+
+    @Override
+    public void help() {
+
+    }
+
+    @Override
+    public void exit(Menu menu) {
+
+    }
+}
+
+class RailMenu implements Menu{
+
+    @Override
+    public void help() {
+
+    }
+
+    @Override
+    public void exit(Menu menu) {
+
+    }
+}
+
 class ShopCollection implements Menu{
 
 
