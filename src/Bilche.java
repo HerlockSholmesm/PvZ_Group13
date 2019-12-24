@@ -10,4 +10,9 @@ public class Bilche {
     public void use(Cell cell){
 
     }
+
+    public static class Control {
+
+
+    }
 }
