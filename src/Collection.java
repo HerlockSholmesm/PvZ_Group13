@@ -4,6 +4,11 @@ public class Collection {
     private ArrayList<Card> hand;
     private ArrayList<Card> collection;
     private Shop shop;
+
+    public Collection() {
+
+    }
+
     public ArrayList<Card> showHand() {
         return hand;
     }
