@@ -81,7 +81,7 @@ class DynamicPlant{
     }
 
     private static Plant findPlant(Card card){
-        for (Plant plant:Plant.getAllPlants()){
+        for (Plant plant:Shop.getAllPlants()){
             if (card.getName().equals(plant.getName())){
                 return plant;
             }
@@ -124,8 +124,8 @@ class DynamicShowLawn{
         ArrayList<Zombie> randomZombies = new ArrayList<>();
         int numberOfZombies = getRandomNumber(4,10);
         for (int i = 0; i <numberOfZombies;i++){
-            int randomIndex = rand.nextInt(Zombie.getAllZombies().size());
-            randomZombies.add(Zombie.getAllZombies().get(randomIndex));
+            int randomIndex = rand.nextInt(Shop.getZobbies().size());
+            randomZombies.add((Zombie) Shop.getZobbies().get(randomIndex));
         }
         playerDay.setZombies(randomZombies);
         return randomZombies;
