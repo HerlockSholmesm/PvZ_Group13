@@ -8,13 +8,9 @@ public abstract class Plant extends Card {
     private int attackPower;
     private int speed;
     private Cell cell;
+    protected Sun suni;
     private String name;
 
-
-
-    /**
-     * Sorry ali I needed all plants together in an arrayList
-     */
 
     public int getSun() {
         return sun;
@@ -43,6 +39,7 @@ public abstract class Plant extends Card {
         this.sun = sun;
         this.rest = rest;
         this.life = life;
+        suni =new Sun();
     }
 
     public void attack(Card card) {
@@ -60,12 +57,13 @@ public abstract class Plant extends Card {
 
 class ProducerPlant extends Plant {
 
-    public ProducerPlant(String name, int sun, int rest, int life) {
+    public ProducerPlant(String name,int clock,int numberOfSun, int sun, int rest, int life) {
+
         super(name, sun, rest, life);
     }
 
-    public void produce() {
-
+    public void produce(int addNumber) {
+        suni.addsun(addNumber);
     }
 
     @Override
@@ -92,7 +90,8 @@ class shootingPlant extends Plant {
     }
 
 
-    public shootingPlant(String name, int sun, int rest, int life) {
+    public shootingPlant(String name,int clock,int numberOfPea, int sun, int rest, int life)
+    {
         super(name, sun, rest, life);
     }
 }
@@ -109,13 +108,13 @@ class throwingPlant extends Plant {
     }
 
 
-    public throwingPlant(String name, int sun, int rest, int life) {
+    public throwingPlant(String name,int clock,int numberOfBullet,int power, int sun, int rest, int life) {
         super(name, sun, rest, life);
     }
 }
 
 class MinePlant extends Plant {
-    public MinePlant(String name, int sun, int rest, int life) {
+    public MinePlant(String name,int cells, int sun, int rest, int life) {
 
         super(name, sun, rest, life);
     }

@@ -78,13 +78,7 @@ class PlayerDay extends Player {
     }
 
     public PlayerDay(String name, String password, ArrayList<Card> cards) {
-        this.plants.add(new shootingPlant("Peashooter",2, 2, 2 ));
-        this.plants.add(new shootingPlant("Snow pea",3, 3, 3 ));
-        this.plants.add(new MinePlant("Explode-o-nut",4, 5, 3));
-        this.plants.add(new shootingPlant("Scaredy-shroom",1, 2, 1 ));
-        this.plants.add(new MinePlant("Cherry Bomb",2, 4, 0));
-        this.plants.add(new throwingPlant("Kernel-pult",3, 3, 2 ));
-        this.plants.add(new ProducerPlant("Sunflower",1, 2, 2 ));
+        this.plants.addAll(Shop.getCollectionPlant());
         this.suns = new Sun(2);
         this.cards = cards;
         this.account = new Account(name, password);
@@ -108,13 +102,7 @@ class RailPlayer extends Player {
     private final int MAX_NUMBER_OF_CARDS = 10;
 
     public RailPlayer(ArrayList<Card> cards,String name,String password){
-        this.plants.add(new shootingPlant("Peashooter",2, 2, 2 ));
-        this.plants.add(new shootingPlant("Snow pea",3, 3, 3 ));
-        this.plants.add(new MinePlant("Explode-o-nut",4, 5, 3));
-        this.plants.add(new shootingPlant("Scaredy-shroom",1, 2, 1 ));
-        this.plants.add(new MinePlant("Cherry Bomb",2, 4, 0));
-        this.plants.add(new throwingPlant("Kernel-pult",3, 3, 2 ));
-        this.plants.add(new ProducerPlant("Sunflower",1, 2, 2 ));
+        this.plants.addAll(Shop.getCollectionPlant());
         this.cards = cards;
         this.account = new Account(name, password);
         turn = 0;

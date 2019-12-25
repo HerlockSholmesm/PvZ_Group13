@@ -33,4 +33,11 @@ public class Cell {
     public void setAqua(boolean aqua) {
         this.aqua = aqua;
     }
+
+    public static class PeaBullet {
+        private int x;
+        private int y;
+        Cell cell = new Cell(x,y);
+
+    }
 }
