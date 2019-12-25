@@ -147,7 +147,7 @@ class DayDynamicShowHand extends DynamicShowHand {
          */
         int allSunsPlayerHas = playerDay.getSuns();
         int allSunsPlayerMustHave = 0;
-        for (Plant plant : playerDay.getPlants()) {
+        for (Plant plant:playerDay.getPlants()){
             allSunsPlayerMustHave = allSunsPlayerMustHave + plant.getSun();
         }
         int allSunsPlayerNeeds = allSunsPlayerMustHave - allSunsPlayerHas;
@@ -155,9 +155,9 @@ class DayDynamicShowHand extends DynamicShowHand {
     }
 }
 
-class DynamicSelect {
-    public static void SelectThisCard(Player player, int cardNumber) {
-        player.getCards().get(cardNumber).setSelect(true);
+class DynamicSelect{
+    public static void SelectThisCard(PlayerDay playerDay,Card card){
+        card.setSelect(true);
     }
 
 }
@@ -179,9 +179,9 @@ class DynamicPlant {
         player.removeCard(card);
     }
 
-    public static Plant findPlant(Card card) {
-        for (Plant plant : Shop.getAllPlants()) {
-            if (card.getName().equals(plant.getName())) {
+    static Plant findPlant(Card card){
+        for (Plant plant:Shop.getAllPlants()){
+            if (card.getName().equals(plant.getName())){
                 return plant;
             }
         }
