@@ -52,6 +52,17 @@ public abstract class Zombie extends Card {
         cell=new Cell(x+speed,y);
     }
 
+    static class separ{
+        public int getAdditionLife() {
+            return additionLife;
+        }
+
+        public void setAdditionLife(int additionLife) {
+            this.additionLife = additionLife;
+        }
+        int additionLife;
+    }
+
 }
 
 class MovingZombie extends Zombie {
@@ -113,6 +124,8 @@ class SwimmingZombie extends Zombie {
     }
 
     public SwimmingZombie(String name, int life, int speed, int defense) {
+
         super(life, speed, defense, name);
     }
 }
+

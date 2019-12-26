@@ -5,6 +5,9 @@ public class Sun {
         this.sunStore = sunStore;
     }
 
+    public Sun() {
+    }
+
     public int getSunStore() {
         return sunStore;
     }
@@ -12,4 +15,6 @@ public class Sun {
     public void setSunStore(int sunStore) {
         this.sunStore = sunStore;
     }
+
+    public void addsun(int addNumber){this.sunStore=+addNumber;}
 }

@@ -4,9 +4,33 @@ import Model.Coin;
 import java.util.ArrayList;
 
 public abstract class Player {
+    protected int turn;
+    protected ArrayList<Plant> plants = new ArrayList<Plant>();
+    protected ArrayList<Zombie> zombies;
     Account account;
-    protected Coin coin;
+    protected Coin coin = new Coin(0, 0);
     protected ArrayList<Card> cards = new ArrayList<>();
+    public ArrayList<Zombie> getZombies() {
+        return zombies;
+    }
+    public int getTurn() {
+        return turn;
+    }
+
+    public void addTurn() {
+        turn++;
+    }
+    public void addPlant(Plant plant){
+        this.plants.add(plant);
+    }
+
+    public void removePlant(Plant plant){
+        this.plants.remove(plant);
+    }
+
+    public ArrayList<Plant> getPlants(){
+        return this.plants;
+    }
 
 
     public Coin getCoin() {
@@ -25,29 +49,16 @@ public abstract class Player {
 
 
 class PlayerDay extends Player {
-    private ArrayList<Plant> plants = new ArrayList<Plant>();
-    private final int validNumOfPlants = 7;
-    private final int validNumOfCards = 7;
+    private final int VALID_NUM_OF_PLANTS = 7;
+    private final int   VALID_NUM_OF_CARDS = 7;
     private Sun suns;//must init with 2
     private int wavesOfAttack;
-    private int turn;
-    private ArrayList<Zombie> zombies;
 
-    public ArrayList<Zombie> getZombies() {
-        return zombies;
-    }
 
     public void setZombies(ArrayList<Zombie> zombies) {
         this.zombies = zombies;
     }
 
-    public int getTurn() {
-        return turn;
-    }
-
-    public void addTurn() {
-        turn++;
-    }
 
     public int getWavesOfAttack() {
         return wavesOfAttack;
@@ -58,11 +69,11 @@ class PlayerDay extends Player {
     }
 
     public int getValidNumOfPlants() {
-        return validNumOfPlants;
+        return VALID_NUM_OF_PLANTS;
     }
 
     public int getValidNumOfCards() {
-        return validNumOfCards;
+        return VALID_NUM_OF_CARDS;
     }
 
     public int getNumOfPlants() {
@@ -70,30 +81,14 @@ class PlayerDay extends Player {
     }
 
     public PlayerDay(String name, String password, ArrayList<Card> cards) {
-        this.plants.add(new shootingPlant("Peashooter",2, 2, 2 ));
-        this.plants.add(new shootingPlant("Snow pea",3, 3, 3 ));
-        this.plants.add(new MinePlant("Explode-o-nut",4, 5, 3));
-        this.plants.add(new shootingPlant("Scaredy-shroom",1, 2, 1 ));
-        this.plants.add(new MinePlant("Cherry Bomb",2, 4, 0));
-        this.plants.add(new throwingPlant("Kernel-pult",3, 3, 2 ));
-        this.plants.add(new ProducerPlant("Sunflower",1, 2, 2 ));
+        this.plants.addAll(Shop.getCollectionPlant());
         this.suns = new Sun(2);
         this.cards = cards;
-        coin.setCoinInTheGame(0);
-        coin.setCoinOutOfTheGame(0);
         this.account = new Account(name, password);
         wavesOfAttack = 3;
         turn = 0;
     }
-    public void addPlant(Plant plant){
-        this.plants.add(plant);
-    }
-    public void removePlant(Plant plant){
-        this.plants.remove(plant);
-    }
-    public ArrayList<Plant> getPlants(){
-        return this.plants;
-    }
+
 
     public void addSuns(int s) {
         int currentSuns = this.suns.getSunStore();
@@ -106,8 +101,33 @@ class PlayerDay extends Player {
 }
 
 class RailPlayer extends Player {
-    ArrayList<Plant> plants = new ArrayList<Plant>();
-    int points;
+    private int points;
+    private final int MAX_NUMBER_OF_CARDS = 10;
+
+    public RailPlayer(ArrayList<Card> cards,String name,String password){
+        this.plants.addAll(Shop.getCollectionPlant());
+        this.cards = cards;
+        this.account = new Account(name, password);
+        turn = 0;
+        points = 0;
+    }
+
+    public void pointAdder(){
+        points++;
+    }
+
+    public void removeZombie(Zombie zombie){
+        zombies.remove(zombie);
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public int getMAX_NUMBER_OF_CARDS() {
+        return MAX_NUMBER_OF_CARDS;
+    }
+
 
 }
 

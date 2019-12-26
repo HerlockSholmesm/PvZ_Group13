@@ -5,29 +5,19 @@ public abstract class Plant extends Card {
     private int sun;
     private int rest;
     private int life;
+    private int attackPower;
     private int speed;
+    private Cell cell;
+    protected Sun suni;
     private String name;
 
-
-
-    /**
-     * Sorry ali I needed all plants together in an arrayList
-     */
 
     public int getSun() {
         return sun;
     }
 
-    public void setSun(int sun) {
-        this.sun = sun;
-    }
-
     public int getRest() {
         return rest;
-    }
-
-    public void setRest(int rest) {
-        this.rest = rest;
     }
 
     public int getLife() {
@@ -43,120 +33,103 @@ public abstract class Plant extends Card {
         return speed;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
 
     public Plant(String name, int sun, int rest, int life) {
         this.name = name;
         this.sun = sun;
         this.rest = rest;
         this.life = life;
+        suni =new Sun();
     }
 
-    public void attack() {
+    public void attack(Card card) {
+        card.setLife(card.getLife()-attackPower);
 
     }
 
-    public void beAttacked() {
-
+    public void beAttacked(Card card) {
+        card.setLife(card.getLife()-attackPower);
     }
 
-    public void move() {
-
-    }
 
 }
 
 
 class ProducerPlant extends Plant {
 
-    public ProducerPlant(String name, int sun, int rest, int life) {
+    public ProducerPlant(String name,int clock,int numberOfSun, int sun, int rest, int life) {
+
         super(name, sun, rest, life);
     }
 
-    public void produce() {
-
+    public void produce(int addNumber) {
+        suni.addsun(addNumber);
     }
 
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
-    @Override
-    public void move() {
-        super.move();
-    }
 }
 
 class shootingPlant extends Plant {
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
-    @Override
-    public void move() {
-        super.move();
-    }
 
-    public shootingPlant(String name, int sun, int rest, int life) {
+    public shootingPlant(String name,int clock,int numberOfPea, int sun, int rest, int life)
+    {
         super(name, sun, rest, life);
     }
 }
 
 class throwingPlant extends Plant {
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
-    @Override
-    public void move() {
-        super.move();
-    }
 
-    public throwingPlant(String name, int sun, int rest, int life) {
+    public throwingPlant(String name,int clock,int numberOfBullet,int power, int sun, int rest, int life) {
         super(name, sun, rest, life);
     }
 }
 
 class MinePlant extends Plant {
-    public MinePlant(String name, int sun, int rest, int life) {
+    public MinePlant(String name,int cells, int sun, int rest, int life) {
 
         super(name, sun, rest, life);
     }
 
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
-    @Override
-    public void move() {
-        super.move();
-    }
+
 }
 
 class ToPlantOnPlant extends Plant {
@@ -165,38 +138,30 @@ class ToPlantOnPlant extends Plant {
     }
 
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
-    @Override
-    public void move() {
-        super.move();
-    }
+
 }
 
 class EatablePlant extends Plant {
     public EatablePlant(String name, int sun, int rest, int life) {
         super(name, sun, rest, life);
     }
-
     @Override
-    public void attack() {
-        super.attack();
+    public void attack(Card card) {
+        super.attack(card);
     }
 
     @Override
-    public void beAttacked() {
-        super.beAttacked();
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
     }
 
-    @Override
-    public void move() {
-        super.move();
-    }
 }
