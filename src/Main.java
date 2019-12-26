@@ -3,7 +3,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import commands.*;
-import sun.rmi.runtime.Log;
 
 public class Main {
 
@@ -14,13 +13,13 @@ public class Main {
         while (true) {
             while (menuPointer instanceof LoginMenu) {
                 String string = scanner.nextLine();
-                LoginCommand.createCommands(string);
+                LoginCommand.createCommands(string, menuPointer);
                 boolean isValidCommand = false;
                 for (LoginCommand commands1 : LoginCommand.allCommand) {
                     Pattern pattern = commands1.pattern;
                     Matcher matcher = pattern.matcher(string);
                     if (matcher.matches()) {
-                        commands1.action();
+                        commands1.action(menuPointer);
                         isValidCommand = true;
                         break;
                     }

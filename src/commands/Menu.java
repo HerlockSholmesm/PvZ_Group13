@@ -1,3 +1,5 @@
+package commands;
+
 import java.util.ArrayList;
 
 public interface Menu {
@@ -33,7 +35,6 @@ class MainMenu implements Menu{
     public void goToPlayMenu(Menu menuPtr){
         menuPtr = this.childMenus.get(0);
     }
-
     public void goToProfileMenu(Menu menuPtr){
         menuPtr = this.childMenus.get(1);
     }
@@ -55,7 +56,7 @@ class MainMenu implements Menu{
     }
 }
 
-class LoginMenu implements Menu{
+public class LoginMenu implements Menu{
 
     Menu parentMenu = null;
     public LoginMenu(){

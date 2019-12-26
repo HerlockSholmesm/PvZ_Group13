@@ -1,3 +1,6 @@
+import Model.Card;
+import Model.Coin;
+
 import java.util.ArrayList;
 
 public abstract class Player {

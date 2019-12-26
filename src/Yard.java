@@ -1,3 +1,5 @@
+import Model.Cell;
+
 public class Yard {
     private Cell yard[][] = new Cell[6][19];
     private Cell waterYard[][] = new Cell[2][19];

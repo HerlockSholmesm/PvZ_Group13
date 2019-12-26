@@ -1,3 +1,7 @@
+package Model;
+
+import Model.Cell;
+
 public class Chamanzan {
 
     boolean isAvailable;

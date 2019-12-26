@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+import Model.Card;
+import Model.Cell;
 
 public abstract class Zombie extends Card {
 

@@ -1,3 +1,5 @@
+package Model;
+
 public class Cell {
     private boolean dryness;
     private boolean aqua;

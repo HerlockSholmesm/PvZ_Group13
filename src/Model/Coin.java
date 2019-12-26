@@ -1,3 +1,5 @@
+package Model;
+
 public class Coin {
     private int coinInTheGame;
     private int coinOutOfTheGame;

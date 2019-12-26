@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import Model.Card;
 
 public abstract class Plant extends Card {
 

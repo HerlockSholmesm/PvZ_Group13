@@ -1,3 +1,5 @@
+import Model.Card;
+
 import java.util.ArrayList;
 
 public class Collection {

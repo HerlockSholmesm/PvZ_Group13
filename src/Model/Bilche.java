@@ -1,3 +1,6 @@
+package Model;
+import
+
 public class Bilche {
     private Cell whichCell;
     private Yard yard;
