@@ -5,6 +5,13 @@ import java.util.ArrayList;
 public class Shop {
     private static ArrayList<Plant> collectionPlant;
     private static ArrayList<Zombie> collectionZombies;
+
+    public static ArrayList<Card> getCollection() {
+        return collection;
+    }
+
+    private static ArrayList<Card> collection;
+
     private ArrayList<Card> cards;
 
     public static ArrayList<Zombie> getCollectionZombies() {
@@ -165,6 +172,8 @@ public class Shop {
         zombie=new SwimmingZombie("Dolphin Rider Zombie",2,2,0);
         zombies.add(zombie);
         cards.add(zombie);
+        collection.addAll(collectionPlant);
+        collection.addAll(collectionZombies);
     }
 
 }

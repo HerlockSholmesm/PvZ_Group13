@@ -1,4 +1,5 @@
 import Model.Card;
+import Model.Cell;
 
 public abstract class Plant extends Card {
 

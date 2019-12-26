@@ -1,5 +1,7 @@
-import Model.Cell;
+package Model;
 
+import Model.Cell;
+import Model.Bilche;
 public class Yard {
     private Cell yard[][] = new Cell[6][19];
     private Cell waterYard[][] = new Cell[2][19];

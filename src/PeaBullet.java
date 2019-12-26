@@ -1,3 +1,5 @@
+import Model.Cell;
+
 public class PeaBullet {
     private int x;
     private int y;

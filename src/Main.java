@@ -28,7 +28,7 @@ public class Main {
                     new InvalidCommand().action();
                 }
             }
-            while (menuPointer instanceof MainMenu) {
+       /*     while (menuPointer instanceof MainMenu) {
 
             }
 
@@ -56,8 +56,9 @@ public class Main {
             while (menuPointer instanceof MainMenu) {
 
             }
+        }*/
+
+
         }
-
-
     }
 }
