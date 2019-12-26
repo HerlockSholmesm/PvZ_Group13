@@ -1,5 +1,5 @@
 public class Sun {
-    private int sunStore;
+    private static int sunStore;
 
     public Sun(int sunStore) {
         this.sunStore = sunStore;
@@ -16,5 +16,5 @@ public class Sun {
         this.sunStore = sunStore;
     }
 
-    public void addsun(int addNumber){this.sunStore=+addNumber;}
+    public static void addsun(int addNumber){sunStore=+addNumber;}
 }

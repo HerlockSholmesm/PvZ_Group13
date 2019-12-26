@@ -128,4 +128,14 @@ class SwimmingZombie extends Zombie {
         super(life, speed, defense, name);
     }
 }
+    class Sheild {
+    int life;
+
+    public Sheild(int life) {
+        this.life = life;
+    }
+    public void addLife(int addNumber){
+        this.life=+addNumber;
+    }
+}
 

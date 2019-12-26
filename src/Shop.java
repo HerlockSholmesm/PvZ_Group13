@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class Shop {
     private static ArrayList<Plant> collectionPlant;
     private static ArrayList<Zombie> collectionZombies;
+    private static ArrayList<Plant> plants;
+    private static ArrayList<Zombie> zombies;
+    private static ArrayList<Card> collection;
+    private ArrayList<Card> cards;
 
     public static ArrayList<Card> getCollection() {
         return collection;
     }
-
-    private static ArrayList<Card> collection;
-
-    private ArrayList<Card> cards;
 
     public static ArrayList<Zombie> getCollectionZombies() {
         return collectionZombies;
@@ -21,9 +21,6 @@ public class Shop {
     public ArrayList<Card> getCards() {
         return cards;
     }
-
-    private static ArrayList<Plant> plants;
-    private static ArrayList<Zombie> zombies;
 
     public static ArrayList<Plant> getAllPlants() {
         return plants;
@@ -38,142 +35,114 @@ public class Shop {
         return collectionPlant;
     }
 
-    private void importPlant(){
-        Plant plant =new shootingPlant("Peashooter",2,1,2,2,2);
+    private void importPlant() {
+        Plant plant = new shootingPlant("Peashooter", 2, 1, 2, 2, 2);
         plants.add(plant);
-        cards.add(plant);
         collectionPlant.add(plant);
-        plant =new shootingPlant("Snow Pea",3,1,3,3,3);
+        plant = new shootingPlant("Snow Pea", 3, 1, 3, 3, 3);
         plants.add(plant);
-        cards.add(plant);
         collectionPlant.add(plant);
-        plant =new throwingPlant("Cabbage-pult",2,1,2,2,3,2);
+        plant = new throwingPlant("Cabbage-pult", 2, 1, 2, 2, 3, 2);
         plants.add(plant);
-        cards.add(plant);
-        plant  =new shootingPlant("Repeater",3,2,3,4,4);
+        plant = new shootingPlant("Repeater", 3, 2, 3, 4, 4);
         plants.add(plant);
-        cards.add(plant);
-        plant  =new shootingPlant("Threepeater",4,1,4,4,5);
+        plant = new shootingPlant("Threepeater", 4, 1, 4, 4, 5);
         plants.add(plant);
-        cards.add(plant);
-        plant=new shootingPlant("Cactus",2,1,5,4,5);
+        plant = new shootingPlant("Cactus", 2, 1, 5, 4, 5);
         plants.add(plant);
-        cards.add(plant);
-        plant =new shootingPlant("Gatling Pea",5,4,5,4,3);
+        plant = new shootingPlant("Gatling Pea", 5, 4, 5, 4, 3);
         plants.add(plant);
-        cards.add(plant);
-        plant =new shootingPlant("Scaredy-shroom",2,1,1,2,1);
+        plant = new shootingPlant("Scaredy-shroom", 2, 1, 1, 2, 1);
         plants.add(plant);
-        cards.add(plant);
         collectionPlant.add(plant);
-        plant =new throwingPlant("Kernel-pult",4,1,0,3,3,2);
+        plant = new throwingPlant("Kernel-pult", 4, 1, 0, 3, 3, 2);
         plants.add(plant);
-        cards.add(plant);
         collectionPlant.add(plant);
-        plant=new shootingPlant("Split Pea",1,2,4,4,3);
+        plant = new shootingPlant("Split Pea", 1, 2, 4, 4, 3);
         plants.add(plant);
-        cards.add(plant);
-        plant =new EatablePlant("Explode-o-nut",4,5,3);
+        plant = new EatablePlant("Explode-o-nut", 4, 5, 3);
         plants.add(plant);
-        cards.add(plant);
         collectionPlant.add(plant);
-        plant =new throwingPlant("Melon-pult",4,1,3,3,3,3);
+        plant = new throwingPlant("Melon-pult", 4, 1, 3, 3, 3, 3);
         plants.add(plant);
-        cards.add(plant);
-        plant =new ToPlantOnPlant("Lily Pad",0,1,1);
+        plant = new ToPlantOnPlant("Lily Pad", 0, 1, 1);
         plants.add(plant);
-        cards.add(plant);
-        plant =new throwingPlant("Winter Melon",4,1,3,4,5,3);
+        plant = new throwingPlant("Winter Melon", 4, 1, 3, 4, 5, 3);
         plants.add(plant);
-        cards.add(plant);
-        plant =new EatablePlant("Wall-nut",2,4,4);
+        plant = new EatablePlant("Wall-nut", 2, 4, 4);
         plants.add(plant);
-        cards.add(plant);
-        plant =new EatablePlant("Tangle Kelp",3,3,0);
+        plant = new EatablePlant("Tangle Kelp", 3, 3, 0);
         plants.add(plant);
-        cards.add(plant);
-        plant =new EatablePlant("Tall-nut",4,6,6);
+        plant = new EatablePlant("Tall-nut", 4, 6, 6);
         plants.add(plant);
-        cards.add(plant);
-        plant=new EatablePlant("Cattail",5,5,3);
+        plant = new EatablePlant("Cattail", 5, 5, 3);
         plants.add(plant);
-        cards.add(plant);
-        plant =new MinePlant("Potato Mine",1,2,3,1);
+        plant = new MinePlant("Potato Mine", 1, 2, 3, 1);
         plants.add(plant);
-        cards.add(plant);
-        plant =new MinePlant("Cherry Bomb",8,2,4,2);
+        plant = new MinePlant("Cherry Bomb", 8, 2, 4, 2);
         plants.add(plant);
-        cards.add(plant);
         collectionPlant.add(plant);
-        plant =new MinePlant("Magnet-shroom",8,2,4,4);
+        plant = new MinePlant("Magnet-shroom", 8, 2, 4, 4);
         plants.add(plant);
-        cards.add(plant);
-        plant =new ProducerPlant("Sunflower",2,1,1,2,2);
+        plant = new ProducerPlant("Sunflower", 2, 1, 1, 2, 2);
         plants.add(plant);
-        cards.add(plant);
         collectionPlant.add(plant);
-        plant =new ProducerPlant("Twin Sunflower",2,2,3,5,2);
+        plant = new ProducerPlant("Twin Sunflower", 2, 2, 3, 5, 2);
         plants.add(plant);
-        cards.add(plant);
-        plant =new MinePlant("Jalapeno",19,4,5,2);
+        plant = new MinePlant("Jalapeno", 19, 4, 5, 2);
         plants.add(plant);
-        cards.add(plant);
+        cards.addAll(plants);
 
     }
-    private void importZombie(){
-        Zombie zombie=new MovingZombie( "zombie",2,2,0);
+
+    private void importZombie() {
+        Zombie zombie = new MovingZombie("zombie", 2, 2, 0);
         zombies.add(zombie);
         collectionZombies.add(zombie);
-        cards.add(zombie);
-        zombie =new MovingZombie("Football Zombie",3,4,0);
+        zombie = new MovingZombie("Football Zombie", 3, 4, 0);
         zombies.add(zombie);
         collectionZombies.add(zombie);
-        cards.add(zombie);
-        zombie=new MovingZombie("Buckethead Zombie",2,3,0);
+        zombie = new MovingZombie("Buckethead Zombie", 2, 3, 0);
         zombies.add(zombie);
-        cards.add(zombie);
-        zombie=new MovingZombie("Conehead Zombie",2,3,0);
+        zombie = new MovingZombie("Conehead Zombie", 2, 3, 0);
         zombies.add(zombie);
         collectionZombies.add(zombie);
-        cards.add(zombie);
-        zombie=new MovingZombie("Zomboni",2,3,0);
+        zombie = new MovingZombie("Zomboni", 2, 3, 0);
         zombies.add(zombie);
-        cards.add(zombie);
-        zombie=new MovingZombie("Catapult Zombie",2,3,0);
+        zombie = new MovingZombie("Catapult Zombie", 2, 3, 0);
         zombies.add(zombie);
-        cards.add(zombie);
-        zombie=new MovingZombie("Bungee Zombie",0,3,0);
+        zombie = new MovingZombie("Bungee Zombie", 0, 3, 0);
         zombies.add(zombie);
-        cards.add(zombie);
         collectionZombies.add(zombie);
-        zombie=new MovingZombie("Balloon Zombie",2,2,0);
+        zombie = new MovingZombie("Balloon Zombie", 2, 2, 0);
         zombies.add(zombie);
-        cards.add(zombie);
         collectionZombies.add(zombie);
-        zombie=new MovingZombie("Newspaper Zombie",2,3,2);
+        zombie = new MovingZombie("Newspaper Zombie", 2, 3, 2);
         zombies.add(zombie);
-        cards.add(zombie);
-        zombie=new MovingZombie("Target Zombie",2,3,3);
+        zombie = new MovingZombie("Target Zombie", 2, 3, 3);
         zombies.add(zombie);
-        cards.add(zombie);
-        zombie=new MovingZombie("Screen Door Zombie",2,2,4);
+        zombie = new MovingZombie("Screen Door Zombie", 2, 2, 4);
         zombies.add(zombie);
-        cards.add(zombie);
         collectionZombies.add(zombie);
-        zombie=new MovingZombie("Giga gargantuar",1,6,0);
+        zombie = new MovingZombie("Giga gargantuar", 1, 6, 0);
         zombies.add(zombie);
-        cards.add(zombie);
-        zombie=new FlyingZombie("Pogo Zombie",2,2,0);
+        zombie = new FlyingZombie("Pogo Zombie", 2, 2, 0);
         zombies.add(zombie);
-        cards.add(zombie);
-        zombie=new SwimmingZombie("Snorkel Zombie",2,2,0);
+        zombie = new SwimmingZombie("Snorkel Zombie", 2, 2, 0);
         zombies.add(zombie);
-        cards.add(zombie);
-        zombie=new SwimmingZombie("Dolphin Rider Zombie",2,2,0);
+        zombie = new SwimmingZombie("Dolphin Rider Zombie", 2, 2, 0);
         zombies.add(zombie);
-        cards.add(zombie);
         collection.addAll(collectionPlant);
         collection.addAll(collectionZombies);
+        cards.addAll(zombies);
+    }
+
+    public int getPriceForPlant(int sun, int cooldown, int health) {
+        return (sun * cooldown * health + 1);
+    }
+
+    public int getPriceForZombies(int speed, int health) {
+        return ((1 + speed) * health * 10);
     }
 
 }
