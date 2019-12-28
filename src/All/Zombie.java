@@ -1,3 +1,5 @@
+package All;
+
 import Model.Card;
 import Model.Cell;
 
@@ -13,6 +15,14 @@ public abstract class Zombie extends Card {
     private int defense;
     private String name;
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     public Zombie(int life, int speed, int defense, String name) {
         this.life = life;
         this.speed = speed;
@@ -24,6 +34,7 @@ public abstract class Zombie extends Card {
     public int getLife() {
         return life;
     }
+
 
 
     public int getDefense() {

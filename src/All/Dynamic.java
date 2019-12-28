@@ -1,4 +1,7 @@
+package All;
+
 import Model.Card;
+import Model.Yard;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -63,68 +66,6 @@ public abstract class Dynamic {
 
 }
 
-
-class DynamicDay extends Dynamic {
-    public int attacks;
-
-    public void getZombies() {
-    }
-
-    ;
-
-    public void clock() {
-    }
-
-    ;//Control part must implement the time
-
-    public void addCard() {
-    }
-
-    ;
-
-    public void addPlant() {
-    }
-
-    ;
-
-    public void plant() {
-    }
-
-    ;
-
-    public void getInfo() {
-    }
-
-    ;
-
-    public void addSuns() {
-    }
-
-    ;
-
-    public void addCoins() {
-    }
-
-    ;
-
-    public void kill() {
-    }
-
-    ;
-
-    public void removePlant() {
-    }
-
-    ;
-
-    public void attack() {
-    }
-
-    ;
-
-
-}
-
 class DayAddSunRandomly {
     public static void addSun(PlayerDay playerDay) {
         int n = MathFunctions.getRandomNumber(2, 5);
@@ -148,7 +89,7 @@ class DayDynamicShowHand extends DynamicShowHand {
          */
         int allSunsPlayerHas = playerDay.getSuns();
         int allSunsPlayerMustHave = 0;
-        for (Plant plant:playerDay.getPlants()){
+        for (Plant plant : playerDay.getPlants()) {
             allSunsPlayerMustHave = allSunsPlayerMustHave + plant.getSun();
         }
         int allSunsPlayerNeeds = allSunsPlayerMustHave - allSunsPlayerHas;
@@ -156,8 +97,9 @@ class DayDynamicShowHand extends DynamicShowHand {
     }
 }
 
-class DynamicSelect{
-    public static void SelectThisCard(PlayerDay playerDay,Card card){
+
+class DynamicSelect {
+    public static void SelectThisCard(Card card) {
         card.setSelect(true);
     }
 
@@ -180,14 +122,24 @@ class DynamicPlant {
         player.removeCard(card);
     }
 
-    static Plant findPlant(Card card){
-        for (Plant plant:Shop.getAllPlants()){
-            if (card.getName().equals(plant.getName())){
+    public static Plant findPlant(Card card) {
+        for (Plant plant : Shop.getAllPlants()) {
+            if (card.getName().equals(plant.getName())) {
                 return plant;
             }
         }
         return null;
     }
+
+    public static Card findSelectedCard(Player player) {
+        for (Card card : player.getCards()) {
+            if (card.isSelect()) {
+                return card;
+            }
+        }
+        return null;
+    }
+
 
 }
 
@@ -226,86 +178,6 @@ class setAndChooseRandomZombies {
         return randomZombies;
     }
 
-}
-
-class DynamicPVP {
-    int wave;
-
-    public void attack() {
-    }
-
-    ;
-
-    public void socket() {
-    }
-
-    ;
-    public DynamicZombieMode PZM;
-    public DynamicDay PD;
-}
-
-class DynamicRail extends Dynamic {
-    public void plant() {
-    }
-
-    ;
-
-    public void addPlant() {
-    }
-
-    ;
-
-    public void addCard() {
-    }
-
-    ;
-
-    public void addCoins() {
-    }
-
-    ;
-
-    public void addPoint() {
-    }
-
-    ;
-
-    public void useShovel() {
-    }
-
-    ;
-    public int kills;
-    public int attacks;
-
-    public void clock() {
-    }
-
-    ;
-
-    public void getInfo() {
-    }
-
-    ;
-
-    public void kill() {
-    }
-
-    ;
-
-    public void removePlant() {
-    }
-
-    ;
-
-    public void attack() {
-    }
-
-    ;
-
-    public void getZombies() {
-    }
-
-    ;
 }
 
 class DynamicList {
@@ -351,61 +223,47 @@ class DynamicRailRecords {
         return railPlayer.getPoints();
     }
 }
-
-
-class DynamicZombieMode extends Dynamic {
-    public void put() {
-    }
-
-    ;
-
-    public void addCard() {
-    }
-
-    ;
-
-    public void addCoins() {
-    }
-
-    ;
-    public int kills;
-
-    public void clock() {
-    }
-
-    ;
-
-    public void getInfo() {
-    }
-
-    ;
-
-    public void kill() {
-    }
-
-    ;
-
-    public void attack() {
-    }
-
-    ;
-
-    public void getPlants() {
-    }
-
-    ;
-
-    public void giveZombieThings() {
-    }
-
-    ;
-
-
-}
-
 class EndTurn {
     public static void goOn(Player player) {
         player.addTurn();
+    }
+}
+
+class DynamicZombiePut {
+    public static void put(ZombiePlayer zombiePlayer, String name, int n) {
+        Card card = findCard(name, zombiePlayer);
+        for (int i = 0; i < n; i++) {
+            zombiePlayer.addZombie(findZombie(card));
+            zombiePlayer.removeCard(card);
+        }
+    }
+
+    public static Card findCard(String name, ZombiePlayer zombiePlayer) {
+        for (Card card : zombiePlayer.getCards()) {
+            if (name.equals(card.getName())) {
+                return card;
+            }
+        }
+        return null;
+    }
+
+    public static Zombie findZombie(Card card) {
+        for (Zombie zombie : Shop.getZombies()) {
+            if (zombie.getName().equals(card.getName())) {
+                return zombie;
+            }
+        }
+        return null;
+    }
+
+    public static int howManyZombiesAreThere(int row, Yard yard) {
+        int numOfZombiesInRow = 0;
+        for (Zombie zombie : yard.getPlayer().getZombies()) {
+            if (row == zombie.getX()) {
+                numOfZombiesInRow++;
+            }
+        }
+        return numOfZombiesInRow;
     }
 }
 

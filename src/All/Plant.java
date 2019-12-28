@@ -1,10 +1,13 @@
+package All;
+
 import Model.Card;
 import Model.Cell;
 
 import java.util.ArrayList;
 
 public abstract class Plant extends Card {
-
+    private int xCoordinate;
+    private int yCoordinate;
     private int sun;
     private int rest;
     private int life;
@@ -14,6 +17,18 @@ public abstract class Plant extends Card {
     protected Sun suni;
     private String name;
 
+    public int getxCoordinate() {
+        return xCoordinate;
+    }
+
+    public int getyCoordinate() {
+        return yCoordinate;
+    }
+
+    public void setCoordinates(int x, int y) {
+        this.xCoordinate = x;
+        this.yCoordinate = y;
+    }
 
     public int getSun() {
         return sun;

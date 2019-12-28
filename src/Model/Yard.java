@@ -2,11 +2,18 @@ package Model;
 
 import Model.Cell;
 import Model.Bilche;
+import All.Player;
+import java.util.ArrayList;
+
 public class Yard {
     private Cell yard[][] = new Cell[6][19];
     private Cell waterYard[][] = new Cell[2][19];
-
+    private Player player;
     private boolean isItWater;
+
+    public Player getPlayer() {
+        return player;
+    }
 
     public Yard() {
     }
@@ -68,5 +75,8 @@ public class Yard {
 
     public boolean isItPerson2Win() {
         return isItPerson2Win;
+    }
+
+    public void getZombies() {
     }
 }
