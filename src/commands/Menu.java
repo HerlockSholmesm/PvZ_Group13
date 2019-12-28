@@ -56,7 +56,7 @@ class MainMenu implements Menu{
     }
 }
 
- public class LoginMenu implements Menu{
+  class LoginMenu implements Menu{
 
     Menu parentMenu = null;
     public LoginMenu(){

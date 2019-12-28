@@ -1,5 +1,7 @@
 package commands;
 
+import com.sun.xml.internal.bind.v2.TODO;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -19,7 +21,6 @@ public abstract class LoginCommand {
 
     public static void createCommands(String input, Menu menuPtr) {
         allCommand.add(new CreateAccount(input, menuPtr));
-
     }
 
     abstract public void action(Menu menuPtr);
@@ -71,6 +72,37 @@ class LeaderBoardCommand extends LoginCommand {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menuPtr = new LeaderBoard();
+        }
+    }
+}
+
+class ExitLogin extends LoginCommand {
+    private Pattern pattern = Pattern.compile("exit");
+    ExitLogin(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+            menuPtr = null;
+        }
+    }
+}
+
+class HelpLogin extends LoginCommand{
+    private Pattern pattern = Pattern.compile("help");
+    HelpLogin(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+            //TODO
+            System.out.println();
         }
     }
 }
