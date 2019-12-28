@@ -1,4 +1,4 @@
-package All;
+package Model;
 
 public class Sun {
     private static int sunStore;

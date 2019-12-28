@@ -1,7 +1,6 @@
-package All;
+package Model;
 
-import Model.Card;
-import Model.Cell;
+import All.Shop;
 
 public abstract class Zombie extends Card {
 

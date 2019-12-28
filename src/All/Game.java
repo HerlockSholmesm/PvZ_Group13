@@ -1,6 +1,8 @@
 package All;
 
+import Model.Plant;
 import Model.Yard;
+import Model.Zombie;
 
 import java.util.ArrayList;
 

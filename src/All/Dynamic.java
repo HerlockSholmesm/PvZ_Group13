@@ -1,7 +1,9 @@
 package All;
 
 import Model.Card;
+import Model.Plant;
 import Model.Yard;
+import Model.Zombie;
 
 import java.util.ArrayList;
 import java.util.Random;

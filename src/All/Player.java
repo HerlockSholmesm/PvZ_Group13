@@ -1,7 +1,6 @@
 package All;
 
-import Model.Card;
-import Model.Coin;
+import Model.*;
 
 import java.util.ArrayList;
 
@@ -56,7 +55,7 @@ public abstract class Player {
 
 class PlayerDay extends Player {
     private final int VALID_NUM_OF_PLANTS = 7;
-    private final int   VALID_NUM_OF_CARDS = 7;
+    private final int VALID_NUM_OF_CARDS = 7;
     private Sun suns;//must init with 2
     private int wavesOfAttack;
 

@@ -1,7 +1,4 @@
-package All;
-
-import Model.Card;
-import Model.Cell;
+package Model;
 
 import java.util.ArrayList;
 
