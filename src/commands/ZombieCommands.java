@@ -3,13 +3,13 @@ package commands;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public abstract class PlayMenuCommands {
+public abstract class ZombieCommands {
     public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
 
-    PlayMenuCommands(String input, Menu menuPtr) {
+    ZombieCommands(String input, Menu menuPtr) {
         this.input = input;
         this.menu = menuPtr;
     }
@@ -19,5 +19,6 @@ public abstract class PlayMenuCommands {
     }
 
     abstract public void action(Menu menuPtr);
+
 
 }

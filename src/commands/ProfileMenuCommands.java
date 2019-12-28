@@ -1,6 +1,7 @@
 package commands;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class ProfileMenuCommands {
@@ -29,6 +30,25 @@ class ChangeUserName extends ProfileMenuCommands {
 
     @Override
     public void action(Menu menuPtr) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+            // TODO: 12/29/2019
+        }
+    }
+}
 
+
+class DeleteUserName extends ProfileMenuCommands {
+    Pattern pattern = Pattern.compile("delete (.)+ (.)+");
+    DeleteUserName(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+
+        }
     }
 }
