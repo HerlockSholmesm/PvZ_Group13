@@ -1,5 +1,6 @@
-package All;
+package in_game;
 
+import model.Collection;
 import commands.*;
 
 import java.io.*;

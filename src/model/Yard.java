@@ -1,9 +1,6 @@
-package Model;
+package model;
 
-import Model.Cell;
-import Model.Bilche;
-import All.Player;
-import java.util.ArrayList;
+import in_game.Player;
 
 public class Yard {
     private Cell yard[][] = new Cell[6][19];

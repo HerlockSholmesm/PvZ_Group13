@@ -1,6 +1,4 @@
-package Model;
-
-import Model.Cell;
+package model;
 
 public class Chamanzan {
 

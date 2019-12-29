@@ -1,6 +1,4 @@
-package All;
-
-import Model.*;
+package model;
 
 import java.util.ArrayList;
 

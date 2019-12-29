@@ -1,7 +1,7 @@
-package Model;
+package model;
 public class Bilche {
     private Cell whichCell;
-    private Model.Yard yard;
+    private model.Yard yard;
 
     public Bilche(Cell whichCell,Yard yard) {
         this.whichCell = whichCell;

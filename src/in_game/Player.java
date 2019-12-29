@@ -1,6 +1,6 @@
-package All;
+package in_game;
 
-import Model.*;
+import model.*;
 
 import java.util.ArrayList;
 

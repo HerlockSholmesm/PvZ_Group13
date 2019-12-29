@@ -1,6 +1,4 @@
-package Model;
-
-import All.Shop;
+package model;
 
 public abstract class Zombie extends Card {
 
