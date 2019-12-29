@@ -1,6 +1,7 @@
 package commands;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class ShopMenuCommands {
@@ -21,3 +22,69 @@ public abstract class ShopMenuCommands {
     abstract public void action(Menu menuPtr);
 
 }
+
+class ShowShop extends ShopMenuCommands {
+    Pattern pattern = Pattern.compile("show shop");
+    ShowShop(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+
+        }
+    }
+}
+
+
+class ShowCollection extends ShopMenuCommands {
+    Pattern pattern = Pattern.compile("show collection");
+    ShowCollection(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+
+        }
+    }
+}
+
+
+class Buy extends ShopMenuCommands {
+    Pattern pattern = Pattern.compile("Buy (.)+");
+    Buy(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+
+        }
+    }
+}
+
+
+
+class Money extends ShopMenuCommands {
+    Pattern pattern = Pattern.compile("money");
+    Money(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr) {
+        Matcher matcher = pattern.matcher(input.toLowerCase());
+        if (matcher.matches()){
+
+        }
+    }
+}
+
+

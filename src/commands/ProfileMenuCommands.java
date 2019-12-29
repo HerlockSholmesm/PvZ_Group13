@@ -37,6 +37,35 @@ class ChangeUserName extends ProfileMenuCommands {
     }
 }
 
+class RenameUserName extends ProfileMenuCommands {
+    Pattern pattern = Pattern.compile("rename (.)+");
+    RenameUserName(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+            // TODO: 12/29/2019
+        }
+    }
+}
+
+class CreateUserName extends ProfileMenuCommands {
+    Pattern pattern = Pattern.compile("change (.)+ (.)+");
+    CreateUserName(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+            // TODO: 12/29/2019
+        }
+    }
+}
 
 class DeleteUserName extends ProfileMenuCommands {
     Pattern pattern = Pattern.compile("delete (.)+ (.)+");
@@ -49,6 +78,22 @@ class DeleteUserName extends ProfileMenuCommands {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
 
+        }
+    }
+}
+
+
+class ShowUserName extends ProfileMenuCommands {
+    Pattern pattern = Pattern.compile("show");
+    ShowUserName(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()){
+            // TODO: 12/29/2019
         }
     }
 }

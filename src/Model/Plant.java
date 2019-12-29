@@ -14,11 +14,11 @@ public abstract class Plant extends Card {
     protected Sun suni;
     private String name;
 
-    public int getxCoordinate() {
+    public int getXCoordinate() {
         return xCoordinate;
     }
 
-    public int getyCoordinate() {
+    public int getYCoordinate() {
         return yCoordinate;
     }
 

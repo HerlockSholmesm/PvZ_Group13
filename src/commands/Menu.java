@@ -99,7 +99,8 @@ class PlayMenu implements Menu{
 
     Menu parentMenu = new MainMenu();
     public PlayMenu(){
-        this.childMenus.add(new CollectionMenu());
+        this.childMenus.add(new ZombieCollectionMenu());
+        this.childMenus.add(new PlantCollectionMenu());
         this.childMenus.add(new RailMenu());
     }
 
@@ -128,7 +129,20 @@ class PlayMenu implements Menu{
     }
 }
 
-class CollectionMenu implements Menu{
+class PlantCollectionMenu implements Menu{
+
+    @Override
+    public void help() {
+
+    }
+
+    @Override
+    public void exit(Menu menu) {
+
+    }
+}
+
+class ZombieCollectionMenu implements Menu{
 
     @Override
     public void help() {
