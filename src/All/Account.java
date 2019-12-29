@@ -1,6 +1,13 @@
 package All;
 
+import commands.*;
+
+import java.io.*;
+import java.util.ArrayList;
+
 public class Account {
+    public static ArrayList<Account> allAccounts = new ArrayList<>();
+
     private String name;
     private String password;
     private int score;
@@ -15,8 +22,37 @@ public class Account {
         this.collection = new Collection();
     }
 
-    public void saveAccount(){
 
+    public static void restoreAccounts() throws IOException, ClassNotFoundException {
+        FileInputStream f = new FileInputStream(new File("Accounts.txt"));
+        ObjectInputStream o = new ObjectInputStream(f);
+        while (o.available() > 0) { //todo : checked
+            allAccounts.add((Account) o.readObject());
+        }
+        o.close();
+        f.close();
+    }
+
+    public void saveAccount() throws IOException {
+        FileOutputStream f = new FileOutputStream("Accounts.txt");
+        ObjectOutputStream o = new ObjectOutputStream(f);
+        o.writeObject(this);
+        o.close();
+        f.close();
+    }
+
+    public static Account findAccount(String name, String password) {
+        for (Account account : allAccounts) {
+            if (account.getName().equals(name)) {
+                if (account.getPassword().equals(password)) {
+                    return account;
+                } else {
+                    new InvalidPassword().action();
+                }
+            }
+        }
+        new InvalidAccount().action();
+        return null;
     }
 
 
