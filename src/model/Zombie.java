@@ -25,13 +25,12 @@ public abstract class Zombie extends Card {
         this.speed = speed;
         this.defense = defense;
         this.name = name;
-        shop=new Shop();
+        shop = new Shop();
     }
 
     public int getLife() {
         return life;
     }
-
 
 
     public int getDefense() {
@@ -42,25 +41,25 @@ public abstract class Zombie extends Card {
         return speed;
     }
 
-    public void setZombie(int x,int y) {
+    public void setZombie(int x, int y) {
         this.x = x;
         this.y = y;
-        cell=new Cell(x,y);
+        cell = new Cell(x, y);
     }
 
     public void attack(Card card) {
-        card.setLife(card.getLife()-attackPower);
+        card.setLife(card.getLife() - attackPower);
     }
 
     public void beAttacked(Card card) {
-        card.setLife(card.getLife()-attackPower);
+        card.setLife(card.getLife() - attackPower);
     }
 
     public void move() {
-        cell=new Cell(x+speed,y);
+        cell = new Cell(x + speed, y);
     }
 
-    static class separ{
+    static class separ {
         public int getAdditionLife() {
             return additionLife;
         }
@@ -68,6 +67,7 @@ public abstract class Zombie extends Card {
         public void setAdditionLife(int additionLife) {
             this.additionLife = additionLife;
         }
+
         int additionLife;
     }
 
@@ -91,6 +91,27 @@ class MovingZombie extends Zombie {
 
     public MovingZombie(String name, int life, int speed, int defense) {
         super(life, speed, defense, name);
+    }
+}
+
+class GiantZombie extends Zombie {
+    public GiantZombie(String name, int life, int speed, int defense) {
+        super(life, speed, defense, name);
+    }
+
+    @Override
+    public void attack(Card card) {
+        super.attack(card);
+    }
+
+    @Override
+    public void beAttacked(Card card) {
+        super.beAttacked(card);
+    }
+
+    @Override
+    public void move() {
+        super.move();
     }
 }
 
@@ -132,18 +153,19 @@ class SwimmingZombie extends Zombie {
     }
 
     public SwimmingZombie(String name, int life, int speed, int defense) {
-
         super(life, speed, defense, name);
     }
 }
-    class Sheild {
+
+class ShieldZombie {
     int life;
 
-    public Sheild(int life) {
+    public ShieldZombie(int life) {
         this.life = life;
     }
-    public void addLife(int addNumber){
-        this.life=+addNumber;
+
+    public void addLife(int addNumber) {
+        this.life = +addNumber;
     }
 }
 
