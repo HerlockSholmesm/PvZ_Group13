@@ -115,7 +115,8 @@ class HelpLogin extends LoginCommand{
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-            System.out.println("Enter create account Or login Or Leaderboard Or exit");
+           menuPtr=new LoginMenu();
+           menuPtr.help();
         }
     }
 }

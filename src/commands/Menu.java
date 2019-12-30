@@ -1,5 +1,7 @@
 package commands;
 
+import model.Shop;
+
 import java.util.ArrayList;
 
 public interface Menu {
@@ -11,15 +13,19 @@ public interface Menu {
 }
 
 class ShopMenu implements Menu{
+    Menu parentMenu = new MainMenu();
 
     @Override
     public void help() {
-
+        System.out.println("show shop : showing market" +
+                "show collection : showing collection" +
+                "Buy : Buying card" +
+                "Money : Showing your ceredit");
     }
 
     @Override
     public void exit(Menu menu) {
-
+        menu = this.parentMenu;
     }
 }
 
@@ -188,11 +194,18 @@ class LeaderBoard implements Menu{
 
     @Override
     public void help() {
+        System.out.println("help : showing commands" +
+                "show : showing leaderboard"+
+                "exit : exit" );
 
     }
 
     @Override
     public void exit(Menu menu) {
+
+    }
+
+    public void show(Menu menu){
 
     }
 

@@ -33,7 +33,7 @@ class ShowLeaderBoard extends LeaderBoardCommands {
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-            // TODO: 12/29/2019
+            menuPtr=new LeaderBoard();
         }
 
     }
@@ -64,7 +64,8 @@ class HelpLeaderBoard extends LeaderBoardCommands {
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-            System.out.println("Please Enter Show Or Exit");
+            menuPtr=new LeaderBoard();
+            menuPtr.help();
         }
     }
 }

@@ -1,4 +1,5 @@
 package commands;
+import in_game.Account;
 import model.*;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -73,7 +74,8 @@ class Buy extends ShopMenuCommands {
 
 
 class Money extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("money");
+    Pattern pattern = Pattern.compile("money (.)+");
+
     Money(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -81,8 +83,41 @@ class Money extends ShopMenuCommands {
     @Override
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
-        if (matcher.matches()){
+        if (matcher.matches()) {
 
+        }
+    }
+
+    class Exit extends ShopMenuCommands {
+        private Pattern pattern = Pattern.compile("exit (.)+");
+
+        Exit(String input, Menu menuPtr) {
+            super(input, menuPtr);
+        }
+
+        @Override
+        public void action(Menu menuPtr) {
+            Matcher matcher = pattern.matcher(input);
+            if (matcher.matches()) {
+                menuPtr = new MainMenu();
+            }
+        }
+    }
+
+    class Help extends ShopMenuCommands {
+        private Pattern pattern = Pattern.compile("help");
+
+        Help(String input, Menu menuPtr) {
+            super(input, menuPtr);
+        }
+
+        @Override
+        public void action(Menu menuPtr) {
+            Matcher matcher = pattern.matcher(input);
+            if (matcher.matches()) {
+                menuPtr=new ShopMenu();
+                menuPtr.help();
+            }
         }
     }
 }

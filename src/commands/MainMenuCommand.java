@@ -106,7 +106,8 @@ class HelpMain extends MainMenuCommand {
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            System.out.println("Please Enter Play Or Shop Or exit");
+            menuPtr=new MainMenu();
+            menuPtr.help();
         }
     }
 
