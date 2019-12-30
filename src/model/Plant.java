@@ -2,29 +2,43 @@ package model;
 
 import java.util.ArrayList;
 
-public abstract class Plant extends Card {
-    private int xCoordinate;
-    private int yCoordinate;
+public  class Plant extends Card {
+    private int x;
+    private int y;
     private int sun;
     private int rest;
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     private int life;
     private int attackPower;
     private int speed;
     private Cell cell;
     protected Sun suni;
+
+    public Cell getCell() {
+        return cell;
+    }
+
     private String name;
 
     public int getXCoordinate() {
-        return xCoordinate;
+        return x;
     }
 
     public int getYCoordinate() {
-        return yCoordinate;
+        return y;
     }
 
     public void setCoordinates(int x, int y) {
-        this.xCoordinate = x;
-        this.yCoordinate = y;
+        this.x = x;
+        this.y = y;
     }
 
     public int getSun() {

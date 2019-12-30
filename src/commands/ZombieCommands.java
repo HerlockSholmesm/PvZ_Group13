@@ -1,5 +1,5 @@
 package commands;
-
+import model.*;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -15,6 +15,7 @@ public abstract class ZombieCommands {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
+
         allCommand.add(new CreateAccount(input, menuPtr));
     }
 

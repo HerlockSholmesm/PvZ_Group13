@@ -37,6 +37,7 @@ class PlayCommand extends MainMenuCommand {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menu = new PlayMenu();
+
         }
 
     }
@@ -105,7 +106,7 @@ class HelpMain extends MainMenuCommand {
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-// TODO: 12/29/2019
+            System.out.println("Please Enter Play Or Shop Or exit");
         }
     }
 

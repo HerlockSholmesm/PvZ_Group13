@@ -3,11 +3,11 @@ package model;
 public class Chamanzan {
 
     boolean isAvailable;
-    private Cell whichRow;
+    private int whichRow;
     private Cell waterYard[][] = new Cell[2][19];
     private Yard yard;
 
-    public Chamanzan(Cell whichCell, Yard yard) {
+    public Chamanzan(int whichCell, Yard yard) {
         this.whichRow = whichCell;
         this.yard = yard;
     }
@@ -16,7 +16,7 @@ public class Chamanzan {
         this.waterYard = waterYard;
     }
 
-    public Chamanzan(Cell whichCell) {
+    public Chamanzan(int whichCell) {
         this.isAvailable = true;
         this.whichRow = whichCell;
     }
@@ -29,17 +29,22 @@ public class Chamanzan {
         isAvailable = available;
     }
 
-    public Cell getWhichCell() {
+    public int getWhichCell() {
         return whichRow;
     }
 
-    public void setWhichCell(Cell whichCell) {
+    public void setWhichCell(int whichCell) {
         this.whichRow = whichCell;
     }
 
 
     public void use() {
-
+        for (Zombie zombie:Shop.getZombies()) {
+            if(zombie.getY()==whichRow){
+                zombie.setX(-1);
+                zombie.setY(-1);
+            }
+        }
     }
 
 }

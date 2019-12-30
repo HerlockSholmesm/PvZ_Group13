@@ -7,6 +7,19 @@ public abstract class Zombie extends Card {
     private int speed;
     private int attackPower;
     private int x;
+
+    public static void setShop(Shop shop) {
+        Zombie.shop = shop;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     private int y;
     Cell cell = new Cell();
     private int defense;

@@ -64,7 +64,7 @@ class HelpLeaderBoard extends LeaderBoardCommands {
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-            // TODO: 12/29/2019
+            System.out.println("Please Enter Show Or Exit");
         }
     }
 }

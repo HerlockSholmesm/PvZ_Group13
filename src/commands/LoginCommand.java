@@ -1,9 +1,11 @@
 package commands;
 
-import com.sun.xml.internal.bind.v2.TODO;
-
+//import com.sun.xml.internal.bind.v2.TODO;
+import in_game.Account;
+import model.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +22,7 @@ public abstract class LoginCommand {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
+
         allCommand.add(new CreateAccount(input, menuPtr));
     }
 
@@ -38,7 +41,13 @@ class CreateAccount extends LoginCommand {
     public void action(Menu menu) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            // TODO: 12/24/2019
+            System.out.println("Please Enter your username");
+            Scanner scanner=new Scanner(System.in);
+            String name =scanner.nextLine();
+            System.out.println("Please Enter your password");
+            String password=scanner.nextLine();
+            int pass=Integer.parseInt(password);
+            Account account=new Account(name,password);
         }
     }
 }
@@ -54,7 +63,12 @@ class Login extends LoginCommand {
     public void action(Menu menu) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            // TODO: 12/24/2019
+            System.out.println("Please Enter your username");
+            Scanner scanner=new Scanner(System.in);
+            String name =scanner.nextLine();
+            System.out.println("Please Enter your password");
+            String password=scanner.nextLine();
+            Account.findAccount(name,password);
         }
 
     }
@@ -101,8 +115,7 @@ class HelpLogin extends LoginCommand{
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-            //TODO
-            System.out.println();
+            System.out.println("Enter create account Or login Or Leaderboard Or exit");
         }
     }
 }

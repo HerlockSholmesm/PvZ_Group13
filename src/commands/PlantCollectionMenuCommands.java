@@ -1,5 +1,4 @@
 package commands;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -65,7 +64,7 @@ class SelectPlantCommand extends PlantCollectionMenuCommands {
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-            // TODO: 12/29/2019
+           // System.out.println(Collection.sho);
         }
     }
 }
