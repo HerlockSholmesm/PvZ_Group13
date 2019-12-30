@@ -32,7 +32,7 @@ class ShowHandCommand extends PlantCollectionMenuCommands {
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-            // TODO: 12/29/2019
+
         }
     }
 }

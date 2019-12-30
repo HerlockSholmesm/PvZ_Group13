@@ -1,6 +1,7 @@
 package commands;
 
 import model.Shop;
+import model.Zombie;
 
 import java.util.ArrayList;
 
@@ -8,11 +9,12 @@ public interface Menu {
     ArrayList<Menu> childMenus = new ArrayList<>();
 
     void help();
+
     void exit(Menu menu);
 
 }
 
-class ShopMenu implements Menu{
+class ShopMenu implements Menu {
     Menu parentMenu = new MainMenu();
 
     @Override
@@ -29,22 +31,25 @@ class ShopMenu implements Menu{
     }
 }
 
-class MainMenu implements Menu{
+class MainMenu implements Menu {
     Menu parentMenu = new LoginMenu();
-    public MainMenu(){
+
+    public MainMenu() {
         parentMenu = new LoginMenu();
         this.childMenus.add(new PlayMenu());
         this.childMenus.add(new ProfileMenu());
         this.childMenus.add(new ShopMenu());
     }
 
-    public void goToPlayMenu(Menu menuPtr){
+    public void goToPlayMenu(Menu menuPtr) {
         menuPtr = this.childMenus.get(0);
     }
-    public void goToProfileMenu(Menu menuPtr){
+
+    public void goToProfileMenu(Menu menuPtr) {
         menuPtr = this.childMenus.get(1);
     }
-    public void goToShopMenu(Menu menuPtr){
+
+    public void goToShopMenu(Menu menuPtr) {
         menuPtr = this.childMenus.get(2);
     }
 
@@ -62,20 +67,21 @@ class MainMenu implements Menu{
     }
 }
 
-  class LoginMenu implements Menu{
+class LoginMenu implements Menu {
 
     Menu parentMenu = null;
-    public LoginMenu(){
+
+    public LoginMenu() {
         parentMenu = null;
         this.childMenus.add(new MainMenu());
         this.childMenus.add(new LeaderBoard());
     }
 
-    public void goToMainMenu(Menu menuPtr){
+    public void goToMainMenu(Menu menuPtr) {
         menuPtr = this.childMenus.get(0);
     }
 
-    public void goToLeaderBoardMenu(Menu menuPtr){
+    public void goToLeaderBoardMenu(Menu menuPtr) {
         menuPtr = this.childMenus.get(1);
     }
 
@@ -94,30 +100,32 @@ class MainMenu implements Menu{
         try {
             menuPtr = this.parentMenu;
             menuPtr.exit(menuPtr);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.getMessage();
             // TODO: 12/24/2019
         }
     }
 }
 
-class PlayMenu implements Menu{
+class PlayMenu implements Menu {
 
     Menu parentMenu = new MainMenu();
-    public PlayMenu(){
+
+    public PlayMenu() {
         this.childMenus.add(new ZombieCollectionMenu());
         this.childMenus.add(new PlantCollectionMenu());
         this.childMenus.add(new RailMenu());
     }
 
-    public void goToPlayMenu(Menu menuPtr){
+    public void goToPlayMenu(Menu menuPtr) {
         menuPtr = this.childMenus.get(0);
     }
 
-    public void goToProfileMenu(Menu menuPtr){
+    public void goToProfileMenu(Menu menuPtr) {
         menuPtr = this.childMenus.get(1);
     }
-    public void goToShopMenu(Menu menuPtr){
+
+    public void goToShopMenu(Menu menuPtr) {
         menuPtr = this.childMenus.get(2);
     }
 
@@ -135,68 +143,95 @@ class PlayMenu implements Menu{
     }
 }
 
-class PlantCollectionMenu implements Menu{
-
-    @Override
-    public void help() {
-
-    }
-
-    @Override
-    public void exit(Menu menu) {
-
-    }
-}
-
-class ZombieCollectionMenu implements Menu{
-
-    @Override
-    public void help() {
-
-    }
-
-    @Override
-    public void exit(Menu menu) {
-
-    }
-}
-
-class RailMenu implements Menu{
-
-    @Override
-    public void help() {
-
-    }
-
-    @Override
-    public void exit(Menu menu) {
-
-    }
-}
-
-class ShopCollection implements Menu{
-
-
-    @Override
-    public void help() {
-
-    }
-
-    @Override
-    public void exit(Menu menu) {
-
-    }
-}
-
-
-
-class LeaderBoard implements Menu{
+class PlantCollectionMenu implements Menu {
+    Menu parentMenu = new MainMenu();
 
     @Override
     public void help() {
         System.out.println("help : showing commands" +
-                "show : showing leaderboard"+
-                "exit : exit" );
+                "shoe hand : shoe cards that you select" +
+                "shoe collection : show cards in your collection" +
+                "select : go to shop menu" +
+                "play : go to shop menu" +
+                "exit : go to pvp"
+        );
+    }
+
+    @Override
+    public void exit(Menu menu) {
+        menu = this.parentMenu;
+    }
+}
+
+class ZombieCollectionMenu implements Menu {
+    Menu parentMenu = new MainMenu();
+
+    @Override
+    public void help() {
+        System.out.println("help : showing commands" +
+                "shoe hand : shoe cards that you select" +
+                "shoe collection : show cards in your collection" +
+                "select : go to shop menu" +
+                "play : go to shop menu" +
+                "exit : go to pvp"
+        );
+    }
+
+    @Override
+    public void exit(Menu menu) {
+        menu = this.parentMenu;
+    }
+}
+
+class RailMenu implements Menu {
+
+    Menu parentMenu = new MainMenu();
+
+    @Override
+    public void help() {
+        System.out.println("help : showing commands" +
+                "List : " +
+                "select : " +
+                "Remove : " +
+                "End turn : " +
+                "show lawn  :" );
+    }
+
+    @Override
+    public void exit(Menu menu) {
+
+    }
+}
+
+class ShopCollection implements Menu {
+    Menu parentMenu = new MainMenu();
+
+    @Override
+    public void help() {
+        System.out.println("help : showing commands" +
+                "shoe hand : shoe cards that you select" +
+                "shoe collection : show cards in your collection" +
+                "select : go to shop menu" +
+                "play : go to shop menu" +
+                "exit : go to pvp"
+        );
+    }
+
+    @Override
+    public void exit(Menu menu) {
+
+    }
+}
+
+
+class LeaderBoard implements Menu {
+    Menu parentMenu = new MainMenu();
+
+    @Override
+    public void help() {
+        System.out.println("help : showing commands" +
+                "show : showing leaderboard" +
+                "exit : exit");
 
     }
 
@@ -205,18 +240,21 @@ class LeaderBoard implements Menu{
 
     }
 
-    public void show(Menu menu){
+    public void show(Menu menu) {
 
     }
 
 }
 
-class ProfileMenu implements Menu{
-
+class ProfileMenu implements Menu {
+    Menu parentMenu = new MainMenu();
 
     @Override
     public void help() {
-
+        System.out.println("help : showing commands" +
+                "play : go to play menu" +
+                "profile : go to profile menu" +
+                "shop : go to shop menu");
     }
 
     @Override
