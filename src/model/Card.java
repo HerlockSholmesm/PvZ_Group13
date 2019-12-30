@@ -9,6 +9,10 @@ public abstract class Card {
     public Card() {
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public void setSelect(boolean select) {
         this.select = select;
     }

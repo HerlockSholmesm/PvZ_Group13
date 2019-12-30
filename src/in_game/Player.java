@@ -18,8 +18,8 @@ public abstract class Player {
         return turn;
     }
 
-    public void setCoin(Coin coin) {
-        this.coin = coin;
+    public void addCoin(int C) {
+        this.coin.setCoinInTheGame(this.coin.getCoinInTheGame()+C);
     }
 
     public void addTurn() {
@@ -143,6 +143,20 @@ class RailPlayer extends Player {
 
 
 class ZombiePlayer extends Player {
+    private int killPerTurn = 0;
+
+    public int getKillPerTurn() {
+        return killPerTurn;
+    }
+
+    public void addKillPerTurn() {
+        this.killPerTurn++;
+    }
+
+    public void setKillPerTurn(int killPerTurn) {
+        this.killPerTurn = killPerTurn;
+    }
+
     public ZombiePlayer(){
         this.coin = new Coin(50, 0);
         this.cards.add(Shop.getZombies().get(0));
@@ -194,6 +208,11 @@ class ZombiePlayer extends Player {
     }
     public void addZombie(Zombie zombie){
         zombies.add(zombie);
+    }
+
+    public void buy(Card zombie){
+        this.cards.add(zombie);
+        this.addCoin(-zombie.getPrice());
     }
 
 }

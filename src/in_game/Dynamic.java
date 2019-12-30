@@ -227,7 +227,16 @@ class EndTurn {
         player.addTurn();
     }
 }
-
+class DynamicZombieEndTurn extends EndTurn{
+    public static void goOn(ZombiePlayer zombiePlayer){
+        zombiePlayer.setKillPerTurn(0);
+    }
+}
+class  DynamicZombieReward{
+    public static void rewardZombie(ZombiePlayer zombiePlayer){
+        zombiePlayer.coin.setCoinInTheGame(zombiePlayer.coin.getCoinInTheGame() + 10*zombiePlayer.getKillPerTurn());
+    }
+}
 class DynamicZombiePut {
     public static void put(ZombiePlayer zombiePlayer, String name, int n) {
         Card card = findCard(name, zombiePlayer);
@@ -263,6 +272,28 @@ class DynamicZombiePut {
             }
         }
         return numOfZombiesInRow;
+    }
+}
+
+class DynamicZombieKillPlant{
+    public void killPlant(int x,int y,ZombiePlayer zombiePlayer){
+        zombiePlayer.addKillPerTurn();
+        DynamicRemovePlants.removePlant(x,y,zombiePlayer);
+
+    }
+}
+class DynamicBuy{
+    public static Zombie findZombie(String zombieName){
+        for (Zombie zombie:Shop.getZombies()){
+            if (zombie.getName().equals(zombieName)){
+                return zombie;
+            }
+        }
+        return null;
+    }
+
+    public static boolean doIHaveEnoughCoins(Player player,Card card){
+        return player.getCoin().getCoinInTheGame() - card.getPrice() >= 0;
     }
 }
 
