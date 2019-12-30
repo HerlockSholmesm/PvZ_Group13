@@ -6,113 +6,21 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Dynamic {
-    public int attacks;
 
     public void clock() {
     }
+    /**Show Hand Commands:*/
 
-    ;
-
-    public void addCard() {
-    }
-
-    ;
-
-    public void addPlant() {
-    }
-
-    ;
-
-    public void plant() {
-    }
-
-    ;
-
-    public void getInfo() {
-    }
-
-    ;
-
-    public void addSuns() {
-    }
-
-    ;
-
-    public void addCoins() {
-    }
-
-    ;
-
-    public void kill() {
-    }
-
-    ;
-
-    public void removePlant() {
-    }
-
-    ;
-
-    public void attack() {
-    }
-
-    ;
-
-    public void useShovel() {
-    }
-
-    ;
-
-}
-
-class DayAddSunRandomly {
-    public static void addSun(PlayerDay playerDay) {
-        int n = MathFunctions.getRandomNumber(2, 5);
-        playerDay.addSuns(n);
-    }
-}
-
-class DynamicShowHand {
     public static ArrayList<Card> getCards(Player player) {
         return player.getCards();
     }
-
-}
-
-class DayDynamicShowHand extends DynamicShowHand {
-
-    public static int demandingSuns(PlayerDay playerDay) {
-        /**the output indicates the number of suns player needs,so
-         * if the output < 0, it means that we need "output" suns.
-         * if the output > 0, it means we have extra "output" suns.
-         */
-        int allSunsPlayerHas = playerDay.getSuns();
-        int allSunsPlayerMustHave = 0;
-        for (Plant plant : playerDay.getPlants()) {
-            allSunsPlayerMustHave = allSunsPlayerMustHave + plant.getSun();
-        }
-        int allSunsPlayerNeeds = allSunsPlayerMustHave - allSunsPlayerHas;
-        return allSunsPlayerNeeds;
-    }
-}
-
-
-class DynamicSelect {
+    /**Select Commands:*/
     public static void SelectThisCard(Card card) {
         card.setSelect(true);
     }
 
-}
 
-class DynamicDaySelect {
-    public static boolean canIChoose(PlayerDay playerDay, Card card) {
-        Plant plant = DynamicPlant.findPlant(card);
-        int numberOfExtraSuns = DayDynamicShowHand.demandingSuns(playerDay);
-        return (numberOfExtraSuns >= plant.getSun());
-    }
-}
-
-class DynamicPlant {
+    /**Planting commands:*/
     public static void plantMe(int x, int y, Card card, Player player) {
         Plant plant = findPlant(card);
         graphic.plant(x, y, plant);
@@ -139,10 +47,7 @@ class DynamicPlant {
         return null;
     }
 
-
-}
-
-class DynamicRemovePlants {
+    /**Plant Removing:*/
     public static void removePlant(int x, int y, Player player) {
         Plant plant = graphic.findPlant(x, y);
         graphic.remove(x, y);
@@ -150,9 +55,7 @@ class DynamicRemovePlants {
     }
 
 
-}
-
-class DynamicShowLawn {
+    /**Show Lawn Commands:*/
     public static ArrayList<Plant> getMeThePlants(Player player) {
         return player.getPlants();
     }
@@ -160,12 +63,62 @@ class DynamicShowLawn {
     public static ArrayList<Zombie> getMeTheZombies(Player player) {
         return player.getZombies();
     }
+    /**List Of All Cards:*/
+    public static ArrayList<Card> List(Player player) {
+        return player.getCards();
+    }
+
+    /**Turn Ending:*/
+    public static void goOn(Player player) {
+        player.addTurn();
+    }
+    /**Do I have enough coins?;*/
+
+    public static boolean doIHaveEnoughCoins(Player player,Card card){
+        return player.getCoin().getCoinInTheGame() - card.getPrice() >= 0;
+    }
+
 
 
 }
 
-class setAndChooseRandomZombies {
-    public static ArrayList<Zombie> chooseAndSetRandomZombies(PlayerDay playerDay) {
+class DynamicDay{
+    PlayerDay playerDay;
+
+    public DynamicDay(PlayerDay playerDay) {
+        this.playerDay = playerDay;
+    }
+
+    /**Show Hand Commands:*/
+
+    public  int demandingSuns() {
+        /**the output indicates the number of suns player needs,so
+         * if the output < 0, it means that we need "output" suns.
+         * if the output > 0, it means we have extra "output" suns.
+         */
+        int allSunsPlayerHas = playerDay.getSuns();
+        int allSunsPlayerMustHave = 0;
+        for (Plant plant : playerDay.getPlants()) {
+            allSunsPlayerMustHave = allSunsPlayerMustHave + plant.getSun();
+        }
+        int allSunsPlayerNeeds = allSunsPlayerMustHave - allSunsPlayerHas;
+        return allSunsPlayerNeeds;
+    }
+    /**Select Commands:*/
+    public boolean canIChoose(PlayerDay playerDay, Card card) {
+        Plant plant = Dynamic.findPlant(card);
+        int numberOfExtraSuns = demandingSuns();
+        return (numberOfExtraSuns >= plant.getSun());
+    }
+
+    /**Adding Suns Randomly:*/
+    public void addSun() {
+        int n = MathFunctions.getRandomNumber(2, 5);
+        playerDay.addSuns(n);
+    }
+
+    /**Set and choose Random Zombies:*/
+    public ArrayList<Zombie> chooseAndSetRandomZombies() {
         Random rand = new Random();
         ArrayList<Zombie> randomZombies = new ArrayList<>();
         int numberOfZombies = MathFunctions.getRandomNumber(4, 10);
@@ -177,37 +130,50 @@ class setAndChooseRandomZombies {
         return randomZombies;
     }
 
-}
+    /**Set Cards Randomly:
+     *
+     */
 
-class DynamicList {
-    public static ArrayList<Card> List(Player player) {
-        return player.getCards();
+    public void addPlant() {
+        int index = MathFunctions.getRandomNumber(0, Shop.getAllPlants().size() - 1);
+        Plant plant = Shop.getAllPlants().get(index);
+        playerDay.addCard(plant);
     }
-}
 
-class DynamicRailAddZombieRandomly {
+
+
+
+
+
+}
+class DynamicRail{
+    RailPlayer railPlayer;
+
+    public DynamicRail(RailPlayer railPlayer) {
+        this.railPlayer = railPlayer;
+    }
+
+    public RailPlayer getRailPlayer() {
+        return railPlayer;
+    }
+
+    public void setRailPlayer(RailPlayer railPlayer) {
+        this.railPlayer = railPlayer;
+    }
+    /**Random Zombie Adding:*/
     public static void addZombie(RailPlayer railPlayer) {
         int index = MathFunctions.getRandomNumber(0, Shop.getZombies().size() - 1);
         Zombie zombie = Shop.getZombies().get(index);
         railPlayer.getZombies().add(zombie);
     }
-}
 
-class DynamicDayAddCardRandomly {
-    public static void addPlant(PlayerDay playerDay) {
-        int index = MathFunctions.getRandomNumber(0, Shop.getAllPlants().size() - 1);
-        Plant plant = Shop.getAllPlants().get(index);
-        playerDay.addCard(plant);
-    }
-}
-
-class DynamicRailKillZombie {
-    public static void killZombie(RailPlayer railPlayer, Zombie zombie) {
+    /**Zombie killing:*/
+    public void killZombie(Zombie zombie) {
         railPlayer.removeZombie(zombie);
         railPlayer.pointAdder();
     }
 
-    public static Zombie findZombie(RailPlayer railPlayer, Zombie zombie) {
+    public Zombie findZombie(Zombie zombie) {
         for (Zombie z : railPlayer.getZombies()) {
             if (z.getName().equals(zombie.getName())) {
                 return z;
@@ -215,38 +181,69 @@ class DynamicRailKillZombie {
         }
         return null;
     }
-}
-
-class DynamicRailRecords {
-    public static int getNumOfDeadZombies(RailPlayer railPlayer) {
+    public int getNumOfDeadZombies() {
         return railPlayer.getPoints();
     }
+
+
+
 }
-class EndTurn {
-    public static void goOn(Player player) {
-        player.addTurn();
+
+
+
+class DynamicZombie extends Dynamic{
+
+    ZombiePlayer zombiePlayer;
+
+    public DynamicZombie(ZombiePlayer zombiePlayer) {
+        this.zombiePlayer = zombiePlayer;
     }
-}
-class DynamicZombieEndTurn extends EndTurn{
-    public static void goOn(ZombiePlayer zombiePlayer){
+
+    public ZombiePlayer getZombiePlayer() {
+        return zombiePlayer;
+    }
+
+    public void setZombiePlayer(ZombiePlayer zombiePlayer) {
+        this.zombiePlayer = zombiePlayer;
+    }
+
+    /**Turn Ending for zombies*/
+
+    public void goOn(){
+        zombiePlayer.addTurn();
         zombiePlayer.setKillPerTurn(0);
     }
-}
-class  DynamicZombieReward{
-    public static void rewardZombie(ZombiePlayer zombiePlayer){
+    /**find a zombie to buy*/
+    public static Zombie findZombie(String zombieName){
+        for (Zombie zombie:Shop.getZombies()){
+            if (zombie.getName().equals(zombieName)){
+                return zombie;
+            }
+        }
+        return null;
+    }
+    /**killing plants;*/
+    public void killPlant(int x,int y){
+        zombiePlayer.addKillPerTurn();
+        Dynamic.removePlant(x,y,zombiePlayer);
+
+    }
+
+    /**Rewarding Zombie*/
+    public void rewardZombie(){
         zombiePlayer.coin.setCoinInTheGame(zombiePlayer.coin.getCoinInTheGame() + 10*zombiePlayer.getKillPerTurn());
     }
-}
-class DynamicZombiePut {
-    public static void put(ZombiePlayer zombiePlayer, String name, int n) {
-        Card card = findCard(name, zombiePlayer);
+
+    /**How to put Zombies?*/
+    public void put(String name, int n) {
+        Card card = findCard(name);
         for (int i = 0; i < n; i++) {
             zombiePlayer.addZombie(findZombie(card));
             zombiePlayer.removeCard(card);
         }
     }
 
-    public static Card findCard(String name, ZombiePlayer zombiePlayer) {
+    public Card findCard(String name) {
         for (Card card : zombiePlayer.getCards()) {
             if (name.equals(card.getName())) {
                 return card;
@@ -273,29 +270,45 @@ class DynamicZombiePut {
         }
         return numOfZombiesInRow;
     }
+
+
 }
 
-class DynamicZombieKillPlant{
-    public void killPlant(int x,int y,ZombiePlayer zombiePlayer){
-        zombiePlayer.addKillPerTurn();
-        DynamicRemovePlants.removePlant(x,y,zombiePlayer);
+class DynamicPVP{
+    private PlayerDay playerDay;
+    private ZombiePlayer zombiePlayer;
+    private final int TOTAL_NUMBER_OF_WAVES;
 
-    }
-}
-class DynamicBuy{
-    public static Zombie findZombie(String zombieName){
-        for (Zombie zombie:Shop.getZombies()){
-            if (zombie.getName().equals(zombieName)){
-                return zombie;
-            }
-        }
-        return null;
+    public void setPlayerDay(PlayerDay playerDay) {
+        this.playerDay = playerDay;
     }
 
-    public static boolean doIHaveEnoughCoins(Player player,Card card){
-        return player.getCoin().getCoinInTheGame() - card.getPrice() >= 0;
+    public void setZombiePlayer(ZombiePlayer zombiePlayer) {
+        this.zombiePlayer = zombiePlayer;
+    }
+
+    public PlayerDay getPlayerDay() {
+        return playerDay;
+    }
+
+    public ZombiePlayer getZombiePlayer() {
+        return zombiePlayer;
+    }
+
+    public int getTOTAL_NUMBER_OF_WAVES() {
+        return TOTAL_NUMBER_OF_WAVES;
+    }
+
+    public DynamicPVP(PlayerDay playerDay, ZombiePlayer zombiePlayer, int TOTAL_NUMBER_OF_WAVES) {
+        this.playerDay = playerDay;
+        this.zombiePlayer = zombiePlayer;
+        this.TOTAL_NUMBER_OF_WAVES = TOTAL_NUMBER_OF_WAVES;
     }
 }
+
+
+
+
 
 class graphic {
 
