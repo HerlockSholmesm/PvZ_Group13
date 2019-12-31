@@ -23,7 +23,6 @@ public class Account {
         this.collection = new Collection();
     }
 
-
     public static void restoreAccounts() throws IOException, ClassNotFoundException {
         FileInputStream f = new FileInputStream(new File("Accounts.txt"));
         ObjectInputStream o = new ObjectInputStream(f);
@@ -48,7 +47,8 @@ public class Account {
                 if (account.getPassword().equals(password)) {
                     return account;
                 } else {
-                    new InvalidPassword().action();
+                    InvalidPrompt invalidPrompt = () -> System.out.println("invalid password");
+                    invalidPrompt.actoin();
                 }
             }
         }

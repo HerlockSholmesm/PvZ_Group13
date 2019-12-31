@@ -3,12 +3,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import commands.*;
+import in_game.Account;
 
 public class Main {
 
     public static void main(String[] args) throws CloneNotSupportedException {
         Scanner scanner = new Scanner(System.in);
         Menu menuPointer = new LoginMenu();
+        Account mainAccount;
         mainWhile:
         while (true) {
             while (menuPointer instanceof LoginMenu) {

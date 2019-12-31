@@ -26,7 +26,7 @@ public abstract class LoginCommand {
         allCommand.add(new CreateAccount(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr);
+    abstract public void action(Menu menuPtr,Account account);
 }
 
 class CreateAccount extends LoginCommand {
@@ -38,19 +38,14 @@ class CreateAccount extends LoginCommand {
     }
 
     @Override
-    public void action(Menu menu) {
+    public void action(Menu menu,Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            System.out.println("Please Enter your username");
-            Scanner scanner=new Scanner(System.in);
-            String name =scanner.nextLine();
-            System.out.println("Please Enter your password");
-            String password=scanner.nextLine();
-            int pass=Integer.parseInt(password);
-            Account account=new Account(name,password);
+             account=new Account(matcher.group(1),matcher.group(2));
+
+            }
         }
     }
-}
 
 class Login extends LoginCommand {
     private Pattern pattern = Pattern.compile("login (.+) (.+)");
@@ -60,15 +55,10 @@ class Login extends LoginCommand {
     }
 
     @Override
-    public void action(Menu menu) {
+    public void action(Menu menu,Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            System.out.println("Please Enter your username");
-            Scanner scanner=new Scanner(System.in);
-            String name =scanner.nextLine();
-            System.out.println("Please Enter your password");
-            String password=scanner.nextLine();
-            Account.findAccount(name,password);
+            Account.findAccount(matcher.group(1),matcher.group(2));
         }
 
     }
@@ -82,7 +72,7 @@ class LeaderBoardCommand extends LoginCommand {
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr,Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menuPtr = new LeaderBoard();
@@ -97,7 +87,7 @@ class ExitLogin extends LoginCommand {
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr,Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             menuPtr = null;
@@ -112,7 +102,7 @@ class HelpLogin extends LoginCommand{
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr,Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
            menuPtr=new LoginMenu();
