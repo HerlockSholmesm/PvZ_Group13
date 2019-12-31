@@ -1,5 +1,7 @@
 package commands;
 
+import in_game.Account;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,20 +22,20 @@ public abstract class MainMenuCommand {
         allCommand.add(new commands.CreateAccount(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr);
+    abstract public void action(Menu menuPtr, Account account);
 
 }
 
 
 class PlayCommand extends MainMenuCommand {
-    private Pattern pattern = Pattern.compile("Play");
+    private Pattern pattern = Pattern.compile("Play",Pattern.CASE_INSENSITIVE);
 
     PlayCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menu) {
+    public void action(Menu menu,Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menu = new PlayMenu();
@@ -45,14 +47,14 @@ class PlayCommand extends MainMenuCommand {
 
 
 class ProfileCommand extends MainMenuCommand {
-    private Pattern pattern = Pattern.compile("Profile");
+    private Pattern pattern = Pattern.compile("Profile",Pattern.CASE_INSENSITIVE);
 
     ProfileCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menu) {
+    public void action(Menu menu,Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menu = new ProfileMenu();
@@ -62,14 +64,14 @@ class ProfileCommand extends MainMenuCommand {
 }
 
 class ShopCommand extends MainMenuCommand {
-    private Pattern pattern = Pattern.compile("Shop");
+    private Pattern pattern = Pattern.compile("Shop",Pattern.CASE_INSENSITIVE);
 
     ShopCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menu) {
+    public void action(Menu menu,Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menu = new ShopMenu();
@@ -80,14 +82,14 @@ class ShopCommand extends MainMenuCommand {
 
 
 class ExitMain extends MainMenuCommand {
-    private Pattern pattern = Pattern.compile("exit");
+    private Pattern pattern = Pattern.compile("exit",Pattern.CASE_INSENSITIVE);
 
     ExitMain(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr,Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menuPtr = new LoginMenu();
@@ -96,14 +98,14 @@ class ExitMain extends MainMenuCommand {
 }
 
 class HelpMain extends MainMenuCommand {
-    private Pattern pattern = Pattern.compile("help");
+    private Pattern pattern = Pattern.compile("help",Pattern.CASE_INSENSITIVE);
 
     HelpMain(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr,Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menuPtr=new MainMenu();

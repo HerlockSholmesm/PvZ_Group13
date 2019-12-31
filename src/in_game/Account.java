@@ -2,18 +2,23 @@ package in_game;
 
 import model.Collection;
 import commands.*;
+import model.Zombie;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Account {
     public static ArrayList<Account> allAccounts = new ArrayList<>();
-
+    public static int NumberOfKilledZombie;
+    private static HashMap<Object, Object> LeaderBoard;
     private String name;
     private String password;
     private int score;
     private int money;
     private Collection collection;
+
 
     public Account(String name, String password) {
         this.name = name;
@@ -21,6 +26,16 @@ public class Account {
         this.money = 0;
         this.score = 0;
         this.collection = new Collection();
+        NumberOfKilledZombie=0;
+
+    }
+    public void setLeaderBoard(int number,String name){
+        LeaderBoard.put(number,name);
+    }
+    public  void showLeaderBoard(){
+        for(Map.Entry m:LeaderBoard.entrySet()){
+            System.out.println(m.getKey()+" "+m.getValue());
+        }
     }
 
     public static void restoreAccounts() throws IOException, ClassNotFoundException {

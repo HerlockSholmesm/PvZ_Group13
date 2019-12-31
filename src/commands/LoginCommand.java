@@ -30,7 +30,8 @@ public abstract class LoginCommand {
 }
 
 class CreateAccount extends LoginCommand {
-    private Pattern pattern = Pattern.compile("create account (.+) (.+)");
+    private Pattern pattern = Pattern.compile(
+            "create account (.+) (.+)",Pattern.CASE_INSENSITIVE);
 
     CreateAccount(String string, Menu menu) {
         super(string, menu);
@@ -48,7 +49,8 @@ class CreateAccount extends LoginCommand {
     }
 
 class Login extends LoginCommand {
-    private Pattern pattern = Pattern.compile("login (.+) (.+)");
+    private Pattern pattern = Pattern.compile(
+            "login (.+) (.+)",Pattern.CASE_INSENSITIVE);
 
     Login(String input, Menu menuPtr) {
         super(input, menuPtr);

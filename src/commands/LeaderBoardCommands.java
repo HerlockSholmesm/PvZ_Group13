@@ -1,5 +1,7 @@
 package commands;
 
+import in_game.Account;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,34 +21,35 @@ public abstract class LeaderBoardCommands {
         allCommand.add(new CreateAccount(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr);
+    abstract public void action(Menu menuPtr, Account account);
 }
 
 class ShowLeaderBoard extends LeaderBoardCommands {
-    Pattern pattern = Pattern.compile("show");
+    Pattern pattern = Pattern.compile("show",Pattern.CASE_INSENSITIVE);
 
     ShowLeaderBoard(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             menuPtr=new LeaderBoard();
+            account.showLeaderBoard();
         }
 
     }
 }
 
 class ExitLeaderBoard extends LeaderBoardCommands {
-    Pattern pattern = Pattern.compile("exit");
+    Pattern pattern = Pattern.compile("exit",Pattern.CASE_INSENSITIVE);
     ExitLeaderBoard(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             menuPtr = new LoginMenu();
@@ -55,13 +58,13 @@ class ExitLeaderBoard extends LeaderBoardCommands {
 }
 
 class HelpLeaderBoard extends LeaderBoardCommands {
-    Pattern pattern = Pattern.compile("help");
+    Pattern pattern = Pattern.compile("help",Pattern.CASE_INSENSITIVE);
     HelpLeaderBoard(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             menuPtr=new LeaderBoard();
