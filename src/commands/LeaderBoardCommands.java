@@ -25,7 +25,7 @@ public abstract class LeaderBoardCommands {
 }
 
 class ShowLeaderBoard extends LeaderBoardCommands {
-    Pattern pattern = Pattern.compile("show",Pattern.CASE_INSENSITIVE);
+    Pattern pattern = Pattern.compile("show", Pattern.CASE_INSENSITIVE);
 
     ShowLeaderBoard(String input, Menu menuPtr) {
         super(input, menuPtr);
@@ -34,31 +34,17 @@ class ShowLeaderBoard extends LeaderBoardCommands {
     @Override
     public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()){
-            menuPtr=new LeaderBoard();
+        if (matcher.matches()) {
+            menuPtr = new LeaderBoard();
             account.showLeaderBoard();
         }
 
     }
 }
 
-class ExitLeaderBoard extends LeaderBoardCommands {
-    Pattern pattern = Pattern.compile("exit",Pattern.CASE_INSENSITIVE);
-    ExitLeaderBoard(String input, Menu menuPtr) {
-        super(input, menuPtr);
-    }
-
-    @Override
-    public void action(Menu menuPtr, Account account) {
-        Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()){
-            menuPtr = new LoginMenu();
-        }
-    }
-}
-
 class HelpLeaderBoard extends LeaderBoardCommands {
-    Pattern pattern = Pattern.compile("help",Pattern.CASE_INSENSITIVE);
+    Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
+
     HelpLeaderBoard(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -66,9 +52,27 @@ class HelpLeaderBoard extends LeaderBoardCommands {
     @Override
     public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()){
-            menuPtr=new LeaderBoard();
+        if (matcher.matches()) {
+            menuPtr = new LeaderBoard();
             menuPtr.help();
         }
     }
 }
+
+class ExitLeaderBoard extends LeaderBoardCommands {
+    Pattern pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
+
+    ExitLeaderBoard(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr, Account account) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()) {
+            menuPtr = new LoginMenu();
+        }
+    }
+}
+
+
