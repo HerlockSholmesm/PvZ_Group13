@@ -2,7 +2,6 @@ package in_game;
 
 import model.Collection;
 import commands.*;
-import model.Zombie;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -26,15 +25,17 @@ public class Account {
         this.money = 0;
         this.score = 0;
         this.collection = new Collection();
-        NumberOfKilledZombie=0;
+        NumberOfKilledZombie = 0;
 
     }
-    public void setLeaderBoard(int number,String name){
-        LeaderBoard.put(number,name);
+
+    public void setLeaderBoard(int number, String name) {
+        LeaderBoard.put(number, name);
     }
-    public  void showLeaderBoard(){
-        for(Map.Entry m:LeaderBoard.entrySet()){
-            System.out.println(m.getKey()+" "+m.getValue());
+
+    public void showLeaderBoard() {
+        for (Map.Entry m : LeaderBoard.entrySet()) {
+            System.out.println(m.getKey() + " " + m.getValue());
         }
     }
 
@@ -59,29 +60,29 @@ public class Account {
     public static Account addAccount(String name, String password) {
         for (Account account : allAccounts) {
             if (account.getName().equals(name)) {
-                    InvalidPrompt invalidPrompt = () -> System.out.println("account existed");
-                    invalidPrompt.actoin();
-                    return null;
+                Invalid.existedAccountAction();
+                return null;
             }
         }
         Account account = new Account(name, password);
         allAccounts.add(account);
         return account;
     }
+
     public static Account findAccount(String name, String password) {
         for (Account account : allAccounts) {
             if (account.getName().equals(name)) {
                 if (account.getPassword().equals(password)) {
                     return account;
                 } else {
-                    InvalidPrompt invalidPrompt = () -> System.out.println("invalid password");
-                    invalidPrompt.actoin();
+                    Invalid.invalidPasswordAction();
+                    return null;
                 }
             }
         }
-        new InvalidAccount().action();
         return null;
     }
+
 
 
     public String getName() {
