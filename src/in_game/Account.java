@@ -41,6 +41,18 @@ public class Account {
         f.close();
     }
 
+    public static Account addAccount(String name, String password) {
+        for (Account account : allAccounts) {
+            if (account.getName().equals(name)) {
+                    InvalidPrompt invalidPrompt = () -> System.out.println("account existed");
+                    invalidPrompt.actoin();
+                    return null;
+            }
+        }
+        Account account = new Account(name, password);
+        allAccounts.add(account);
+        return account;
+    }
     public static Account findAccount(String name, String password) {
         for (Account account : allAccounts) {
             if (account.getName().equals(name)) {

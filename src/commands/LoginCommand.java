@@ -81,7 +81,7 @@ class LeaderBoardCommand extends LoginCommand {
 }
 
 class ExitLogin extends LoginCommand {
-    private Pattern pattern = Pattern.compile("exit");
+    private Pattern pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
     ExitLogin(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
