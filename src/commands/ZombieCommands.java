@@ -35,7 +35,7 @@ class Exit extends ZombieCommands {
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr = new MainMenu();
+            menuPtr = new PlayMenu();
         }
     }
 }
