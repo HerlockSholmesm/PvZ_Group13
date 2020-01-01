@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Account {
+public class Account implements Serializable{
     public static ArrayList<Account> allAccounts = new ArrayList<>();
     public static int NumberOfKilledZombie;
     private static HashMap<Object, Object> LeaderBoard;
+
+
     private String name;
     private String password;
     private int score;

@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Shop {
+public class Shop implements Serializable {
     private static ArrayList<Plant> collectionPlant;
     private static ArrayList<Zombie> collectionZombies;
     private static ArrayList<Plant> plants;
