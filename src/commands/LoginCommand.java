@@ -69,7 +69,7 @@ class Login extends LoginCommand {
 }
 
 class LeaderBoardCommand extends LoginCommand {
-    private Pattern pattern = Pattern.compile("Leaderboard");
+    private Pattern pattern = Pattern.compile("Leaderboard", Pattern.CASE_INSENSITIVE);
 
     LeaderBoardCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
@@ -85,7 +85,7 @@ class LeaderBoardCommand extends LoginCommand {
 }
 
 class HelpLogin extends LoginCommand {
-    private Pattern pattern = Pattern.compile("help");
+    private Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
 
     HelpLogin(String input, Menu menuPtr) {
         super(input, menuPtr);

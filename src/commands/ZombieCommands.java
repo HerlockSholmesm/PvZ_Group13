@@ -25,7 +25,7 @@ public abstract class ZombieCommands {
 
 }
 class Exit extends ZombieCommands {
-    private Pattern pattern = Pattern.compile("exit (.)+");
+    private Pattern pattern = Pattern.compile("exit (.)+", Pattern.CASE_INSENSITIVE);
 
     Exit(String input, Menu menuPtr) {
         super(input, menuPtr);
@@ -41,7 +41,7 @@ class Exit extends ZombieCommands {
 }
 
 class Help extends ZombieCommands {
-    private Pattern pattern = Pattern.compile("help");
+    private Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
 
     Help(String input, Menu menuPtr) {
         super(input, menuPtr);
@@ -60,7 +60,7 @@ class Help extends ZombieCommands {
 
 
 class ShowHand extends ZombieCommands {
-    Pattern pattern = Pattern.compile("show hand");
+    Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
     ShowHand(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -76,7 +76,7 @@ class ShowHand extends ZombieCommands {
 
 
 class ShowLanes extends ZombieCommands {
-    Pattern pattern = Pattern.compile("showlanes");
+    Pattern pattern = Pattern.compile("showlanes", Pattern.CASE_INSENSITIVE);
     ShowLanes(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -92,7 +92,7 @@ class ShowLanes extends ZombieCommands {
 
 
 class Put extends ZombieCommands {
-    Pattern pattern = Pattern.compile("Put (.)+");
+    Pattern pattern = Pattern.compile("Put (.)+", Pattern.CASE_INSENSITIVE);
     Put(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -109,7 +109,7 @@ class Put extends ZombieCommands {
 
 
 class Start extends ZombieCommands {
-    Pattern pattern = Pattern.compile("start (.)+");
+    Pattern pattern = Pattern.compile("start (.)+", Pattern.CASE_INSENSITIVE);
 
     Start(String input, Menu menuPtr) {
         super(input, menuPtr);
@@ -125,7 +125,7 @@ class Start extends ZombieCommands {
 }
 
 class EndTurn extends ZombieCommands {
-    Pattern pattern = Pattern.compile("End turn (.)+");
+    Pattern pattern = Pattern.compile("End turn (.)+", Pattern.CASE_INSENSITIVE);
 
     EndTurn(String input, Menu menuPtr) {
         super(input, menuPtr);
@@ -141,7 +141,7 @@ class EndTurn extends ZombieCommands {
 }
 
 class ShowLawn extends ZombieCommands {
-    Pattern     pattern = Pattern.compile("Showlawn (.)+");
+    Pattern     pattern = Pattern.compile("Showlawn (.)+", Pattern.CASE_INSENSITIVE);
 
     ShowLawn(String input, Menu menuPtr) {
         super(input, menuPtr);

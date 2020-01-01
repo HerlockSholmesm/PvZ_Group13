@@ -25,7 +25,7 @@ public abstract class ShopMenuCommands {
 }
 
 class ShowShop extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("show shop");
+    Pattern pattern = Pattern.compile("show shop", Pattern.CASE_INSENSITIVE);
     ShowShop(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -41,7 +41,7 @@ class ShowShop extends ShopMenuCommands {
 
 
 class ShowCollection extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("show collection");
+    Pattern pattern = Pattern.compile("show collection", Pattern.CASE_INSENSITIVE);
     ShowCollection(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -57,7 +57,7 @@ class ShowCollection extends ShopMenuCommands {
 
 
 class Buy extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("Buy (.)+");
+    Pattern pattern = Pattern.compile("Buy (.)+", Pattern.CASE_INSENSITIVE);
     Buy(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -74,7 +74,7 @@ class Buy extends ShopMenuCommands {
 
 
 class Money extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("money (.)+");
+    Pattern pattern = Pattern.compile("money (.)+", Pattern.CASE_INSENSITIVE);
 
     Money(String input, Menu menuPtr) {
         super(input, menuPtr);
@@ -89,7 +89,7 @@ class Money extends ShopMenuCommands {
     }
 
     class Exit extends ShopMenuCommands {
-        private Pattern pattern = Pattern.compile("exit (.)+");
+        private Pattern pattern = Pattern.compile("exit (.)+", Pattern.CASE_INSENSITIVE);
 
         Exit(String input, Menu menuPtr) {
             super(input, menuPtr);
@@ -105,7 +105,7 @@ class Money extends ShopMenuCommands {
     }
 
     class Help extends ShopMenuCommands {
-        private Pattern pattern = Pattern.compile("help");
+        private Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
 
         Help(String input, Menu menuPtr) {
             super(input, menuPtr);

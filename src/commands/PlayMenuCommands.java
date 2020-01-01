@@ -25,7 +25,7 @@ public abstract class PlayMenuCommands {
 
 
 class DayCommand extends PlayMenuCommands {
-    Pattern pattern = Pattern.compile("day");
+    Pattern pattern = Pattern.compile("day", Pattern.CASE_INSENSITIVE);
     DayCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -43,7 +43,7 @@ class DayCommand extends PlayMenuCommands {
 
 
 class WaterCommand extends PlayMenuCommands {
-    Pattern pattern = Pattern.compile("water");
+    Pattern pattern = Pattern.compile("water", Pattern.CASE_INSENSITIVE);
     WaterCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -60,7 +60,7 @@ class WaterCommand extends PlayMenuCommands {
 
 
 class RailCommand extends PlayMenuCommands {
-    Pattern pattern = Pattern.compile("rail");
+    Pattern pattern = Pattern.compile("rail", Pattern.CASE_INSENSITIVE);
     RailCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -77,7 +77,7 @@ class RailCommand extends PlayMenuCommands {
 
 
 class ZombieCommand extends PlayMenuCommands {
-    Pattern pattern = Pattern.compile("zombie");
+    Pattern pattern = Pattern.compile("zombie", Pattern.CASE_INSENSITIVE);
     ZombieCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -92,7 +92,7 @@ class ZombieCommand extends PlayMenuCommands {
 }
 
 class PvPCommand extends PlayMenuCommands {
-    Pattern pattern = Pattern.compile("pvp  (\\d)+");
+    Pattern pattern = Pattern.compile("pvp  (\\d)+", Pattern.CASE_INSENSITIVE);
     PvPCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
