@@ -115,6 +115,9 @@ class PlayMenu implements Menu {
         this.childMenus.add(new ZombieCollectionMenu());
         this.childMenus.add(new PlantCollectionMenu());
         this.childMenus.add(new RailMenu());
+      //  this.childMenus.add(new WaterMenu());
+        //  this.childMenus.add(new DayMenu());
+        //todo
     }
 
     public void goToPlayMenu(Menu menuPtr) {
@@ -132,9 +135,11 @@ class PlayMenu implements Menu {
     @Override
     public void help() {
         System.out.println("help : showing commands" +
-                "play : go to play menu" +
-                "profile : go to profile menu" +
-                "shop : go to shop menu");
+                "day : go to plant collection" +
+                "water : go to plant collection" +
+                "rail : go to shop menu"+
+                "zombie : go to shop menu"+
+                "pvp : go to shop menu");
     }
 
     @Override
@@ -190,11 +195,13 @@ class RailMenu implements Menu {
     @Override
     public void help() {
         System.out.println("help : showing commands" +
-                "List : " +
-                "select : " +
+                "List : show list of accounts " +
+                "select : select your card " +
+                "Record : Show kiled Zombie " +
+                "Plant : " +
                 "Remove : " +
                 "End turn : " +
-                "show lawn  :" );
+                "show lawn  : showing all of lawns of zombies and plants" );
     }
 
     @Override
@@ -230,7 +237,7 @@ class LeaderBoard implements Menu {
     @Override
     public void help() {
         System.out.println("help : showing commands" +
-                "show : showing leaderboard" +
+                "show : showing all acounts with number of zomies that killed" +
                 "exit : exit");
 
     }
@@ -252,9 +259,11 @@ class ProfileMenu implements Menu {
     @Override
     public void help() {
         System.out.println("help : showing commands" +
-                "play : go to play menu" +
-                "profile : go to profile menu" +
-                "shop : go to shop menu");
+                "change : chanding your profile" +
+                "delete : delete your profile" +
+                "rename : rename your profile" +
+                "create : create your profile" +
+                "show : show your profile");
     }
 
     @Override
@@ -264,4 +273,22 @@ class ProfileMenu implements Menu {
 
 }
 
+class DayAndWater implements Menu {
+    Menu parentMenu = new MainMenu();
 
+    @Override
+    public void help() {
+        System.out.println("help : showing commands" +
+                "show hand : chanding your profile" +
+                "select : delete your profile" +
+                "plant : rename your profile" +
+                "remove : create your profile" +
+                "end turn : create your profile" +
+                "showlawn : show your profile");
+    }
+
+    @Override
+    public void exit(Menu menu) {
+
+    }
+}

@@ -87,7 +87,6 @@ class ZombieCommand extends PlayMenuCommands {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             menuPtr = new ZombieCollectionMenu();
-            // TODO: 12/29/2019
         }
     }
 }

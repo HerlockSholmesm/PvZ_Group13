@@ -15,6 +15,7 @@ public abstract class PvPCommands {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
+
         allCommand.add(new CreateAccount(input, menuPtr));
     }
 
