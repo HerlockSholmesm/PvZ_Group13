@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public abstract class MainMenuCommand {
 
-    public static ArrayList<commands.LoginCommand> allCommand = new ArrayList<>();
+    public static ArrayList<MainMenuCommand> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
@@ -20,7 +20,11 @@ public abstract class MainMenuCommand {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
-        allCommand.add(new commands.CreateAccount(input, menuPtr));
+        allCommand.add(new HelpMain(input, menuPtr));
+        allCommand.add(new ExitMain(input, menuPtr));
+        allCommand.add(new PlayCommand(input, menuPtr));
+        allCommand.add(new ProfileCommand(input, menuPtr));
+        allCommand.add(new ShopCommand(input, menuPtr));
     }
 
     abstract public void action(Menu menuPtr, Account account);
@@ -39,8 +43,9 @@ class PlayCommand extends MainMenuCommand {
     public void action(Menu menu, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menu = new PlayMenu();
-
+            Menu newMenu = new PlayMenu();
+            ((MainMenu) newMenu).parentMenu = menu;
+            menu = newMenu;
         }
 
     }
@@ -58,7 +63,9 @@ class ProfileCommand extends MainMenuCommand {
     public void action(Menu menu, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menu = new ProfileMenu();
+            Menu newMenu = new ProfileMenu();
+            ((MainMenu) newMenu).parentMenu = menu;
+            menu = newMenu;
         }
 
     }
@@ -75,7 +82,9 @@ class ShopCommand extends MainMenuCommand {
     public void action(Menu menu, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menu = new ShopMenu();
+            Menu newMenu = new ShopMenu();
+            ((MainMenu) newMenu).parentMenu = menu;
+            menu = newMenu;
         }
 
     }
@@ -92,7 +101,6 @@ class HelpMain extends MainMenuCommand {
     public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr = new MainMenu();
             menuPtr.help();
         }
     }
@@ -110,7 +118,7 @@ class ExitMain extends MainMenuCommand {
     public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr = new LoginMenu();
+            menuPtr.exit(menuPtr);//todo
         }
     }
 }

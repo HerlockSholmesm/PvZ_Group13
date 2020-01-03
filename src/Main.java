@@ -33,7 +33,6 @@ public class Main {
                 }
             }
 
-
             while (menuPointer instanceof LeaderBoardMenu) {
                 String string = scanner.nextLine();
                 LeaderBoardCommands.createCommands(string, menuPointer);
@@ -54,6 +53,21 @@ public class Main {
             }
 
             while (menuPointer instanceof MainMenu) {
+                String string = scanner.nextLine();
+                MainMenuCommand.createCommands(string, menuPointer);
+                boolean isValidCommand = false;
+                for (MainMenuCommand commands1 : MainMenuCommand.allCommand) {
+                    Pattern pattern = commands1.pattern;
+                    Matcher matcher = pattern.matcher(string);
+                    if (matcher.matches()) {
+                        commands1.action(menuPointer, mainAccount);
+                        isValidCommand = true;
+                        break;
+                    }
+                }
+                if (!isValidCommand) {
+                    InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                }
 
             }
 
