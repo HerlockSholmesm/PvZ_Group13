@@ -5,9 +5,6 @@ public class MainMenu implements Menu {
 
     public MainMenu() {
         parentMenu = new LoginMenu();
-        this.childMenus.add(new PlayMenu());
-        this.childMenus.add(new ProfileMenu());
-        this.childMenus.add(new ShopMenu());
     }
 
     public void goToPlayMenu(Menu menuPtr) {

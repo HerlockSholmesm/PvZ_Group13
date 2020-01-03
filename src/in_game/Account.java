@@ -71,6 +71,11 @@ public class Account implements Serializable{
         return account;
     }
 
+    public static void deleteAccount(Account account){
+        allAccounts.remove(account);
+    }
+
+
     public static Account findAccount(String name, String password) {
         for (Account account : allAccounts) {
             if (account.getName().equals(name)) {

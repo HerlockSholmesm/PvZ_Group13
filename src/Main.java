@@ -72,11 +72,28 @@ public class Main {
             }
 
             while (menuPointer instanceof ProfileMenu) {
+                String string = scanner.nextLine();
+                ProfileMenuCommands.createCommands(string, menuPointer);
+                boolean isValidCommand = false;
+                for (ProfileMenuCommands commands1 : ProfileMenuCommands.allCommand) {
+                    Pattern pattern = commands1.pattern;
+                    Matcher matcher = pattern.matcher(string);
+                    if (matcher.matches()) {
+                        commands1.action(menuPointer, mainAccount);
+                        isValidCommand = true;
+                        break;
+                    }
+                }
+                if (!isValidCommand) {
+                    InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                }
 
             }
+
             while (menuPointer instanceof ShopMenu) {
 
             }
+
             while (menuPointer instanceof PlayMenu) {
 
             }
