@@ -1,5 +1,6 @@
 package commands;
 
+import commands.Menu.Menu;
 import in_game.Account;
 
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class LeaderBoardCommands {
-    public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
+    public static ArrayList<LeaderBoardCommands> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
@@ -18,7 +19,9 @@ public abstract class LeaderBoardCommands {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
-        allCommand.add(new CreateAccount(input, menuPtr));
+        allCommand.add(new ShowLeaderBoard(input, menuPtr));
+        allCommand.add(new ExitLeaderBoard(input, menuPtr));
+        allCommand.add(new HelpLeaderBoard(input, menuPtr));
     }
 
     abstract public void action(Menu menuPtr, Account account);
@@ -35,7 +38,6 @@ class ShowLeaderBoard extends LeaderBoardCommands {
     public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr = new LeaderBoard();
             account.showLeaderBoard();
         }
 
@@ -70,7 +72,7 @@ class ExitLeaderBoard extends LeaderBoardCommands {
     public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr = new LoginMenu();
+            menuPtr = menuPtr.parentMenu;
         }
     }
 }

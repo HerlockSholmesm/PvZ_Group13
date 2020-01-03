@@ -2,12 +2,12 @@ package commands;
 
 //import com.sun.xml.internal.bind.v2.TODO;
 
+import commands.Menu.LeaderBoardMenu;
+import commands.Menu.LoginMenu;
+import commands.Menu.Menu;
 import in_game.Account;
-import model.*;
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,36 +16,38 @@ public abstract class LoginCommand {
     public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
-    Menu menu;
+    commands.Menu.Menu menu;
 
-    LoginCommand(String input, Menu menuPtr) {
+    LoginCommand(String input, commands.Menu.Menu menuPtr) {
         this.input = input;
         this.menu = menuPtr;
     }
 
-    public static void createCommands(String input, Menu menuPtr) {
-
+    public static void createCommands(String input, commands.Menu.Menu menuPtr) {
         allCommand.add(new CreateAccount(input, menuPtr));
+        allCommand.add(new ExitLogin(input, menuPtr));
+        allCommand.add(new HelpLogin(input, menuPtr));
+        allCommand.add(new LeaderBoardCommand(input, menuPtr));
+        allCommand.add(new Login(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr, Account account);
+    abstract public void action(commands.Menu.Menu menuPtr, Account account);
 }
 
 class CreateAccount extends LoginCommand {
     private Pattern pattern = Pattern.compile(
             "create account (.+) (.+)", Pattern.CASE_INSENSITIVE);
 
-    CreateAccount(String string, Menu menu) {
+    CreateAccount(String string, commands.Menu.Menu menu) {
         super(string, menu);
         super.pattern = this.pattern;
     }
 
     @Override
-    public void action(Menu menu, Account account) {
+    public void action(commands.Menu.Menu menu, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             account = new Account(matcher.group(1), matcher.group(2));
-
         }
     }
 }
@@ -54,15 +56,15 @@ class Login extends LoginCommand {
     private Pattern pattern = Pattern.compile(
             "login (.+) (.+)", Pattern.CASE_INSENSITIVE);
 
-    Login(String input, Menu menuPtr) {
+    Login(String input, commands.Menu.Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menu, Account account) {
+    public void action(commands.Menu.Menu menu, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            Account.findAccount(matcher.group(1), matcher.group(2));
+            account = Account.findAccount(matcher.group(1), matcher.group(2));
         }
 
     }
@@ -71,15 +73,17 @@ class Login extends LoginCommand {
 class LeaderBoardCommand extends LoginCommand {
     private Pattern pattern = Pattern.compile("Leaderboard", Pattern.CASE_INSENSITIVE);
 
-    LeaderBoardCommand(String input, Menu menuPtr) {
+    LeaderBoardCommand(String input, commands.Menu.Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public void action(commands.Menu.Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr = new LeaderBoard();
+            Menu newMenu = new LeaderBoardMenu();
+            ((LeaderBoardMenu) newMenu).parentMenu = menuPtr;
+            menuPtr = newMenu;
         }
     }
 }
@@ -87,15 +91,14 @@ class LeaderBoardCommand extends LoginCommand {
 class HelpLogin extends LoginCommand {
     private Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
 
-    HelpLogin(String input, Menu menuPtr) {
+    HelpLogin(String input, commands.Menu.Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public void action(commands.Menu.Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr = new LoginMenu();
             menuPtr.help();
         }
     }
@@ -104,7 +107,7 @@ class HelpLogin extends LoginCommand {
 class ExitLogin extends LoginCommand {
     private Pattern pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
 
-    ExitLogin(String input, Menu menuPtr) {
+    ExitLogin(String input, commands.Menu.Menu menuPtr) {
         super(input, menuPtr);
     }
 

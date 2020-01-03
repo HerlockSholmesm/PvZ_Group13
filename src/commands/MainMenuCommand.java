@@ -1,5 +1,6 @@
 package commands;
 
+import commands.Menu.*;
 import in_game.Account;
 
 import java.util.ArrayList;

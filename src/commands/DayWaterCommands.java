@@ -1,5 +1,9 @@
 package commands;
 
+import commands.Menu.MainMenu;
+import commands.Menu.Menu;
+import commands.Menu.ShopMenu;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
