@@ -28,7 +28,7 @@ public class Account implements Serializable{
         this.score = 0;
         this.collection = new Collection();
         NumberOfKilledZombie = 0;
-
+        allAccounts.add(this);
     }
 
     public void setLeaderBoard(int number, String name) {

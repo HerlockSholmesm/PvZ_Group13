@@ -4,13 +4,6 @@ public class PlayMenu implements Menu {
 
     Menu parentMenu = new MainMenu();
 
-    public PlayMenu() {
-        this.childMenus.add(new ZombieCollectionMenu());
-        this.childMenus.add(new PlantCollectionMenu());
-        this.childMenus.add(new RailMenu());
-        this.childMenus.add(new DayAndWater());
-    }
-
     public void goToPlayMenu(Menu menuPtr) {
         menuPtr = this.childMenus.get(0);
     }

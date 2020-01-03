@@ -9,7 +9,7 @@ import in_game.Account;
 
 public class Main {
 
-    public static <LeaderBoard> void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Menu menuPointer = new LoginMenu();
         Account mainAccount = null;

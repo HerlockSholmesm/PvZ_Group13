@@ -3,10 +3,6 @@ package commands.Menu;
 public class MainMenu implements Menu {
     public Menu parentMenu;
 
-    public MainMenu() {
-        parentMenu = new LoginMenu();
-    }
-
     public void goToPlayMenu(Menu menuPtr) {
         menuPtr = this.childMenus.get(0);
     }

@@ -4,12 +4,6 @@ public class LoginMenu implements Menu {
 
     Menu parentMenu = null;
 
-    public LoginMenu() {
-        parentMenu = null;
-        this.childMenus.add(new MainMenu());
-        this.childMenus.add(new LeaderBoardMenu());
-    }
-
     public void goToMainMenu(Menu menuPtr) {
         menuPtr = this.childMenus.get(0);
     }

@@ -55,7 +55,6 @@ class HelpLeaderBoard extends LeaderBoardCommands {
     public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr = new LeaderBoard();
             menuPtr.help();
         }
     }
@@ -72,7 +71,7 @@ class ExitLeaderBoard extends LeaderBoardCommands {
     public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr = menuPtr.parentMenu;
+            menuPtr.exit(menuPtr);
         }
     }
 }
