@@ -102,7 +102,7 @@ class LoginMenu implements Menu {
             menuPtr.exit(menuPtr);
         } catch (Exception e) {
             e.getMessage();
-            // TODO: 12/24/2019
+            menuPtr=this.parentMenu;
         }
     }
 }
@@ -115,9 +115,7 @@ class PlayMenu implements Menu {
         this.childMenus.add(new ZombieCollectionMenu());
         this.childMenus.add(new PlantCollectionMenu());
         this.childMenus.add(new RailMenu());
-      //  this.childMenus.add(new WaterMenu());
-        //  this.childMenus.add(new DayMenu());
-        //todo
+        this.childMenus.add(new DayAndWater());
     }
 
     public void goToPlayMenu(Menu menuPtr) {
@@ -205,8 +203,7 @@ class RailMenu implements Menu {
     }
 
     @Override
-    public void exit(Menu menu) {
-
+    public void exit(Menu menu) {menu=this.parentMenu;
     }
 }
 
@@ -226,7 +223,7 @@ class ShopCollection implements Menu {
 
     @Override
     public void exit(Menu menu) {
-
+        menu=this.parentMenu;
     }
 }
 
@@ -244,11 +241,7 @@ class LeaderBoard implements Menu {
 
     @Override
     public void exit(Menu menu) {
-
-    }
-
-    public void show(Menu menu) {
-
+        menu=this.parentMenu;
     }
 
 }
@@ -268,7 +261,7 @@ class ProfileMenu implements Menu {
 
     @Override
     public void exit(Menu menu) {
-
+        menu=this.parentMenu;
     }
 
 }
@@ -289,6 +282,26 @@ class DayAndWater implements Menu {
 
     @Override
     public void exit(Menu menu) {
+        menu=this.parentMenu;
+    }
+}
 
+class ZombieMenu implements Menu {
+    Menu parentMenu = new MainMenu();
+
+    @Override
+    public void help() {
+        System.out.println("help : showing commands" +
+                "show hand : showing your hand" +
+                "show lanes : showing lanes for zombie and plant" +
+                "put : puting zombie" +
+                "start : starting wave" +
+                "end turn : next turn" +
+                "showlawn : showing lawns");
+    }
+
+    @Override
+    public void exit(Menu menu) {
+        menu=this.parentMenu;
     }
 }

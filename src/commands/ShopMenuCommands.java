@@ -1,14 +1,12 @@
 package commands;
-
 import in_game.Account;
-
+import model.*;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public abstract class ShopMenuCommands {
-    public static ArrayList<ShopMenuCommands> allCommand = new ArrayList<>();
+    public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
@@ -18,32 +16,25 @@ public abstract class ShopMenuCommands {
         this.menu = menuPtr;
     }
 
-    public static void createCommands(String input, Menu menuPtr)
-    {
-        allCommand.add(new Buy(input, menuPtr));
-        allCommand.add(new ExitShopMenu(input, menuPtr)) ;
-        allCommand.add(new HelpShopMenu(input, menuPtr));
-        allCommand.add(new Money(input, menuPtr));
-        allCommand.add(new ShowCollection(input, menuPtr));
-        allCommand.add(new ShowShop(input, menuPtr));
+    public static void createCommands(String input, Menu menuPtr) {
+        allCommand.add(new CreateAccount(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr, Account account);
+    abstract public void action(Menu menuPtr);
 
 }
 
 class ShowShop extends ShopMenuCommands {
     Pattern pattern = Pattern.compile("show shop", Pattern.CASE_INSENSITIVE);
-
     ShowShop(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()) {
-            // TODO: 1/2/2020  : how to show shop of one account
+        if (matcher.matches()){
+
         }
     }
 }
@@ -51,87 +42,84 @@ class ShowShop extends ShopMenuCommands {
 
 class ShowCollection extends ShopMenuCommands {
     Pattern pattern = Pattern.compile("show collection", Pattern.CASE_INSENSITIVE);
-
     ShowCollection(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()) {
-            account.getCollection().showCollection();
+        if (matcher.matches()){
+
         }
     }
 }
 
 
 class Buy extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("buy (.)+");
-
+    Pattern pattern = Pattern.compile("Buy (.)+", Pattern.CASE_INSENSITIVE);
     Buy(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()) {
-            String name = matcher.group(1);
+        if (matcher.matches()){
 
         }
     }
 }
 
 
+
 class Money extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("money (.)+");
+    Pattern pattern = Pattern.compile("money (.)+", Pattern.CASE_INSENSITIVE);
 
     Money(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
-            System.out.println(account.getMoney());
+
+        }
+    }
+
+    class Exit extends ShopMenuCommands {
+        private Pattern pattern = Pattern.compile("exit (.)+", Pattern.CASE_INSENSITIVE);
+
+        Exit(String input, Menu menuPtr) {
+            super(input, menuPtr);
+        }
+
+        @Override
+        public void action(Menu menuPtr) {
+            Matcher matcher = pattern.matcher(input);
+            if (matcher.matches()) {
+                menuPtr = new MainMenu();
+            }
+        }
+    }
+
+    class Help extends ShopMenuCommands {
+        private Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
+
+        Help(String input, Menu menuPtr) {
+            super(input, menuPtr);
+        }
+
+        @Override
+        public void action(Menu menuPtr) {
+            Matcher matcher = pattern.matcher(input);
+            if (matcher.matches()) {
+                menuPtr=new ShopMenu();
+                menuPtr.help();
+            }
         }
     }
 }
-
-class ExitShopMenu extends ShopMenuCommands {
-    private Pattern pattern = Pattern.compile("exit (.)+");
-
-    ExitShopMenu(String input, Menu menuPtr) {
-        super(input, menuPtr);
-    }
-
-    @Override
-    public void action(Menu menuPtr, Account account) {
-        Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()) {
-            menuPtr = new MainMenu();
-        }
-    }
-}
-
-class HelpShopMenu extends ShopMenuCommands {
-    private Pattern pattern = Pattern.compile("help");
-
-    HelpShopMenu(String input, Menu menuPtr) {
-        super(input, menuPtr);
-    }
-
-    @Override
-    public void action(Menu menuPtr, Account account) {
-        Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()) {
-            menuPtr = new ShopMenu();
-            menuPtr.help();
-        }
-    }
-}
-
 
 
