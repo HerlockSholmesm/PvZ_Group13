@@ -29,17 +29,36 @@ public abstract class Dynamic {
     /**
      * Planting commands:
      */
-    public static void setPlantPosition(int x, int y, Card card, Player player) {
-        Plant plant = findPlant(card);
-        graphic.plant(x, y, plant);
+    public static void setPlantPosition(int x, int y, Plant plant, Player player) {
+        Graphic.plant(x, y, plant);
         plant.setSelect(false);
         player.addPlant(plant);
+        Card card = findCard(plant,player);
         player.removeCard(card);
     }
 
-    public static Plant findPlant(Card card) {
-        for (Plant plant : Shop.getAllPlants()) {
-            if (card.getName().equals(plant.getName())) {
+    public static Card findCard(Plant plant,Player player){
+        for (Card card:player.getCards()){
+            if(card.getName().equals(plant.getName())){
+                return card;
+            }
+        }
+        return null;
+    }
+
+    public static Plant findPlant(String name){
+        for (Plant plant:Shop.getAllPlants()){
+            if (plant.getName().equals(name)){
+                return plant;
+            }
+        }
+        return null;
+    }
+
+
+    public static Plant findPlant(Card card){
+        for (Plant plant:Shop.getAllPlants()){
+            if (plant.getName().equals(card.getName())){
                 return plant;
             }
         }
@@ -59,8 +78,8 @@ public abstract class Dynamic {
      * Plant Removing:
      */
     public static void removePlant(int x, int y, Player player) {
-        Plant plant = graphic.findPlant(x, y);
-        graphic.remove(x, y);
+        Plant plant = Graphic.findPlant(x, y);
+        Graphic.remove(x, y);
         player.removePlant(plant);
     }
 
@@ -99,77 +118,37 @@ public abstract class Dynamic {
     }
 
 
-}
-
-class DynamicDay {
-    PlayerDay playerDay;
-
-    public DynamicDay(PlayerDay playerDay) {
-        this.playerDay = playerDay;
-    }
-
-    /**
-     * Show Hand Commands:
-     */
-
-    public int demandingSuns() {
-        /**the output indicates the number of suns player needs,so
-         * if the output < 0, it means that we need "output" suns.
-         * if the output > 0, it means we have extra "output" suns.
-         */
-        int allSunsPlayerHas = playerDay.getSuns();
-        int allSunsPlayerMustHave = 0;
-        for (Plant plant : playerDay.getPlants()) {
-            allSunsPlayerMustHave = allSunsPlayerMustHave + plant.getSun();
+    public static void printer(ArrayList<Card> objects, String title1, String title2) {
+        System.out.println(title1 + "\t\t" + title2);
+        int n = objects.size();
+        int i = 1;
+        if (i <= n) {
+            for (Object object : objects) {
+                System.out.println(i + ". " + object);
+                i++;
+            }
         }
-        int allSunsPlayerNeeds = allSunsPlayerMustHave - allSunsPlayerHas;
-        return allSunsPlayerNeeds;
+
     }
 
-    /**
-     * Select Commands:
-     */
-    public boolean canIChoose(PlayerDay playerDay, Card card) {
-        Plant plant = Dynamic.findPlant(card);
-        int numberOfExtraSuns = demandingSuns();
-        return (numberOfExtraSuns >= plant.getSun());
-    }
-
-    /**
-     * Adding Suns Randomly:
-     */
-    public void addSun() {
-        int n = MathFunctions.getRandomNumber(2, 5);
-        playerDay.addSuns(n);
-    }
-
-    /**
-     * Set and choose Random Zombies:
-     */
-    public ArrayList<Zombie> chooseAndSetRandomZombies() {
-        Random rand = new Random();
-        ArrayList<Zombie> randomZombies = new ArrayList<>();
-        int numberOfZombies = MathFunctions.getRandomNumber(4, 10);
-        for (int i = 0; i < numberOfZombies; i++) {
-            int randomIndex = rand.nextInt(Shop.getZombies().size());
-            randomZombies.add((Zombie) Shop.getZombies().get(randomIndex));
+    public static void ShowLawnPrinter(ArrayList<Plant> plants,ArrayList<Zombie> zombies,String title1P,String title2P){
+        System.out.println(title1P + "\t\t" + title2P);
+        int i = 1;
+        for (Plant plant:plants){
+            System.out.println(i + "." + plant.toStringPrime());
+            i++;
         }
-        playerDay.setZombies(randomZombies);
-        return randomZombies;
-    }
-
-    /**
-     * Set Cards Randomly:
-     */
-
-    public void addPlant() {
-        int index = MathFunctions.getRandomNumber(0, Shop.getAllPlants().size() - 1);
-        Plant plant = Shop.getAllPlants().get(index);
-        playerDay.addCard(plant);
+        i = 1;
+        System.out.println(title1P + "\t\t" + title2P);
+        for (Zombie zombie:zombies){
+            System.out.println(i + "." + zombie.toStringPrime());
+            i++;
+        }
     }
 
 
 }
+
 
 class DynamicRail {
     RailPlayer railPlayer;
@@ -355,20 +334,6 @@ class DynamicPVP {
         playerDay.addTurn();
     }
 
-
-}
-
-class graphic {
-
-    public static void plant(int x, int y, Card plant) {
-    }
-
-    public static Plant findPlant(int x, int y) {
-        return null;
-    }
-
-    public static void remove(int x, int y) {
-    }
 
 }
 

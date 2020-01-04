@@ -80,7 +80,14 @@ public  class Plant extends Card {
         card.setLife(card.getLife() - attackPower);
     }
 
+    @Override
+    public String toString() {
+        return   name  + ": " + sun ;
+    }
 
+    public String toStringPrime(){
+        return name + ": " + life + ", " + "(" + x + "," + y + ")";
+    }
 }
 
 

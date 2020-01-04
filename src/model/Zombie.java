@@ -84,6 +84,16 @@ public abstract class Zombie extends Card {
         int additionLife;
     }
 
+
+    @Override
+    public String toString() {
+        return   name  + ": " + life  ;
+    }
+
+    public String toStringPrime(){
+        return name + ": " + life + ", " + "(" + x + "," + y + ")";
+    }
+
 }
 
 class MovingZombie extends Zombie {
