@@ -6,6 +6,7 @@ import commands.*;
 import commands.Menu.*;
 import commands.Menu.Menu;
 import in_game.Account;
+import sun.rmi.runtime.Log;
 
 public class Main {
 
@@ -20,17 +21,20 @@ public class Main {
                 LoginCommand.createCommands(string, menuPointer);
                 boolean isValidCommand = false;
                 for (LoginCommand commands1 : LoginCommand.allCommand) {
-                    Pattern pattern = commands1.pattern;
+                    Pattern pattern = Pattern.compile(String.valueOf(commands1.pattern));
                     Matcher matcher = pattern.matcher(string);
                     if (matcher.matches()) {
-                        commands1.action(menuPointer, mainAccount);
+                        commands1.action(menuPointer, null);
+                        mainAccount = commands1.account;
                         isValidCommand = true;
                         break;
                     }
                 }
                 if (!isValidCommand) {
                     InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                    invalidCommand.action();
                 }
+
             }
 
             while (menuPointer instanceof LeaderBoardMenu) {

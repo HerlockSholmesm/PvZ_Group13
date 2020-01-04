@@ -27,7 +27,7 @@ public class PlayMenu implements Menu {
     }
 
     @Override
-    public void exit(Menu menuPtr) {
-        menuPtr = this.parentMenu;
+    public Menu exit(Menu menuPtr) {
+        return  this.parentMenu;
     }
 }

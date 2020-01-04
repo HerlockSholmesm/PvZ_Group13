@@ -14,22 +14,16 @@ public class LoginMenu implements Menu {
 
     @Override
     public void help() {
-        System.out.println("help : showing commands" +
-                "Create account : to create an account" +
-                "Login : to login" +
-                "Leader board : to show leader Board" +
+        System.out.println("help : showing commands\n" +
+                "Create account : to create an account\n" +
+                "Login : to logi\n" +
+                "Leader board : to show leader Board\n" +
                 "exit : to exit game");
 
     }
 
     @Override
-    public void exit(Menu menuPtr) {
-        try {
-            menuPtr = this.parentMenu;
-            menuPtr.exit(menuPtr);
-        } catch (Exception e) {
-            e.getMessage();
-            menuPtr=this.parentMenu;
-        }
+    public Menu exit(Menu menuPtr) {
+        return parentMenu;
     }
 }
