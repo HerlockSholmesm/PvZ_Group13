@@ -20,6 +20,7 @@ public abstract class MainMenuCommand {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
+        allCommand = new ArrayList<>();
         allCommand.add(new HelpMain(input, menuPtr));
         allCommand.add(new ExitMain(input, menuPtr));
         allCommand.add(new PlayCommand(input, menuPtr));
@@ -27,7 +28,7 @@ public abstract class MainMenuCommand {
         allCommand.add(new ShopCommand(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr, Account account);
+    abstract public Menu action(Menu menuPtr, Account account);
 
 }
 
@@ -40,14 +41,14 @@ class PlayCommand extends MainMenuCommand {
     }
 
     @Override
-    public void action(Menu menu, Account account) {
+    public Menu action(Menu menu, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             Menu newMenu = new PlayMenu();
             ((MainMenu) newMenu).parentMenu = menu;
-            menu = newMenu;
+            return newMenu;
         }
-
+        return menu;
     }
 }
 
@@ -60,14 +61,14 @@ class ProfileCommand extends MainMenuCommand {
     }
 
     @Override
-    public void action(Menu menu, Account account) {
+    public Menu action(Menu menu, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             Menu newMenu = new ProfileMenu();
             ((MainMenu) newMenu).parentMenu = menu;
-            menu = newMenu;
+            return newMenu;
         }
-
+        return menu;
     }
 }
 
@@ -79,14 +80,14 @@ class ShopCommand extends MainMenuCommand {
     }
 
     @Override
-    public void action(Menu menu, Account account) {
+    public Menu action(Menu menu, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             Menu newMenu = new ShopMenu();
             ((MainMenu) newMenu).parentMenu = menu;
-            menu = newMenu;
+            return newMenu;
         }
-
+        return menu;
     }
 }
 
@@ -98,11 +99,12 @@ class HelpMain extends MainMenuCommand {
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menuPtr.help();
         }
+        return menuPtr;
     }
 
 }
@@ -115,11 +117,12 @@ class ExitMain extends MainMenuCommand {
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr.exit(menuPtr);
+            return menuPtr.exit(menuPtr);
         }
+        return menuPtr;
     }
 }
 

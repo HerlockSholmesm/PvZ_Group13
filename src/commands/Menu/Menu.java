@@ -7,7 +7,7 @@ public interface Menu {
 
     void help();
 
-    void exit(Menu menu);
+    Menu exit(Menu menu);
 
 }
 

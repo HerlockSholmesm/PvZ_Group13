@@ -1,6 +1,5 @@
 package commands;
 
-import commands.Menu.LoginMenu;
 import commands.Menu.Menu;
 import in_game.Account;
 
@@ -20,14 +19,17 @@ public abstract class ProfileMenuCommands {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
+        allCommand = new ArrayList<>();
         allCommand.add(new ChangeUserName(input, menuPtr));
         allCommand.add(new CreateUserName(input, menuPtr));
         allCommand.add(new DeleteUserName(input, menuPtr));
         allCommand.add(new RenameUserName(input, menuPtr));
         allCommand.add(new ShowUserName(input, menuPtr));
+        allCommand.add(new ExitProfileMenu(input, menuPtr));
+        allCommand.add(new HelpProfileMenu(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr, Account account);
+    abstract public Menu action(Menu menuPtr, Account account);
 }
 
 class ChangeUserName extends ProfileMenuCommands {
@@ -38,12 +40,13 @@ class ChangeUserName extends ProfileMenuCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             account.setName(matcher.group(1));
             account.setPassword(matcher.group(2));
         }
+        return menuPtr;
     }
 }
 
@@ -55,13 +58,14 @@ class RenameUserName extends ProfileMenuCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             if (account.getName().equals(matcher.group(1))) {
                 account.setName(matcher.group(1));
             }
         }
+        return menuPtr;
     }
 }
 
@@ -73,11 +77,12 @@ class CreateUserName extends ProfileMenuCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             // TODO: 12/29/2019
         }
+        return menuPtr;
     }
 }
 
@@ -89,18 +94,20 @@ class DeleteUserName extends ProfileMenuCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             if (account.getName().equals(matcher.group(1))) {
                 if (matcher.group(2).equals(account.getPassword())) {
                     Account.deleteAccount(account);
-                    menuPtr = new LoginMenu();
+                    return menuPtr.exit(menuPtr);
                 } else {
                     InvalidPrompt invalidPassword = () -> System.out.println("invalid Password");
+                    invalidPassword.action();
                 }
             }
         }
+        return menuPtr;
     }
 }
 
@@ -113,10 +120,45 @@ class ShowUserName extends ProfileMenuCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             System.out.println(account.getName());
         }
+        return menuPtr;
+    }
+}
+
+class HelpProfileMenu extends ProfileMenuCommands {
+    Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
+
+    HelpProfileMenu(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public Menu action(Menu menuPtr, Account account) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()) {
+            menuPtr.help();
+        }
+        return menuPtr;
+    }
+}
+
+class ExitProfileMenu extends ProfileMenuCommands{
+    Pattern pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
+
+    ExitProfileMenu(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public Menu action(Menu menuPtr, Account account) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()) {
+            return menuPtr.exit(menuPtr);
+        }
+        return menuPtr;
     }
 }

@@ -15,11 +15,13 @@ public class Account implements Serializable{
     private static HashMap<Object, Object> LeaderBoard;
 
 
+    private ArrayList<Player> players = new ArrayList<>();
     private String name;
     private String password;
     private int score;
     private int money;
     private Collection collection;
+
 
 
     public Account(String name, String password) {
@@ -88,10 +90,17 @@ public class Account implements Serializable{
                 }
             }
         }
+        System.out.println("no account found!");
         return null;
     }
 
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
 
+    public void addPlayer(Player player) {
+        this.players.add(player);
+    }
 
     public String getName() {
         return name;

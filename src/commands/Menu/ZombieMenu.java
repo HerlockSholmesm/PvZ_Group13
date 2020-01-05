@@ -15,7 +15,7 @@ public class ZombieMenu implements Menu {
     }
 
     @Override
-    public void exit(Menu menu) {
-        menu=this.parentMenu;
+    public Menu exit(Menu menu) {
+        return this.parentMenu;
     }
 }
