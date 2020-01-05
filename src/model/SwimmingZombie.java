@@ -21,10 +21,14 @@ public class SwimmingZombie extends Zombie {
                 case ("Snorkel Zombie"):
                     if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
                         plant.setLife(plant.getLife() - 1);
+                    } else {
+                        move();
                     }
                 case ("Dolphin Rider Zombie"):
                     if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
                         plant.setLife(plant.getLife() - 1);
+                    } else {
+                        move();
                     }
             }
         }

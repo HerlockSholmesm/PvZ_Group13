@@ -5,7 +5,6 @@ import model.*;
 import java.util.ArrayList;
 
 public class Game {
-    //<<<<<<< HEAD
     public ArrayList<PeaBullet> getPeaBullets() {
         return peaBullets;
     }
@@ -65,9 +64,6 @@ public class Game {
     public void setSun(int sun) {
         this.sun.setSunStore(sun);
     }
-//=======
-//>>>>>>> origin/master
-
 
     public void setZombies(ArrayList<Zombie> zombies) {
         this.zombies = zombies;

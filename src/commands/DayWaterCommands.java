@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class DayWaterCommands {
-    //public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
+    public static ArrayList<DayWaterCommands> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
@@ -23,11 +23,18 @@ public abstract class DayWaterCommands {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
-
-        //allCommand.add(new CreateAccount(input, menuPtr));
+        allCommand = new ArrayList<>();
+        allCommand.add(new EndTurnDay(input, menuPtr));
+        allCommand.add(new ExitDay(input, menuPtr));
+        allCommand.add(new HelpDay(input, menuPtr));
+        allCommand.add(new PlantDay(input, menuPtr));
+        allCommand.add(new RemoveDay(input, menuPtr));
+        allCommand.add(new SelectDay(input, menuPtr));
+        allCommand.add(new ShowHandDay(input, menuPtr));
+        allCommand.add(new ShowLawnDay(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr, GameDay playerDay);
+    abstract public Menu action(Menu menuPtr, GameDay playerDay);
 }
 
 class ShowHandDay extends DayWaterCommands {
@@ -38,13 +45,14 @@ class ShowHandDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, GameDay playerDay) {
+    public Menu action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             DynamicDay dynamicDay = new DynamicDay(playerDay);
             dynamicDay.printer(playerDay.getCards(), "Names", "SunsTheyNeed");
             System.out.println("all the suns you need for current plants: " + dynamicDay.demandingSuns());
         }
+        return menuPtr;
     }
 }
 
@@ -57,7 +65,7 @@ class SelectDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, GameDay playerDay) {
+    public Menu action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             String cardName = matcher.group(1);
@@ -68,7 +76,7 @@ class SelectDay extends DayWaterCommands {
                     System.out.println("INVALID CARD NAME!");
                 };
                 invalidPrompt.action();
-                return;
+                return menuPtr;
             } else {
                 DynamicDay dynamicDay = new DynamicDay(playerDay);
                 Card wantedCard = dynamicDay.findPlant(wantedPlant);
@@ -77,7 +85,7 @@ class SelectDay extends DayWaterCommands {
                         System.out.println("CARD NOT ON YOUR LIST!");
                     };
                     invalidPrompt.action();
-                    return;
+                    return menuPtr;
                 }
                 if (dynamicDay.canIChoose(playerDay, wantedCard))
                     wantedCard.setSelect(true);
@@ -89,6 +97,7 @@ class SelectDay extends DayWaterCommands {
                 }
             }
         }
+        return menuPtr;
     }
 }
 
@@ -101,7 +110,7 @@ class PlantDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, GameDay playerDay) {
+    public Menu action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             DynamicDay dynamicDay = new DynamicDay(playerDay);
@@ -140,7 +149,7 @@ class PlantDay extends DayWaterCommands {
 
             }
         }
-
+        return menuPtr;
     }
 }
 
@@ -153,7 +162,7 @@ class RemoveDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, GameDay playerDay) {
+    public Menu action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             String num1 = matcher.group(2);
@@ -190,6 +199,7 @@ class RemoveDay extends DayWaterCommands {
             }
 
         }
+        return menuPtr;
     }
 }
 
@@ -201,13 +211,14 @@ class EndTurnDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, GameDay playerDay) {
+    public Menu action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             //menuPtr = new MainMenu();
             DynamicDay dynamicDay = new DynamicDay(playerDay);
             dynamicDay.endTurn();
         }
+        return menuPtr;
     }
 }
 
@@ -219,12 +230,13 @@ class ShowLawnDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, GameDay playerDay) {
+    public Menu action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             //menuPtr = new MainMenu();
             Dynamic.ShowLawnPrinter(playerDay.getPlants(), playerDay.getZombies(), "life", "Coordinate");
         }
+        return menuPtr;
     }
 }
 
@@ -236,11 +248,12 @@ class ExitDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, GameDay playerDay) {
+    public Menu action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr = new MainMenu();
+            return menuPtr.exit(menuPtr);
         }
+        return menuPtr;
     }
 }
 
@@ -252,11 +265,12 @@ class HelpDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, GameDay playerDay) {
+    public Menu action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menuPtr = new ShopMenu();
             menuPtr.help();
         }
+        return menuPtr;
     }
 }

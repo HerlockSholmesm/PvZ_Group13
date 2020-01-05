@@ -5,7 +5,8 @@ import java.util.regex.Pattern;
 import commands.*;
 import commands.Menu.*;
 import commands.Menu.Menu;
-import in_game.Account;
+import in_game.*;
+import model.Plant;
 
 public class Main {
 
@@ -15,36 +16,6 @@ public class Main {
         Account mainAccount = null;
         mainWhile:
         while (true) {
-            while (menuPointer instanceof LoginMenu) {
-                String string = scanner.nextLine();
-                if (string.equalsIgnoreCase("exit")) {
-                    break mainWhile;
-                } else if (string.equalsIgnoreCase("help")) {
-                    menuPointer.help();
-                } else if (string.equalsIgnoreCase("leaderboard")) {
-                    menuPointer = new LeaderBoardMenu();
-                } else if (string.contains("create account")) {
-                    Pattern pattern = Pattern.compile(
-                            "create account (.+) (.+)", Pattern.CASE_INSENSITIVE);
-                    Matcher matcher = pattern.matcher(string);
-                    if (matcher.matches()) {
-                        mainAccount = new Account(matcher.group(1), matcher.group(2));
-                        System.out.println("account created : " + mainAccount.getName());
-                    }
-                } else if (string.contains("login")) {
-                    Pattern pattern = Pattern.compile(
-                            "login (.+) (.+)", Pattern.CASE_INSENSITIVE);
-                    Matcher matcher = pattern.matcher(string);
-                    if (matcher.matches()) {
-                        mainAccount = Account.findAccount(matcher.group(1), matcher.group(2));
-                        menuPointer = new MainMenu();
-                    }
-                } else {
-                    InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
-                    invalidCommand.action();
-                }
-
-            }
 
             while (menuPointer instanceof LeaderBoardMenu) {
                 String string = scanner.nextLine();
@@ -81,8 +52,8 @@ public class Main {
                 }
                 if (!isValidCommand) {
                     InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                    invalidCommand.action();
                 }
-
             }
 
             while (menuPointer instanceof ProfileMenu) {
@@ -125,7 +96,7 @@ public class Main {
 
             }
 
-            while (menuPointer instanceof CollectionMenu){
+            while (menuPointer instanceof CollectionMenu) {
                 String string = scanner.nextLine();
                 CollectionMenuCommands.createCommands(string, menuPointer);
                 boolean isValidCommand = false;
@@ -138,7 +109,7 @@ public class Main {
                         break;
                     }
                 }
-                if (string.equalsIgnoreCase("play")){
+                if (string.equalsIgnoreCase("play")) {
                     menuPointer = new PlayMenu();
                     break;
                 }
@@ -149,14 +120,125 @@ public class Main {
 
             }
 
-            while (menuPointer instanceof PlayMenu) {
+            while (menuPointer instanceof DayAndWater) {
+                assert mainAccount != null;
+                GameDay gameDay = new GameDay(mainAccount.getName(), mainAccount.getPassword());
+                String string = scanner.nextLine();
+                DayWaterCommands.createCommands(string, menuPointer);
+                boolean isValidCommand = false;
+                for (DayWaterCommands commands1 : DayWaterCommands.allCommand) {
+                    Pattern pattern = commands1.pattern;
+                    Matcher matcher = pattern.matcher(string);
+                    if (matcher.matches()) {
+                        menuPointer = commands1.action(menuPointer, gameDay);
+                        isValidCommand = true;
+                        break;
+                    }
+                }
+                if (!isValidCommand) {
+                    InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                    invalidCommand.action();
+                }
 
             }
-            while (menuPointer instanceof CollectionMenu) {
+
+            while (menuPointer instanceof PlayMenu) {
+                String string = scanner.nextLine();
+                PlayMenuCommands.createCommands(string, menuPointer);
+                boolean isValidCommand = false;
+                for (PlayMenuCommands commands1 : PlayMenuCommands.allCommand) {
+                    Pattern pattern = commands1.pattern;
+                    Matcher matcher = pattern.matcher(string);
+                    if (matcher.matches()) {
+                        commands1.action(menuPointer);
+                        isValidCommand = true;
+                        break;
+                    }
+                }
+                if (string.equalsIgnoreCase("play")) {
+                    menuPointer = new PlayMenu();
+                    break;
+                }
+                if (!isValidCommand) {
+                    InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                    invalidCommand.action();
+                }
+
+            } ///
+
+            while (menuPointer instanceof RailMenu) {
+                RailGame gameDay = new RailGame(mainAccount.getName(), mainAccount.getPassword());
+                String string = scanner.nextLine();
+                RailCommands.createCommands(string, menuPointer);
+                boolean isValidCommand = false;
+                for (RailCommands commands1 : RailCommands.allCommand) {
+                    Pattern pattern = commands1.pattern;
+                    Matcher matcher = pattern.matcher(string);
+                    if (matcher.matches()) {
+                        menuPointer = commands1.action(menuPointer, gameDay);
+                        isValidCommand = true;
+                        break;
+                    }
+                }
+                if (!isValidCommand) {
+                    InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                    invalidCommand.action();
+                }
+
+            }
+
+            while (menuPointer instanceof ZombieMenu) {
+                ZombieGame zombieGame = new ZombieGame(mainAccount.getName(), mainAccount.getPassword());
+                String string = scanner.nextLine();
+                ZombieCommands.createCommands(string, menuPointer);
+                boolean isValidCommand = false;
+                for (ZombieCommands commands1 : ZombieCommands.allCommand) {
+                    Pattern pattern = commands1.pattern;
+                    Matcher matcher = pattern.matcher(string);
+                    if (matcher.matches()) {
+                        menuPointer = commands1.action(menuPointer, zombieGame);
+                        isValidCommand = true;
+                        break;
+                    }
+                }
+                if (!isValidCommand) {
+                    InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                    invalidCommand.action();
+                }
+
+            }
+
+            while (menuPointer instanceof LoginMenu) {
+                String string = scanner.nextLine();
+                if (string.equalsIgnoreCase("exit")) {
+                    break mainWhile;
+                } else if (string.equalsIgnoreCase("help")) {
+                    menuPointer.help();
+                } else if (string.equalsIgnoreCase("leaderboard")) {
+                    menuPointer = new LeaderBoardMenu();
+                } else if (string.contains("create account")) {
+                    Pattern pattern = Pattern.compile(
+                            "create account (.+) (.+)", Pattern.CASE_INSENSITIVE);
+                    Matcher matcher = pattern.matcher(string);
+                    if (matcher.matches()) {
+                        mainAccount = new Account(matcher.group(1), matcher.group(2));
+                        System.out.println("account created : " + mainAccount.getName());
+                    }
+                } else if (string.contains("login")) {
+                    Pattern pattern = Pattern.compile(
+                            "login (.+) (.+)", Pattern.CASE_INSENSITIVE);
+                    Matcher matcher = pattern.matcher(string);
+                    if (matcher.matches()) {
+                        mainAccount = Account.findAccount(matcher.group(1), matcher.group(2));
+                        menuPointer = new MainMenu();
+                    }
+                } else {
+                    InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                    invalidCommand.action();
+                }
 
             }
         }
-
 
     }
 }

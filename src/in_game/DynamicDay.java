@@ -50,12 +50,11 @@ public class DynamicDay extends Dynamic {
         int n = MathFunctions.getRandomNumber(2, 5);
         int turn = playerDay.getTurn();
         int lastTurnServed = playerDay.getTurnServed();
-        if (turn - lastTurnServed > 1){
+        if (turn - lastTurnServed > 1) {
             playerDay.addSuns(n);
-        }
-        else if(turn - lastTurnServed == 1){
+        } else if (turn - lastTurnServed == 1) {
             int rnd = MathFunctions.getRandomNumber(0, 1);
-            if (rnd == 1){
+            if (rnd == 1) {
                 playerDay.addSuns(n);
             }
         }
@@ -81,45 +80,47 @@ public class DynamicDay extends Dynamic {
      */
 
 
-    public void attack(){
+    public void attack() {
         ArrayList<Zombie> zombies = chooseAndSetRandomZombies();
         playerDay.setZombies(zombies);
     }
-    /**Do what is needed to do to end a turn:*/
-    public boolean hasGameEnded(){
-        if (playerDay.getWavesOfAttack() >= 3){
+
+    /**
+     * Do what is needed to do to end a turn:
+     */
+    public boolean hasGameEnded() {
+        if (playerDay.getWavesOfAttack() >= 3) {
             playerDay.setGameCondition(GameCondition.WINNER);
             return true;
-        }
-        else if(playerDay.getPlants().size() == 0 && playerDay.getWavesOfAttack() < 3 && playerDay.getWavesOfAttack() != 0){
+        } else if (playerDay.getPlants().size() == 0 && playerDay.getWavesOfAttack() < 3 && playerDay.getWavesOfAttack() != 0) {
             playerDay.setGameCondition(GameCondition.LOSER);
             return true;
         }
         return false;
     }
 
-    public boolean canIStartTheNextAttack(){
-        if (playerDay.getTurn() - playerDay.getTurnLastZombieKilled() >= 7){
+    public boolean canIStartTheNextAttack() {
+        if (playerDay.getTurn() - playerDay.getTurnLastZombieKilled() >= 7) {
             return true;
-        }
-        else if(playerDay.getTurn() == 3){
+        } else if (playerDay.getTurn() == 3) {
             return true;
         }
         return false;
 
     }
-    public void endTurn(){
+
+    public void endTurn() {
         addSunRandomly();
-        if (playerDay.getZombies().size() == 0 && playerDay.getTurn() != 0){
+        if (playerDay.getZombies().size() == 0 && playerDay.getTurn() != 0) {
             playerDay.setTurnLastZombieKilled(playerDay.getTurn());
         }
-        if (canIStartTheNextAttack()){
+        if (canIStartTheNextAttack()) {
             attack();
         }
         playerDay.addTurn();
     }
 
-    }
+}
 
 
 

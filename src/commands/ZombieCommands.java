@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class ZombieCommands {
-    //public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
+    public static ArrayList<ZombieCommands> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
@@ -24,11 +24,18 @@ public abstract class ZombieCommands {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
-
-        //allCommand.add(new CreateAccount(input, menuPtr));
+        allCommand = new ArrayList<>();
+        allCommand.add(new EndTurn(input, menuPtr));
+        allCommand.add(new Exit(input, menuPtr));
+        allCommand.add(new Help(input, menuPtr));
+        allCommand.add(new Put(input, menuPtr));
+        allCommand.add(new ShowHandZombie(input, menuPtr));
+        allCommand.add(new ShowLanes(input, menuPtr));
+        allCommand.add(new ShowLawnZombie(input, menuPtr));
+        allCommand.add(new Start(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr, ZombieGame zombiePlayer);
+    abstract public Menu action(Menu menuPtr, ZombieGame zombiePlayer);
 
 
 }
@@ -40,11 +47,12 @@ class Exit extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, ZombieGame zombiePlayer) {
+    public Menu action(Menu menuPtr, ZombieGame zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr = new PlayMenu();
+            return menuPtr.exit(menuPtr);
         }
+        return menuPtr;
     }
 }
 
@@ -56,13 +64,12 @@ class Help extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, ZombieGame zombiePlayer) {
+    public Menu action(Menu menuPtr, ZombieGame zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr=new ShopMenu();
-            //todo
             menuPtr.help();
         }
+        return menuPtr;
     }
 }
 
@@ -74,11 +81,13 @@ class ShowHandZombie extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, ZombieGame zombiePlayer) {
+    public Menu action(Menu menuPtr, ZombieGame zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             Dynamic.printer(zombiePlayer.getCards(), "Names", "SunsTheyNeed");
         }
+        return menuPtr;
+
     }
 }
 
@@ -90,12 +99,13 @@ class ShowLanes extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, ZombieGame zombiePlayer) {
+    public Menu action(Menu menuPtr, ZombieGame zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             DynamicZombie dynamicZombie = new DynamicZombie(zombiePlayer);
             dynamicZombie.showLanePrinter();
         }
+        return menuPtr;
     }
 }
 
@@ -107,7 +117,7 @@ class Put extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, ZombieGame zombieGame) {
+    public Menu action(Menu menuPtr, ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             String zombieName = matcher.group(2);
@@ -140,7 +150,9 @@ class Put extends ZombieCommands {
             } catch (NumberFormatException e){
                 System.out.println("PLEASE ENTER AN INTEGER AS THE LAST INPUT OF PUT COMMAND");
             }
+
         }
+        return menuPtr;
     }
 }
 
@@ -154,11 +166,13 @@ class Start extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr,ZombieGame zombieGame) {
+    public Menu action(Menu menuPtr,ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             zombieGame.setStart(true);
         }
+        return menuPtr;
+
     }
 }
 
@@ -170,12 +184,14 @@ class EndTurn extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr,ZombieGame zombieGame) {
+    public Menu action(Menu menuPtr,ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             DynamicZombie dynamicZombie = new DynamicZombie(zombieGame);
             dynamicZombie.endTurn();
         }
+        return menuPtr;
+
     }
 }
 
@@ -187,10 +203,12 @@ class ShowLawnZombie extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr,ZombieGame zombieGame) {
+    public Menu action(Menu menuPtr,ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             Dynamic.ShowLawnPrinter(zombieGame.getPlants(), zombieGame.getZombies(), "life", "Coordinate");
         }
+        return menuPtr;
+
     }
 }

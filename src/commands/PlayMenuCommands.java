@@ -19,6 +19,7 @@ public abstract class PlayMenuCommands {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
+        allCommand = new ArrayList<>();
         allCommand.add(new DayCommand(input, menuPtr));
         allCommand.add(new PvPCommand(input, menuPtr));
         allCommand.add(new RailCommand(input, menuPtr));

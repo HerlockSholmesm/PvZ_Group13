@@ -22,15 +22,24 @@ class ShieldZombie extends Zombie {
                 case ("Newspaper Zombie"):
                     if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
                         plant.setLife(plant.getLife() - 1);
+                    } else {
+                        move();
                     }
+                    break;
                 case ("Target Zombie"):
                     if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
                         plant.setLife(plant.getLife() - 1);
+                    } else {
+                        move();
                     }
+                    break;
                 case ("Screen Door Zombie"):
                     if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
                         plant.setLife(plant.getLife() - 1);
+                    }  else {
+                        move();
                     }
+                    break;
             }
         }
     }

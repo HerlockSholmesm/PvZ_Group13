@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class PvPCommands {
-    //public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
+    public static ArrayList<PvPCommands> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
@@ -22,11 +22,24 @@ public abstract class PvPCommands {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
-
-        //allCommand.add(new CreateAccount(input, menuPtr));
+        allCommand = new ArrayList<>();
+        allCommand.add(new EndTurnPvP(input, menuPtr));
+        allCommand.add(new PlantPvPDay(input, menuPtr));
+        allCommand.add(new PutPvP(input, menuPtr));
+        allCommand.add(new Ready(input, menuPtr));
+        allCommand.add(new Ready(input, menuPtr));
+        allCommand.add(new RemovePvPDay(input, menuPtr));
+        allCommand.add(new SelectPvPDay(input, menuPtr));
+        allCommand.add(new ShowHandPvPDay(input, menuPtr));
+        allCommand.add(new ShowHandPvPZombie(input, menuPtr));
+        allCommand.add(new ShowHandPvPZombie(input, menuPtr));
+        allCommand.add(new ShowLanesPvP(input, menuPtr));
+        allCommand.add(new ShowLawnPvP(input, menuPtr));
+        allCommand.add(new ShowLawnPvPZombie(input, menuPtr));
+        allCommand.add(new StartPvP(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr, PvPGame pvpGame);
+    abstract public Menu action(Menu menuPtr, PvPGame pvpGame);
 
 }
 
@@ -38,13 +51,14 @@ class ShowHandPvPDay extends PvPCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, PvPGame pvpGame ) {
+    public Menu action(Menu menuPtr, PvPGame pvpGame) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             DynamicPVP dynamicPVP = new DynamicPVP(pvpGame);
             Dynamic.printer(pvpGame.getCards(), "Names", "SunsTheyNeed");
             System.out.println("all the suns you need for current plants: " + dynamicPVP.demandingSuns());
         }
+        return menuPtr;
     }
 }
 
@@ -57,7 +71,7 @@ class SelectPvPDay extends PvPCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, PvPGame pvpGame) {
+    public Menu action(Menu menuPtr, PvPGame pvpGame) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             String cardName = matcher.group(1);
@@ -76,7 +90,7 @@ class SelectPvPDay extends PvPCommands {
                         System.out.println("CARD NOT ON YOUR LIST!");
                     };
                     invalidPrompt.action();
-                    return;
+                    return menuPtr;
                 }
                 if (dynamicPVP.canIChoose(wantedCard))
                     wantedCard.setSelect(true);
@@ -88,6 +102,7 @@ class SelectPvPDay extends PvPCommands {
                 }
             }
         }
+        return menuPtr;
     }
 }
 
@@ -100,7 +115,7 @@ class PlantPvPDay extends PvPCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, PvPGame pvpGame) {
+    public Menu action(Menu menuPtr, PvPGame pvpGame) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             Card card = Dynamic.findSelectedCard(pvpGame);
@@ -139,6 +154,9 @@ class PlantPvPDay extends PvPCommands {
             }
         }
 
+        return menuPtr;
+
+
     }
 }
 
@@ -151,7 +169,7 @@ class RemovePvPDay extends PvPCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, PvPGame pvpGame) {
+    public Menu action(Menu menuPtr, PvPGame pvpGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             String num1 = matcher.group(2);
@@ -188,6 +206,7 @@ class RemovePvPDay extends PvPCommands {
             }
 
         }
+        return menuPtr;
     }
 }
 
@@ -200,12 +219,12 @@ class ShowLawnPvP extends PvPCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, PvPGame pvpGame) {
+    public Menu action(Menu menuPtr, PvPGame pvpGame) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            //menuPtr = new MainMenu();
             Dynamic.ShowLawnPrinter(pvpGame.getPlants(), pvpGame.getZombies(), "life", "Coordinate");
         }
+        return menuPtr;
     }
 }
 
@@ -218,93 +237,95 @@ class Ready extends PvPCommands {
     }
 
     @Override
-    public void action(Menu menuPtr,PvPGame pvpGame) {
+    public Menu action(Menu menuPtr, PvPGame pvpGame) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            //menuPtr = new MainMenu();
             pvpGame.setReady(true);
         }
+        return menuPtr;
     }
 }
 
 
 class ShowHandPvPZombie extends PvPCommands {
     Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
+
     ShowHandPvPZombie(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr,PvPGame pvpGame) {
+    public Menu action(Menu menuPtr, PvPGame pvpGame) {
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches() && pvpGame.isReady()){
+        if (matcher.matches() && pvpGame.isReady()) {
             Dynamic.printer(pvpGame.getCards(), "Names", "SunsTheyNeed");
         }
+        return menuPtr;
     }
 }
 
 
 class ShowLanesPvP extends PvPCommands {
     Pattern pattern = Pattern.compile("Show lanes", Pattern.CASE_INSENSITIVE);
+
     ShowLanesPvP(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr, PvPGame pvpGame) {
+    public Menu action(Menu menuPtr, PvPGame pvpGame) {
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches() && pvpGame.isReady()){
+        if (matcher.matches() && pvpGame.isReady()) {
             DynamicPVP dynamicPVP = new DynamicPVP(pvpGame);
             dynamicPVP.showLanePrinter();
         }
+        return menuPtr;
     }
 }
 
 
 class PutPvP extends PvPCommands {
     Pattern pattern = Pattern.compile("Put ((.),(.))+", Pattern.CASE_INSENSITIVE);
+
     PutPvP(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr, PvPGame pvpGame) {
+    public Menu action(Menu menuPtr, PvPGame pvpGame) {
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches() && pvpGame.isReady()){
+        if (matcher.matches() && pvpGame.isReady()) {
             String zombieName = matcher.group(2);
             String rowNumber = matcher.group(3);
-            try{
+            try {
                 int row = Integer.parseInt(rowNumber);
                 DynamicPVP dynamicPVP = new DynamicPVP(pvpGame);
-                Card card = dynamicPVP.findCard(pvpGame,zombieName);
-                if (card == null){
+                Card card = dynamicPVP.findCard(pvpGame, zombieName);
+                if (card == null) {
                     System.out.println("You don't have such a zombie or the zombie name is invalid");
-                }
-                else {
+                } else {
                     Zombie zombie = Dynamic.findZombie(card);
-                    if (zombie == null){
+                    if (zombie == null) {
                         System.out.println("Such a zombie doesn't exist on your list!");
-                    }
-                    else{
-                        if (row >= 0 && row <= 5){
+                    } else {
+                        if (row >= 0 && row <= 5) {
                             if (Dynamic.howManyZombiesAreThere(row, pvpGame.getYard()) <= 1)
-                                DynamicZombie.put(pvpGame,zombie,row);
+                                DynamicZombie.put(pvpGame, zombie, row);
                             else
                                 System.out.println("the row " + row + " is full.");
-                        }
-                        else{
+                        } else {
                             System.out.println("Such a row doesn't exist!");
                         }
                     }
 
                 }
-            } catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("PLEASE ENTER AN INTEGER AS THE LAST INPUT OF PUT COMMAND");
             }
         }
+        return menuPtr;
     }
 }
-
 
 
 class StartPvP extends PvPCommands {
@@ -315,11 +336,12 @@ class StartPvP extends PvPCommands {
     }
 
     @Override
-    public void action(Menu menuPtr,PvPGame pvpGame) {
+    public Menu action(Menu menuPtr, PvPGame pvpGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             pvpGame.setStart(true);
         }
+        return menuPtr;
     }
 }
 
@@ -332,11 +354,12 @@ class ShowLawnPvPZombie extends PvPCommands {
     }
 
     @Override
-    public void action(Menu menuPtr,PvPGame pvpGame) {
+    public Menu action(Menu menuPtr, PvPGame pvpGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             Dynamic.ShowLawnPrinter(pvpGame.getPlants(), pvpGame.getZombies(), "life", "Coordinate");
         }
+        return menuPtr;
     }
 }
 
@@ -349,11 +372,12 @@ class EndTurnPvP extends PvPCommands {
     }
 
     @Override
-    public void action(Menu menuPtr,PvPGame pvpGame) {
+    public Menu action(Menu menuPtr, PvPGame pvpGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             DynamicPVP dynamicPVP = new DynamicPVP(pvpGame);
             dynamicPVP.goOn();
         }
+        return  menuPtr;
     }
 }

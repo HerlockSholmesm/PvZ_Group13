@@ -32,7 +32,7 @@ public abstract class RailCommands {
         allCommand.add(new Record(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr, RailGame railPlayer);
+    abstract public Menu action(Menu menuPtr, RailGame railPlayer);
 
 }
 
@@ -44,11 +44,12 @@ class List extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailGame railPlayer) {
+    public Menu action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             Dynamic.cardPrinter(railPlayer.getCards());
         }
+        return menuPtr;
     }
 }
 
@@ -60,7 +61,7 @@ class RailSelect extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailGame railPlayer) {
+    public Menu action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             String indexNum = matcher.group(1);
@@ -81,6 +82,7 @@ class RailSelect extends RailCommands {
 
 
         }
+        return menuPtr;
     }
 }
 
@@ -92,12 +94,13 @@ class Record extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailGame railPlayer) {
+    public Menu action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             DynamicRail dynamicRail = new DynamicRail(railPlayer);
             System.out.println("The number of killed zombies is " + dynamicRail.getNumOfDeadZombies());
         }
+        return menuPtr;
     }
 }
 
@@ -110,7 +113,7 @@ class PlantRail extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailGame railPlayer) {
+    public Menu action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             Card card = Dynamic.findSelectedCard(railPlayer);
@@ -148,6 +151,7 @@ class PlantRail extends RailCommands {
 
             }
         }
+        return menuPtr;
 
     }
 }
@@ -161,7 +165,7 @@ class RailRemove extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailGame railPlayer) {
+    public Menu action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             String num1 = matcher.group(2);
@@ -198,6 +202,7 @@ class RailRemove extends RailCommands {
             }
 
         }
+        return menuPtr;
     }
 }
 
@@ -210,13 +215,14 @@ class EndTurnRail extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailGame railPlayer) {
+    public Menu action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            //menuPtr = new MainMenu();
             DynamicRail dynamicRail = new DynamicRail(railPlayer);
             dynamicRail.endTurn();
         }
+        return menuPtr;
+
     }
 }
 
@@ -228,13 +234,14 @@ class RailShowLawn extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailGame railPlayer) {
+    public Menu action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            //menuPtr = new MainMenu();
             Dynamic.ShowLawnPrinter(railPlayer.getPlants(), railPlayer.getZombies(), "life", "Coordinate");
         }
+        return menuPtr;
     }
+
 }
 
 
