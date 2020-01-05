@@ -19,6 +19,14 @@ public class FlyingZombie extends Zombie {
 
     @Override
     public void action(Game game) {
-
+        String name = this.getName();
+        for (Plant plant : game.getPlants()) {
+            switch (name) {
+                case ("Pogo Zombie"):
+                    if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
+                        plant.setLife(plant.getLife() - 1);
+                    }
+            }
+        }
     }
 }
