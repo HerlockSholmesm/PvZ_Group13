@@ -24,7 +24,7 @@ public abstract class DayWaterCommands {
 
     public static void createCommands(String input, Menu menuPtr) {
 
-        allCommand.add(new CreateAccount(input, menuPtr));
+        //allCommand.add(new CreateAccount(input, menuPtr));
     }
 
     abstract public void action(Menu menuPtr, PlayerDay playerDay);
@@ -43,7 +43,7 @@ class ShowHandDay extends DayWaterCommands {
         if (matcher.matches()) {
             DynamicDay dynamicDay = new DynamicDay(playerDay);
             dynamicDay.printer(playerDay.getCards(), "Names", "SunsTheyNeed");
-            System.out.println("all the suns you need for curent plants: " + dynamicDay.demandingSuns());
+            System.out.println("all the suns you need for current plants: " + dynamicDay.demandingSuns());
         }
     }
 }

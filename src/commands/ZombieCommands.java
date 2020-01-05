@@ -2,6 +2,11 @@ package commands;
 import commands.Menu.Menu;
 import commands.Menu.PlayMenu;
 import commands.Menu.ShopMenu;
+import in_game.Dynamic;
+import in_game.DynamicDay;
+import in_game.DynamicZombie;
+import in_game.ZombiePlayer;
+import model.Zombie;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -20,10 +25,10 @@ public abstract class ZombieCommands {
 
     public static void createCommands(String input, Menu menuPtr) {
 
-        allCommand.add(new CreateAccount(input, menuPtr));
+        //allCommand.add(new CreateAccount(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr);
+    abstract public void action(Menu menuPtr, ZombiePlayer zombiePlayer);
 
 
 }
@@ -35,7 +40,7 @@ class Exit extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr, ZombiePlayer zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menuPtr = new PlayMenu();
@@ -51,7 +56,7 @@ class Help extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr,ZombiePlayer zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menuPtr=new ShopMenu();
@@ -62,17 +67,17 @@ class Help extends ZombieCommands {
 }
 
 
-class ShowHand extends ZombieCommands {
+class ShowHandZombie extends ZombieCommands {
     Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
-    ShowHand(String input, Menu menuPtr) {
+    ShowHandZombie(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr,ZombiePlayer zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-
+            Dynamic.printer(zombiePlayer.getCards(), "Names", "SunsTheyNeed");
         }
     }
 }
@@ -85,26 +90,34 @@ class ShowLanes extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr,ZombiePlayer zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-
+            DynamicZombie dynamicZombie = new DynamicZombie(zombiePlayer);
+            dynamicZombie.showLanePrinter();
         }
     }
 }
 
 
 class Put extends ZombieCommands {
-    Pattern pattern = Pattern.compile("Put (.)+", Pattern.CASE_INSENSITIVE);
+    Pattern pattern = Pattern.compile("Put ((.),(.))+", Pattern.CASE_INSENSITIVE);
     Put(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr,ZombiePlayer zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-
+            String zombieName = matcher.group(2);
+            String rowNumber = matcher.group(3);
+            try{
+                int row = Integer.parseInt(rowNumber);
+                Zombie zombie =
+            } catch (NumberFormatException e){
+                System.out.println("PLEASE ENTER AN INTEGER AS THE LAST INPUT OF PUT COMMAND");
+            }
         }
     }
 }
