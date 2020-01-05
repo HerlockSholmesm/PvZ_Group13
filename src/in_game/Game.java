@@ -49,13 +49,6 @@ public class Game {
 //=======
 //>>>>>>> origin/master
 
-    public void setPlants(ArrayList<Plant> plants) {
-        this.plants = plants;
-    }
-
-    public void setCards(ArrayList<Card> cards) {
-        this.cards = cards;
-    }
 
     public void setZombies(ArrayList<Zombie> zombies) {
         this.zombies = zombies;
