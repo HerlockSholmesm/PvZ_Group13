@@ -8,14 +8,25 @@ import model.Zombie;
 import java.util.ArrayList;
 
 public class ZombieGame extends Game {
-    private PlayerCondition playerCondition = PlayerCondition.PLAYING;
 
-    public void setPlayerCondition(PlayerCondition playerCondition) {
-        this.playerCondition = playerCondition;
+    private boolean start = false;
+
+    public boolean isStart() {
+        return start;
     }
 
-    public PlayerCondition getPlayerCondition() {
-        return playerCondition;
+    public void setStart(boolean start) {
+        this.start = start;
+    }
+
+    private GameCondition gameCondition = GameCondition.PLAYING;
+
+    public void setGameCondition(GameCondition gameCondition) {
+        this.gameCondition = gameCondition;
+    }
+
+    public GameCondition getGameCondition() {
+        return gameCondition;
     }
 
     private int killPerTurn = 0;

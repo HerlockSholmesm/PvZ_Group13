@@ -157,7 +157,7 @@ class Start extends ZombieCommands {
     public void action(Menu menuPtr,ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
-
+            zombieGame.setStart(true);
         }
     }
 }

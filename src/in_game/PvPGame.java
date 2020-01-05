@@ -14,7 +14,70 @@ public class PvPGame extends Game {
      * @param name
      * @param password
      */
-    public PvPGame(String name, String password,int totalWaves) {
+    private GamePvPCondition gamePvPCondition = GamePvPCondition.PLAYING;
+
+    public GamePvPCondition getGamePvPCondition() {
+        return gamePvPCondition;
+    }
+
+    public void setGamePvPCondition(GamePvPCondition gamePvPCondition) {
+        this.gamePvPCondition = gamePvPCondition;
+    }
+
+    protected Coin zombieCoin = new Coin(50,0);
+    protected Coin plantCoin = new Coin(0, 0);
+
+    public Coin getZombieCoin() {
+        return zombieCoin;
+    }
+
+    public Coin getPlantCoin() {
+        return plantCoin;
+    }
+    public void addZombieCoin(int c){
+        zombieCoin.setCoinInTheGame(zombieCoin.getCoinInTheGame() + c);
+    }
+
+    private int plantWins = 0;
+    private int zombieWins = 0;
+
+    public int getPlantWins() {
+        return plantWins;
+    }
+
+    public int getZombieWins() {
+        return zombieWins;
+    }
+
+    public void addPlantWins(){
+        plantWins++;
+    }
+
+    public void addZombieWins(){
+        zombieWins++;
+    }
+
+    private boolean start = false;
+
+    public boolean isStart() {
+        return start;
+    }
+
+    public void setStart(boolean start) {
+        this.start = start;
+    }
+
+    private boolean ready = false;
+
+    public boolean isReady() {
+        return ready;
+    }
+
+    public void setReady(boolean ready) {
+        this.ready = ready;
+    }
+
+    public PvPGame(String name, String password, int totalWaves) {
         super(name, password);
         suns = new Sun(2);
         this.plantCads.add(Shop.getAllPlants().get(0));

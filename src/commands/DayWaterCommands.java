@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class DayWaterCommands {
-    public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
+    //public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
@@ -194,69 +194,69 @@ class RemoveDay extends DayWaterCommands {
 }
 
 class EndTurnDay extends DayWaterCommands {
-        private Pattern pattern = Pattern.compile("end turn (.)+");
+    private Pattern pattern = Pattern.compile("end turn",Pattern.CASE_INSENSITIVE);
 
-        EndTurnDay(String input, Menu menuPtr) {
-            super(input, menuPtr);
-        }
-
-        @Override
-        public void action(Menu menuPtr, GameDay playerDay) {
-            Matcher matcher = pattern.matcher(input);
-            if (matcher.matches()) {
-                //menuPtr = new MainMenu();
-                DynamicDay dynamicDay = new DynamicDay(playerDay);
-                dynamicDay.endTurn();
-            }
-        }
+    EndTurnDay(String input, Menu menuPtr) {
+        super(input, menuPtr);
     }
 
-    class ShowLawnDay extends DayWaterCommands {
-        private Pattern pattern = Pattern.compile("show lawn",Pattern.CASE_INSENSITIVE);
-
-        ShowLawnDay(String input, Menu menuPtr) {
-            super(input, menuPtr);
-        }
-
-        @Override
-        public void action(Menu menuPtr, GameDay playerDay) {
-            Matcher matcher = pattern.matcher(input);
-            if (matcher.matches()) {
-                //menuPtr = new MainMenu();
-                Dynamic.ShowLawnPrinter(playerDay.getPlants(), playerDay.getZombies(), "life", "Coordinate");
-            }
+    @Override
+    public void action(Menu menuPtr, GameDay playerDay) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()) {
+            //menuPtr = new MainMenu();
+            DynamicDay dynamicDay = new DynamicDay(playerDay);
+            dynamicDay.endTurn();
         }
     }
+}
 
-    class ExitDay extends DayWaterCommands {
-        private Pattern pattern = Pattern.compile("exit (.)+");
+class ShowLawnDay extends DayWaterCommands {
+    private Pattern pattern = Pattern.compile("show lawn", Pattern.CASE_INSENSITIVE);
 
-        ExitDay(String input, Menu menuPtr) {
-            super(input, menuPtr);
-        }
-
-        @Override
-        public void action(Menu menuPtr, GameDay playerDay) {
-            Matcher matcher = pattern.matcher(input);
-            if (matcher.matches()) {
-                menuPtr = new MainMenu();
-            }
-        }
+    ShowLawnDay(String input, Menu menuPtr) {
+        super(input, menuPtr);
     }
 
-    class HelpDay extends DayWaterCommands {
-        private Pattern pattern = Pattern.compile("help");
-
-        HelpDay(String input, Menu menuPtr) {
-            super(input, menuPtr);
-        }
-
-        @Override
-        public void action(Menu menuPtr, GameDay playerDay) {
-            Matcher matcher = pattern.matcher(input);
-            if (matcher.matches()) {
-                menuPtr = new ShopMenu();
-                menuPtr.help();
-            }
+    @Override
+    public void action(Menu menuPtr, GameDay playerDay) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()) {
+            //menuPtr = new MainMenu();
+            Dynamic.ShowLawnPrinter(playerDay.getPlants(), playerDay.getZombies(), "life", "Coordinate");
         }
     }
+}
+
+class ExitDay extends DayWaterCommands {
+    private Pattern pattern = Pattern.compile("exit (.)+");
+
+    ExitDay(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr, GameDay playerDay) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()) {
+            menuPtr = new MainMenu();
+        }
+    }
+}
+
+class HelpDay extends DayWaterCommands {
+    private Pattern pattern = Pattern.compile("help");
+
+    HelpDay(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr, GameDay playerDay) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches()) {
+            menuPtr = new ShopMenu();
+            menuPtr.help();
+        }
+    }
+}

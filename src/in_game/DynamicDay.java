@@ -36,6 +36,7 @@ public class DynamicDay extends Dynamic {
     /**
      * Select Commands:
      */
+
     public boolean canIChoose(GameDay playerDay, Card card) {
         Plant plant = findPlant(card);
         int numberOfExtraSuns = demandingSuns();
@@ -47,7 +48,17 @@ public class DynamicDay extends Dynamic {
      */
     public void addSunRandomly() {
         int n = MathFunctions.getRandomNumber(2, 5);
-        playerDay.addSuns(n);
+        int turn = playerDay.getTurn();
+        int lastTurnServed = playerDay.getTurnServed();
+        if (turn - lastTurnServed > 1){
+            playerDay.addSuns(n);
+        }
+        else if(turn - lastTurnServed == 1){
+            int rnd = MathFunctions.getRandomNumber(0, 1);
+            if (rnd == 1){
+                playerDay.addSuns(n);
+            }
+        }
     }
 
     /**
@@ -77,11 +88,11 @@ public class DynamicDay extends Dynamic {
     /**Do what is needed to do to end a turn:*/
     public boolean hasGameEnded(){
         if (playerDay.getWavesOfAttack() >= 3){
-            playerDay.setPlayerCondition(PlayerCondition.WINNER);
+            playerDay.setGameCondition(GameCondition.WINNER);
             return true;
         }
         else if(playerDay.getPlants().size() == 0 && playerDay.getWavesOfAttack() < 3 && playerDay.getWavesOfAttack() != 0){
-            playerDay.setPlayerCondition(PlayerCondition.LOSER);
+            playerDay.setGameCondition(GameCondition.LOSER);
             return true;
         }
         return false;
@@ -98,26 +109,17 @@ public class DynamicDay extends Dynamic {
 
     }
     public void endTurn(){
-        int turn = playerDay.getTurn();
-        int lastTurnServed = playerDay.getTurnServed();
-        if (turn - lastTurnServed > 1){
-            addSunRandomly();
-        }
-        else if(turn - lastTurnServed == 1){
-            int rnd = MathFunctions.getRandomNumber(0, 1);
-            if (rnd == 1){
-                addSunRandomly();
-            }
-        }
+        addSunRandomly();
         if (playerDay.getZombies().size() == 0 && playerDay.getTurn() != 0){
             playerDay.setTurnLastZombieKilled(playerDay.getTurn());
         }
-
         if (canIStartTheNextAttack()){
             attack();
         }
         playerDay.addTurn();
     }
 
-}
+    }
+
+
 
