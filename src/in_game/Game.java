@@ -101,6 +101,7 @@ public abstract class Game {
 
     public Game(String name, String password) {
         this.account = new Account(name, password);
+        setTurn(0);
     }
 
 

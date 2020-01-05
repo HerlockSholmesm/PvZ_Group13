@@ -5,12 +5,12 @@ public class ProfileMenu implements Menu {
 
     @Override
     public void help() {
-        System.out.println("help : showing commands" +
-                "change : chanding your profile" +
-                "delete : delete your profile" +
-                "rename : rename your profile" +
-                "create : create your profile" +
-                "show : show your profile");
+        System.out.println("help : showing commands\n" +
+                "change : chanding your profile\n" +
+                "delete : delete your profile\n" +
+                "rename : rename your profile\n" +
+                "create : create your profile\n" +
+                "show : show your profile\n");
     }
 
     @Override

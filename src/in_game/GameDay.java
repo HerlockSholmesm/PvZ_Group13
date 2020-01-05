@@ -63,23 +63,6 @@ public class GameDay extends Game {
         return wavesOfAttack;
     }
 
-    public void decreaseWaveOfAttack(){
-        wavesOfAttack--;
-    }
-
-    public int getValidNumOfPlants() {
-        return 7;
-    }
-
-    public int getValidNumOfCards() {
-        int VALID_NUM_OF_CARDS = 7;
-        return VALID_NUM_OF_CARDS;
-    }
-
-
-    public int getNumOfPlants() {
-        return plants.size();
-    }
 
     public GameDay(String name, String password) {
         super(name, password);

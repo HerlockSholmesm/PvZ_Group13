@@ -23,7 +23,7 @@ public abstract class Zombie extends Card {
     }
 
     private int y;
-    Cell cell = new Cell();
+    Cell cell;
     private int defense;
     private String name;
 
@@ -35,12 +35,55 @@ public abstract class Zombie extends Card {
         return y;
     }
 
+    public static Shop getShop() {
+        return shop;
+    }
+
+    @Override
+    public void setLife(int life) {
+        this.life = life;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    public void setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
+    }
+
+    public Cell getCell() {
+        return cell;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Zombie(int life, int speed, int defense, String name) {
         this.life = life;
         this.speed = speed;
         this.defense = defense;
         this.name = name;
         shop = new Shop();
+        this.cell = new Cell(x, y);
     }
 
     public int getLife() {

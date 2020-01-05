@@ -1,7 +1,7 @@
 package commands.Menu;
 
 public class MainMenu implements Menu {
-    public Menu parentMenu;
+    public Menu parentMenu = new LoginMenu();
 
     public void goToPlayMenu(Menu menuPtr) {
         menuPtr = this.childMenus.get(0);
@@ -17,10 +17,10 @@ public class MainMenu implements Menu {
 
     @Override
     public void help() {
-        System.out.println("help : showing commands" +
-                "play : go to play menu" +
-                "profile : go to profile menu" +
-                "shop : go to shop menu");
+        System.out.println("help : showing commands\n" +
+                "play : go to play menu\n" +
+                "profile : go to profile menu\n" +
+                "shop : go to shop menu\n");
     }
 
     @Override
