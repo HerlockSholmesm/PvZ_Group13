@@ -8,10 +8,15 @@ import java.util.ArrayList;
 
 public class RailGame extends Game {
 
-    public RailGame(ArrayList<Card> cards, String name, String password){
+    public RailGame(String name, String password){
         super(name,password);
-        this.plants.addAll(Shop.getCollectionPlant());
-        this.cards = cards;
+        this.cards.add(Shop.getAllPlants().get(0));
+        this.cards.add(Shop.getAllPlants().get(1));
+        this.cards.add(Shop.getAllPlants().get(10));
+        this.cards.add(Shop.getAllPlants().get(7));
+        this.cards.add(Shop.getAllPlants().get(19));
+        this.cards.add(Shop.getAllPlants().get(8));
+        this.cards.add(Shop.getAllPlants().get(21));
         this.account = new Account(name, password);
         turn = 0;
         points = 0;

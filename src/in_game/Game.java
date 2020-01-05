@@ -39,16 +39,6 @@ public abstract class Game {
     /**Plant related fields and functions:*/
     protected ArrayList<Plant> plants = new ArrayList<Plant>();
 
-    Yard yard;
-
-    public Yard getYard() {
-        return yard;
-    }
-
-    public void setYard(Yard yard) {
-        this.yard = yard;
-    }
-
     public void removePlant(Plant plant){
         this.plants.remove(plant);
     }
@@ -110,6 +100,17 @@ public abstract class Game {
 
     public void addTurn() {
         turn++;
+    }
+
+
+    Yard yard;
+
+    public Yard getYard() {
+        return yard;
+    }
+
+    public void setYard(Yard yard) {
+        this.yard = yard;
     }
 
 

@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class ZombieCommands {
-    public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
+    //public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;

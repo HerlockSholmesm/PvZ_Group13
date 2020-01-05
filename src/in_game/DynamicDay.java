@@ -77,11 +77,11 @@ public class DynamicDay extends Dynamic {
     /**Do what is needed to do to end a turn:*/
     public boolean hasGameEnded(){
         if (playerDay.getWavesOfAttack() >= 3){
-            playerDay.setPlayerCondition(playerCondition.WINNER);
+            playerDay.setPlayerCondition(PlayerCondition.WINNER);
             return true;
         }
         else if(playerDay.getPlants().size() == 0 && playerDay.getWavesOfAttack() < 3 && playerDay.getWavesOfAttack() != 0){
-            playerDay.setPlayerCondition(playerCondition.LOSER);
+            playerDay.setPlayerCondition(PlayerCondition.LOSER);
             return true;
         }
         return false;
