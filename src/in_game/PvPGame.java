@@ -37,8 +37,17 @@ public class PvPGame extends Game {
         this.totalWaves = totalWaves;
     }
 
+
     private int totalWaves;
     private Sun suns;//must init with 2
+
+    public int getSuns() {
+        return suns.getSunStore();
+    }
+
+    public void addSuns(int s) {
+        this.suns.setSunStore(s + suns.getSunStore());
+    }
 
     public int getTotalWaves() {
         return totalWaves;
