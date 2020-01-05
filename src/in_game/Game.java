@@ -6,7 +6,7 @@ import model.*;
 import javax.xml.namespace.QName;
 import java.util.ArrayList;
 
-public abstract class Player {
+public abstract class Game {
     /**Plant related fields and functions:*/
     protected ArrayList<Plant> plants = new ArrayList<Plant>();
 
@@ -57,7 +57,7 @@ public abstract class Player {
 
 
     /**Constructor:*/
-    public Player(String name,String password) {
+    public Game(String name, String password) {
         this.account = new Account(name, password);
     }
 

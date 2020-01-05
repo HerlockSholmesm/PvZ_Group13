@@ -4,9 +4,9 @@ import model.Card;
 
 import java.util.ArrayList;
 
-public class ZombiePlayerPVP extends Player{
+public class ZombieGamePVP extends Game {
 
-    public ZombiePlayerPVP(ArrayList<Card> cards, String name, String password) {
+    public ZombieGamePVP(ArrayList<Card> cards, String name, String password) {
         super(name, password);
         this.cards = cards;
     }

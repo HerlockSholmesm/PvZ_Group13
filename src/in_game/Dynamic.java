@@ -3,7 +3,6 @@ package in_game;
 import model.*;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public abstract class Dynamic {
 
@@ -14,8 +13,8 @@ public abstract class Dynamic {
      * Show Hand Commands:
      */
 
-    public static ArrayList<Card> getCards(Player player) {
-        return player.getCards();
+    public static ArrayList<Card> getCards(Game game) {
+        return game.getCards();
     }
 
     /**
@@ -29,16 +28,16 @@ public abstract class Dynamic {
     /**
      * Planting commands:
      */
-    public static void setPlantPosition(int x, int y, Plant plant, Player player) {
+    public static void setPlantPosition(int x, int y, Plant plant, Game game) {
         Graphic.plant(x, y, plant);
         plant.setSelect(false);
-        player.addPlant(plant);
-        Card card = findCard(plant, player);
-        player.removeCard(card);
+        game.addPlant(plant);
+        Card card = findCard(plant, game);
+        game.removeCard(card);
     }
 
-    public static Card findCard(Plant plant, Player player) {
-        for (Card card : player.getCards()) {
+    public static Card findCard(Plant plant, Game game) {
+        for (Card card : game.getCards()) {
             if (card.getName().equals(plant.getName())) {
                 return card;
             }
@@ -65,8 +64,8 @@ public abstract class Dynamic {
         return null;
     }
 
-    public static Card findSelectedCard(Player player) {
-        for (Card card : player.getCards()) {
+    public static Card findSelectedCard(Game game) {
+        for (Card card : game.getCards()) {
             if (card.isSelect()) {
                 return card;
             }
@@ -77,44 +76,44 @@ public abstract class Dynamic {
     /**
      * Plant Removing:
      */
-    public static void removePlant(int x, int y, Player player) {
+    public static void removePlant(int x, int y, Game game) {
         Plant plant = Graphic.findPlant(x, y);
         Graphic.remove(x, y);
-        player.removePlant(plant);
+        game.removePlant(plant);
     }
 
 
     /**
      * Show Lawn Commands:
      */
-    public static ArrayList<Plant> getMeThePlants(Player player) {
-        return player.getPlants();
+    public static ArrayList<Plant> getMeThePlants(Game game) {
+        return game.getPlants();
     }
 
-    public static ArrayList<Zombie> getMeTheZombies(Player player) {
-        return player.getZombies();
+    public static ArrayList<Zombie> getMeTheZombies(Game game) {
+        return game.getZombies();
     }
 
     /**
      * List Of All Cards:
      */
-    public static ArrayList<Card> List(Player player) {
-        return player.getCards();
+    public static ArrayList<Card> List(Game game) {
+        return game.getCards();
     }
 
     /**
      * Turn Ending:
      */
-    public static void goOn(Player player) {
-        player.addTurn();
+    public static void goOn(Game game) {
+        game.addTurn();
     }
 
     /**
      * Do I have enough coins?;
      */
 
-    public static boolean doIHaveEnoughCoins(Player player, Card card) {
-        return player.getCoin().getCoinInTheGame() - card.getPrice() >= 0;
+    public static boolean doIHaveEnoughCoins(Game game, Card card) {
+        return game.getCoin().getCoinInTheGame() - card.getPrice() >= 0;
     }
 
 
@@ -154,8 +153,8 @@ public abstract class Dynamic {
     }
 
 
-    public static Plant findPlant(Plant plant,Player player) {
-        for (Card cards : player.getCards()) {
+    public static Plant findPlant(Plant plant, Game game) {
+        for (Card cards : game.getCards()) {
             if (cards.getName().equals(plant.getName())) {
                 return plant;
             }

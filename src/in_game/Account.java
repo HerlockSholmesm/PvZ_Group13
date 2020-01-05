@@ -1,6 +1,5 @@
 package in_game;
 
-import model.Card;
 import model.Collection;
 import commands.*;
 import model.Shop;
@@ -16,7 +15,7 @@ public class Account implements Serializable{
     private static HashMap<Object, Object> LeaderBoard;
     private Shop shop;
 
-    private ArrayList<Player> players = new ArrayList<>();
+    private ArrayList<Game> games = new ArrayList<>();
     private String name;
     private String password;
     private int score;
@@ -101,12 +100,12 @@ public class Account implements Serializable{
         return null;
     }
 
-    public ArrayList<Player> getPlayers() {
-        return players;
+    public ArrayList<Game> getGames() {
+        return games;
     }
 
-    public void addPlayer(Player player) {
-        this.players.add(player);
+    public void addPlayer(Game game) {
+        this.games.add(game);
     }
 
     public String getName() {

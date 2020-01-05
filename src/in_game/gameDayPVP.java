@@ -5,7 +5,7 @@ import model.Sun;
 
 import java.util.ArrayList;
 
-public class playerDayPVP extends Player{
+public class gameDayPVP extends Game {
 
     private Sun suns;//must init with 2
 
@@ -19,7 +19,7 @@ public class playerDayPVP extends Player{
         this.numOfWins++;
     }
 
-    public playerDayPVP(ArrayList<Card> cards, String name, String password) {
+    public gameDayPVP(ArrayList<Card> cards, String name, String password) {
         super(name, password);
         this.cards = cards;
         suns = new Sun(2);

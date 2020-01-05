@@ -1,25 +1,23 @@
 package in_game;
 
-import model.Zombie;
-
 class DynamicPVP {
-    private PlayerDay playerDay;
-    private ZombiePlayer zombiePlayer;
+    private GameDay playerDay;
+    private ZombieGame zombiePlayer;
     private final int TOTAL_NUMBER_OF_WAVES;
 
-    public void setPlayerDay(PlayerDay playerDay) {
+    public void setPlayerDay(GameDay playerDay) {
         this.playerDay = playerDay;
     }
 
-    public void setZombiePlayer(ZombiePlayer zombiePlayer) {
+    public void setZombiePlayer(ZombieGame zombiePlayer) {
         this.zombiePlayer = zombiePlayer;
     }
 
-    public PlayerDay getPlayerDay() {
+    public GameDay getPlayerDay() {
         return playerDay;
     }
 
-    public ZombiePlayer getZombiePlayer() {
+    public ZombieGame getZombiePlayer() {
         return zombiePlayer;
     }
 
@@ -27,7 +25,7 @@ class DynamicPVP {
         return TOTAL_NUMBER_OF_WAVES;
     }
 
-    public DynamicPVP(PlayerDay playerDay, ZombiePlayer zombiePlayer, int TOTAL_NUMBER_OF_WAVES) {
+    public DynamicPVP(GameDay playerDay, ZombieGame zombiePlayer, int TOTAL_NUMBER_OF_WAVES) {
         this.playerDay = playerDay;
         this.zombiePlayer = zombiePlayer;
         this.TOTAL_NUMBER_OF_WAVES = TOTAL_NUMBER_OF_WAVES;

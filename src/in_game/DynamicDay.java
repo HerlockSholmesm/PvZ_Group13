@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class DynamicDay extends Dynamic {
-    PlayerDay playerDay;
+    GameDay playerDay;
 
-    public DynamicDay(PlayerDay playerDay) {
+    public DynamicDay(GameDay playerDay) {
         this.playerDay = playerDay;
     }
 
@@ -36,7 +36,7 @@ public class DynamicDay extends Dynamic {
     /**
      * Select Commands:
      */
-    public boolean canIChoose(PlayerDay playerDay, Card card) {
+    public boolean canIChoose(GameDay playerDay, Card card) {
         Plant plant = findPlant(card);
         int numberOfExtraSuns = demandingSuns();
         return (numberOfExtraSuns >= plant.getSun());

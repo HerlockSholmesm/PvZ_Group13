@@ -6,7 +6,7 @@ import model.Zombie;
 
 import java.util.ArrayList;
 
-public class PlayerDay extends Player {
+public class GameDay extends Game {
 
     playerCondition playerCondition = in_game.playerCondition.PLAYING;
 
@@ -79,8 +79,9 @@ public class PlayerDay extends Player {
         return plants.size();
     }
 
-    public PlayerDay(String name, String password) {
+    public GameDay(String name, String password) {
         super(name, password);
+
         this.cards.add(Shop.getAllPlants().get(0));
         this.cards.add(Shop.getAllPlants().get(1));
         this.cards.add(Shop.getAllPlants().get(10));

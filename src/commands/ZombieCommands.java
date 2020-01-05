@@ -3,9 +3,8 @@ import commands.Menu.Menu;
 import commands.Menu.PlayMenu;
 import commands.Menu.ShopMenu;
 import in_game.Dynamic;
-import in_game.DynamicDay;
 import in_game.DynamicZombie;
-import in_game.ZombiePlayer;
+import in_game.ZombieGame;
 import model.Zombie;
 
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public abstract class ZombieCommands {
         //allCommand.add(new CreateAccount(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr, ZombiePlayer zombiePlayer);
+    abstract public void action(Menu menuPtr, ZombieGame zombiePlayer);
 
 
 }
@@ -40,7 +39,7 @@ class Exit extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, ZombiePlayer zombiePlayer) {
+    public void action(Menu menuPtr, ZombieGame zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menuPtr = new PlayMenu();
@@ -56,7 +55,7 @@ class Help extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr,ZombiePlayer zombiePlayer) {
+    public void action(Menu menuPtr, ZombieGame zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menuPtr=new ShopMenu();
@@ -74,7 +73,7 @@ class ShowHandZombie extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr,ZombiePlayer zombiePlayer) {
+    public void action(Menu menuPtr, ZombieGame zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             Dynamic.printer(zombiePlayer.getCards(), "Names", "SunsTheyNeed");
@@ -90,7 +89,7 @@ class ShowLanes extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr,ZombiePlayer zombiePlayer) {
+    public void action(Menu menuPtr, ZombieGame zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             DynamicZombie dynamicZombie = new DynamicZombie(zombiePlayer);
@@ -107,7 +106,7 @@ class Put extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr,ZombiePlayer zombiePlayer) {
+    public void action(Menu menuPtr, ZombieGame zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             String zombieName = matcher.group(2);

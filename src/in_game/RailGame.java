@@ -6,9 +6,9 @@ import model.Zombie;
 
 import java.util.ArrayList;
 
-public class RailPlayer extends Player {
+public class RailGame extends Game {
 
-    public RailPlayer(ArrayList<Card> cards, String name, String password){
+    public RailGame(ArrayList<Card> cards, String name, String password){
         super(name,password);
         this.plants.addAll(Shop.getCollectionPlant());
         this.cards = cards;

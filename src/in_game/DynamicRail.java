@@ -6,24 +6,24 @@ import model.Zombie;
 import model.*;
 public class DynamicRail extends Dynamic {
 
-    RailPlayer railPlayer;
+    RailGame railPlayer;
 
-    public DynamicRail(RailPlayer railPlayer) {
+    public DynamicRail(RailGame railPlayer) {
         this.railPlayer = railPlayer;
     }
 
-    public RailPlayer getRailPlayer() {
+    public RailGame getRailPlayer() {
         return railPlayer;
     }
 
-    public void setRailPlayer(RailPlayer railPlayer) {
+    public void setRailPlayer(RailGame railPlayer) {
         this.railPlayer = railPlayer;
     }
 
     /**
      * Random Zombie Adding:
      */
-    public static void addZombie(RailPlayer railPlayer) {
+    public static void addZombie(RailGame railPlayer) {
         int index = MathFunctions.getRandomNumber(0, Shop.getZombies().size() - 1);
         Zombie zombie = Shop.getZombies().get(index);
         railPlayer.getZombies().add(zombie);

@@ -27,7 +27,7 @@ public abstract class DayWaterCommands {
         //allCommand.add(new CreateAccount(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr, PlayerDay playerDay);
+    abstract public void action(Menu menuPtr, GameDay playerDay);
 }
 
 class ShowHandDay extends DayWaterCommands {
@@ -38,7 +38,7 @@ class ShowHandDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, PlayerDay playerDay) {
+    public void action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             DynamicDay dynamicDay = new DynamicDay(playerDay);
@@ -57,7 +57,7 @@ class SelectDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, PlayerDay playerDay) {
+    public void action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             String cardName = matcher.group(1);
@@ -101,7 +101,7 @@ class PlantDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, PlayerDay playerDay) {
+    public void action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             DynamicDay dynamicDay = new DynamicDay(playerDay);
@@ -153,7 +153,7 @@ class RemoveDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, PlayerDay playerDay) {
+    public void action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             String num1 = matcher.group(2);
@@ -201,7 +201,7 @@ class EndTurnDay extends DayWaterCommands {
         }
 
         @Override
-        public void action(Menu menuPtr, PlayerDay playerDay) {
+        public void action(Menu menuPtr, GameDay playerDay) {
             Matcher matcher = pattern.matcher(input);
             if (matcher.matches()) {
                 //menuPtr = new MainMenu();
@@ -219,7 +219,7 @@ class EndTurnDay extends DayWaterCommands {
         }
 
         @Override
-        public void action(Menu menuPtr, PlayerDay playerDay) {
+        public void action(Menu menuPtr, GameDay playerDay) {
             Matcher matcher = pattern.matcher(input);
             if (matcher.matches()) {
                 //menuPtr = new MainMenu();
@@ -236,7 +236,7 @@ class EndTurnDay extends DayWaterCommands {
         }
 
         @Override
-        public void action(Menu menuPtr, PlayerDay playerDay) {
+        public void action(Menu menuPtr, GameDay playerDay) {
             Matcher matcher = pattern.matcher(input);
             if (matcher.matches()) {
                 menuPtr = new MainMenu();
@@ -252,7 +252,7 @@ class EndTurnDay extends DayWaterCommands {
         }
 
         @Override
-        public void action(Menu menuPtr, PlayerDay playerDay) {
+        public void action(Menu menuPtr, GameDay playerDay) {
             Matcher matcher = pattern.matcher(input);
             if (matcher.matches()) {
                 menuPtr = new ShopMenu();

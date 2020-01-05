@@ -24,7 +24,7 @@ public abstract class RailCommands {
         allCommand.add(new CreateAccount(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr, RailPlayer railPlayer);
+    abstract public void action(Menu menuPtr, RailGame railPlayer);
 
 }
 
@@ -36,7 +36,7 @@ class List extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailPlayer railPlayer) {
+    public void action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             Dynamic.cardPrinter(railPlayer.getCards());
@@ -52,7 +52,7 @@ class RailSelect extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailPlayer railPlayer) {
+    public void action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             String indexNum = matcher.group(1);
@@ -84,7 +84,7 @@ class Record extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailPlayer railPlayer) {
+    public void action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             DynamicRail dynamicRail = new DynamicRail(railPlayer);
@@ -102,7 +102,7 @@ class PlantRail extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailPlayer railPlayer) {
+    public void action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             Card card = Dynamic.findSelectedCard(railPlayer);
@@ -153,7 +153,7 @@ class RailRemove extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailPlayer railPlayer) {
+    public void action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             String num1 = matcher.group(2);
@@ -202,7 +202,7 @@ class EndTurnRail extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailPlayer railPlayer) {
+    public void action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             //menuPtr = new MainMenu();
@@ -220,7 +220,7 @@ class RailShowLawn extends RailCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, RailPlayer railPlayer) {
+    public void action(Menu menuPtr, RailGame railPlayer) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             //menuPtr = new MainMenu();

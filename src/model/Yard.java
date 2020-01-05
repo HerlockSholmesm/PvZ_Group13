@@ -1,15 +1,15 @@
 package model;
 
-import in_game.Player;
+import in_game.Game;
 
 public class Yard {
     private Cell yard[][] = new Cell[6][19];
     private Cell waterYard[][] = new Cell[2][19];
-    private Player player;
+    private Game game;
     private boolean isItWater;
 
-    public Player getPlayer() {
-        return player;
+    public Game getGame() {
+        return game;
     }
 
     public Yard() {

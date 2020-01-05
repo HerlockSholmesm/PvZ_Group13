@@ -7,7 +7,7 @@ import model.Zombie;
 
 import java.util.ArrayList;
 
-public class ZombiePlayer extends Player {
+public class ZombieGame extends Game {
     private int killPerTurn = 0;
 
     public int getKillPerTurn() {
@@ -22,7 +22,7 @@ public class ZombiePlayer extends Player {
         this.killPerTurn = killPerTurn;
     }
 
-    public ZombiePlayer(String name, String password) {
+    public ZombieGame(String name, String password) {
         super(name, password);
         this.coin = new Coin(50, 0);
         this.cards.add(Shop.getZombies().get(0));
@@ -34,7 +34,7 @@ public class ZombiePlayer extends Player {
         this.cards.add(Shop.getZombies().get(3));
     }
 
-    public ZombiePlayer(String name, String password,String p){
+    public ZombieGame(String name, String password, String p){
         super(name,password);
         this.coin = new Coin(50, 0);
         this.cards.add(Shop.getZombies().get(0));

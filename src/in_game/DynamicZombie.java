@@ -8,17 +8,17 @@ import model.Zombie;
 
 public class DynamicZombie extends Dynamic {
 
-    ZombiePlayer zombiePlayer;
+    ZombieGame zombiePlayer;
 
-    public DynamicZombie(ZombiePlayer zombiePlayer) {
+    public DynamicZombie(ZombieGame zombiePlayer) {
         this.zombiePlayer = zombiePlayer;
     }
 
-    public ZombiePlayer getZombiePlayer() {
+    public ZombieGame getZombiePlayer() {
         return zombiePlayer;
     }
 
-    public void setZombiePlayer(ZombiePlayer zombiePlayer) {
+    public void setZombiePlayer(ZombieGame zombiePlayer) {
         this.zombiePlayer = zombiePlayer;
     }
 
@@ -90,7 +90,7 @@ public class DynamicZombie extends Dynamic {
 
     public static int howManyZombiesAreThere(int row, Yard yard) {
         int numOfZombiesInRow = 0;
-        for (Zombie zombie : yard.getPlayer().getZombies()) {
+        for (Zombie zombie : yard.getGame().getZombies()) {
             if (row == zombie.getX()) {
                 numOfZombiesInRow++;
             }
