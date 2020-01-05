@@ -6,7 +6,7 @@ import commands.*;
 import commands.Menu.*;
 import commands.Menu.Menu;
 import in_game.*;
-import model.Plant;
+
 
 public class Main {
 
@@ -144,13 +144,109 @@ public class Main {
 
             while (menuPointer instanceof PlayMenu) {
                 String string = scanner.nextLine();
-                PlayMenuCommands.createCommands(string, menuPointer);
+                switch (string) {
+                    case "Day":
+                        menuPointer = new CollectionMenu();
+                        while (menuPointer instanceof CollectionMenu) {
+                            string = scanner.nextLine();
+                            CollectionMenuCommands.createCommands(string, menuPointer);
+                            boolean isValidCommand = false;
+                            for (CollectionMenuCommands commands1 : CollectionMenuCommands.allCommand) {
+                                Pattern pattern = commands1.pattern;
+                                Matcher matcher = pattern.matcher(string);
+                                if (matcher.matches()) {
+                                    menuPointer = commands1.action(menuPointer, mainAccount);
+                                    isValidCommand = true;
+                                    break;
+                                }
+                            }
+                            if (string.equalsIgnoreCase("play")) {
+                                menuPointer = new PlayMenu();
+                                break;
+                            }
+                            if (!isValidCommand) {
+                                InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                                invalidCommand.action();
+                            }
+
+                        }
+                        menuPointer = new DayAndWater();
+                        break;
+                    case "Water":
+                        menuPointer = new CollectionMenu();
+                        while (menuPointer instanceof CollectionMenu) {
+                            string = scanner.nextLine();
+                            CollectionMenuCommands.createCommands(string, menuPointer);
+                            boolean isValidCommand = false;
+                            for (CollectionMenuCommands commands1 : CollectionMenuCommands.allCommand) {
+                                Pattern pattern = commands1.pattern;
+                                Matcher matcher = pattern.matcher(string);
+                                if (matcher.matches()) {
+                                    menuPointer = commands1.action(menuPointer, mainAccount);
+                                    isValidCommand = true;
+                                    break;
+                                }
+                            }
+                            if (string.equalsIgnoreCase("play")) {
+                                menuPointer = new PlayMenu();
+                                break;
+                            }
+                            if (!isValidCommand) {
+                                InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                                invalidCommand.action();
+                            }
+
+                        }
+                        menuPointer = new DayAndWater();
+                        break;
+                    case "Rail":
+                        menuPointer = new RailMenu();
+                        break;
+                    case "zombie":
+                        menuPointer = new ZombieMenu();
+                        break;
+                }
+                Pattern pattern = Pattern.compile("pvp (\\d)+", Pattern.CASE_INSENSITIVE);
+                Matcher matcher = pattern.matcher(string);
+                if (matcher.matches()) {
+                    int number = Integer.parseInt(matcher.group(1));
+                    menuPointer = new CollectionMenu();
+                    while (menuPointer instanceof CollectionMenu) {
+                        string = scanner.nextLine();
+                        CollectionMenuCommands.createCommands(string, menuPointer);
+                        boolean isValidCommand = false;
+                        for (CollectionMenuCommands commands1 : CollectionMenuCommands.allCommand) {
+                            Pattern pattern1 = commands1.pattern;
+                            Matcher matcher1 = pattern1.matcher(string);
+                            if (matcher1.matches()) {
+                                menuPointer = commands1.action(menuPointer, mainAccount);
+                                isValidCommand = true;
+                                break;
+                            }
+                        }
+                        if (string.equalsIgnoreCase("play")) {
+                            menuPointer = new PlayMenu();
+                            break;
+                        }
+                        if (!isValidCommand) {
+                            InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                            invalidCommand.action();
+                        }
+
+                    }
+                    menuPointer = new PvPMenu();
+                }
+            }
+
+            while (menuPointer instanceof PvPMenu) {
+                String string = scanner.nextLine();
+                CollectionMenuCommands.createCommands(string, menuPointer);
                 boolean isValidCommand = false;
-                for (PlayMenuCommands commands1 : PlayMenuCommands.allCommand) {
+                for (CollectionMenuCommands commands1 : CollectionMenuCommands.allCommand) {
                     Pattern pattern = commands1.pattern;
                     Matcher matcher = pattern.matcher(string);
                     if (matcher.matches()) {
-                        commands1.action(menuPointer);
+                        menuPointer = commands1.action(menuPointer, mainAccount);
                         isValidCommand = true;
                         break;
                     }
@@ -164,7 +260,7 @@ public class Main {
                     invalidCommand.action();
                 }
 
-            } ///
+            }
 
             while (menuPointer instanceof RailMenu) {
                 RailGame gameDay = new RailGame(mainAccount.getName(), mainAccount.getPassword());
