@@ -19,7 +19,11 @@ public abstract class PlayMenuCommands {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
-        allCommand.add(new CreateAccount(input, menuPtr));
+        allCommand.add(new DayCommand(input, menuPtr));
+        allCommand.add(new PvPCommand(input, menuPtr));
+        allCommand.add(new RailCommand(input, menuPtr));
+        allCommand.add(new WaterCommand(input, menuPtr));
+        allCommand.add(new ZombieCommand(input, menuPtr));
     }
 
     abstract public void action(Menu menuPtr);
@@ -37,7 +41,7 @@ class DayCommand extends PlayMenuCommands {
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-            menuPtr = new PlantCollectionMenu();
+            new CollectionMenu();
             // TODO: 12/29/2019
         }
     }
@@ -55,7 +59,7 @@ class WaterCommand extends PlayMenuCommands {
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-            menuPtr = new PlantCollectionMenu();
+            new CollectionMenu();
             // TODO: 12/29/2019
         }
     }
@@ -73,7 +77,6 @@ class RailCommand extends PlayMenuCommands {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             menuPtr = new RailMenu();
-            // TODO: 12/29/2019
         }
     }
 }
@@ -104,7 +107,7 @@ class PvPCommand extends PlayMenuCommands {
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-            // TODO: 12/29/2019
+
         }
     }
 }

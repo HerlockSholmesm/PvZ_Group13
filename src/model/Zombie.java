@@ -64,13 +64,12 @@ public abstract class Zombie extends Card {
         card.setLife(card.getLife() - attackPower);
     }
 
-    public void beAttacked(Card card) {
-        card.setLife(card.getLife() - attackPower);
-    }
-
     public void move() {
         cell = new Cell(x + speed, y);
     }
+
+    public abstract void action(Game game);
+
 
     static class separ {
         public int getAdditionLife() {
@@ -95,6 +94,114 @@ public abstract class Zombie extends Card {
     }
 
 }
+
+class SwimmingZombie extends Zombie {
+    @Override
+    public void attack(Card card) {
+        super.attack(card);
+    }
+
+    @Override
+    public void move() {
+        super.move();
+    }
+
+    @Override
+    public void action(Game game) {
+
+    }
+
+    public SwimmingZombie(String name, int life, int speed, int defense) {
+        super(life, speed, defense, name);
+    }
+}
+
+class ShieldZombie extends Zombie {
+
+    int life;
+
+    public ShieldZombie(int life, int speed, int defense, String name) {
+        super(life, speed, defense, name);
+    }
+
+    public void addLife(int addNumber) {
+        this.life = +addNumber;
+    }
+
+    @Override
+    public void action(Game game) {
+
+    }
+}
+
+class MovingZombie extends Zombie {
+    @Override
+    public void attack(Card card) {
+        super.attack(card);
+    }
+
+    @Override
+    public void move() {
+        super.move();
+    }
+
+    @Override
+    public void action(Game game) {
+
+    }
+
+    public MovingZombie(String name, int life, int speed, int defense) {
+        super(life, speed, defense, name);
+    }
+}
+
+class GiantZombie extends Zombie {
+    public GiantZombie(String name, int life, int speed, int defense) {
+        super(life, speed, defense, name);
+    }
+
+    @Override
+    public void attack(Card card) {
+        super.attack(card);
+    }
+
+
+    @Override
+    public void move() {
+        super.move();
+    }
+
+    @Override
+    public void action(Game game) {
+
+    }
+}
+
+
+class FlyingZombie extends Zombie {
+    public FlyingZombie(String name, int life, int speed, int defense) {
+        super(life, speed, defense, name);
+    }
+
+    @Override
+    public void attack(Card card) {
+        super.attack(card);
+    }
+
+    @Override
+    public void move() {
+        super.move();
+    }
+
+    @Override
+    public void action(Game game) {
+
+    }
+}
+
+
+
+
 
 
 

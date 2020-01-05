@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public abstract   class Plant extends Card {
+public abstract class Plant extends Card {
     private int x;
     private int y;
     private int sun;
@@ -65,11 +65,9 @@ public abstract   class Plant extends Card {
         this.life = life;
     }
 
-
     public int getSpeed() {
         return speed;
     }
-
 
     public Plant(String name, int sun, int rest, int life) {
         this.name = name;
@@ -81,11 +79,14 @@ public abstract   class Plant extends Card {
 
     public void attack(Card card) {
         card.setLife(card.getLife() - attackPower);
-
     }
 
     public void beAttacked(Card card) {
         card.setLife(card.getLife() - attackPower);
+    }
+
+    public void action(Game game){
+
     }
 
     @Override

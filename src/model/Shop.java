@@ -2,7 +2,6 @@ package model;
 
 import in_game.Account;
 
-import java.awt.image.PackedColorModel;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -11,8 +10,8 @@ public class Shop implements Serializable {
     private static ArrayList<Plant> plants;
     private static ArrayList<Zombie> zombies;
     private static ArrayList<Card> cards;
-    private static ArrayList<Card> baughtCards;
-    private static ArrayList<Card> notBaughtCards;
+    private static ArrayList<Card> boughtCards;
+    private static ArrayList<Card> notBoughtCards;
 
     public static ArrayList<Card> getCollection() {
         return collection;
@@ -30,19 +29,19 @@ public class Shop implements Serializable {
                 if (card instanceof Plant) {
                     if (card.getPrice() <= account.getMoney()) {
                         collection.add(card);
-                        baughtCards.add(card);
+                        boughtCards.add(card);
                     } else System.out.println("Money is not enough");
                 }
                 if (card instanceof Zombie) {
                     if (card.getPrice() <= account.getMoney()) {
                         collection.add(card);
-                        baughtCards.add(card);
+                        boughtCards.add(card);
                     } else System.out.println("Money is not enough");
                 }
 
             } else System.out.println("the name is not valid");
         }
-        notBaughtCards.removeAll(baughtCards);
+        notBoughtCards.removeAll(boughtCards);
     }
 
     public void showNotBaughtCard(Account account){
@@ -67,7 +66,7 @@ public class Shop implements Serializable {
     }
 
 
-    private void importPlant(Account account) {
+    private void importPlant() {
         Plant plant = new shootingPlant("Peashooter", 2, 1, 2, 2, 2);
         plants.add(plant);
         collection.add(plant);
@@ -124,36 +123,35 @@ public class Shop implements Serializable {
         plant = new MinePlant("Jalapeno", 19, 4, 5, 2);
         plants.add(plant);
         cards.addAll(plants);
-        notBaughtCards.addAll(cards);
-        account.getCollection().setCollection(collection);
+        notBoughtCards.addAll(cards);
 
     }
 
-    private void importZombie(Account account) {
-        Zombie zombie = new MovingZombie("zombie", 2, 2, 0);
+    private void importZombie() {
+        Zombie zombie = new MovingZombie("Zombie", 2, 2, 0);
         zombies.add(zombie);
         collection.add(zombie);
-        zombie = new MovingZombie("Football Model.Zombie", 3, 4, 0);
+        zombie = new MovingZombie("Football Zombie", 3, 4, 0);
         zombies.add(zombie);
         collection.add(zombie);
-        zombie = new MovingZombie("BucketHead Model.Zombie", 2, 3, 0);
+        zombie = new MovingZombie("BucketHead Zombie", 2, 3, 0);
         zombies.add(zombie);
-        zombie = new MovingZombie("ConeHead Model.Zombie", 2, 3, 0);
+        zombie = new MovingZombie("ConeHead Zombie", 2, 3, 0);
         zombies.add(zombie);
         collection.add(zombie);
         zombie = new MovingZombie("Zomboni", 2, 3, 0);
         zombies.add(zombie);
-        zombie = new MovingZombie("Catapult Model.Zombie", 2, 3, 0);
+        zombie = new MovingZombie("Catapult Zombie", 2, 3, 0);
         zombies.add(zombie);
-        zombie = new MovingZombie("Bungee Model.Zombie", 0, 3, 0);
-        zombies.add(zombie);
-        collection.add(zombie);
-        zombie = new MovingZombie("Balloon Model.Zombie", 2, 2, 0);
+        zombie = new MovingZombie("Bungee Zombie", 0, 3, 0);
         zombies.add(zombie);
         collection.add(zombie);
-        zombie = new MovingZombie("Newspaper Model.Zombie", 2, 3, 2);
+        zombie = new MovingZombie("Balloon Zombie", 2, 2, 0);
         zombies.add(zombie);
-        zombie = new MovingZombie("Target Model.Zombie", 2, 3, 3);
+        collection.add(zombie);
+        zombie = new MovingZombie("Newspaper Zombie", 2, 3, 2);
+        zombies.add(zombie);
+        zombie = new MovingZombie("Target Zombie", 2, 3, 3);
         zombies.add(zombie);
         zombie = new MovingZombie("Screen Door Zombie", 2, 2, 4);
         zombies.add(zombie);
@@ -169,8 +167,7 @@ public class Shop implements Serializable {
         collection.addAll(collection);
         collection.addAll(collection);
         cards.addAll(zombies);
-        notBaughtCards.addAll(cards);
-        account.getCollection().setCollection(collection);
+        notBoughtCards.addAll(cards);
     }
 
 

@@ -41,5 +41,6 @@ public abstract class Card {
                 "name='" + name + '\'' +
                 ", price=" + price ;
     }
+
 }
 
