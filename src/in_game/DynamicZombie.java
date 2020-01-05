@@ -57,18 +57,18 @@ public class DynamicZombie extends Dynamic {
     public static void put(ZombieGame zombieGame, Zombie zombie, int x) {
         zombieGame.addZombie(zombie);
         zombie.setX(x);
-        for (int y = 18;y >= 0;y--){
-            if (howManyZombiesInTheColumn(x,y,zombieGame) == 0){
+        for (int y = 18; y >= 0; y--) {
+            if (howManyZombiesInTheColumn(x, y, zombieGame) == 0) {
                 zombie.setY(y);
             }
         }
         zombieGame.removeCard(findCard(zombieGame, zombie.getName()));
     }
 
-    public static int howManyZombiesInTheColumn(int X,int Y,ZombieGame zombieGame){
+    public static int howManyZombiesInTheColumn(int X, int Y, ZombieGame zombieGame) {
         int numOfZombiesInCol = 0;
-        for (Zombie zombie:zombieGame.getZombies()){
-            if (zombie.getX() == X && zombie.getY() == Y){
+        for (Zombie zombie : zombieGame.getZombies()) {
+            if (zombie.getX() == X && zombie.getY() == Y) {
                 numOfZombiesInCol++;
             }
         }
@@ -120,15 +120,38 @@ public class DynamicZombie extends Dynamic {
             System.out.println(i + ". " + zombie.getName() + " " + zombie.getY());
         }
     }
-    public void endTurn(){
-        for (Plant plant:zombieGame.getPlants()){
-            if (plant.getLife() <= 0){
-                killPlant(plant.getXCoordinate(),plant.getYCoordinate());
+
+    public void endTurn() {
+        for (Plant plant : zombieGame.getPlants()) {
+            if (plant.getLife() <= 0) {
+                killPlant(plant.getXCoordinate(), plant.getYCoordinate());
             }
         }
         rewardZombie();
         goOn();
+    }
 
+    public boolean hasGameEnded(){
+        if (zombieGame.getPlants().size() <= 0) {
+            zombieGame.setPlayerCondition(PlayerCondition.WINNER);
+            return  true;
+        }
+        else{
+            int money = zombieGame.getCoin().getCoinInTheGame();
+            int min = 0;
+            for (Zombie zombie:Shop.getZombies()){
+                if (min > zombie.getPrice()){
+                    min = zombie.getPrice();
+                }
+            }
+            if (money < min){
+                zombieGame.setPlayerCondition(PlayerCondition.LOSER);
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
     }
 }
 
