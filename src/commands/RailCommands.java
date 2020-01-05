@@ -1,6 +1,7 @@
 package commands;
 
 import commands.Menu.Menu;
+import commands.Menu.PlayMenu;
 import in_game.*;
 import model.Card;
 import model.Plant;
@@ -10,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class RailCommands {
-    public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
+    public static ArrayList<RailCommands> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
@@ -21,7 +22,14 @@ public abstract class RailCommands {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
-        allCommand.add(new CreateAccount(input, menuPtr));
+        allCommand = new ArrayList<>();
+        allCommand.add(new EndTurnRail(input, menuPtr));
+        allCommand.add(new List(input, menuPtr));
+        allCommand.add(new PlantRail(input, menuPtr));
+        allCommand.add(new RailRemove(input, menuPtr));
+        allCommand.add(new RailSelect(input, menuPtr));
+        allCommand.add(new RailShowLawn(input, menuPtr));
+        allCommand.add(new Record(input, menuPtr));
     }
 
     abstract public void action(Menu menuPtr, RailGame railPlayer);

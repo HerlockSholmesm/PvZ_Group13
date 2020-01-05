@@ -1,22 +1,21 @@
 package model;
+
+import in_game.Game;
+
+import java.util.ArrayList;
+
 public class Bilche {
-    private Cell whichCell;
-    private model.Yard yard;
 
-    public Bilche(Cell whichCell,Yard yard) {
-        this.whichCell = whichCell;
-        this.yard=yard;
-    }
-
-    public void use(Cell cell2){
-        for (Plant plant :Shop.getAllPlants()) {
-            if(plant.getCell()==cell2){
-                plant.setX(-1);
-                plant.setY(-1);
+    public void action(Game game, int x, int y){
+        for (Plant plant : game.getPlants()){
+            if (plant.getCell().getX() == x){
+                if (plant.getCell().getY() == y){
+                    plant.setX(-1);
+                    plant.setY(-1);
+                    return;
+                }
             }
         }
     }
 
-    public static class Control {
-    }
 }

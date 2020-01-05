@@ -1,5 +1,6 @@
 package in_game;
 
+import model.Chamanzan;
 import model.Shop;
 import model.Sun;
 import model.Zombie;
@@ -7,6 +8,7 @@ import model.Zombie;
 import java.util.ArrayList;
 
 public class GameDay extends Game {
+    public ArrayList<Chamanzan> chamanzans = new ArrayList<>(5);
 
     playerCondition playerCondition = in_game.playerCondition.PLAYING;
 

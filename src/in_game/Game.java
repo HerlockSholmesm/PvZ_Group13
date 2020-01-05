@@ -7,6 +7,7 @@ import javax.xml.namespace.QName;
 import java.util.ArrayList;
 
 public abstract class Game {
+
     public void setPlants(ArrayList<Plant> plants) {
         this.plants = plants;
     }
