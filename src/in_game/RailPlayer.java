@@ -37,8 +37,25 @@ public class RailPlayer extends Player {
     public int getMAX_NUMBER_OF_CARDS() {
         return 10;
     }
+    private int previousAddedZombieTurn = 0;
 
+    public int getPreviousAddedZombieTurn() {
+        return previousAddedZombieTurn;
+    }
 
+    public void setPreviousAddedZombieTurn(int previousAddedZombieTurn) {
+        this.previousAddedZombieTurn = previousAddedZombieTurn;
+    }
+
+    private int previousGivenCard = 0;
+
+    public int getPreviousGivenCard() {
+        return previousGivenCard;
+    }
+
+    public void setPreviousGivenCard(int previousGivenCard) {
+        this.previousGivenCard = previousGivenCard;
+    }
 }
 
 
