@@ -14,7 +14,17 @@ public class PvPGame extends Game {
      * @param name
      * @param password
      */
-    public PvPGame(String name, String password,int totalWaves) {
+    private boolean ready = false;
+
+    public boolean isReady() {
+        return ready;
+    }
+
+    public void setReady(boolean ready) {
+        this.ready = ready;
+    }
+
+    public PvPGame(String name, String password, int totalWaves) {
         super(name, password);
         suns = new Sun(2);
         this.plantCads.add(Shop.getAllPlants().get(0));

@@ -36,6 +36,7 @@ public class DynamicDay extends Dynamic {
     /**
      * Select Commands:
      */
+
     public boolean canIChoose(GameDay playerDay, Card card) {
         Plant plant = findPlant(card);
         int numberOfExtraSuns = demandingSuns();

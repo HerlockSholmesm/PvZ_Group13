@@ -1,5 +1,6 @@
 package in_game;
 
+import model.Card;
 import model.Plant;
 
 public class DynamicPVP {
@@ -24,6 +25,13 @@ public class DynamicPVP {
         }
         int allSunsPlayerNeeds = allSunsPlayerMustHave - allSunsPlayerHas;
         return allSunsPlayerNeeds;
+    }
+
+
+    public boolean canIChoose(Card card) {
+        Plant plant = Dynamic.findPlant(card);
+        int numberOfExtraSuns = demandingSuns();
+        return (numberOfExtraSuns >= plant.getSun());
     }
 
 
