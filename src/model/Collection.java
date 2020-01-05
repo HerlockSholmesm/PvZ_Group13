@@ -4,6 +4,29 @@ import java.util.ArrayList;
 
 public class Collection {
     private  ArrayList<Card> hand;
+    private static ArrayList<Card> baughtCards;
+    private static ArrayList<Card> notBaughtCards;
+
+    public static ArrayList<Card> getBaughtCards() {
+        return baughtCards;
+    }
+
+    public static void setBaughtCards(ArrayList<Card> baughtCards) {
+        Collection.baughtCards = baughtCards;
+    }
+
+    public  ArrayList<Card> getNotBaughtCards() {
+        return notBaughtCards;
+    }
+
+    public static void setNotBaughtCards(ArrayList<Card> notBaughtCards) {
+        Collection.notBaughtCards = notBaughtCards;
+    }
+
+    public void setCollection(ArrayList<Card> collection) {
+        this.collection = collection;
+    }
+
     private ArrayList<Card> collection;
     private Shop shop;
 

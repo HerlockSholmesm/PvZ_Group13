@@ -1,43 +1,41 @@
 package commands;
 
-import commands.Menu.MainMenu;
 import commands.Menu.Menu;
-import commands.Menu.ShopMenu;
 import in_game.Account;
+import in_game.*;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class ShopMenuCommands {
-    public static ArrayList<ShopMenuCommands> allCommand = new ArrayList<>();
+public abstract class CollectionMenuCommands {
+    public static ArrayList<CollectionMenuCommands> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
 
-    ShopMenuCommands(String input, Menu menuPtr) {
+    CollectionMenuCommands(String input, Menu menuPtr) {
         this.input = input;
         this.menu = menuPtr;
     }
 
     public static void createCommands(String input, Menu menuPtr) {
         allCommand = new ArrayList<>();
-        allCommand.add(new Buy(input, menuPtr));
-        allCommand.add(new Money(input, menuPtr));
-        allCommand.add(new ShowCollection(input, menuPtr));
-        allCommand.add(new ShowShop(input, menuPtr));
-        allCommand.add(new ExitShop(input, menuPtr));
-        allCommand.add(new HelpShop(input, menuPtr));
+        allCommand.add(new ExitCollection(input, menuPtr));
+        allCommand.add(new HelpCollection(input, menuPtr));
+        allCommand.add(new SelectCommand(input, menuPtr));
+        allCommand.add(new ShowCollectionCommand(input, menuPtr));
+        allCommand.add(new ShowHandCommand(input, menuPtr));
     }
 
-    public abstract Menu action(Menu menuPtr, Account account);
+    abstract public Menu action(Menu menuPtr, Account account);
 
 }
 
-class ExitShop extends ShopMenuCommands {
+class ExitCollection extends CollectionMenuCommands {
     Pattern pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
 
-    ExitShop(String input, Menu menuPtr) {
+    ExitCollection(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
@@ -49,12 +47,13 @@ class ExitShop extends ShopMenuCommands {
         }
         return menuPtr;
     }
+
 }
 
-class HelpShop extends ShopMenuCommands {
+class HelpCollection extends CollectionMenuCommands {
     Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
 
-    HelpShop(String input, Menu menuPtr) {
+    HelpCollection(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
@@ -68,10 +67,11 @@ class HelpShop extends ShopMenuCommands {
     }
 }
 
-class ShowShop extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("show shop", Pattern.CASE_INSENSITIVE);
 
-    ShowShop(String input, Menu menuPtr) {
+class ShowHandCommand extends CollectionMenuCommands {
+    Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
+
+    ShowHandCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
@@ -79,18 +79,17 @@ class ShowShop extends ShopMenuCommands {
     public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            account.getShop().showNotBaughtCard(account);
-
+            account.getCollection().showHand();
         }
         return menuPtr;
     }
 }
 
 
-class ShowCollection extends ShopMenuCommands {
+class ShowCollectionCommand extends CollectionMenuCommands {
     Pattern pattern = Pattern.compile("show collection", Pattern.CASE_INSENSITIVE);
 
-    ShowCollection(String input, Menu menuPtr) {
+    ShowCollectionCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
@@ -98,17 +97,17 @@ class ShowCollection extends ShopMenuCommands {
     public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            account.getShop().showCollection();
+            account.getCollection().showCollection();
         }
         return menuPtr;
     }
 }
 
 
-class Buy extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("Buy (.)+", Pattern.CASE_INSENSITIVE);
+class SelectCommand extends CollectionMenuCommands {
+    Pattern pattern = Pattern.compile("select (.)+", Pattern.CASE_INSENSITIVE);
 
-    Buy(String input, Menu menuPtr) {
+    SelectCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
@@ -116,28 +115,8 @@ class Buy extends ShopMenuCommands {
     public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            account.getShop().BuyCard(matcher.group(1),account);
+            account.getCollection().addToHand(matcher.group(1));
         }
         return menuPtr;
     }
 }
-
-
-class Money extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("money (.)+", Pattern.CASE_INSENSITIVE);
-
-    Money(String input, Menu menuPtr) {
-        super(input, menuPtr);
-    }
-
-    @Override
-    public Menu action(Menu menuPtr, Account account) {
-        Matcher matcher = pattern.matcher(input.toLowerCase());
-        if (matcher.matches()) {
-            account.getShop().showMoney(account);
-        }
-        return menuPtr;
-    }
-}
-
-

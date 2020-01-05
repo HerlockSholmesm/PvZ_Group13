@@ -1,15 +1,14 @@
 package commands;
 import commands.Menu.Menu;
-import commands.Menu.PlantCollectionMenu;
 import commands.Menu.RailMenu;
-import commands.Menu.ZombieCollectionMenu;
+import commands.Menu.CollectionMenu;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class PlayMenuCommands {
-    public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
+    public static ArrayList<PlayMenuCommands> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
@@ -90,7 +89,7 @@ class ZombieCommand extends PlayMenuCommands {
     public void action(Menu menuPtr) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
-            menuPtr = new ZombieCollectionMenu();
+            menuPtr = new CollectionMenu();
         }
     }
 }
