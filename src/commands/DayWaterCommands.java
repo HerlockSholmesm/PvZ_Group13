@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class DayWaterCommands {
-    public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
+    public static ArrayList<DayWaterCommands> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
@@ -24,7 +24,6 @@ public abstract class DayWaterCommands {
 
     public static void createCommands(String input, Menu menuPtr) {
 
-        allCommand.add(new CreateAccount(input, menuPtr));
     }
 
     abstract public void action(Menu menuPtr, PlayerDay playerDay);

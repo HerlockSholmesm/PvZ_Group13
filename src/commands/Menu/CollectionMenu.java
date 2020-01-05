@@ -1,6 +1,6 @@
 package commands.Menu;
 
-public class ZombieCollectionMenu implements Menu {
+public class CollectionMenu implements Menu {
     Menu parentMenu = new MainMenu();
 
     @Override

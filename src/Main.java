@@ -6,7 +6,6 @@ import commands.*;
 import commands.Menu.*;
 import commands.Menu.Menu;
 import in_game.Account;
-import sun.rmi.runtime.Log;
 
 public class Main {
 
@@ -126,13 +125,34 @@ public class Main {
 
             }
 
+            while (menuPointer instanceof CollectionMenu){
+                String string = scanner.nextLine();
+                CollectionMenuCommands.createCommands(string, menuPointer);
+                boolean isValidCommand = false;
+                for (CollectionMenuCommands commands1 : CollectionMenuCommands.allCommand) {
+                    Pattern pattern = commands1.pattern;
+                    Matcher matcher = pattern.matcher(string);
+                    if (matcher.matches()) {
+                        menuPointer = commands1.action(menuPointer, mainAccount);
+                        isValidCommand = true;
+                        break;
+                    }
+                }
+                if (string.equalsIgnoreCase("play")){
+                    menuPointer = new PlayMenu();
+                    break;
+                }
+                if (!isValidCommand) {
+                    InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
+                    invalidCommand.action();
+                }
+
+            }
+
             while (menuPointer instanceof PlayMenu) {
 
             }
-            while (menuPointer instanceof ZombieCollectionMenu) {
-
-            }
-            while (menuPointer instanceof PlantCollectionMenu) {
+            while (menuPointer instanceof CollectionMenu) {
 
             }
         }
