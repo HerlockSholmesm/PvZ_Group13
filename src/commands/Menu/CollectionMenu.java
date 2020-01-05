@@ -5,12 +5,12 @@ public class CollectionMenu implements Menu {
 
     @Override
     public void help() {
-        System.out.println("help : showing commands" +
-                "shoe hand : shoe cards that you select" +
-                "shoe collection : show cards in your collection" +
-                "select : go to shop menu" +
-                "play : go to shop menu" +
-                "exit : go to pvp"
+        System.out.println("help : showing commands\n" +
+                "shoe hand : shoe cards that you select\n" +
+                "shoe collection : show cards in your collection\n" +
+                "select : go to shop menu\n" +
+                "play : go to shop menu\n" +
+                "exit : go to pvp\n"
         );
     }
 

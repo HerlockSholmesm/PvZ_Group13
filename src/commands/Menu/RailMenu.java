@@ -6,14 +6,14 @@ public class RailMenu implements Menu {
 
     @Override
     public void help() {
-        System.out.println("help : showing commands" +
-                "List : show list of accounts " +
-                "select : select your card " +
-                "Record : Show kiled Zombie " +
-                "Plant : " +
-                "Remove : " +
-                "End turn : " +
-                "show lawn  : showing all of lawns of zombies and plants" );
+        System.out.println("help : showing commands\n" +
+                "List : show list of accounts \n" +
+                "select : select your card \n" +
+                "Record : Show kiled Zombie \n" +
+                "Plant : \n" +
+                "Remove : \n" +
+                "End turn : \n" +
+                "show lawn  : showing all of lawns of zombies and plants\n" );
     }
 
     @Override
