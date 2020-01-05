@@ -149,11 +149,11 @@ public class Shop implements Serializable {
         zombie = new MovingZombie("Balloon Zombie", 2, 2, 0);
         zombies.add(zombie);
         collection.add(zombie);
-        zombie = new MovingZombie("Newspaper Zombie", 2, 3, 2);
+        zombie = new ShieldZombie("Newspaper Zombie", 2, 2, 2);
         zombies.add(zombie);
-        zombie = new MovingZombie("Target Zombie", 2, 3, 3);
+        zombie = new ShieldZombie("Target Zombie", 2, 3, 3);
         zombies.add(zombie);
-        zombie = new MovingZombie("Screen Door Zombie", 2, 2, 4);
+        zombie = new ShieldZombie("Screen Door Zombie", 2, 2, 4);
         zombies.add(zombie);
         collection.add(zombie);
         zombie = new GiantZombie("Giga-gargantuar", 6, 1, 0);

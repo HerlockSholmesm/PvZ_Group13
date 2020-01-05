@@ -15,7 +15,19 @@ public class SwimmingZombie extends Zombie {
 
     @Override
     public void action(Game game) {
-
+        String name = this.getName();
+        for (Plant plant : game.getPlants()) {
+            switch (name) {
+                case ("Snorkel Zombie"):
+                    if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
+                        plant.setLife(plant.getLife() - 1);
+                    }
+                case ("Dolphin Rider Zombie"):
+                    if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
+                        plant.setLife(plant.getLife() - 1);
+                    }
+            }
+        }
     }
 
     public SwimmingZombie(String name, int life, int speed, int defense) {

@@ -20,16 +20,21 @@ public class Game {
         return ThrowingThings;
     }
 
-    public void setThrowingThings(int xCoordinate, int yCoordinate,Game game) {
+    public void setThrowingThings(int xCoordinate, int yCoordinate,int power,Game game) {
         ThrowingThing throwingThing= new ThrowingThing(xCoordinate,yCoordinate);
         this.getThrowingThings().add(new ThrowingThing(xCoordinate,yCoordinate));
-        throwingThing.action(game);
+        throwingThing.action(game,power);
     }
 
     public void setPeaBullets(int xCoordinate, int yCoordinate,Game game) {
         PeaBullet peaBullet= new PeaBullet(xCoordinate,yCoordinate);
         this.peaBullets.add(new PeaBullet(xCoordinate,yCoordinate));
         peaBullet.action(game);
+    }
+    public void setPeaBulletsNegetive(int xCoordinate, int yCoordinate,Game game) {
+        PeaBullet peaBullet= new PeaBullet(xCoordinate,yCoordinate);
+        this.peaBullets.add(new PeaBullet(xCoordinate,yCoordinate));
+        peaBullet.actionnegetive(game);
     }
     private ArrayList<ThrowingThing> ThrowingThings= new ArrayList<ThrowingThing>();
     private Sun sun;

@@ -131,15 +131,15 @@ public abstract class Zombie extends Card {
 
     @Override
     public String toString() {
-        return   name  + ": " + life  ;
+        return name + ": " + life;
     }
 
-    public String toStringPrime(){
+    public String toStringPrime() {
         return name + ": " + life + ", " + "(" + x + "," + y + ")";
     }
 
-}
 
+}
 
 
 
