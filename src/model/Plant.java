@@ -93,21 +93,10 @@ public abstract class Plant extends Card {
         card.setLife(card.getLife() - attackPower);
     }
 
-<<<<<<< HEAD
-    public void action(Game game){
-    }
     public void attack() {
     }
-
-  //  public abstract void action(Game game);
-//>>>>>>> Stashed changes
-=======
-
-    public void attack() {
-    }
-
     public abstract void action(Game game);
->>>>>>> origin/master
+
     @Override
     public String toString() {
         return   name  + ": " + sun ;
@@ -140,9 +129,6 @@ class ProducerPlant extends Plant {
 
     }
 
-    @Override
-    public void beAttacked() {
-    }
 
     @Override
     public void action(Game game) {
@@ -152,8 +138,6 @@ class ProducerPlant extends Plant {
                     if (game.getTurn()>=this.getClock() ){ game.setSun(game.getSun().getSunStore()+1);}
             case ("Twin Sunflower"):
                 if (game.getTurn()>=this.getClock()){ game.setSun(game.getSun().getSunStore()+2);}
-
-
         }
     }
 }
@@ -191,6 +175,7 @@ class shootingPlant extends Plant {
                             peaBullet.move();
                         }
                     }
+                    break;
                 case ("Snow Pea"):
                     if (game.getTurn() >= this.getClock()) {
                         if (this.getYCoordinate() == zombie.getY()) {
@@ -198,6 +183,7 @@ class shootingPlant extends Plant {
                             peaBullet.move();
                         }
                     }
+                    break;
 
                 case ("Repeater"):
                     if (game.getTurn() >= this.getClock()) {
