@@ -31,6 +31,11 @@ public class Game {
         this.peaBullets.add(new PeaBullet(xCoordinate,yCoordinate));
         peaBullet.action(game);
     }
+    public void setPeaBulletsNegetive(int xCoordinate, int yCoordinate,Game game) {
+        PeaBullet peaBullet= new PeaBullet(xCoordinate,yCoordinate);
+        this.peaBullets.add(new PeaBullet(xCoordinate,yCoordinate));
+        peaBullet.actionnegetive(game);
+    }
     private ArrayList<ThrowingThing> ThrowingThings= new ArrayList<ThrowingThing>();
     private Sun sun;
     protected ArrayList<Plant> plants = new ArrayList<Plant>();

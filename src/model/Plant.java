@@ -180,17 +180,21 @@ class shootingPlant extends Plant {
                     if (game.getTurn() >= this.getClock()) {
                         if (this.getYCoordinate() == zombie.getY()) {
                             game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(),game);
+                            zombie.setLife(zombie.getLife()-1);
                         }
                     }
                 case ("Gatling Pea"):
                     if (game.getTurn() >= this.getClock()) {
                         if (this.getYCoordinate() == zombie.getY()) {
-                            game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(),game);
+                            for (int i = 0; i < 5; i++) {
+                                game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(), game);
+                            }
                         }
                     }
                 case ("Scaredy-shroom"):
                     if (game.getTurn() >= this.getClock()) {
                         if (this.getYCoordinate() == zombie.getY()) {
+                            if(this.getXCoordinate()- zombie.getX()<=2)
                             game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(),game);
                         }
                     }
@@ -198,6 +202,7 @@ class shootingPlant extends Plant {
                     if (game.getTurn() >= this.getClock()) {
                         if (this.getYCoordinate() == zombie.getY()) {
                             game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(),game);
+                            game.setPeaBulletsNegetive(this.getXCoordinate(), this.getYCoordinate(),game);
                         }
                     }
 
