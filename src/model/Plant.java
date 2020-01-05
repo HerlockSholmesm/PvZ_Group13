@@ -224,28 +224,30 @@ class throwingPlant extends Plant {
         for (Zombie zombie : game.getZombies()) {
             switch (name) {
                 case ("Cabbage-pult"):
-                    //todo find minimom
                     if (game.getTurn() >= this.getClock()) {
                         if (this.getYCoordinate() == zombie.getY()) {
-                            game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(),game);
+                            game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(),2,game);
                         }
                     }
                 case ("Kernel-pult"):
                     if (game.getTurn() >= this.getClock()) {
                         if (this.getYCoordinate() == zombie.getY()) {
-                            game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(),game);
+                            game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(),0,game);
+                            //todo lock zombie
                         }
                     }
                 case ("Melon-pult"):
                     if (game.getTurn() >= this.getClock()) {
                         if (this.getYCoordinate() == zombie.getY()) {
-                            game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(),game);
+                            game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(),3,game);
                         }
                     }
                 case ("Winter Melon"):
                     if (game.getTurn() >= this.getClock()) {
                         if (this.getYCoordinate() == zombie.getY()) {
-                            game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(),game);
+                            game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(),3,game);
+                            zombie.setSpeed(zombie.getSpeed()/2);
+                            //todo for one turn
                         }
                     }
 
@@ -301,16 +303,11 @@ class ToPlantOnPlant extends Plant {
         String name = this.getName();
         switch (name) {
             case ("bobo"):
-                for (Zombie zombie : game.getZombies()) {
-                    if (this.getXCoordinate() == zombie.getX()) {
-                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                        peaBullet.move();
-                    }
+               //todo
                 }
 
         }
     }
-}
 
 class EatablePlant extends Plant {
     public EatablePlant(String name, int sun, int rest, int life) {
@@ -324,28 +321,24 @@ class EatablePlant extends Plant {
             switch (name) {
                 case ("Explode-o-nut"):
                     if (this.getXCoordinate() == zombie.getX()) {
-                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                        peaBullet.move();
+                       this.setLife(this.getLife()-1);
+                        //todo stop zombie
                     }
                 case ("Wall-nut"):
                     if (this.getXCoordinate() == zombie.getX()) {
-                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                        peaBullet.move();
+                        this.setLife(this.getLife()-1);
                     }
                 case ("Tangle Kelp"):
                     if (this.getXCoordinate() == zombie.getX()) {
-                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                        peaBullet.move();
+                        this.setLife(this.getLife()-1);
                     }
                 case ("Tall-nut"):
                     if (this.getXCoordinate() == zombie.getX()) {
-                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                        peaBullet.move();
+                        this.setLife(this.getLife()-1);
                     }
                 case ("Cattail"):
                     if (this.getXCoordinate() == zombie.getX()) {
-                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                        peaBullet.move();
+                        this.setLife(this.getLife()-1);
                     }
             }
 

@@ -48,8 +48,9 @@ public class ThrowingThing {
 
     //todo
     //finding nearest
-    public void action(Game game) {
+    public void action(Game game, int power) {
         this.move();
+        this.power=power;
         if (this.getX() >= 19) {
             this.removeBullet();
         } else {
