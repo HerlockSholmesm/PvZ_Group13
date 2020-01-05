@@ -93,7 +93,7 @@ public abstract class Plant extends Card {
         card.setLife(card.getLife() - attackPower);
     }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
     public void action(Game game){
     }
     public void attack() {
@@ -101,13 +101,13 @@ public abstract class Plant extends Card {
 
   //  public abstract void action(Game game);
 //>>>>>>> Stashed changes
-=======
+//=======
 
     public void attack() {
     }
 
-    public abstract void action(Game game);
->>>>>>> origin/master
+ //   public abstract void action(Game game);
+//>>>>>>> origin/master
     @Override
     public String toString() {
         return   name  + ": " + sun ;
@@ -254,13 +254,13 @@ class shootingPlant extends Plant {
 
         }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
         @Override
         public void beAttacked() {
 
         }
-=======
->>>>>>> origin/master
+//=======
+//>>>>>>> origin/master
 
 
         public throwingPlant(String name, int clock, int numberOfBullet, int power, int sun, int rest, int life) {
