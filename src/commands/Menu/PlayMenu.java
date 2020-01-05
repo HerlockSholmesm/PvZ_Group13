@@ -18,12 +18,12 @@ public class PlayMenu implements Menu {
 
     @Override
     public void help() {
-        System.out.println("help : showing commands" +
-                "day : go to plant collection" +
-                "water : go to plant collection" +
-                "rail : go to shop menu"+
-                "zombie : go to shop menu"+
-                "pvp : go to shop menu");
+        System.out.println("help : showing commands\n" +
+                "day : go to plant collection\n" +
+                "water : go to plant collection\n" +
+                "rail : go to shop menu\n"+
+                "zombie : go to shop menu\n"+
+                "pvp : go to shop menu\n");
     }
 
     @Override

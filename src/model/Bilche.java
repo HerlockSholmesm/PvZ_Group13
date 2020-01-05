@@ -18,7 +18,5 @@ public class Bilche {
     }
 
     public static class Control {
-
-
     }
 }

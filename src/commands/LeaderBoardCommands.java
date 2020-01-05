@@ -19,12 +19,13 @@ public abstract class LeaderBoardCommands {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
+        allCommand = new ArrayList<>();
         allCommand.add(new ShowLeaderBoard(input, menuPtr));
         allCommand.add(new ExitLeaderBoard(input, menuPtr));
         allCommand.add(new HelpLeaderBoard(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr, Account account);
+    abstract public Menu action(Menu menuPtr, Account account);
 }
 
 class ShowLeaderBoard extends LeaderBoardCommands {
@@ -35,12 +36,12 @@ class ShowLeaderBoard extends LeaderBoardCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             account.showLeaderBoard();
         }
-
+        return menuPtr;
     }
 }
 
@@ -52,11 +53,12 @@ class HelpLeaderBoard extends LeaderBoardCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             menuPtr.help();
         }
+        return menuPtr;
     }
 }
 
@@ -68,11 +70,12 @@ class ExitLeaderBoard extends LeaderBoardCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, Account account) {
+    public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr.exit(menuPtr);
+            return menuPtr.exit(menuPtr);
         }
+        return menuPtr;
     }
 }
 

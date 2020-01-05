@@ -35,8 +35,7 @@ public abstract class LoginCommand {
 }
 
 class CreateAccount extends LoginCommand {
-    private Pattern pattern = Pattern.compile(
-            "create account (.+) (.+)", Pattern.CASE_INSENSITIVE);
+    private
 
     CreateAccount(String input, commands.Menu.Menu menu) {
         super(input, menu);
@@ -45,17 +44,12 @@ class CreateAccount extends LoginCommand {
 
     @Override
     public void action(commands.Menu.Menu menu, Account account) {
-        Matcher matcher = pattern.matcher(this.input);
-        if (matcher.matches()) {
-            account = new Account(matcher.group(1), matcher.group(2));
-            System.out.println("account created : " + account.getName());
-        }
+
     }
 }
 
 class Login extends LoginCommand {
-    private Pattern pattern = Pattern.compile(
-            "login (.+) (.+)", Pattern.CASE_INSENSITIVE);
+    private
 
 
     Login(String input, commands.Menu.Menu menuPtr) {
@@ -66,10 +60,6 @@ class Login extends LoginCommand {
 
     @Override
     public void action(commands.Menu.Menu menu, Account account) {
-        Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()) {
-             this.account = Account.findAccount(matcher.group(1), matcher.group(2));
-        }
     }
 }
 
@@ -125,7 +115,6 @@ class ExitLogin extends LoginCommand {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             this.menu = menuPtr.exit(menuPtr);
-
         }
     }
 }
