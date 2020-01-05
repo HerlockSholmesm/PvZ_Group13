@@ -54,64 +54,6 @@ public class DynamicZombie extends Dynamic {
     /**
      * How to put Zombies?
      */
-    public static void put(ZombieGame zombieGame, Zombie zombie, int x) {
-        zombieGame.addZombie(zombie);
-        zombie.setX(x);
-        for (int y = 18; y >= 0; y--) {
-            if (howManyZombiesInTheColumn(x, y, zombieGame) == 0) {
-                zombie.setY(y);
-            }
-        }
-        zombieGame.removeCard(findCard(zombieGame, zombie.getName()));
-    }
-
-    public static int howManyZombiesInTheColumn(int X, int Y, ZombieGame zombieGame) {
-        int numOfZombiesInCol = 0;
-        for (Zombie zombie : zombieGame.getZombies()) {
-            if (zombie.getX() == X && zombie.getY() == Y) {
-                numOfZombiesInCol++;
-            }
-        }
-        return numOfZombiesInCol;
-    }
-
-    public static Card findCard(ZombieGame zombieGame, String name) {
-        for (Card card : zombieGame.getCards()) {
-            if (name.equals(card.getName())) {
-                return card;
-            }
-        }
-        return null;
-    }
-
-    public static Zombie findZombie(Card card) {
-        for (Zombie zombie : Shop.getZombies()) {
-            if (zombie.getName().equals(card.getName())) {
-                if (zombie instanceof FlyingZombie) {
-                    return new FlyingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
-                } else if (zombie instanceof GiantZombie) {
-                    return new GiantZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
-                } else if (zombie instanceof MovingZombie) {
-                    return new MovingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
-                } else {
-                    return new SwimmingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
-                }
-
-            }
-        }
-        return null;
-    }
-
-    public static int howManyZombiesAreThere(int row, Yard yard) {
-        int numOfZombiesInRow = 0;
-        for (Zombie zombie : yard.getGame().getZombies()) {
-            if (row == zombie.getX()) {
-                numOfZombiesInRow++;
-            }
-        }
-        return numOfZombiesInRow;
-    }
-
 
     public void showLanePrinter() {
         int i = 0;
@@ -133,7 +75,7 @@ public class DynamicZombie extends Dynamic {
 
     public boolean hasGameEnded(){
         if (zombieGame.getPlants().size() <= 0) {
-            zombieGame.setPlayerCondition(PlayerCondition.WINNER);
+            zombieGame.setGameCondition(GameCondition.WINNER);
             return  true;
         }
         else{
@@ -145,7 +87,7 @@ public class DynamicZombie extends Dynamic {
                 }
             }
             if (money < min){
-                zombieGame.setPlayerCondition(PlayerCondition.LOSER);
+                zombieGame.setGameCondition(GameCondition.LOSER);
                 return true;
             }
             else{

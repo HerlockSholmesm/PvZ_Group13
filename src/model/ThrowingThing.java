@@ -2,9 +2,8 @@ package model;
 
 import in_game.Game;
 
-public class PeaBullet {
+public class ThrowingThing {
     private int x;
-    private int y;
     private int power;
 
     public int getPower() {
@@ -14,6 +13,8 @@ public class PeaBullet {
     public void setPower(int power) {
         this.power = power;
     }
+
+    private int y;
 
     public int getX() {
         return x;
@@ -31,13 +32,13 @@ public class PeaBullet {
         this.y = y;
     }
 
-    public PeaBullet(int x, int y) {
+    public ThrowingThing(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
     public void move() {
-        this.x=+1;
+        this.x+=1;
     }
 
     public void removeBullet() {
@@ -45,6 +46,8 @@ public class PeaBullet {
         this.setY(-1);
     }
 
+    //todo
+    //finding nearest
     public void action(Game game) {
         this.move();
         if (this.getX() >= 19) {

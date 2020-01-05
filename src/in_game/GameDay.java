@@ -10,14 +10,14 @@ import java.util.ArrayList;
 public class GameDay extends Game {
     public ArrayList<Chamanzan> chamanzans = new ArrayList<>(5);
 
-    PlayerCondition playerCondition = in_game.PlayerCondition.PLAYING;
+    GameCondition gameCondition = GameCondition.PLAYING;
 
-    public in_game.PlayerCondition getPlayerCondition() {
-        return playerCondition;
+    public GameCondition getGameCondition() {
+        return gameCondition;
     }
 
-    public void setPlayerCondition(in_game.PlayerCondition playerCondition) {
-        this.playerCondition = playerCondition;
+    public void setGameCondition(GameCondition gameCondition) {
+        this.gameCondition = gameCondition;
     }
 
     private int turnLastZombieKilled = 0;

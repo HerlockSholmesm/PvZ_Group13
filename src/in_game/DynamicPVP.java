@@ -1,43 +1,102 @@
 package in_game;
 
-class DynamicPVP {
-    private GameDay playerDay;
-    private ZombieGame zombiePlayer;
-    private final int TOTAL_NUMBER_OF_WAVES;
+import model.Card;
+import model.Plant;
+import model.Zombie;
 
-    public void setPlayerDay(GameDay playerDay) {
-        this.playerDay = playerDay;
+public class DynamicPVP {
+
+
+    private PvPGame pvpGame;
+
+    public DynamicPVP(PvPGame pvpGame) {
+        this.pvpGame = pvpGame;
     }
 
-    public void setZombiePlayer(ZombieGame zombiePlayer) {
-        this.zombiePlayer = zombiePlayer;
+
+    public int demandingSuns() {
+        /**the output indicates the number of suns player needs,so
+         * if the output < 0, it means that we need "output" suns.
+         * if the output > 0, it means we have extra "output" suns.
+         */
+        int allSunsPlayerHas = pvpGame.getSuns();
+        int allSunsPlayerMustHave = 0;
+        for (Plant plant : pvpGame.getPlants()) {
+            allSunsPlayerMustHave = allSunsPlayerMustHave + plant.getSun();
+        }
+        int allSunsPlayerNeeds = allSunsPlayerMustHave - allSunsPlayerHas;
+        return allSunsPlayerNeeds;
     }
 
-    public GameDay getPlayerDay() {
-        return playerDay;
+
+    public boolean canIChoose(Card card) {
+        Plant plant = Dynamic.findPlant(card);
+        int numberOfExtraSuns = demandingSuns();
+        return (numberOfExtraSuns >= plant.getSun());
     }
 
-    public ZombieGame getZombiePlayer() {
-        return zombiePlayer;
+
+    public void showLanePrinter() {
+        int i = 0;
+        System.out.println("Name" + "\t" + "row number:");
+        for (Zombie zombie : pvpGame.getZombies()) {
+            System.out.println(i + ". " + zombie.getName() + " " + zombie.getY());
+        }
     }
 
-    public int getTOTAL_NUMBER_OF_WAVES() {
-        return TOTAL_NUMBER_OF_WAVES;
-    }
 
-    public DynamicPVP(GameDay playerDay, ZombieGame zombiePlayer, int TOTAL_NUMBER_OF_WAVES) {
-        this.playerDay = playerDay;
-        this.zombiePlayer = zombiePlayer;
-        this.TOTAL_NUMBER_OF_WAVES = TOTAL_NUMBER_OF_WAVES;
+
+    public static Card findCard(PvPGame pvpGame, String name) {
+        for (Card card : pvpGame.getCards()) {
+            if (name.equals(card.getName())) {
+                return card;
+            }
+        }
+        return null;
     }
 
     /**
      * Turn ending
      */
     public void goOn() {
-        playerDay.addSuns(1);
-        zombiePlayer.addTurn();
-        playerDay.addTurn();
+        pvpGame.addSuns(1);
+        for (Plant plant : pvpGame.getPlants()) {
+            if (plant.getLife() <= 0) {
+                Dynamic.removePlant(plant.getXCoordinate(),plant.getYCoordinate(), pvpGame);
+            }
+        }
+        pvpGame.addTurn();
+
+    }
+
+    public boolean isWaveFinished(){
+        if (pvpGame.getZombies().size() == 0){
+            pvpGame.addPlantWins();
+            return true;
+        }
+        else{
+            for(Zombie zombie:pvpGame.getZombies()){
+                if (zombie.getX() == 0){
+                    pvpGame.addZombieCoin(200);
+                    pvpGame.addZombieWins();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    }
+
+    public boolean hasGameEnded(){
+        if (pvpGame.getPlantWins() >= pvpGame.getTotalWaves()/2){
+            pvpGame.setGamePvPCondition(GamePvPCondition.PLANTWINNIG);
+            return true;
+        }
+        else if (pvpGame.getZombieWins() >= pvpGame.getTotalWaves()/2){
+            pvpGame.setGamePvPCondition(GamePvPCondition.ZOMBIEWINNING);
+            return true;
+        }
+        return false;
     }
 
 }
