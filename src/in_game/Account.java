@@ -1,5 +1,6 @@
 package in_game;
 
+import model.Card;
 import model.Collection;
 import commands.*;
 
@@ -129,7 +130,7 @@ public class Account implements Serializable{
         return collection;
     }
 
-    public void setCollection(Collection collection) {
+    public void setCollection(ArrayList<Card> collection) {
         this.collection = collection;
     }
 

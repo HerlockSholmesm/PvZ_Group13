@@ -1,5 +1,6 @@
 package in_game;
 
+import commands.print;
 import model.*;
 
 import javax.xml.namespace.QName;

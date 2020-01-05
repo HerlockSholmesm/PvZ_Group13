@@ -65,7 +65,7 @@ class Login extends LoginCommand {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             System.out.println("matches");
-//            account = Account.findAccount(matcher.group(1), matcher.group(2));
+            account = Account.findAccount(matcher.group(1), matcher.group(2));
         }
     }
 }

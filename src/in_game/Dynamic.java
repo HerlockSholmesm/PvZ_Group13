@@ -1,11 +1,13 @@
 package in_game;
 
 import model.*;
-
+import commands.print;
 import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Dynamic {
+
+
 
     public void clock() {
     }
@@ -100,8 +102,7 @@ public abstract class Dynamic {
 
 
 }
-
-class DynamicDay {
+ class DynamicDay {
     PlayerDay playerDay;
 
     public DynamicDay(PlayerDay playerDay) {
@@ -125,6 +126,8 @@ class DynamicDay {
         int allSunsPlayerNeeds = allSunsPlayerMustHave - allSunsPlayerHas;
         return allSunsPlayerNeeds;
     }
+
+
 
     /**
      * Select Commands:

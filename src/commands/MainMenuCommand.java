@@ -118,7 +118,7 @@ class ExitMain extends MainMenuCommand {
     public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr.exit(menuPtr);//todo
+            menuPtr.exit(menuPtr);
         }
     }
 }

@@ -2,7 +2,11 @@ package commands;
 
 import commands.Menu.MainMenu;
 import commands.Menu.Menu;
+import in_game.Dynamic;
 import commands.Menu.ShopMenu;
+import in_game.Account;
+import in_game.Dynamic;
+import in_game.Dynamic;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -24,7 +28,7 @@ public abstract class DayWaterCommands {
         allCommand.add(new CreateAccount(input, menuPtr));
     }
 
-    abstract public void action(Menu menuPtr);
+    abstract public void action(Menu menuPtr, Account account);
 }
 
 class ShowHandDay extends DayWaterCommands {
@@ -35,11 +39,8 @@ class ShowHandDay extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()) {
-//todo
-        }
     }
 }
 
@@ -52,7 +53,7 @@ class select extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
 
@@ -69,7 +70,7 @@ class Plant extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
 
@@ -86,7 +87,7 @@ class Remove extends DayWaterCommands {
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
 
@@ -101,7 +102,7 @@ class Remove extends DayWaterCommands {
         }
 
         @Override
-        public void action(Menu menuPtr) {
+        public void action(Menu menuPtr, Account account) {
             Matcher matcher = pattern.matcher(input);
             if (matcher.matches()) {
                 menuPtr = new MainMenu();
@@ -117,7 +118,7 @@ class Remove extends DayWaterCommands {
         }
 
         @Override
-        public void action(Menu menuPtr) {
+        public void action(Menu menuPtr, Account account) {
             Matcher matcher = pattern.matcher(input);
             if (matcher.matches()) {
                 menuPtr = new MainMenu();
@@ -132,7 +133,7 @@ class Remove extends DayWaterCommands {
         }
 
         @Override
-        public void action(Menu menuPtr) {
+        public void action(Menu menuPtr, Account account) {
             Matcher matcher = pattern.matcher(input);
             if (matcher.matches()) {
                 menuPtr = new MainMenu();
@@ -148,7 +149,7 @@ class Remove extends DayWaterCommands {
         }
 
         @Override
-        public void action(Menu menuPtr) {
+        public void action(Menu menuPtr, Account account) {
             Matcher matcher = pattern.matcher(input);
             if (matcher.matches()) {
                 menuPtr = new ShopMenu();

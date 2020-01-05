@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 public class Collection {
     private  ArrayList<Card> hand;
+
+    public void setCollection(ArrayList<Card> collection) {
+        this.collection = collection;
+    }
+
     private ArrayList<Card> collection;
     private Shop shop;
 

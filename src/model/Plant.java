@@ -7,6 +7,9 @@ public  class Plant extends Card {
     private int y;
     private int sun;
     private int rest;
+    private int price;
+
+
 
     public void setX(int x) {
         this.x = x;
