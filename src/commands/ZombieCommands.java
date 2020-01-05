@@ -5,6 +5,7 @@ import commands.Menu.ShopMenu;
 import in_game.Dynamic;
 import in_game.DynamicZombie;
 import in_game.ZombieGame;
+import model.Card;
 import model.Zombie;
 
 import java.util.ArrayList;
@@ -83,7 +84,7 @@ class ShowHandZombie extends ZombieCommands {
 
 
 class ShowLanes extends ZombieCommands {
-    Pattern pattern = Pattern.compile("showlanes", Pattern.CASE_INSENSITIVE);
+    Pattern pattern = Pattern.compile("Show lanes", Pattern.CASE_INSENSITIVE);
     ShowLanes(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -106,14 +107,36 @@ class Put extends ZombieCommands {
     }
 
     @Override
-    public void action(Menu menuPtr, ZombieGame zombiePlayer) {
+    public void action(Menu menuPtr, ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()){
             String zombieName = matcher.group(2);
             String rowNumber = matcher.group(3);
             try{
                 int row = Integer.parseInt(rowNumber);
-                Zombie zombie =
+                DynamicZombie dynamicZombie = new DynamicZombie(zombieGame);
+                Card card = dynamicZombie.findCard(zombieGame,zombieName);
+                if (card == null){
+                    System.out.println("You don't have such a zombie or the zombie name is invalid");
+                }
+                else {
+                    Zombie zombie = dynamicZombie.findZombie(card);
+                    if (zombie == null){
+                        System.out.println("Such a zombie doesn't exist on your list!");
+                    }
+                    else{
+                        if (row >= 0 && row <= 5){
+                            if (DynamicZombie.howManyZombiesAreThere(row, zombieGame.getYard()) <= 1)
+                                DynamicZombie.put(zombieGame,zombie,row);
+                            else
+                                System.out.println("the row " + row + " is full.");
+                        }
+                        else{
+                            System.out.println("Such a row doesn't exist!");
+                        }
+                    }
+
+                }
             } catch (NumberFormatException e){
                 System.out.println("PLEASE ENTER AN INTEGER AS THE LAST INPUT OF PUT COMMAND");
             }
@@ -124,14 +147,14 @@ class Put extends ZombieCommands {
 
 
 class Start extends ZombieCommands {
-    Pattern pattern = Pattern.compile("start (.)+", Pattern.CASE_INSENSITIVE);
+    Pattern pattern = Pattern.compile("start", Pattern.CASE_INSENSITIVE);
 
     Start(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr,ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
 
@@ -140,33 +163,34 @@ class Start extends ZombieCommands {
 }
 
 class EndTurn extends ZombieCommands {
-    Pattern pattern = Pattern.compile("End turn (.)+", Pattern.CASE_INSENSITIVE);
+    Pattern pattern = Pattern.compile("End turn", Pattern.CASE_INSENSITIVE);
 
     EndTurn(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr,ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
-
+            DynamicZombie dynamicZombie = new DynamicZombie(zombieGame);
+            dynamicZombie.endTurn();
         }
     }
 }
 
-class ShowLawn extends ZombieCommands {
-    Pattern     pattern = Pattern.compile("Showlawn (.)+", Pattern.CASE_INSENSITIVE);
+class ShowLawnZombie extends ZombieCommands {
+    Pattern pattern = Pattern.compile("Showlawn", Pattern.CASE_INSENSITIVE);
 
-    ShowLawn(String input, Menu menuPtr) {
+    ShowLawnZombie(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
     @Override
-    public void action(Menu menuPtr) {
+    public void action(Menu menuPtr,ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
-
+            Dynamic.ShowLawnPrinter(zombieGame.getPlants(), zombieGame.getZombies(), "life", "Coordinate");
         }
     }
 }
