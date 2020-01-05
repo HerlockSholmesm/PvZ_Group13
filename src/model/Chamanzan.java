@@ -1,32 +1,48 @@
 package model;
 
-public class Chamanzan {
+import in_game.Game;
 
-    boolean isAvailable;
+import java.util.ArrayList;
+
+public class Chamanzan {
+    public static final int SPEED = 3;
+    boolean used;
     private int whichRow;
-    private Cell waterYard[][] = new Cell[2][19];
+    private Cell whichCell;
     private Yard yard;
 
-    public Chamanzan(int whichCell, Yard yard) {
-        this.whichRow = whichCell;
+    public Chamanzan(int x, int y, Yard yard) {
+        this.whichCell = new Cell(x, y);
         this.yard = yard;
+        used = false;
     }
 
-    public void setWaterYard(Cell[][] waterYard) {
-        this.waterYard = waterYard;
+    public boolean isUsed() {
+        return used;
     }
 
-    public Chamanzan(int whichCell) {
-        this.isAvailable = true;
-        this.whichRow = whichCell;
+    public void setUsed(boolean used) {
+        this.used = used;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
+    public int getWhichRow() {
+        return whichRow;
     }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
+    public void setWhichRow(int whichRow) {
+        this.whichRow = whichRow;
+    }
+
+    public void setWhichCell(Cell whichCell) {
+        this.whichCell = whichCell;
+    }
+
+    public Yard getYard() {
+        return yard;
+    }
+
+    public void setYard(Yard yard) {
+        this.yard = yard;
     }
 
     public int getWhichCell() {
@@ -38,13 +54,31 @@ public class Chamanzan {
     }
 
 
-    public void use() {
-        for (Zombie zombie:Shop.getZombies()) {
-            if(zombie.getY()==whichRow){
-                zombie.setX(-1);
-                zombie.setY(-1);
+    public void action(Game game){
+        if (used) {
+            whichCell.setX(whichCell.getX() + SPEED);
+            whichCell.setY(whichCell.getY() + SPEED);
+            for (Zombie zombie : game.getZombies()) {
+                if ((whichCell.getX() - 3 <= zombie.getX() || zombie.getX() <= whichCell.getX()) && zombie.getY() == whichCell.getY()) {
+                    zombie.setX(-1);
+                    zombie.setY(-1);
+                }
             }
+            if (whichCell.getX() >= 19){
+                whichCell.setX(-1);
+                whichCell.setY(-1);
+            }
+        } else {
+            for (Zombie zombie : game.getZombies()) {
+                if (zombie.getX() == 0 && zombie.getY() == whichCell.getY()) {
+                    used = true;
+                    zombie.setY(-1);
+                    zombie.setX(-1);
+                }
+            }
+            return;
         }
+
     }
 
 }

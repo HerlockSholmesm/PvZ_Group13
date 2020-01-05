@@ -1,5 +1,7 @@
 package model;
 
+import in_game.Game;
+
 public abstract class Zombie extends Card {
 
     private static Shop shop;
@@ -93,110 +95,6 @@ public abstract class Zombie extends Card {
         return name + ": " + life + ", " + "(" + x + "," + y + ")";
     }
 
-}
-
-class SwimmingZombie extends Zombie {
-    @Override
-    public void attack(Card card) {
-        super.attack(card);
-    }
-
-    @Override
-    public void move() {
-        super.move();
-    }
-
-    @Override
-    public void action(Game game) {
-
-    }
-
-    public SwimmingZombie(String name, int life, int speed, int defense) {
-        super(life, speed, defense, name);
-    }
-}
-
-class ShieldZombie extends Zombie {
-
-    int life;
-
-    public ShieldZombie(int life, int speed, int defense, String name) {
-        super(life, speed, defense, name);
-    }
-
-    public void addLife(int addNumber) {
-        this.life = +addNumber;
-    }
-
-    @Override
-    public void action(Game game) {
-
-    }
-}
-
-class MovingZombie extends Zombie {
-    @Override
-    public void attack(Card card) {
-        super.attack(card);
-    }
-
-    @Override
-    public void move() {
-        super.move();
-    }
-
-    @Override
-    public void action(Game game) {
-
-    }
-
-    public MovingZombie(String name, int life, int speed, int defense) {
-        super(life, speed, defense, name);
-    }
-}
-
-class GiantZombie extends Zombie {
-    public GiantZombie(String name, int life, int speed, int defense) {
-        super(life, speed, defense, name);
-    }
-
-    @Override
-    public void attack(Card card) {
-        super.attack(card);
-    }
-
-
-    @Override
-    public void move() {
-        super.move();
-    }
-
-    @Override
-    public void action(Game game) {
-
-    }
-}
-
-
-class FlyingZombie extends Zombie {
-    public FlyingZombie(String name, int life, int speed, int defense) {
-        super(life, speed, defense, name);
-    }
-
-    @Override
-    public void attack(Card card) {
-        super.attack(card);
-    }
-
-    @Override
-    public void move() {
-        super.move();
-    }
-
-    @Override
-    public void action(Game game) {
-
-    }
 }
 
 

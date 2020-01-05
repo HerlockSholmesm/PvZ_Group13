@@ -9,14 +9,14 @@ public class gameDayPVP extends Game {
 
     private Sun suns;//must init with 2
 
-    private int numOfWins = 0;
+    private int numOfPlantsWins = 0;
 
     public int getNumOfWins() {
-        return numOfWins;
+        return numOfPlantsWins;
     }
 
     public void addNumOfWins() {
-        this.numOfWins++;
+        this.numOfPlantsWins++;
     }
 
     public gameDayPVP(ArrayList<Card> cards, String name, String password) {

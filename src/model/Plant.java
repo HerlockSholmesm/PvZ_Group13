@@ -31,12 +31,6 @@ public abstract class Plant extends Card {
     private Cell cell;
     protected Sun suni;
 
-    public int getClock() {
-        return clock;
-    }
-
-    private int clock;
-
     public Cell getCell() {
         return cell;
     }
@@ -76,12 +70,11 @@ public abstract class Plant extends Card {
         return speed;
     }
 
-    public Plant(String name,int clock, int sun, int rest, int life) {
+    public Plant(String name, int sun, int rest, int life) {
         this.name = name;
         this.sun = sun;
         this.rest = rest;
         this.life = life;
-        this.clock=clock;
         suni = new Sun();
     }
 
@@ -93,13 +86,11 @@ public abstract class Plant extends Card {
         card.setLife(card.getLife() - attackPower);
     }
 
-    public void action(Game game){
-    }
+
     public void attack() {
     }
 
-  //  public abstract void action(Game game);
-//>>>>>>> Stashed changes
+    public abstract void action(Game game);
     @Override
     public String toString() {
         return   name  + ": " + sun ;
@@ -115,7 +106,7 @@ class ProducerPlant extends Plant {
 
     public ProducerPlant(String name, int clock, int numberOfSun, int sun, int rest, int life) {
 
-        super(name,clock, sun, rest, life);
+        super(name, sun, rest, life);
         addSun(sun);
     }
 
@@ -140,11 +131,10 @@ class ProducerPlant extends Plant {
     public void action(Game game) {
         String name = this.getName();
         switch (name){
-            case ("Sunflower"):
-                    if (game.getTurn()>=this.getClock() ){ game.setSun(game.getSun().getSunStore()+1);}
-            case ("Twin Sunflower"):
-                if (game.getTurn()>=this.getClock()){ game.setSun(game.getSun().getSunStore()+2);}
-
+            case ("bobo"):
+                for (Zombie zombie : game.getZombies()){
+                    if (this.getXCoordinate() == )
+                }
 
         }
     }
@@ -152,12 +142,12 @@ class ProducerPlant extends Plant {
 
 class shootingPlant extends Plant {
     public shootingPlant(String name, int clock, int numberOfPea, int sun, int rest, int life) {
-        super(name, clock, sun, rest, life);
+        super(name, sun, rest, life);
     }
 
-    public void shoot(int number, int x, int y) {
+    public void shoot(int number,int x, int y) {
         ArrayList<PeaBullet> peaBullets = null;
-        for (int i = 0; i < number; i++) {
+        for (int i = 0; i <number ; i++) {
             peaBullets.add(new PeaBullet(x, y));
         }
     }
@@ -170,243 +160,190 @@ class shootingPlant extends Plant {
     @Override
     public void beAttacked(Card card) {
     }
+    @Override
+    public void action(Game game){
+            String name = this.getName();
+            switch (name){
+                case ("Peashooter"):
+                    for (Zombie zombie : game.getZombies()){
+                        if (this.getXCoordinate() == zombie.getY()){
+                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(),this.getYCoordinate());
+                            peaBullet.move();
+                        }
+
+                    }
+
+            }
+    }
+}
+
+class throwingPlant extends Plant {
+    @Override
+    public void attack(Card card) {
+
+    }
+
+
+
+    public throwingPlant(String name, int clock, int numberOfBullet, int power, int sun, int rest, int life) {
+        super(name, sun, rest, life);
+    }
 
     @Override
     public void action(Game game) {
         String name = this.getName();
-        for (Zombie zombie : game.getZombies()) {
-            switch (name) {
-                case ("Peashooter"):
-                    if (game.getTurn() >= this.getClock()) {
-                        if (this.getYCoordinate() == zombie.getY()) {
-                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                            peaBullet.move();
-                        }
+        switch (name){
+            case ("bobo"):
+                for (Zombie zombie : game.getZombies()){
+                    if (this.getXCoordinate() == zombie.getX()){
+                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(),this.getYCoordinate());
+                        peaBullet.move();
                     }
-                case ("Snow Pea"):
-                    if (game.getTurn() >= this.getClock()) {
-                        if (this.getYCoordinate() == zombie.getY()) {
-                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                            peaBullet.move();
-                        }
-                    }
-
-                case ("Repeater"):
-                    if (game.getTurn() >= this.getClock()) {
-                        if (this.getYCoordinate() == zombie.getY()) {
-                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                            peaBullet.move();
-                        }
-                    }
-                case ("Threepeater"):
-                    if (game.getTurn() >= this.getClock()) {
-                        if (this.getYCoordinate() == zombie.getY()) {
-                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                            peaBullet.move();
-                        }
-                    }
-                case ("Cactus"):
-                    if (game.getTurn() >= this.getClock()) {
-                        if (this.getYCoordinate() == zombie.getY()) {
-                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                            peaBullet.move();
-                        }
-                    }
-                case ("Gatling Pea"):
-                    if (game.getTurn() >= this.getClock()) {
-                        if (this.getYCoordinate() == zombie.getY()) {
-                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                            peaBullet.move();
-                        }
-                    }
-                case ("Scaredy-shroom"):
-                    if (game.getTurn() >= this.getClock()) {
-                        if (this.getYCoordinate() == zombie.getY()) {
-                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                            peaBullet.move();
-                        }
-                    }
-                case ("Split Pea"):
-                    if (game.getTurn() >= this.getClock()) {
-                        if (this.getYCoordinate() == zombie.getY()) {
-                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                            peaBullet.move();
-                        }
-                    }
-
-            }
+                }
 
         }
     }
 }
 
-    class throwingPlant extends Plant {
-        @Override
-        public void attack(Card card) {
+class MinePlant extends Plant {
+    public MinePlant(String name, int cells, int sun, int rest, int life) {
+
+        super(name, sun, rest, life);
+    }
+
+    @Override
+    public void attack(Card card) {
+
+    }
+
+    @Override
+    public void beAttacked(Card card) {
+
+    }
+
+
+    @Override
+    public void action(Game game) {
+        String name = this.getName();
+        switch (name){
+            case ("bobo"):
+                for (Zombie zombie : game.getZombies()){
+                    if (this.getXCoordinate() == zombie.getX()){
+                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(),this.getYCoordinate());
+                        peaBullet.move();
+                    }
+                }
 
         }
+    }
+}
 
-        @Override
-        public void beAttacked() {
+class ToPlantOnPlant extends Plant {
+    public ToPlantOnPlant(String name, int sun, int rest, int life) {
+        super(name, sun, rest, life);
+    }
+
+    @Override
+    public void action(Game game) {
+        String name = this.getName();
+        switch (name){
+            case ("bobo"):
+                for (Zombie zombie : game.getZombies()){
+                    if (this.getXCoordinate() == zombie.getX()){
+                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(),this.getYCoordinate());
+                        peaBullet.move();
+                    }
+                }
 
         }
+    }
+
+    @Override
+    public void attack(Card card) {
+
+    }
+
+    @Override
+    public void beAttacked(Card card) {
+    }
 
 
-        public throwingPlant(String name, int clock, int numberOfBullet, int power, int sun, int rest, int life) {
-            super(name, clock, sun, rest, life);
+}
+
+class EatablePlant extends Plant {
+    public EatablePlant(String name, int sun, int rest, int life) {
+        super(name, sun, rest, life);
+    }
+
+    @Override
+    public void action(Game game) {
+        String name = this.getName();
+        switch (name){
+            case ("bobo"):
+                for (Zombie zombie : game.getZombies()){
+                    if (this.getXCoordinate() == zombie.getX()){
+                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(),this.getYCoordinate());
+                        peaBullet.move();
+                    }
+                }
+
         }
+    }
 
-        @Override
-        public void action(Game game) {
-            String name = this.getName();
+    @Override
+    public void attack(Card card) {
+
+    }
+
+    @Override
+    public void beAttacked(Card card) {
+
+    }
+
+}
+
+class PeaBullet {
+    private int x;
+    private int y;
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    Cell cell;
+
+    public PeaBullet(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void move() {
+        cell = new Cell(x + 1, y);
+    }
+    public void action(Game game){
+        if (this.getX() >= 19){
+            game.removeBullet(this);
+        }
+        else {
             for (Zombie zombie : game.getZombies()) {
-                switch (name) {
-                    case ("Cabbage-pult"):
-                        if (game.getTurn() >= this.getClock()) {
-                            if (this.getYCoordinate() == zombie.getY()) {
-                                PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                                peaBullet.move();
-                            }
-                        }
-                    case ("Kernel-pult"):
-                        if (game.getTurn() >= this.getClock()) {
-                            if (this.getYCoordinate() == zombie.getY()) {
-                                PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                                peaBullet.move();
-                            }
-                        }
-                    case ("Melon-pult"):
-                        if (game.getTurn() >= this.getClock()) {
-                            if (this.getYCoordinate() == zombie.getY()) {
-                                PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                                peaBullet.move();
-                            }
-                        }
-                    case ("Winter Melon"):
-                        if (game.getTurn() >= this.getClock()) {
-                            if (this.getYCoordinate() == zombie.getY()) {
-                                PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                                peaBullet.move();
-                            }
-                        }
-
+                if (zombie.getX() == x && zombie.getY() == y){
+                    zombie.beAttacked();
+                    game.removeBullet(this);
+                    return;
                 }
             }
         }
     }
-    class MinePlant extends Plant {
-        public MinePlant(String name, int cells, int sun, int rest, int life) {
-
-            super(name, 0, sun, rest, life);
-        }
-
-        @Override
-        public void attack(Card card) {
-
-        }
-
-        @Override
-        public void beAttacked(Card card) {
-
-        }
-
-
-        @Override
-        public void action(Game game) {
-            String name = this.getName();
-            switch (name) {
-                case ("bobo"):
-                    for (Zombie zombie : game.getZombies()) {
-                        if (this.getXCoordinate() == zombie.getX()) {
-                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                            peaBullet.move();
-                        }
-                    }
-
-            }
-        }
-    }
-    class ToPlantOnPlant extends Plant {
-        public ToPlantOnPlant(String name, int sun, int rest, int life) {
-            super(name, 0, sun, rest, life);
-        }
-
-        @Override
-        public void action(Game game) {
-            String name = this.getName();
-            switch (name) {
-                case ("bobo"):
-                    for (Zombie zombie : game.getZombies()) {
-                        if (this.getXCoordinate() == zombie.getX()) {
-                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                            peaBullet.move();
-                        }
-                    }
-
-            }
-        }
-
-        @Override
-        public void attack(Card card) {
-
-        }
-
-        @Override
-        public void beAttacked(Card card) {
-        }
-
-
-    }
-
-    class EatablePlant extends Plant {
-        public EatablePlant(String name, int sun, int rest, int life) {
-            super(name, 0, sun, rest, life);
-        }
-
-        @Override
-        public void action(Game game) {
-            String name = this.getName();
-            for (Zombie zombie : game.getZombies()) {
-            switch (name) {
-                case ("Explode-o-nut"):
-                        if (this.getXCoordinate() == zombie.getX()) {
-                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                            peaBullet.move();
-                        }
-                case ("Wall-nut"):
-                    if (this.getXCoordinate() == zombie.getX()) {
-                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                        peaBullet.move();
-                    }
-                case ("Tangle Kelp"):
-                    if (this.getXCoordinate() == zombie.getX()) {
-                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                        peaBullet.move();
-                    }
-                case ("Tall-nut"):
-                    if (this.getXCoordinate() == zombie.getX()) {
-                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                        peaBullet.move();
-                    }
-                case ("Cattail"):
-                    if (this.getXCoordinate() == zombie.getX()) {
-                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(), this.getYCoordinate());
-                        peaBullet.move();
-                    }
-                    }
-
-            }
-        }
-
-        @Override
-        public void attack(Card card) {
-
-        }
-
-        @Override
-        public void beAttacked(Card card) {
-
-        }
-
-    }
-
+}
