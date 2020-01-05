@@ -18,18 +18,23 @@ public class Shop implements Serializable {
         return collection;
     }
 
+    public void showCollection(){
+        for (Card card:collection) {
+            System.out.println(card.getName());
+        }
+    }
     public void BuyCard(String name, Account account) {
         ArrayList<Card> toBeDeleted = new ArrayList<>();
         for (Card card : cards) {
             if (card.getName().equals(name)) {
                 if (card instanceof Plant) {
-                    if (this.getPriceForPlant((Plant) card) <= account.getMoney()) {
+                    if (card.getPrice() <= account.getMoney()) {
                         collection.add(card);
                         baughtCards.add(card);
                     } else System.out.println("Money is not enough");
                 }
                 if (card instanceof Zombie) {
-                    if (this.getPriceForZombies((Zombie) card) <= account.getMoney()) {
+                    if (card.getPrice() <= account.getMoney()) {
                         collection.add(card);
                         baughtCards.add(card);
                     } else System.out.println("Money is not enough");
@@ -40,8 +45,14 @@ public class Shop implements Serializable {
         notBaughtCards.removeAll(baughtCards);
     }
 
-    public void showNotBaughtCard(){
+    public void showNotBaughtCard(Account account){
+        for (Card card : account.getCollection().getNotBaughtCards()){
+            System.out.println(card.toString());
+        }
+    }
 
+    public void showMoney(Account account){
+        System.out.println( account.getMoney());
     }
     public ArrayList<Card> getCards() {
         return cards;
@@ -114,7 +125,7 @@ public class Shop implements Serializable {
         plants.add(plant);
         cards.addAll(plants);
         notBaughtCards.addAll(cards);
-        account.setCollection(collection);
+        account.getCollection().setCollection(collection);
 
     }
 
@@ -159,17 +170,11 @@ public class Shop implements Serializable {
         collection.addAll(collection);
         cards.addAll(zombies);
         notBaughtCards.addAll(cards);
-        account.setCollection(collection);
+        account.getCollection().setCollection(collection);
     }
 
-    public int getPriceForPlant(Plant plant) {
-        int sun = plant.getSun(), coolDown = plant.getRest(), health = plant.getLife();
-        return (sun * coolDown * health + 1);
-    }
 
-    public int getPriceForZombies(Zombie zombie) {
-        int speed = zombie.getSpeed(), health = zombie.getSpeed();
-        return ((1 + speed) * health * 10);
-    }
+
+
 
 }

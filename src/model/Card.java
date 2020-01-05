@@ -7,6 +7,7 @@ public abstract class Card {
     private int life;
 
     public Card() {
+
     }
 
     public int getPrice() {
@@ -31,6 +32,14 @@ public abstract class Card {
 
     public int getLife() {
         return life;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "name='" + name + '\'' +
+                ", price=" + price ;
     }
 }
 

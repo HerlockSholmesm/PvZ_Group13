@@ -35,7 +35,6 @@ public abstract class LoginCommand {
 }
 
 class CreateAccount extends LoginCommand {
-    private
 
     CreateAccount(String input, commands.Menu.Menu menu) {
         super(input, menu);

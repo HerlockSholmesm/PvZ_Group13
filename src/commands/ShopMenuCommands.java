@@ -79,6 +79,7 @@ class ShowShop extends ShopMenuCommands {
     public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
+            account.getShop().showNotBaughtCard(account);
 
         }
         return menuPtr;
@@ -97,7 +98,7 @@ class ShowCollection extends ShopMenuCommands {
     public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-
+            account.getShop().showCollection();
         }
         return menuPtr;
     }
@@ -115,7 +116,7 @@ class Buy extends ShopMenuCommands {
     public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-
+            account.getShop().BuyCard(matcher.group(1),account);
         }
         return menuPtr;
     }
@@ -133,7 +134,7 @@ class Money extends ShopMenuCommands {
     public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
-
+            account.getShop().showMoney(account);
         }
         return menuPtr;
     }

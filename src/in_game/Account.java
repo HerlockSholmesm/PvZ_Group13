@@ -3,6 +3,7 @@ package in_game;
 import model.Card;
 import model.Collection;
 import commands.*;
+import model.Shop;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,13 +14,18 @@ public class Account implements Serializable{
     public static ArrayList<Account> allAccounts = new ArrayList<>();
     public static int NumberOfKilledZombie;
     private static HashMap<Object, Object> LeaderBoard;
-
+    private Shop shop;
 
     private ArrayList<Player> players = new ArrayList<>();
     private String name;
     private String password;
     private int score;
     private int money;
+
+    public Shop getShop() {
+        return shop;
+    }
+
     private Collection collection;
 
 
@@ -30,6 +36,7 @@ public class Account implements Serializable{
         this.money = 0;
         this.score = 0;
         this.collection = new Collection();
+        this.shop = new Shop();
         NumberOfKilledZombie = 0;
         allAccounts.add(this);
     }
@@ -139,7 +146,7 @@ public class Account implements Serializable{
         return collection;
     }
 
-    public void setCollection(ArrayList<Card> collection) {
+    public void setCollection(Collection collection) {
         this.collection = collection;
     }
 
