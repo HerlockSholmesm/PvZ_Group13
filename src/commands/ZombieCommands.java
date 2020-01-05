@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class ZombieCommands {
-    public static ArrayList<LoginCommand> allCommand = new ArrayList<>();
+    public static ArrayList<ZombieCommands> allCommand = new ArrayList<>();
     public Pattern pattern;
     String input;
     Menu menu;
@@ -24,8 +24,16 @@ public abstract class ZombieCommands {
     }
 
     public static void createCommands(String input, Menu menuPtr) {
+        allCommand = new ArrayList<>();
+        allCommand.add(new EndTurn(input, menuPtr));
+        allCommand.add(new Exit(input, menuPtr));
+        allCommand.add(new Help(input, menuPtr));
+        allCommand.add(new Put(input, menuPtr));
+        allCommand.add(new ShowHandZombie(input, menuPtr));
+        allCommand.add(new ShowLanes(input, menuPtr));
+        allCommand.add(new ShowLawnZombie(input, menuPtr));
+        allCommand.add(new Start(input, menuPtr));
 
-        //allCommand.add(new CreateAccount(input, menuPtr));
     }
 
     abstract public void action(Menu menuPtr, ZombieGame zombiePlayer);

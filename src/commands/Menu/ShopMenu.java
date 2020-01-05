@@ -5,10 +5,10 @@ public class ShopMenu implements Menu {
 
     @Override
     public void help() {
-        System.out.println("show shop : showing market" +
-                "show collection : showing collection" +
-                "Buy : Buying card" +
-                "Money : Showing your ceredit");
+        System.out.println("show shop : showing market\n" +
+                "show collection : showing collection\n" +
+                "Buy : Buying card\n" +
+                "Money : Showing your ceredit\n");
     }
 
     @Override

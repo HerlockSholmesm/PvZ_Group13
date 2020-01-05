@@ -5,13 +5,13 @@ public class ZombieMenu implements Menu {
 
     @Override
     public void help() {
-        System.out.println("help : showing commands" +
-                "show hand : showing your hand" +
-                "show lanes : showing lanes for zombie and plant" +
-                "put : puting zombie" +
-                "start : starting wave" +
-                "end turn : next turn" +
-                "showlawn : showing lawns");
+        System.out.println("help : showing commands\n" +
+                "show hand : showing your hand\n" +
+                "show lanes : showing lanes for zombie and plant\n" +
+                "put : puting zombie\n" +
+                "start : starting wave\n" +
+                "end turn : next turn\n" +
+                "showlawn : showing lawns\n");
     }
 
     @Override

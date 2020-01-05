@@ -1,13 +1,13 @@
 package commands.Menu;
 
 public class LeaderBoardMenu implements Menu {
-    public Menu parentMenu;
+    public Menu parentMenu = new LoginMenu();
 
     @Override
     public void help() {
-        System.out.println("help : showing commands" +
-                "show : showing all acounts with number of zomies that killed" +
-                "exit : exit");
+        System.out.println("help : showing commands\n" +
+                "show : showing all acounts with number of zomies that killed\n" +
+                "exit : exit\n");
 
     }
 
