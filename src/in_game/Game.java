@@ -7,6 +7,34 @@ import javax.xml.namespace.QName;
 import java.util.ArrayList;
 
 public abstract class Game {
+    public void setPlants(ArrayList<Plant> plants) {
+        this.plants = plants;
+    }
+
+    public void setCards(ArrayList<Card> cards) {
+        this.cards = cards;
+    }
+
+    public void setZombies(ArrayList<Zombie> zombies) {
+        this.zombies = zombies;
+    }
+
+    public void setCoin(Coin coin) {
+        this.coin = coin;
+    }
+
+    public void setTurn(int turn) {
+        this.turn = turn;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
     /**Plant related fields and functions:*/
     protected ArrayList<Plant> plants = new ArrayList<Plant>();
 

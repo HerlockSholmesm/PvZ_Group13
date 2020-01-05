@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import in_game.*;
 
 public abstract class Plant extends Card {
     private int x;
@@ -77,6 +78,7 @@ public abstract class Plant extends Card {
         suni = new Sun();
     }
 
+<<<<<<< Updated upstream
     public void attack(Card card) {
         card.setLife(card.getLife() - attackPower);
     }
@@ -89,6 +91,12 @@ public abstract class Plant extends Card {
 
     }
 
+=======
+    public void attack() {
+    }
+
+    public abstract void action(Game game);
+>>>>>>> Stashed changes
     @Override
     public String toString() {
         return   name  + ": " + sun ;
@@ -117,15 +125,25 @@ class ProducerPlant extends Plant {
     }
 
     @Override
-    public void attack(Card card) {
-        super.attack(card);
+    public void attack() {
+
     }
 
     @Override
-    public void beAttacked(Card card) {
-        super.beAttacked(card);
+    public void beAttacked() {
     }
 
+    @Override
+    public void action(Game game) {
+        String name = this.getName();
+        switch (name){
+            case ("bobo"):
+                for (Zombie zombie : game.getZombies()){
+                    if (this.getXCoordinate() == )
+                }
+
+        }
+    }
 }
 
 class shootingPlant extends Plant {
@@ -142,30 +160,58 @@ class shootingPlant extends Plant {
 
     @Override
     public void attack(Card card) {
-        super.attack(card);
+
     }
 
     @Override
     public void beAttacked(Card card) {
-        super.beAttacked(card);
     }
+    @Override
+    public void action(Game game){
+            String name = this.getName();
+            switch (name){
+                case ("Peashooter"):
+                    for (Zombie zombie : game.getZombies()){
+                        if (this.getXCoordinate() == zombie.getY()){
+                            PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(),this.getYCoordinate());
+                            peaBullet.move();
+                        }
 
+                    }
+
+            }
+    }
 }
 
 class throwingPlant extends Plant {
     @Override
     public void attack(Card card) {
-        super.attack(card);
+
     }
 
     @Override
-    public void beAttacked(Card card) {
-        super.beAttacked(card);
+    public void beAttacked() {
+
     }
 
 
     public throwingPlant(String name, int clock, int numberOfBullet, int power, int sun, int rest, int life) {
         super(name, sun, rest, life);
+    }
+
+    @Override
+    public void action(Game game) {
+        String name = this.getName();
+        switch (name){
+            case ("bobo"):
+                for (Zombie zombie : game.getZombies()){
+                    if (this.getXCoordinate() == zombie.getX()){
+                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(),this.getYCoordinate());
+                        peaBullet.move();
+                    }
+                }
+
+        }
     }
 }
 
@@ -177,15 +223,29 @@ class MinePlant extends Plant {
 
     @Override
     public void attack(Card card) {
-        super.attack(card);
+
     }
 
     @Override
     public void beAttacked(Card card) {
-        super.beAttacked(card);
+
     }
 
 
+    @Override
+    public void action(Game game) {
+        String name = this.getName();
+        switch (name){
+            case ("bobo"):
+                for (Zombie zombie : game.getZombies()){
+                    if (this.getXCoordinate() == zombie.getX()){
+                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(),this.getYCoordinate());
+                        peaBullet.move();
+                    }
+                }
+
+        }
+    }
 }
 
 class ToPlantOnPlant extends Plant {
@@ -194,13 +254,27 @@ class ToPlantOnPlant extends Plant {
     }
 
     @Override
+    public void action(Game game) {
+        String name = this.getName();
+        switch (name){
+            case ("bobo"):
+                for (Zombie zombie : game.getZombies()){
+                    if (this.getXCoordinate() == zombie.getX()){
+                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(),this.getYCoordinate());
+                        peaBullet.move();
+                    }
+                }
+
+        }
+    }
+
+    @Override
     public void attack(Card card) {
-        super.attack(card);
+
     }
 
     @Override
     public void beAttacked(Card card) {
-        super.beAttacked(card);
     }
 
 
@@ -212,13 +286,28 @@ class EatablePlant extends Plant {
     }
 
     @Override
+    public void action(Game game) {
+        String name = this.getName();
+        switch (name){
+            case ("bobo"):
+                for (Zombie zombie : game.getZombies()){
+                    if (this.getXCoordinate() == zombie.getX()){
+                        PeaBullet peaBullet = new PeaBullet(this.getXCoordinate(),this.getYCoordinate());
+                        peaBullet.move();
+                    }
+                }
+
+        }
+    }
+
+    @Override
     public void attack(Card card) {
-        super.attack(card);
+
     }
 
     @Override
     public void beAttacked(Card card) {
-        super.beAttacked(card);
+
     }
 
 }
@@ -226,6 +315,23 @@ class EatablePlant extends Plant {
 class PeaBullet {
     private int x;
     private int y;
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     Cell cell;
 
     public PeaBullet(int x, int y) {
@@ -233,11 +339,21 @@ class PeaBullet {
         this.y = y;
     }
 
-    public void shoot(int x, int y) {
-        cell = new Cell(x, y);
-    }
-
     public void move() {
         cell = new Cell(x + 1, y);
+    }
+    public void action(Game game){
+        if (this.getX() >= 19){
+            game.removeBullet(this);
+        }
+        else {
+            for (Zombie zombie : game.getZombies()) {
+                if (zombie.getX() == x && zombie.getY() == y){
+                    zombie.beAttacked();
+                    game.removeBullet(this);
+                    return;
+                }
+            }
+        }
     }
 }
