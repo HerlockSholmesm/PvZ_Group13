@@ -1,5 +1,5 @@
 package in_game;
 
-public enum playerCondition {
+public enum PlayerCondition {
     WINNER,LOSER,PLAYING
 }
