@@ -4,9 +4,11 @@ import commands.print;
 import model.*;
 
 import javax.xml.namespace.QName;
+import java.security.PublicKey;
 import java.util.ArrayList;
-public abstract class Game {
-//<<<<<<< HEAD
+
+public class Game {
+    //<<<<<<< HEAD
     public ArrayList<PeaBullet> getPeaBullets() {
         return peaBullets;
     }
@@ -15,7 +17,7 @@ public abstract class Game {
         this.peaBullets = peaBullets;
     }
 
-    private ArrayList<PeaBullet> peaBullets=new ArrayList<PeaBullet>();
+    private ArrayList<PeaBullet> peaBullets = new ArrayList<PeaBullet>();
     private Sun sun;
     protected ArrayList<Plant> plants = new ArrayList<Plant>();
     protected ArrayList<Card> cards = new ArrayList<>();
@@ -125,5 +127,10 @@ public abstract class Game {
     }
 
 
+    public void setPeaBullets(int xCoordinate, int yCoordinate) {
+       PeaBullet peaBullet= new PeaBullet(xCoordinate,yCoordinate);
+        this.peaBullets.add(new PeaBullet(xCoordinate,yCoordinate));
+        peaBullet.move();
+    }
 }
 
