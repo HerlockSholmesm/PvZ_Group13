@@ -50,18 +50,6 @@ public class MovingZombie extends Zombie {
                     if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
                         plant.setLife(plant.getLife() - 1);
                     }
-                case ("Newspaper Zombie"):
-                    if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
-                        plant.setLife(plant.getLife() - 1);
-                    }
-                case ("Target Zombie"):
-                    if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
-                        plant.setLife(plant.getLife() - 1);
-                    }
-                case ("Screen Door Zombie"):
-                    if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
-                        plant.setLife(plant.getLife() - 1);
-                    }
 
 
             }
