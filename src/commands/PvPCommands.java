@@ -4,6 +4,7 @@ import commands.Menu.Menu;
 import in_game.*;
 import model.Card;
 import model.Plant;
+import model.Zombie;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -227,5 +228,132 @@ class Ready extends PvPCommands {
 }
 
 
+class ShowHandPvPZombie extends PvPCommands {
+    Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
+    ShowHandPvPZombie(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr,PvPGame pvpGame) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches() && pvpGame.isReady()){
+            Dynamic.printer(pvpGame.getCards(), "Names", "SunsTheyNeed");
+        }
+    }
+}
 
 
+class ShowLanesPvP extends PvPCommands {
+    Pattern pattern = Pattern.compile("Show lanes", Pattern.CASE_INSENSITIVE);
+    ShowLanesPvP(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr, PvPGame pvpGame) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches() && pvpGame.isReady()){
+            DynamicPVP dynamicPVP = new DynamicPVP(pvpGame);
+            dynamicPVP.showLanePrinter();
+        }
+    }
+}
+
+
+class PutPvP extends PvPCommands {
+    Pattern pattern = Pattern.compile("Put ((.),(.))+", Pattern.CASE_INSENSITIVE);
+    PutPvP(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr, PvPGame pvpGame) {
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.matches() && pvpGame.isReady()){
+            String zombieName = matcher.group(2);
+            String rowNumber = matcher.group(3);
+            try{
+                int row = Integer.parseInt(rowNumber);
+                DynamicPVP dynamicPVP = new DynamicPVP(pvpGame);
+                Card card = dynamicPVP.findCard(pvpGame,zombieName);
+                if (card == null){
+                    System.out.println("You don't have such a zombie or the zombie name is invalid");
+                }
+                else {
+                    Zombie zombie = Dynamic.findZombie(card);
+                    if (zombie == null){
+                        System.out.println("Such a zombie doesn't exist on your list!");
+                    }
+                    else{
+                        if (row >= 0 && row <= 5){
+                            if (Dynamic.howManyZombiesAreThere(row, pvpGame.getYard()) <= 1)
+                                DynamicZombie.put(pvpGame,zombie,row);
+                            else
+                                System.out.println("the row " + row + " is full.");
+                        }
+                        else{
+                            System.out.println("Such a row doesn't exist!");
+                        }
+                    }
+
+                }
+            } catch (NumberFormatException e){
+                System.out.println("PLEASE ENTER AN INTEGER AS THE LAST INPUT OF PUT COMMAND");
+            }
+        }
+    }
+}
+
+
+
+class StartPvP extends PvPCommands {
+    Pattern pattern = Pattern.compile("start", Pattern.CASE_INSENSITIVE);
+
+    StartPvP(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr,PvPGame pvpGame) {
+        Matcher matcher = pattern.matcher(input.toLowerCase());
+        if (matcher.matches()) {
+            pvpGame.setStart(true);
+        }
+    }
+}
+
+
+class ShowLawnPvPZombie extends PvPCommands {
+    Pattern pattern = Pattern.compile("Showlawn", Pattern.CASE_INSENSITIVE);
+
+    ShowLawnPvPZombie(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr,PvPGame pvpGame) {
+        Matcher matcher = pattern.matcher(input.toLowerCase());
+        if (matcher.matches()) {
+            Dynamic.ShowLawnPrinter(pvpGame.getPlants(), pvpGame.getZombies(), "life", "Coordinate");
+        }
+    }
+}
+
+
+class EndTurnPvP extends PvPCommands {
+    Pattern pattern = Pattern.compile("End turn", Pattern.CASE_INSENSITIVE);
+
+    EndTurnPvP(String input, Menu menuPtr) {
+        super(input, menuPtr);
+    }
+
+    @Override
+    public void action(Menu menuPtr,PvPGame pvpGame) {
+        Matcher matcher = pattern.matcher(input.toLowerCase());
+        if (matcher.matches()) {
+            DynamicPVP dynamicPVP = new DynamicPVP(pvpGame);
+            dynamicPVP.goOn();
+        }
+    }
+}

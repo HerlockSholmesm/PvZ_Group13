@@ -54,6 +54,10 @@ public class Game {
         this.zombies = zombies;
     }
 
+    public void addZombie(Zombie zombie){
+        zombies.add(zombie);
+    }
+
     public void setCoin(Coin coin) {
         this.coin = coin;
     }
