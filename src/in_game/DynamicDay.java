@@ -66,16 +66,6 @@ public class DynamicDay extends Dynamic {
     }
 
     /**
-     * Set Cards Randomly:
-     */
-
-    public void addPlant() {
-        int index = MathFunctions.getRandomNumber(0, Shop.getAllPlants().size() - 1);
-        Plant plant = Shop.getAllPlants().get(index);
-        playerDay.addCard(new Plant(plant.getName(), plant.getSun(), plant.getRest(), plant.getLife()));
-    }
-
-    /**
      * Find a plant given its name:
      */
 

@@ -1,25 +1,18 @@
 package in_game;
 
 
-import model.Card;
-import model.Shop;
-import model.Yard;
-import model.Zombie;
+import model.*;
 
 public class DynamicZombie extends Dynamic {
 
-    ZombieGame zombiePlayer;
+    ZombieGame zombieGame;
 
-    public DynamicZombie(ZombieGame zombiePlayer) {
-        this.zombiePlayer = zombiePlayer;
-    }
-
-    public ZombieGame getZombiePlayer() {
-        return zombiePlayer;
+    public DynamicZombie(ZombieGame zombieGame) {
+        this.zombieGame = zombieGame;
     }
 
     public void setZombiePlayer(ZombieGame zombiePlayer) {
-        this.zombiePlayer = zombiePlayer;
+        this.zombieGame = zombiePlayer;
     }
 
     /**
@@ -27,8 +20,8 @@ public class DynamicZombie extends Dynamic {
      */
 
     public void goOn() {
-        zombiePlayer.addTurn();
-        zombiePlayer.setKillPerTurn(0);
+        zombieGame.addTurn();
+        zombieGame.setKillPerTurn(0);
     }
 
     /**
@@ -47,31 +40,43 @@ public class DynamicZombie extends Dynamic {
      * killing plants;
      */
     public void killPlant(int x, int y) {
-        zombiePlayer.addKillPerTurn();
-        Dynamic.removePlant(x, y, zombiePlayer);
-
+        zombieGame.addKillPerTurn();
+        Dynamic.removePlant(x, y, zombieGame);
     }
 
     /**
      * Rewarding Zombie
      */
     public void rewardZombie() {
-        zombiePlayer.coin.setCoinInTheGame(zombiePlayer.coin.getCoinInTheGame() + 10 * zombiePlayer.getKillPerTurn());
+        zombieGame.coin.setCoinInTheGame(zombieGame.coin.getCoinInTheGame() + 10 * zombieGame.getKillPerTurn());
     }
 
     /**
      * How to put Zombies?
      */
-    public void put(String name, int n) {
-        Card card = findCard(name);
-        for (int i = 0; i < n; i++) {
-            zombiePlayer.addZombie(findZombie(card));
-            zombiePlayer.removeCard(card);
+    public static void put(ZombieGame zombieGame, Zombie zombie, int x) {
+        zombieGame.addZombie(zombie);
+        zombie.setX(x);
+        for (int y = 18;y >= 0;y--){
+            if (howManyZombiesInTheColumn(x,y,zombieGame) == 0){
+                zombie.setY(y);
+            }
         }
+        zombieGame.removeCard(findCard(zombieGame, zombie.getName()));
     }
 
-    public Card findCard(String name) {
-        for (Card card : zombiePlayer.getCards()) {
+    public static int howManyZombiesInTheColumn(int X,int Y,ZombieGame zombieGame){
+        int numOfZombiesInCol = 0;
+        for (Zombie zombie:zombieGame.getZombies()){
+            if (zombie.getX() == X && zombie.getY() == Y){
+                numOfZombiesInCol++;
+            }
+        }
+        return numOfZombiesInCol;
+    }
+
+    public static Card findCard(ZombieGame zombieGame, String name) {
+        for (Card card : zombieGame.getCards()) {
             if (name.equals(card.getName())) {
                 return card;
             }
@@ -82,7 +87,16 @@ public class DynamicZombie extends Dynamic {
     public static Zombie findZombie(Card card) {
         for (Zombie zombie : Shop.getZombies()) {
             if (zombie.getName().equals(card.getName())) {
-                return zombie;
+                if (zombie instanceof FlyingZombie) {
+                    return new FlyingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
+                } else if (zombie instanceof GiantZombie) {
+                    return new GiantZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
+                } else if (zombie instanceof MovingZombie) {
+                    return new MovingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
+                } else {
+                    return new SwimmingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
+                }
+
             }
         }
         return null;
@@ -99,15 +113,22 @@ public class DynamicZombie extends Dynamic {
     }
 
 
-    public void showLanePrinter(){
+    public void showLanePrinter() {
         int i = 0;
         System.out.println("Name" + "\t" + "row number:");
-        for (Zombie zombie:zombiePlayer.getZombies()){
+        for (Zombie zombie : zombieGame.getZombies()) {
             System.out.println(i + ". " + zombie.getName() + " " + zombie.getY());
         }
     }
+    public void endTurn(){
+        for (Plant plant:zombieGame.getPlants()){
+            if (plant.getLife() <= 0){
+                killPlant(plant.getXCoordinate(),plant.getYCoordinate());
+            }
+        }
+        rewardZombie();
+        goOn();
 
-
-
+    }
 }
 
