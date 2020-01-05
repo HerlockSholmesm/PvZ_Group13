@@ -33,22 +33,22 @@ public abstract class Dynamic {
         Graphic.plant(x, y, plant);
         plant.setSelect(false);
         player.addPlant(plant);
-        Card card = findCard(plant,player);
+        Card card = findCard(plant, player);
         player.removeCard(card);
     }
 
-    public static Card findCard(Plant plant,Player player){
-        for (Card card:player.getCards()){
-            if(card.getName().equals(plant.getName())){
+    public static Card findCard(Plant plant, Player player) {
+        for (Card card : player.getCards()) {
+            if (card.getName().equals(plant.getName())) {
                 return card;
             }
         }
         return null;
     }
 
-    public static Plant findPlant(String name){
-        for (Plant plant:Shop.getAllPlants()){
-            if (plant.getName().equals(name)){
+    public static Plant findPlant(String name) {
+        for (Plant plant : Shop.getAllPlants()) {
+            if (plant.getName().equals(name)) {
                 return plant;
             }
         }
@@ -56,9 +56,9 @@ public abstract class Dynamic {
     }
 
 
-    public static Plant findPlant(Card card){
-        for (Plant plant:Shop.getAllPlants()){
-            if (plant.getName().equals(card.getName())){
+    public static Plant findPlant(Card card) {
+        for (Plant plant : Shop.getAllPlants()) {
+            if (plant.getName().equals(card.getName())) {
                 return plant;
             }
         }
@@ -131,73 +131,39 @@ public abstract class Dynamic {
 
     }
 
-    public static void ShowLawnPrinter(ArrayList<Plant> plants,ArrayList<Zombie> zombies,String title1P,String title2P){
+    public static void ShowLawnPrinter(ArrayList<Plant> plants, ArrayList<Zombie> zombies, String title1P, String title2P) {
         System.out.println(title1P + "\t\t" + title2P);
         int i = 1;
-        for (Plant plant:plants){
+        for (Plant plant : plants) {
             System.out.println(i + "." + plant.toStringPrime());
             i++;
         }
         i = 1;
         System.out.println(title1P + "\t\t" + title2P);
-        for (Zombie zombie:zombies){
+        for (Zombie zombie : zombies) {
             System.out.println(i + "." + zombie.toStringPrime());
             i++;
         }
     }
-
-
-}
-
-
-class DynamicRail {
-    RailPlayer railPlayer;
-
-    public DynamicRail(RailPlayer railPlayer) {
-        this.railPlayer = railPlayer;
+    /**Card printer*/
+    public static void cardPrinter(ArrayList<Card> cards){
+        int i = 0;
+        for (Card card:cards){
+            System.out.println(i + "." + card.getName());
+        }
     }
 
-    public RailPlayer getRailPlayer() {
-        return railPlayer;
-    }
 
-    public void setRailPlayer(RailPlayer railPlayer) {
-        this.railPlayer = railPlayer;
-    }
-
-    /**
-     * Random Zombie Adding:
-     */
-    public static void addZombie(RailPlayer railPlayer) {
-        int index = MathFunctions.getRandomNumber(0, Shop.getZombies().size() - 1);
-        Zombie zombie = Shop.getZombies().get(index);
-        railPlayer.getZombies().add(zombie);
-    }
-
-    /**
-     * Zombie killing:
-     */
-    public void killZombie(Zombie zombie) {
-        railPlayer.removeZombie(zombie);
-        railPlayer.pointAdder();
-    }
-
-    public Zombie findZombie(Zombie zombie) {
-        for (Zombie z : railPlayer.getZombies()) {
-            if (z.getName().equals(zombie.getName())) {
-                return z;
+    public static Plant findPlant(Plant plant,Player player) {
+        for (Card cards : player.getCards()) {
+            if (cards.getName().equals(plant.getName())) {
+                return plant;
             }
         }
         return null;
     }
 
-    public int getNumOfDeadZombies() {
-        return railPlayer.getPoints();
-    }
-
-
 }
-
 
 class DynamicZombie extends Dynamic {
 

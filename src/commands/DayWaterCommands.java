@@ -49,10 +49,10 @@ class ShowHandDay extends DayWaterCommands {
 }
 
 
-class Select extends DayWaterCommands {
+class SelectDay extends DayWaterCommands {
     Pattern pattern = Pattern.compile("select (.)+", Pattern.CASE_INSENSITIVE);
 
-    Select(String input, Menu menuPtr) {
+    SelectDay(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
@@ -93,10 +93,10 @@ class Select extends DayWaterCommands {
 }
 
 
-class PlantMe extends DayWaterCommands {
+class PlantDay extends DayWaterCommands {
     Pattern pattern = Pattern.compile("Plant ((.),(.))+");
 
-    PlantMe(String input, Menu menuPtr) {
+    PlantDay(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
@@ -117,7 +117,7 @@ class PlantMe extends DayWaterCommands {
                 try {
                     int x = Integer.parseInt(num1);
                     int y = Integer.parseInt(num2);
-                    Plant plant = dynamicDay.findPlant(Dynamic.findPlant(card));
+                    Plant plant = Dynamic.findPlant(Dynamic.findPlant(card));
                     if ((x >= 0) && (x <= 18) && (y >= 0) && (y <= 5)) {
                         Dynamic.setPlantPosition(x, y, plant, playerDay);
                     } else {
@@ -145,10 +145,10 @@ class PlantMe extends DayWaterCommands {
 }
 
 
-class Remove extends DayWaterCommands {
+class RemoveDay extends DayWaterCommands {
     Pattern pattern = Pattern.compile("remove ((.),(.))+", Pattern.CASE_INSENSITIVE);
 
-    Remove(String input, Menu menuPtr) {
+    RemoveDay(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
 
@@ -212,7 +212,7 @@ class EndTurnDay extends DayWaterCommands {
     }
 
     class ShowLawnDay extends DayWaterCommands {
-        private Pattern pattern = Pattern.compile("show lawn (.)+");
+        private Pattern pattern = Pattern.compile("show lawn",Pattern.CASE_INSENSITIVE);
 
         ShowLawnDay(String input, Menu menuPtr) {
             super(input, menuPtr);

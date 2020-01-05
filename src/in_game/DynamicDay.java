@@ -78,14 +78,7 @@ public class DynamicDay extends Dynamic {
     /**
      * Find a plant given its name:
      */
-    public Plant findPlant(Plant plant) {
-        for (Card cards : playerDay.getCards()) {
-            if (cards.getName().equals(plant.getName())) {
-                return plant;
-            }
-        }
-        return null;
-    }
+
 
     public void attack(){
         ArrayList<Zombie> zombies = chooseAndSetRandomZombies();
