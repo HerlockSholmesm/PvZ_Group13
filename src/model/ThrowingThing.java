@@ -2,7 +2,7 @@ package model;
 
 import in_game.Game;
 
-public class ThrowingThings {
+public class ThrowingThing {
     private int x;
     private int power;
 
@@ -15,7 +15,6 @@ public class ThrowingThings {
     }
 
     private int y;
-    Cell cell;
 
     public int getX() {
         return x;
@@ -33,13 +32,13 @@ public class ThrowingThings {
         this.y = y;
     }
 
-    public ThrowingThings(int x, int y) {
+    public ThrowingThing(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
     public void move() {
-        cell = new Cell(x + 1, y);
+        this.x+=1;
     }
 
     public void removeBullet() {
@@ -50,6 +49,7 @@ public class ThrowingThings {
     //todo
     //finding nearest
     public void action(Game game) {
+        this.move();
         if (this.getX() >= 19) {
             this.removeBullet();
         } else {

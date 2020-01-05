@@ -31,15 +31,13 @@ public class PeaBullet {
         this.y = y;
     }
 
-    Cell cell;
-
     public PeaBullet(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
     public void move() {
-        cell = new Cell(x + 1, y);
+        this.x=+1;
     }
 
     public void removeBullet() {
@@ -48,6 +46,7 @@ public class PeaBullet {
     }
 
     public void action(Game game) {
+        this.move();
         if (this.getX() >= 19) {
             this.removeBullet();
         } else {

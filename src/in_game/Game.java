@@ -1,10 +1,7 @@
 package in_game;
 
-import commands.print;
 import model.*;
 
-import javax.xml.namespace.QName;
-import java.security.PublicKey;
 import java.util.ArrayList;
 
 public class Game {
@@ -18,6 +15,23 @@ public class Game {
     }
 
     private ArrayList<PeaBullet> peaBullets = new ArrayList<PeaBullet>();
+
+    public ArrayList<ThrowingThing> getThrowingThings() {
+        return ThrowingThings;
+    }
+
+    public void setThrowingThings(int xCoordinate, int yCoordinate,Game game) {
+        ThrowingThing throwingThing= new ThrowingThing(xCoordinate,yCoordinate);
+        this.getThrowingThings().add(new ThrowingThing(xCoordinate,yCoordinate));
+        throwingThing.action(game);
+    }
+
+    public void setPeaBullets(int xCoordinate, int yCoordinate,Game game) {
+        PeaBullet peaBullet= new PeaBullet(xCoordinate,yCoordinate);
+        this.peaBullets.add(new PeaBullet(xCoordinate,yCoordinate));
+        peaBullet.action(game);
+    }
+    private ArrayList<ThrowingThing> ThrowingThings= new ArrayList<ThrowingThing>();
     private Sun sun;
     protected ArrayList<Plant> plants = new ArrayList<Plant>();
     protected ArrayList<Card> cards = new ArrayList<>();
@@ -120,10 +134,6 @@ public class Game {
     }
 
 
-    public void setPeaBullets(int xCoordinate, int yCoordinate) {
-       PeaBullet peaBullet= new PeaBullet(xCoordinate,yCoordinate);
-        this.peaBullets.add(new PeaBullet(xCoordinate,yCoordinate));
-        peaBullet.move();
-    }
+
 }
 
