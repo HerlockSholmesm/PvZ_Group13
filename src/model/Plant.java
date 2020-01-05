@@ -2,11 +2,14 @@ package model;
 
 import java.util.ArrayList;
 
-public  class Plant extends Card {
+public abstract   class Plant extends Card {
     private int x;
     private int y;
     private int sun;
     private int rest;
+    private int price;
+
+
 
     public void setX(int x) {
         this.x = x;
@@ -16,6 +19,11 @@ public  class Plant extends Card {
         this.y = y;
     }
 
+    @Override
+    public int getPrice() {
+        int sun = this.getSun(), coolDown = this.getRest(), health = this.getLife();
+        return (sun * coolDown * health + 1);
+    }
     private int life;
     private int attackPower;
     private int speed;
