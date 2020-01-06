@@ -23,10 +23,9 @@ public class FlyingZombie extends Zombie {
         for (Plant plant : game.getPlants()) {
             switch (name) {
                 case ("Pogo Zombie"):
-                    if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
+                    if (this.getX() == plant.getXCoordinate()+1 && this.getY() == plant.getYCoordinate()) {
                         this.setX(plant.getXCoordinate()-1);
                     }else {
-                        if(plant.getLife()==0)
                         move();
                     }
             }

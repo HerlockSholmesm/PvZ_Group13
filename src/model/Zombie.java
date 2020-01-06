@@ -8,8 +8,17 @@ public abstract class Zombie extends Card {
     private int life;
     private int speed;
     private int attackPower;
-    private int x;
 
+    public int getCanmove() {
+        return canmove;
+    }
+
+    public void setCanmove(int canmove) {
+        this.canmove = canmove;
+    }
+
+    private int x;
+    private int canmove;
     public static void setShop(Shop shop) {
         Zombie.shop = shop;
     }
@@ -84,6 +93,7 @@ public abstract class Zombie extends Card {
         this.name = name;
         shop = new Shop();
         this.cell = new Cell(x, y);
+        canmove=0;
     }
 
     public int getLife() {

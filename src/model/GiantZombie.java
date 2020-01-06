@@ -23,7 +23,7 @@ public class GiantZombie extends Zombie {
         String name = this.getName();
         for (Plant plant : game.getPlants()) {
             if ("Giga-gargantuar".equals(name)) {
-                if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
+                if (this.getX() == plant.getXCoordinate()+1 && this.getY() == plant.getYCoordinate()) {
                     plant.setLife(0);
                     return;
                 }else {

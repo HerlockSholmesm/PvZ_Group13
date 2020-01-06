@@ -63,14 +63,7 @@ public class MovingZombie extends Zombie {
                         move();
                     }
                 case ("Bungee Zombie"):
-                    if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
-                        plant.setLife(0);
-                        //todo random appeare
-                    }else {
-                        if(plant.getLife()==0)
-                        move();
-                    }
-
+                 game.getPlants().get((int) (Math.random()/7)).setLife(0);
 
             }
         }

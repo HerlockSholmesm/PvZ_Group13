@@ -7,6 +7,17 @@ public class EatablePlant extends Plant {
         super(name, 0, sun, rest, life);
     }
 
+    public void action(Game game) {
+        String name = this.getName();
+        for (Zombie zombie : game.getZombies()) {
+            switch (name) {
+                case ("Explode-o-nut"):
+                    if (this.getYCoordinate() == zombie.getY() && this.getXCoordinate() == zombie.getX()-1) {
+                      zombie.setLife(zombie.getLife()-1);
+                    }
+            }
+        }
+    }
 
 
 }

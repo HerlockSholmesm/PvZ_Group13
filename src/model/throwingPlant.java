@@ -23,13 +23,14 @@ public class throwingPlant extends Plant {
                     if (game.getTurn() >= this.getClock()) {
                         if (this.getYCoordinate() == zombie.getY()) {
                             game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(), 0, game);
-                            //todo lock zombie
+                            zombie.setCanmove(2);
                         }
                     }
                 case ("Melon-pult"):
                     if (game.getTurn() >= this.getClock()) {
                         if (this.getYCoordinate() == zombie.getY()) {
                             game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(), 3, game);
+
                         }
                     }
                 case ("Winter Melon"):
@@ -37,7 +38,6 @@ public class throwingPlant extends Plant {
                         if (this.getYCoordinate() == zombie.getY()) {
                             game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(), 3, game);
                             zombie.setSpeed(zombie.getSpeed() / 2);
-                            //todo for one turn
                         }
                     }
 

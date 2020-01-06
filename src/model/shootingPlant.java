@@ -57,7 +57,7 @@ public class shootingPlant extends Plant {
                         if (game.getTurn() >= this.getClock()) {
                             if (this.getYCoordinate() == zombie.getY()) {
                                 game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(), game);
-                                if (this.getXCoordinate() == zombie.getX()) {
+                                if (this.getXCoordinate() == zombie.getX()-1) {
                                     if (!zombie.getName().equals("Football Zombie"))
                                         zombie.setLife(zombie.getLife() - 1);
                                 }
@@ -74,7 +74,7 @@ public class shootingPlant extends Plant {
                     case ("Scaredy-shroom"):
                         if (game.getTurn() >= this.getClock()) {
                             if (this.getYCoordinate() == zombie.getY()) {
-                                if (this.getXCoordinate() - zombie.getX() <= 2)
+                                if (this.getXCoordinate() - zombie.getX() >= 2)
                                     game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(), game);
                             }
                         }
