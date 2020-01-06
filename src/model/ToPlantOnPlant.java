@@ -2,7 +2,7 @@ package model;
 
 import in_game.Game;
 
-public class ToPlantOnPlant extends Plant {
+class ToPlantOnPlant extends Plant {
     public ToPlantOnPlant(String name, int sun, int rest, int life) {
         super(name, 0, sun, rest, life);
     }
@@ -12,8 +12,9 @@ public class ToPlantOnPlant extends Plant {
         String name = this.getName();
         switch (name) {
             case ("bobo"):
-               //todo
-                }
-
+                //todo
         }
+
     }
+}
+

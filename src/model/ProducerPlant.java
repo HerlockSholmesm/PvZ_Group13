@@ -2,9 +2,9 @@ package model;
 
 import in_game.Game;
 
-public class ProducerPlant extends Plant {
+class ProducerPlant extends Plant {
 
-    public ProducerPlant(String name, int clock, int sun, int rest, int life) {
+    public ProducerPlant(String name, int clock, int numberOfSun, int sun, int rest, int life) {
 
         super(name, clock, sun, rest, life);
     }
