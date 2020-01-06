@@ -40,11 +40,12 @@ class ShowHandDay extends DayWaterCommands {
 
     ShowHandDay(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
     public Menu action(Menu menuPtr, GameDay playerDay) {
-        Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             DynamicDay dynamicDay = new DynamicDay(playerDay);
@@ -57,10 +58,9 @@ class ShowHandDay extends DayWaterCommands {
 
 
 class SelectDay extends DayWaterCommands {
-    Pattern pattern = Pattern.compile("select (.)+", Pattern.CASE_INSENSITIVE);
-
     SelectDay(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("select (.)+", Pattern.CASE_INSENSITIVE);
     }
 
     @Override
@@ -102,10 +102,11 @@ class SelectDay extends DayWaterCommands {
 
 
 class PlantDay extends DayWaterCommands {
-    Pattern pattern = Pattern.compile("Plant ((.),(.))+");
-
     PlantDay(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Plant ((.),(.))+");
+
+
     }
 
     @Override
@@ -165,10 +166,10 @@ class PlantDay extends DayWaterCommands {
 
 
 class RemoveDay extends DayWaterCommands {
-    Pattern pattern = Pattern.compile("remove ((.),(.))+", Pattern.CASE_INSENSITIVE);
-
     RemoveDay(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("remove ((.),(.))+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -214,10 +215,10 @@ class RemoveDay extends DayWaterCommands {
 }
 
 class EndTurnDay extends DayWaterCommands {
-    private Pattern pattern = Pattern.compile("end turn",Pattern.CASE_INSENSITIVE);
-
     EndTurnDay(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("end turn",Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -244,10 +245,10 @@ class EndTurnDay extends DayWaterCommands {
 }
 
 class ShowLawnDay extends DayWaterCommands {
-    private Pattern pattern = Pattern.compile("show lawn", Pattern.CASE_INSENSITIVE);
-
     ShowLawnDay(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("show lawn", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -262,10 +263,10 @@ class ShowLawnDay extends DayWaterCommands {
 }
 
 class ExitDay extends DayWaterCommands {
-    private Pattern pattern = Pattern.compile("exit (.)+");
-
     ExitDay(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("exit (.)+");
+
     }
 
     @Override
@@ -279,10 +280,10 @@ class ExitDay extends DayWaterCommands {
 }
 
 class HelpDay extends DayWaterCommands {
-    private Pattern pattern = Pattern.compile("help");
-
     HelpDay(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("help");
+
     }
 
     @Override

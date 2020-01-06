@@ -44,10 +44,10 @@ public abstract class ZombieCommands {
 }
 
 class Exit extends ZombieCommands {
-    private Pattern pattern = Pattern.compile("exit (.)+", Pattern.CASE_INSENSITIVE);
 
     Exit(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("exit (.)+", Pattern.CASE_INSENSITIVE);
     }
 
     @Override
@@ -61,10 +61,9 @@ class Exit extends ZombieCommands {
 }
 
 class Help extends ZombieCommands {
-    private Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
-
     Help(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
     }
 
     @Override
@@ -79,10 +78,10 @@ class Help extends ZombieCommands {
 
 
 class ShowHandZombie extends ZombieCommands {
-    Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
-
     ShowHandZombie(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -98,10 +97,10 @@ class ShowHandZombie extends ZombieCommands {
 
 
 class ShowLanes extends ZombieCommands {
-    Pattern pattern = Pattern.compile("Show lanes", Pattern.CASE_INSENSITIVE);
-
     ShowLanes(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Show lanes", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -117,10 +116,10 @@ class ShowLanes extends ZombieCommands {
 
 
 class Put extends ZombieCommands {
-    Pattern pattern = Pattern.compile("Put ((.),(.))+", Pattern.CASE_INSENSITIVE);
-
     Put(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Put ((.),(.))+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -162,10 +161,10 @@ class Put extends ZombieCommands {
 
 
 class Start extends ZombieCommands {
-    Pattern pattern = Pattern.compile("start", Pattern.CASE_INSENSITIVE);
-
     Start(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("start", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -180,10 +179,10 @@ class Start extends ZombieCommands {
 }
 
 class EndTurn extends ZombieCommands {
-    Pattern pattern = Pattern.compile("End turn", Pattern.CASE_INSENSITIVE);
-
     EndTurn(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("End turn", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -217,10 +216,10 @@ class EndTurn extends ZombieCommands {
 }
 
 class ShowLawnZombie extends ZombieCommands {
-    Pattern pattern = Pattern.compile("Showlawn", Pattern.CASE_INSENSITIVE);
-
     ShowLawnZombie(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Showlawn", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -230,6 +229,5 @@ class ShowLawnZombie extends ZombieCommands {
             Dynamic.ShowLawnPrinter(zombieGame.getPlants(), zombieGame.getZombies(), "life", "Coordinate");
         }
         return menuPtr;
-
     }
 }
