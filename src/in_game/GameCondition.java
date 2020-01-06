@@ -4,6 +4,3 @@ public enum GameCondition {
     WINNER,LOSER,PLAYING,
 }
 
-enum GamePvPCondition{
-    PLANTWINNIG,ZOMBIEWINNING,PLAYING
-}

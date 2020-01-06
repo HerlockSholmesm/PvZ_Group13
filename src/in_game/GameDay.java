@@ -79,6 +79,7 @@ public class GameDay extends Game {
         this.chamanzans.add(new Chamanzan(0, 2, this.yard));
         this.chamanzans.add(new Chamanzan(0, 3, this.yard));
         this.chamanzans.add(new Chamanzan(0, 4, this.yard));
+        this.chamanzans.add(new Chamanzan(0, 5, this.yard));
 
         this.cards.add(Shop.getAllPlants().get(0));
         this.cards.add(Shop.getAllPlants().get(1));

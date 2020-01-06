@@ -102,6 +102,7 @@ public class ZombieGame extends Game {
             this.chamanzans.add(new Chamanzan(0, 2, this.yard));
             this.chamanzans.add(new Chamanzan(0, 3, this.yard));
             this.chamanzans.add(new Chamanzan(0, 4, this.yard));
+            this.chamanzans.add(new Chamanzan(0, 5, this.yard));
 
 
 
