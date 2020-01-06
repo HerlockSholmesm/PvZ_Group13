@@ -34,19 +34,17 @@ public abstract class MainMenuCommand {
 
 
 class PlayCommand extends MainMenuCommand {
-    private Pattern pattern = Pattern.compile("Play", Pattern.CASE_INSENSITIVE);
 
     PlayCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("play", Pattern.CASE_INSENSITIVE);
     }
 
     @Override
     public Menu action(Menu menu, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            Menu newMenu = new PlayMenu();
-            ((MainMenu) newMenu).parentMenu = menu;
-            return newMenu;
+            return new PlayMenu();
         }
         return menu;
     }
@@ -54,48 +52,46 @@ class PlayCommand extends MainMenuCommand {
 
 
 class ProfileCommand extends MainMenuCommand {
-    private Pattern pattern = Pattern.compile("Profile", Pattern.CASE_INSENSITIVE);
 
     ProfileCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Profile", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
     public Menu action(Menu menu, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            Menu newMenu = new ProfileMenu();
-            ((MainMenu) newMenu).parentMenu = menu;
-            return newMenu;
+            return new ProfileMenu();
         }
         return menu;
     }
 }
 
 class ShopCommand extends MainMenuCommand {
-    private Pattern pattern = Pattern.compile("Shop", Pattern.CASE_INSENSITIVE);
 
     ShopCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Shop", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
     public Menu action(Menu menu, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            Menu newMenu = new ShopMenu();
-            ((MainMenu) newMenu).parentMenu = menu;
-            return newMenu;
+            return new ShopMenu();
         }
         return menu;
     }
 }
 
 class HelpMain extends MainMenuCommand {
-    private Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
 
     HelpMain(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
     }
 
     @Override
@@ -110,10 +106,10 @@ class HelpMain extends MainMenuCommand {
 }
 
 class ExitMain extends MainMenuCommand {
-    private Pattern pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
 
     ExitMain(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
     }
 
     @Override

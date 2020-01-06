@@ -35,10 +35,10 @@ public abstract class ShopMenuCommands {
 }
 
 class ExitShop extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
-
     ExitShop(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -52,10 +52,10 @@ class ExitShop extends ShopMenuCommands {
 }
 
 class HelpShop extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
-
     HelpShop(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -69,10 +69,10 @@ class HelpShop extends ShopMenuCommands {
 }
 
 class ShowShop extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("show shop", Pattern.CASE_INSENSITIVE);
-
     ShowShop(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("show shop", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -88,10 +88,10 @@ class ShowShop extends ShopMenuCommands {
 
 
 class ShowCollection extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("show collection", Pattern.CASE_INSENSITIVE);
-
     ShowCollection(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("show collection", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -106,10 +106,10 @@ class ShowCollection extends ShopMenuCommands {
 
 
 class Buy extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("Buy (.)+", Pattern.CASE_INSENSITIVE);
-
     Buy(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Buy (.)+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -124,10 +124,10 @@ class Buy extends ShopMenuCommands {
 
 
 class Money extends ShopMenuCommands {
-    Pattern pattern = Pattern.compile("money (.)+", Pattern.CASE_INSENSITIVE);
-
     Money(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("money (.)+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override

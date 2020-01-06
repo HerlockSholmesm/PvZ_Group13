@@ -14,6 +14,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Menu menuPointer = new LoginMenu();
         Account mainAccount = null;
+        int number = 0;
         mainWhile:
         while (true) {
 
@@ -42,7 +43,7 @@ public class Main {
                 MainMenuCommand.createCommands(string, menuPointer);
                 boolean isValidCommand = false;
                 for (MainMenuCommand commands1 : MainMenuCommand.allCommand) {
-                    Pattern pattern = commands1.pattern;
+                    Pattern pattern = (commands1.pattern);
                     Matcher matcher = pattern.matcher(string);
                     if (matcher.matches()) {
                         menuPointer = commands1.action(menuPointer, mainAccount);
@@ -164,7 +165,7 @@ public class Main {
                                 menuPointer = new PlayMenu();
                                 break;
                             }
-                            if (!isValidCommand) {
+                            else if (!isValidCommand) {
                                 InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
                                 invalidCommand.action();
                             }
@@ -209,7 +210,7 @@ public class Main {
                 Pattern pattern = Pattern.compile("pvp (\\d)+", Pattern.CASE_INSENSITIVE);
                 Matcher matcher = pattern.matcher(string);
                 if (matcher.matches()) {
-                    int number = Integer.parseInt(matcher.group(1));
+                    number = Integer.parseInt(matcher.group(1));
                     menuPointer = new CollectionMenu();
                     while (menuPointer instanceof CollectionMenu) {
                         string = scanner.nextLine();
@@ -240,13 +241,14 @@ public class Main {
 
             while (menuPointer instanceof PvPMenu) {
                 String string = scanner.nextLine();
-                CollectionMenuCommands.createCommands(string, menuPointer);
+                PvPCommands.createCommands(string, menuPointer);
                 boolean isValidCommand = false;
-                for (CollectionMenuCommands commands1 : CollectionMenuCommands.allCommand) {
+                PvPGame pvPGame = new PvPGame(mainAccount.getName(), mainAccount.getPassword(), number);
+                for (PvPCommands commands1 : PvPCommands.allCommand) {
                     Pattern pattern = commands1.pattern;
                     Matcher matcher = pattern.matcher(string);
                     if (matcher.matches()) {
-                        menuPointer = commands1.action(menuPointer, mainAccount);
+                        menuPointer = commands1.action(menuPointer, pvPGame);
                         isValidCommand = true;
                         break;
                     }

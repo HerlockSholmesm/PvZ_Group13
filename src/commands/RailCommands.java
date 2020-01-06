@@ -37,10 +37,10 @@ public abstract class RailCommands {
 }
 
 class List extends RailCommands {
-    Pattern pattern = Pattern.compile("List", Pattern.CASE_INSENSITIVE);
-
     List(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("List", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -54,10 +54,10 @@ class List extends RailCommands {
 }
 
 class RailSelect extends RailCommands {
-    Pattern pattern = Pattern.compile("select (.)+", Pattern.CASE_INSENSITIVE);
-
     RailSelect(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("select (.)+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -87,10 +87,10 @@ class RailSelect extends RailCommands {
 }
 
 class Record extends RailCommands {
-    Pattern pattern = Pattern.compile("Record", Pattern.CASE_INSENSITIVE);
-
     Record(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Record", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -106,10 +106,10 @@ class Record extends RailCommands {
 
 
 class PlantRail extends RailCommands {
-    Pattern pattern = Pattern.compile("Plant ((.),(.))+");
-
     PlantRail(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Plant ((.),(.))+");
+
     }
 
     @Override
@@ -158,10 +158,10 @@ class PlantRail extends RailCommands {
 
 
 class RailRemove extends RailCommands {
-    Pattern pattern = Pattern.compile("remove ((.),(.))+", Pattern.CASE_INSENSITIVE);
-
     RailRemove(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("remove ((.),(.))+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -208,10 +208,10 @@ class RailRemove extends RailCommands {
 
 
 class EndTurnRail extends RailCommands {
-    private Pattern pattern = Pattern.compile("end turn (.)+");
-
     EndTurnRail(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("end turn (.)+");
+
     }
 
     @Override
@@ -227,10 +227,10 @@ class EndTurnRail extends RailCommands {
 }
 
 class RailShowLawn extends RailCommands {
-    private Pattern pattern = Pattern.compile("show lawn", Pattern.CASE_INSENSITIVE);
-
     RailShowLawn(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("show lawn", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override

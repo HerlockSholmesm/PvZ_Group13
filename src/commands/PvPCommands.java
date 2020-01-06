@@ -44,10 +44,10 @@ public abstract class PvPCommands {
 }
 
 class ShowHandPvPDay extends PvPCommands {
-    Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
-
     ShowHandPvPDay(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -64,10 +64,10 @@ class ShowHandPvPDay extends PvPCommands {
 
 
 class SelectPvPDay extends PvPCommands {
-    Pattern pattern = Pattern.compile("select (.)+", Pattern.CASE_INSENSITIVE);
-
     SelectPvPDay(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("select (.)+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -108,10 +108,10 @@ class SelectPvPDay extends PvPCommands {
 
 
 class PlantPvPDay extends PvPCommands {
-    Pattern pattern = Pattern.compile("Plant ((.),(.))+");
-
     PlantPvPDay(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Plant ((.),(.))+");
+
     }
 
     @Override
@@ -162,10 +162,10 @@ class PlantPvPDay extends PvPCommands {
 
 
 class RemovePvPDay extends PvPCommands {
-    Pattern pattern = Pattern.compile("remove ((.),(.))+", Pattern.CASE_INSENSITIVE);
-
     RemovePvPDay(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("remove ((.),(.))+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -212,10 +212,10 @@ class RemovePvPDay extends PvPCommands {
 
 
 class ShowLawnPvP extends PvPCommands {
-    private Pattern pattern = Pattern.compile("show lawn", Pattern.CASE_INSENSITIVE);
-
     ShowLawnPvP(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("show lawn", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -230,10 +230,9 @@ class ShowLawnPvP extends PvPCommands {
 
 
 class Ready extends PvPCommands {
-    private Pattern pattern = Pattern.compile("Ready");
-
     Ready(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Ready");
     }
 
     @Override
@@ -248,10 +247,10 @@ class Ready extends PvPCommands {
 
 
 class ShowHandPvPZombie extends PvPCommands {
-    Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
-
     ShowHandPvPZombie(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -266,10 +265,10 @@ class ShowHandPvPZombie extends PvPCommands {
 
 
 class ShowLanesPvP extends PvPCommands {
-    Pattern pattern = Pattern.compile("Show lanes", Pattern.CASE_INSENSITIVE);
-
     ShowLanesPvP(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Show lanes", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -285,10 +284,10 @@ class ShowLanesPvP extends PvPCommands {
 
 
 class PutPvP extends PvPCommands {
-    Pattern pattern = Pattern.compile("Put ((.),(.))+", Pattern.CASE_INSENSITIVE);
-
     PutPvP(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Put ((.),(.))+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -329,10 +328,10 @@ class PutPvP extends PvPCommands {
 
 
 class StartPvP extends PvPCommands {
-    Pattern pattern = Pattern.compile("start", Pattern.CASE_INSENSITIVE);
-
     StartPvP(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("start", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -347,10 +346,10 @@ class StartPvP extends PvPCommands {
 
 
 class ShowLawnPvPZombie extends PvPCommands {
-    Pattern pattern = Pattern.compile("Showlawn", Pattern.CASE_INSENSITIVE);
-
     ShowLawnPvPZombie(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("Showlawn", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -365,10 +364,10 @@ class ShowLawnPvPZombie extends PvPCommands {
 
 
 class EndTurnPvP extends PvPCommands {
-    Pattern pattern = Pattern.compile("End turn", Pattern.CASE_INSENSITIVE);
-
     EndTurnPvP(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("End turn", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override

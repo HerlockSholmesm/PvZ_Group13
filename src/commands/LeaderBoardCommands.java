@@ -29,10 +29,10 @@ public abstract class LeaderBoardCommands {
 }
 
 class ShowLeaderBoard extends LeaderBoardCommands {
-    Pattern pattern = Pattern.compile("show", Pattern.CASE_INSENSITIVE);
 
     ShowLeaderBoard(String input, Menu menuPtr) {
-        super(input, menuPtr);
+        super(input, menuPtr);pattern = Pattern.compile("show", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -46,10 +46,11 @@ class ShowLeaderBoard extends LeaderBoardCommands {
 }
 
 class HelpLeaderBoard extends LeaderBoardCommands {
-    Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
 
     HelpLeaderBoard(String input, Menu menuPtr) {
         super(input, menuPtr);
+
+        pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
     }
 
     @Override
@@ -63,10 +64,11 @@ class HelpLeaderBoard extends LeaderBoardCommands {
 }
 
 class ExitLeaderBoard extends LeaderBoardCommands {
-    Pattern pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
 
     ExitLeaderBoard(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override

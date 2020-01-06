@@ -33,10 +33,11 @@ public abstract class CollectionMenuCommands {
 }
 
 class ExitCollection extends CollectionMenuCommands {
-    Pattern pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
 
     ExitCollection(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -51,10 +52,10 @@ class ExitCollection extends CollectionMenuCommands {
 }
 
 class HelpCollection extends CollectionMenuCommands {
-    Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
 
     HelpCollection(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
     }
 
     @Override
@@ -69,10 +70,10 @@ class HelpCollection extends CollectionMenuCommands {
 
 
 class ShowHandCommand extends CollectionMenuCommands {
-    Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
-
     ShowHandCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -87,10 +88,10 @@ class ShowHandCommand extends CollectionMenuCommands {
 
 
 class ShowCollectionCommand extends CollectionMenuCommands {
-    Pattern pattern = Pattern.compile("show collection", Pattern.CASE_INSENSITIVE);
 
     ShowCollectionCommand(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("show collection", Pattern.CASE_INSENSITIVE);
     }
 
     @Override
@@ -105,10 +106,10 @@ class ShowCollectionCommand extends CollectionMenuCommands {
 
 
 class SelectCommand extends CollectionMenuCommands {
-    Pattern pattern = Pattern.compile("select (.)+", Pattern.CASE_INSENSITIVE);
 
     SelectCommand(String input, Menu menuPtr) {
-        super(input, menuPtr);
+        super(input, menuPtr);pattern = Pattern.compile("select (.)+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override

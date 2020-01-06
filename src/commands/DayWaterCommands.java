@@ -36,7 +36,6 @@ public abstract class DayWaterCommands {
 }
 
 class ShowHandDay extends DayWaterCommands {
-    Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
 
     ShowHandDay(String input, Menu menuPtr) {
         super(input, menuPtr);
@@ -44,6 +43,7 @@ class ShowHandDay extends DayWaterCommands {
 
     @Override
     public Menu action(Menu menuPtr, GameDay playerDay) {
+        Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             DynamicDay dynamicDay = new DynamicDay(playerDay);

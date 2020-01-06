@@ -33,10 +33,10 @@ public abstract class ProfileMenuCommands {
 }
 
 class ChangeUserName extends ProfileMenuCommands {
-    Pattern pattern = Pattern.compile("change (.)+ (.)+", Pattern.CASE_INSENSITIVE);
 
     ChangeUserName(String input, Menu menuPtr) {
-        super(input, menuPtr);
+        super(input, menuPtr);pattern = Pattern.compile("change (.)+ (.)+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -51,10 +51,10 @@ class ChangeUserName extends ProfileMenuCommands {
 }
 
 class RenameUserName extends ProfileMenuCommands {
-    Pattern pattern = Pattern.compile("rename (.)+", Pattern.CASE_INSENSITIVE);
 
     RenameUserName(String input, Menu menuPtr) {
-        super(input, menuPtr);
+        super(input, menuPtr);pattern = Pattern.compile("rename (.)+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -70,10 +70,10 @@ class RenameUserName extends ProfileMenuCommands {
 }
 
 class CreateUserName extends ProfileMenuCommands {
-    Pattern pattern = Pattern.compile("change (.)+ (.)+", Pattern.CASE_INSENSITIVE);
 
     CreateUserName(String input, Menu menuPtr) {
-        super(input, menuPtr);
+        super(input, menuPtr);pattern = Pattern.compile("change (.)+ (.)+", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -87,10 +87,11 @@ class CreateUserName extends ProfileMenuCommands {
 }
 
 class DeleteUserName extends ProfileMenuCommands {
-    Pattern pattern = Pattern.compile("delete (.)+ (.)+", Pattern.CASE_INSENSITIVE);
 
     DeleteUserName(String input, Menu menuPtr) {
-        super(input, menuPtr);
+        super(input, menuPtr); pattern = Pattern.compile("delete (.)+ (.)+", Pattern.CASE_INSENSITIVE);
+
+
     }
 
     @Override
@@ -113,10 +114,11 @@ class DeleteUserName extends ProfileMenuCommands {
 
 
 class ShowUserName extends ProfileMenuCommands {
-    Pattern pattern = Pattern.compile("show", Pattern.CASE_INSENSITIVE);
 
     ShowUserName(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("show", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -130,10 +132,11 @@ class ShowUserName extends ProfileMenuCommands {
 }
 
 class HelpProfileMenu extends ProfileMenuCommands {
-    Pattern pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
 
     HelpProfileMenu(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("help", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
@@ -147,10 +150,10 @@ class HelpProfileMenu extends ProfileMenuCommands {
 }
 
 class ExitProfileMenu extends ProfileMenuCommands{
-    Pattern pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
-
     ExitProfileMenu(String input, Menu menuPtr) {
         super(input, menuPtr);
+        pattern = Pattern.compile("exit", Pattern.CASE_INSENSITIVE);
+
     }
 
     @Override
