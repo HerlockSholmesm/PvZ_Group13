@@ -4,7 +4,7 @@ import in_game.Game;
 
 import java.util.ArrayList;
 
-class shootingPlant extends Plant {
+public class shootingPlant extends Plant {
     public shootingPlant(String name, int clock, int numberOfPea, int sun, int rest, int life) {
         super(name, clock, sun, rest, life);
     }

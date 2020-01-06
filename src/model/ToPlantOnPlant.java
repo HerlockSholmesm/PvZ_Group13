@@ -2,7 +2,7 @@ package model;
 
 import in_game.Game;
 
-class ToPlantOnPlant extends Plant {
+public class ToPlantOnPlant extends Plant {
     public ToPlantOnPlant(String name, int sun, int rest, int life) {
         super(name, 0, sun, rest, life);
     }

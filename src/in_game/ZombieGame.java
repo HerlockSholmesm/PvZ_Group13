@@ -1,13 +1,13 @@
 package in_game;
 
-import model.Card;
-import model.Coin;
-import model.Shop;
-import model.Zombie;
+import model.*;
 
 import java.util.ArrayList;
 
 public class ZombieGame extends Game {
+
+    private ArrayList<Chamanzan> chamanzans = new ArrayList<>();
+
 
     private boolean start = false;
 
@@ -43,19 +43,11 @@ public class ZombieGame extends Game {
         this.killPerTurn = killPerTurn;
     }
 
-    public ZombieGame(String name, String password) {
-        super(name, password);
-        this.coin = new Coin(50, 0);
-        this.cards.add(Shop.getZombies().get(0));
-        this.cards.add(Shop.getZombies().get(1));
-        this.cards.add(Shop.getZombies().get(10));
-        this.cards.add(Shop.getZombies().get(4));
-        this.cards.add(Shop.getZombies().get(7));
-        this.cards.add(Shop.getZombies().get(6));
-        this.cards.add(Shop.getZombies().get(3));
+    public ArrayList<Chamanzan> getChamanzans() {
+        return chamanzans;
     }
 
-    public ZombieGame(String name, String password, String p){
+    public ZombieGame(String name, String password){
         super(name,password);
         this.coin = new Coin(50, 0);
         this.cards.add(Shop.getZombies().get(0));
@@ -71,7 +63,6 @@ public class ZombieGame extends Game {
             Xcoordinates.add(MathFunctions.getRandomNumber(0, 2));
             Ycoordinates.add(MathFunctions.getRandomNumber(0,5));
         }
-        if(!p.equals(null)) {
             this.plants.add(Shop.getAllPlants().get(10));
             plants.get(0).setCoordinates(Xcoordinates.get(0), Ycoordinates.get(0));
             this.plants.add(Shop.getAllPlants().get(10));
@@ -104,7 +95,16 @@ public class ZombieGame extends Game {
             plants.get(14).setCoordinates(Xcoordinates.get(14), Ycoordinates.get(14));
             this.plants.add(Shop.getAllPlants().get(18));
             plants.get(15).setCoordinates(Xcoordinates.get(15), Ycoordinates.get(15));
-        }
+
+
+            this.chamanzans.add(new Chamanzan(0, 0, this.yard));
+            this.chamanzans.add(new Chamanzan(0, 1, this.yard));
+            this.chamanzans.add(new Chamanzan(0, 2, this.yard));
+            this.chamanzans.add(new Chamanzan(0, 3, this.yard));
+            this.chamanzans.add(new Chamanzan(0, 4, this.yard));
+
+
+
     }
     public void addZombie(Zombie zombie){
         zombies.add(zombie);

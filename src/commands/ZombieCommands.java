@@ -1,9 +1,12 @@
 package commands;
+
 import commands.Menu.Menu;
 import commands.Menu.PlayMenu;
 import commands.Menu.ShopMenu;
+import commands.Menu.ZombieMenu;
 import in_game.Dynamic;
 import in_game.DynamicZombie;
+import in_game.GameCondition;
 import in_game.ZombieGame;
 import model.Card;
 import model.Zombie;
@@ -39,6 +42,7 @@ public abstract class ZombieCommands {
 
 
 }
+
 class Exit extends ZombieCommands {
     private Pattern pattern = Pattern.compile("exit (.)+", Pattern.CASE_INSENSITIVE);
 
@@ -76,6 +80,7 @@ class Help extends ZombieCommands {
 
 class ShowHandZombie extends ZombieCommands {
     Pattern pattern = Pattern.compile("show hand", Pattern.CASE_INSENSITIVE);
+
     ShowHandZombie(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -83,7 +88,7 @@ class ShowHandZombie extends ZombieCommands {
     @Override
     public Menu action(Menu menuPtr, ZombieGame zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()){
+        if (matcher.matches()) {
             Dynamic.printer(zombiePlayer.getCards(), "Names", "SunsTheyNeed");
         }
         return menuPtr;
@@ -94,6 +99,7 @@ class ShowHandZombie extends ZombieCommands {
 
 class ShowLanes extends ZombieCommands {
     Pattern pattern = Pattern.compile("Show lanes", Pattern.CASE_INSENSITIVE);
+
     ShowLanes(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -101,7 +107,7 @@ class ShowLanes extends ZombieCommands {
     @Override
     public Menu action(Menu menuPtr, ZombieGame zombiePlayer) {
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()){
+        if (matcher.matches()) {
             DynamicZombie dynamicZombie = new DynamicZombie(zombiePlayer);
             dynamicZombie.showLanePrinter();
         }
@@ -112,6 +118,7 @@ class ShowLanes extends ZombieCommands {
 
 class Put extends ZombieCommands {
     Pattern pattern = Pattern.compile("Put ((.),(.))+", Pattern.CASE_INSENSITIVE);
+
     Put(String input, Menu menuPtr) {
         super(input, menuPtr);
     }
@@ -119,35 +126,32 @@ class Put extends ZombieCommands {
     @Override
     public Menu action(Menu menuPtr, ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input);
-        if (matcher.matches()){
+        if (matcher.matches()) {
             String zombieName = matcher.group(2);
             String rowNumber = matcher.group(3);
-            try{
+            try {
                 int row = Integer.parseInt(rowNumber);
                 DynamicZombie dynamicZombie = new DynamicZombie(zombieGame);
-                Card card = dynamicZombie.findCard(zombieGame,zombieName);
-                if (card == null){
+                Card card = Dynamic.findCard(zombieGame, zombieName);
+                if (card == null) {
                     System.out.println("You don't have such a zombie or the zombie name is invalid");
-                }
-                else {
-                    Zombie zombie = dynamicZombie.findZombie(card);
-                    if (zombie == null){
+                } else {
+                    Zombie zombie = Dynamic.findZombie(card);
+                    if (zombie == null) {
                         System.out.println("Such a zombie doesn't exist on your list!");
-                    }
-                    else{
-                        if (row >= 0 && row <= 5){
+                    } else {
+                        if (row >= 0 && row <= 5) {
                             if (DynamicZombie.howManyZombiesAreThere(row, zombieGame.getYard()) <= 1)
-                                DynamicZombie.put(zombieGame,zombie,row);
+                                DynamicZombie.put(zombieGame, zombie, row);
                             else
                                 System.out.println("the row " + row + " is full.");
-                        }
-                        else{
+                        } else {
                             System.out.println("Such a row doesn't exist!");
                         }
                     }
 
                 }
-            } catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("PLEASE ENTER AN INTEGER AS THE LAST INPUT OF PUT COMMAND");
             }
 
@@ -155,7 +159,6 @@ class Put extends ZombieCommands {
         return menuPtr;
     }
 }
-
 
 
 class Start extends ZombieCommands {
@@ -166,7 +169,7 @@ class Start extends ZombieCommands {
     }
 
     @Override
-    public Menu action(Menu menuPtr,ZombieGame zombieGame) {
+    public Menu action(Menu menuPtr, ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             zombieGame.setStart(true);
@@ -184,11 +187,29 @@ class EndTurn extends ZombieCommands {
     }
 
     @Override
-    public Menu action(Menu menuPtr,ZombieGame zombieGame) {
+    public Menu action(Menu menuPtr, ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             DynamicZombie dynamicZombie = new DynamicZombie(zombieGame);
-            dynamicZombie.endTurn();
+            if (dynamicZombie.hasGameEnded()) {
+                System.out.println("Game has ended");
+                menuPtr = new PlayMenu();
+                if (zombieGame.getGameCondition() == GameCondition.WINNER)
+                    System.out.println("YOU WON!!");
+                else {
+                    System.out.println("YOU LOST!!!");
+                }
+            }
+            else if(dynamicZombie.hasWaveFinished()){
+                menuPtr = new ZombieMenu();
+                System.out.println("Wave Has Finished");
+            }
+            else if (zombieGame.isStart()) {
+                dynamicZombie.endTurn();
+            } else {
+                System.out.println("You haven't started the game yet");
+            }
+
         }
         return menuPtr;
 
@@ -203,7 +224,7 @@ class ShowLawnZombie extends ZombieCommands {
     }
 
     @Override
-    public Menu action(Menu menuPtr,ZombieGame zombieGame) {
+    public Menu action(Menu menuPtr, ZombieGame zombieGame) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             Dynamic.ShowLawnPrinter(zombieGame.getPlants(), zombieGame.getZombies(), "life", "Coordinate");

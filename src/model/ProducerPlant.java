@@ -2,7 +2,7 @@ package model;
 
 import in_game.Game;
 
-class ProducerPlant extends Plant {
+public class ProducerPlant extends Plant {
 
     public ProducerPlant(String name, int clock, int numberOfSun, int sun, int rest, int life) {
 

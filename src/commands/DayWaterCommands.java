@@ -214,13 +214,18 @@ class EndTurnDay extends DayWaterCommands {
         if (matcher.matches()) {
             //menuPtr = new MainMenu();
             DynamicDay dynamicDay = new DynamicDay(playerDay);
-            dynamicDay.endTurn();
-            if (dynamicDay.hasWaveEnded()){
-                menuPtr = new DayAndWater();
-            }
             if (dynamicDay.hasGameEnded()){
+                System.out.println("Game has ended!");
                 menuPtr = new PlayMenu();
             }
+            else if (dynamicDay.hasWaveEnded()){
+                System.out.println("Wave has ended!");
+                menuPtr = new DayAndWater();
+            }
+            else{
+                dynamicDay.endTurn();
+            }
+
         }
         return menuPtr;
     }

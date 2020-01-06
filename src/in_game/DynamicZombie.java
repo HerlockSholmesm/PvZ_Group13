@@ -55,6 +55,10 @@ public class DynamicZombie extends Dynamic {
      * How to put Zombies?
      */
 
+    public boolean hasWaveFinished(){
+        return zombieGame.getZombies().size()==0;
+    }
+
     public void showLanePrinter() {
         int i = 0;
         System.out.println("Name" + "\t" + "row number:");
@@ -64,6 +68,12 @@ public class DynamicZombie extends Dynamic {
     }
 
     public void endTurn() {
+        for (Zombie zombie:zombieGame.getZombies()){
+            if(zombie.getLife() <= 0 ){
+                zombieGame.getZombies().remove(zombie);
+            }
+        }
+
         for (Plant plant : zombieGame.getPlants()) {
             if (plant.getLife() <= 0) {
                 killPlant(plant.getXCoordinate(), plant.getYCoordinate());
@@ -71,6 +81,20 @@ public class DynamicZombie extends Dynamic {
         }
         rewardZombie();
         goOn();
+
+        for (Zombie zombie:zombieGame.getZombies()){
+            zombie.action(zombieGame);
+        }
+        for (Plant plant:zombieGame.getPlants()){
+            plant.action(zombieGame);
+        }
+        for (Chamanzan chamanzan:zombieGame.getChamanzans()){
+            chamanzan.action(zombieGame);
+        }
+        for (PeaBullet peaBullet:zombieGame.getPeaBullets()){
+            peaBullet.action(zombieGame);
+        }
+
     }
 
     public boolean hasGameEnded(){

@@ -65,7 +65,7 @@ public abstract class Dynamic {
                     return new MinePlant(plant.getName(),plant.getClock(),plant.getSun(),plant.getRest(),plant.getLife());
                 }
                 else if (plant instanceof ProducerPlant){
-                    return new ProducerPlant(plant.getName(),plant.getClock(),plant.getSun(),plant.getRest(),plant.getLife());
+                    return new ProducerPlant(plant.getName(),plant.getClock(),plant.getSun(),plant.getSun(),plant.getRest(),plant.getLife());
                 }
                 else if (plant instanceof shootingPlant){
                     return new shootingPlant(plant.getName(),plant.getClock(),0,plant.getSun(),plant.getRest(),plant.getLife());

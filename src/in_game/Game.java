@@ -12,7 +12,7 @@ public class Game {
 
     private Sun sun;
 
-    private ArrayList<Plant> plants = new ArrayList<Plant>();
+    protected ArrayList<Plant> plants = new ArrayList<Plant>();
 
     ArrayList<Card> cards = new ArrayList<>();
 
@@ -20,7 +20,7 @@ public class Game {
 
     Account account;
 
-    private Coin coin = new Coin(0, 0);
+    protected Coin coin = new Coin(0, 0);
 
     protected ArrayList<Zombie> zombies = new ArrayList<>();
 

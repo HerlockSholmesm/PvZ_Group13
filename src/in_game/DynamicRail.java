@@ -90,14 +90,37 @@ public class DynamicRail extends Dynamic {
 
 
     public void endTurn() {
+        for (Plant plant:railPlayer.getPlants()){
+            if(plant.getLife() <= 0){
+                Dynamic.removePlant(plant.getXCoordinate(), plant.getYCoordinate(), railPlayer);
+            }
+        }
+        for (Zombie zombie:railPlayer.getZombies()){
+            if(zombie.getLife() <= 0 ){
+                railPlayer.getZombies().remove(zombie);
+            }
+        }
+
         addCardRandomly();
         addZombieRandomly();
         railPlayer.addTurn();
+
+        for (Zombie zombie:railPlayer.getZombies()){
+            zombie.action(railPlayer);
+        }
+        for (Plant plant:railPlayer.getPlants()){
+            plant.action(railPlayer);
+        }
+        for (PeaBullet peaBullet:railPlayer.getPeaBullets()){
+            peaBullet.action(railPlayer);
+        }
+
+
     }
 
     public boolean hasGameEnded(){
         for (Zombie zombie:railPlayer.getZombies()){
-            if (zombie.getX() <= 0){
+            if (zombie.getX() <= -1){
                 return true;
             }
         }
@@ -120,6 +143,7 @@ public class DynamicRail extends Dynamic {
 
     }
     public void addCardRandomly(){
+
         int turn = railPlayer.getTurn();
         if (turn - railPlayer.getPreviousGivenCard() >= 2 && turn - railPlayer.getPreviousGivenCard() <= 3){
             int rnd = MathFunctions.getRandomNumber(0, 1);

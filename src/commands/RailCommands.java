@@ -219,7 +219,15 @@ class EndTurnRail extends RailCommands {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             DynamicRail dynamicRail = new DynamicRail(railPlayer);
-            dynamicRail.endTurn();
+            if (dynamicRail.hasGameEnded()){
+                System.out.println("Game Has Ended!");
+                System.out.println("your score is " + railPlayer.getPoints());
+                menuPtr = new PlayMenu();
+            }
+            else {
+                dynamicRail.endTurn();
+            }
+
         }
         return menuPtr;
 
