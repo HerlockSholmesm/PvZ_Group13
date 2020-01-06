@@ -53,7 +53,7 @@ public class Game {
     public void setPeaBulletsNegetive(int xCoordinate, int yCoordinate,Game game) {
         PeaBullet peaBullet= new PeaBullet(xCoordinate,yCoordinate);
         this.peaBullets.add(new PeaBullet(xCoordinate,yCoordinate));
-        peaBullet.actionnegetive(game);
+        peaBullet.actionNegetive(game);
     }
 
     public void removePlant(Plant plant) {

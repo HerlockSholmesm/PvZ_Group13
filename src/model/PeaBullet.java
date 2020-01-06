@@ -63,7 +63,7 @@ public class PeaBullet {
             }
         }
     }
-    public void actionnegetive(Game game) {
+    public void actionNegetive(Game game) {
         this.moveBack();
         if (this.getX() <=0) {
             this.removeBullet();
