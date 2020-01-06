@@ -4,6 +4,7 @@ import commands.Menu.*;
 import in_game.*;
 import model.Card;
 import model.Plant;
+import model.Shop;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -126,7 +127,18 @@ class PlantDay extends DayWaterCommands {
                     int y = Integer.parseInt(num2);
                     Plant plant = Dynamic.findPlant(Dynamic.findPlant(card));
                     if ((x >= 0) && (x <= 18) && (y >= 0) && (y <= 5)) {
-                        Dynamic.setPlantPosition(x, y, plant, playerDay);
+                        if (Shop.getWaterTypeOrDay().get(plant.getName()).equals("D") && (x <= 1 || x >= 4)){
+                            Dynamic.setPlantPosition(x, y, plant, playerDay);
+                        }
+                        else if(Shop.getWaterTypeOrDay().get(plant.getName()).equals("W") && (x <= 3 && x >=2)){
+                            Dynamic.setPlantPosition(x, y, plant, playerDay);
+                        }
+                        else{
+                            InvalidPrompt invalidPrompt = () -> {
+                                System.out.println("PLANT DAY-WATER MISMATCH!");
+                            };
+                            invalidPrompt.action();
+                        }
                     } else {
                         InvalidPrompt invalidPrompt = () -> {
                             System.out.println("FIRST INTEGER MUST SATISFY:");
