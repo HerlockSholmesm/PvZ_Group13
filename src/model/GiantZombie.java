@@ -27,6 +27,8 @@ public class GiantZombie extends Zombie {
                     plant.setX(-1);
                     plant.setY(-1);
                     return;
+                }else {
+                    move();
                 }
             }
         }

@@ -58,6 +58,7 @@ public class PeaBullet {
                     this.removeBullet();
                     return;
                 }
+                //todo shield zombie
             }
         }
     }
