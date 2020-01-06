@@ -1,8 +1,6 @@
 package commands;
 
-import commands.Menu.MainMenu;
-import commands.Menu.Menu;
-import commands.Menu.ShopMenu;
+import commands.Menu.*;
 import in_game.*;
 import model.Card;
 import model.Plant;
@@ -49,7 +47,7 @@ class ShowHandDay extends DayWaterCommands {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             DynamicDay dynamicDay = new DynamicDay(playerDay);
-            dynamicDay.printer(playerDay.getCards(), "Names", "SunsTheyNeed");
+            Dynamic.printer(playerDay.getCards(), "Names", "SunsTheyNeed");
             System.out.println("all the suns you need for current plants: " + dynamicDay.demandingSuns());
         }
         return menuPtr;
@@ -217,6 +215,12 @@ class EndTurnDay extends DayWaterCommands {
             //menuPtr = new MainMenu();
             DynamicDay dynamicDay = new DynamicDay(playerDay);
             dynamicDay.endTurn();
+            if (dynamicDay.hasWaveEnded()){
+                menuPtr = new DayAndWater();
+            }
+            if (dynamicDay.hasGameEnded()){
+                menuPtr = new PlayMenu();
+            }
         }
         return menuPtr;
     }

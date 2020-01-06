@@ -10,17 +10,28 @@ import java.util.ArrayList;
 public class GameDay extends Game {
     public ArrayList<Chamanzan> chamanzans = new ArrayList<>(5);
 
-    GameCondition gameCondition = GameCondition.PLAYING;
+    private GameCondition gameCondition = GameCondition.PLAYING;
 
     public GameCondition getGameCondition() {
         return gameCondition;
+    }
+
+    private int turnLastZombieKilled = 0;
+
+    private int wavesOfAttack;
+
+    private int turnServed = 0;
+
+    private Sun suns;//must init with 2
+
+    public ArrayList<Chamanzan> getChamanzans() {
+        return chamanzans;
     }
 
     public void setGameCondition(GameCondition gameCondition) {
         this.gameCondition = gameCondition;
     }
 
-    private int turnLastZombieKilled = 0;
 
     public int getTurnLastZombieKilled() {
         return turnLastZombieKilled;
@@ -29,10 +40,7 @@ public class GameDay extends Game {
     public void setTurnLastZombieKilled(int turnLastZombieKilled) {
         this.turnLastZombieKilled = turnLastZombieKilled;
     }
-
     /**Handling suns:*/
-    private int turnServed = 0;
-    private Sun suns;//must init with 2
 
     public void addSuns(int s) {
         int currentSuns = this.suns.getSunStore();
@@ -57,7 +65,6 @@ public class GameDay extends Game {
     }
 
     /**Handling waves:*/
-    private int wavesOfAttack;
 
     public int getWavesOfAttack() {
         return wavesOfAttack;
@@ -66,6 +73,12 @@ public class GameDay extends Game {
 
     public GameDay(String name, String password) {
         super(name, password);
+
+        this.chamanzans.add(new Chamanzan(0, 0, this.yard));
+        this.chamanzans.add(new Chamanzan(0, 1, this.yard));
+        this.chamanzans.add(new Chamanzan(0, 2, this.yard));
+        this.chamanzans.add(new Chamanzan(0, 3, this.yard));
+        this.chamanzans.add(new Chamanzan(0, 4, this.yard));
 
         this.cards.add(Shop.getAllPlants().get(0));
         this.cards.add(Shop.getAllPlants().get(1));

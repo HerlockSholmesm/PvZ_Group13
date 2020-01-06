@@ -1,9 +1,6 @@
 package in_game;
 
-import model.Card;
-import model.Plant;
-import model.Shop;
-import model.Zombie;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -99,6 +96,10 @@ public class DynamicDay extends Dynamic {
         return false;
     }
 
+    public boolean hasWaveEnded(){
+        return playerDay.getZombies().size()==0;
+    }
+
     public boolean canIStartTheNextAttack() {
         if (playerDay.getTurn() - playerDay.getTurnLastZombieKilled() >= 7) {
             return true;
@@ -110,6 +111,17 @@ public class DynamicDay extends Dynamic {
     }
 
     public void endTurn() {
+        for (Plant plant:playerDay.getPlants()){
+            if(plant.getLife() <= 0){
+                Dynamic.removePlant(plant.getXCoordinate(), plant.getYCoordinate(), playerDay);
+            }
+        }
+        for (Zombie zombie:playerDay.getZombies()){
+            if(zombie.getLife() <= 0 || ((zombie.getX() <= -1) && zombie.getY() <= -1)){
+                playerDay.getZombies().remove(zombie);
+            }
+        }
+
         addSunRandomly();
         if (playerDay.getZombies().size() == 0 && playerDay.getTurn() != 0) {
             playerDay.setTurnLastZombieKilled(playerDay.getTurn());
@@ -118,6 +130,20 @@ public class DynamicDay extends Dynamic {
             attack();
         }
         playerDay.addTurn();
+        for (Zombie zombie:playerDay.getZombies()){
+            zombie.action(playerDay);
+        }
+        for (Plant plant:playerDay.getPlants()){
+            plant.action(playerDay);
+        }
+        for (Chamanzan chamanzan:playerDay.getChamanzans()){
+            chamanzan.action(playerDay);
+        }
+        for (PeaBullet peaBullet:playerDay.getPeaBullets()){
+            peaBullet.action(playerDay);
+        }
+
+
     }
 
 }

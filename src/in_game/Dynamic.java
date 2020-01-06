@@ -58,7 +58,25 @@ public abstract class Dynamic {
     public static Plant findPlant(Card card) {
         for (Plant plant : Shop.getAllPlants()) {
             if (plant.getName().equals(card.getName())) {
-                return plant;
+                if (plant instanceof EatablePlant){
+                    return new EatablePlant(plant.getName(), plant.getSun(), plant.getRest(), plant.getLife());
+                }
+                else if (plant instanceof MinePlant){
+                    return new MinePlant(plant.getName(),plant.getClock(),plant.getSun(),plant.getRest(),plant.getLife());
+                }
+                else if (plant instanceof ProducerPlant){
+                    return new ProducerPlant(plant.getName(),plant.getClock(),plant.getSun(),plant.getRest(),plant.getLife());
+                }
+                else if (plant instanceof shootingPlant){
+                    return new shootingPlant(plant.getName(),plant.getClock(),0,plant.getSun(),plant.getRest(),plant.getLife());
+                }
+                else if (plant instanceof throwingPlant){
+                    return new throwingPlant(plant.getName(),plant.getClock(),0,0,plant.getSun(),plant.getRest(),plant.getLife());
+                }
+                else {
+                    return new ToPlantOnPlant(plant.getName(), plant.getSun(), plant.getRest(), plant.getLife());
+                }
+
             }
         }
         return null;

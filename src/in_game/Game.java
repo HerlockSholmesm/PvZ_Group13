@@ -5,6 +5,27 @@ import model.*;
 import java.util.ArrayList;
 
 public class Game {
+
+    private ArrayList<PeaBullet> peaBullets = new ArrayList<PeaBullet>();
+
+    private ArrayList<ThrowingThing> ThrowingThings= new ArrayList<ThrowingThing>();
+
+    private Sun sun;
+
+    private ArrayList<Plant> plants = new ArrayList<Plant>();
+
+    ArrayList<Card> cards = new ArrayList<>();
+
+    protected int turn;
+
+    Account account;
+
+    private Coin coin = new Coin(0, 0);
+
+    protected ArrayList<Zombie> zombies = new ArrayList<>();
+
+    protected Yard yard;
+
     public ArrayList<PeaBullet> getPeaBullets() {
         return peaBullets;
     }
@@ -13,7 +34,6 @@ public class Game {
         this.peaBullets = peaBullets;
     }
 
-    private ArrayList<PeaBullet> peaBullets = new ArrayList<PeaBullet>();
 
     public ArrayList<ThrowingThing> getThrowingThings() {
         return ThrowingThings;
@@ -35,19 +55,10 @@ public class Game {
         this.peaBullets.add(new PeaBullet(xCoordinate,yCoordinate));
         peaBullet.actionnegetive(game);
     }
-    private ArrayList<ThrowingThing> ThrowingThings= new ArrayList<ThrowingThing>();
-    private Sun sun;
-    protected ArrayList<Plant> plants = new ArrayList<Plant>();
-    protected ArrayList<Card> cards = new ArrayList<>();
 
     public void removePlant(Plant plant) {
         this.plants.remove(plant);
     }
-
-    protected int turn;
-    Account account;
-    protected Coin coin = new Coin(0, 0);
-    protected ArrayList<Zombie> zombies = new ArrayList<>();
 
     public void addPlant(Plant plant) {
         this.plants.add(plant);
@@ -127,8 +138,6 @@ public class Game {
         turn++;
     }
 
-
-    Yard yard;
 
     public Yard getYard() {
         return yard;

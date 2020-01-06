@@ -1,5 +1,6 @@
 package model;
 
+import in_game.DynamicDay;
 import in_game.Game;
 
 import java.util.ArrayList;
@@ -72,6 +73,7 @@ public class Chamanzan {
             for (Zombie zombie : game.getZombies()) {
                 if (zombie.getX() == 0 && zombie.getY() == whichCell.getY()) {
                     used = true;
+                    game.getZombies().remove(zombie);
                     zombie.setY(-1);
                     zombie.setX(-1);
                 }
