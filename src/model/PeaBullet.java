@@ -53,12 +53,13 @@ public class PeaBullet {
             this.removeBullet();
         } else {
             for (Zombie zombie : game.getZombies()) {
-                if (zombie.getX() == x && zombie.getY() == y) {
-                    zombie.setLife(zombie.getLife() - this.getPower());
-                    this.removeBullet();
-                    return;
+                if (!(zombie instanceof ShieldZombie)) {
+                    if (zombie.getX() == x && zombie.getY() == y) {
+                        zombie.setLife(zombie.getLife() - this.getPower());
+                        this.removeBullet();
+                        return;
+                    }
                 }
-                //todo shield zombie
             }
         }
     }
@@ -68,10 +69,12 @@ public class PeaBullet {
             this.removeBullet();
         } else {
             for (Zombie zombie : game.getZombies()) {
-                if (zombie.getX() == x && zombie.getY() == y) {
-                    zombie.setLife(zombie.getLife() - this.getPower());
-                    this.removeBullet();
-                    return;
+                if (!(zombie instanceof ShieldZombie)) {
+                    if (zombie.getX() == x && zombie.getY() == y) {
+                        zombie.setLife(zombie.getLife() - this.getPower());
+                        this.removeBullet();
+                        return;
+                    }
                 }
             }
         }

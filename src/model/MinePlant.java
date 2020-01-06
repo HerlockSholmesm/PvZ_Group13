@@ -16,28 +16,45 @@ public class MinePlant extends Plant {
                 case ("Potato Mine"):
                     if (this.getXCoordinate() == zombie.getX() && this.getYCoordinate() == zombie.getY()) {
                         zombie.setLife(0);
-                        //zombie.setX(-1);
-                        //zombie.setY(-1);
                     }
-                case ("Cherry Bomb"):
-                    if (this.getXCoordinate() == zombie.getX() && this.getYCoordinate() == zombie.getY()) {
-                       zombie.setLife(0);
-                        // zombie.setX(-1);
-                        //zombie.setY(-1);
-                    }
-                case ("Magnet-shroom"):
-                    if (this.getXCoordinate() == zombie.getX() && this.getYCoordinate() == zombie.getY()) {
+                case ("Cherry Bomb"): {
+                    if ((this.getXCoordinate() == zombie.getX()) && ((this.getYCoordinate() == zombie.getY() + 1)
+                            || (this.getYCoordinate() == zombie.getY() - 1))) {
                         zombie.setLife(0);
-                        // zombie.setX(-1);
-                        //zombie.setY(-1);
+                    }
+                    if ((this.getXCoordinate() == zombie.getX()+1) && ((this.getYCoordinate() == zombie.getY() + 1)
+                            || (this.getYCoordinate() == zombie.getY() - 1))) {
+                        zombie.setLife(0);
+                    }
+                    if ((this.getXCoordinate() == zombie.getX()-1) && ((this.getYCoordinate() == zombie.getY() + 1)
+                            || (this.getYCoordinate() == zombie.getY() - 1))) {
+                        zombie.setLife(0);
+                    }
+                }
+                case ("Magnet-shroom"):{
+                    if ((this.getXCoordinate() == zombie.getX()) && ((this.getYCoordinate() == zombie.getY() + 1)
+                            || (this.getYCoordinate() == zombie.getY() - 1)||
+                            (this.getYCoordinate() == zombie.getY() ))) {
+                        zombie.setLife(0);
+                    }
+                    if ((this.getXCoordinate() == zombie.getX()+1) && ((this.getYCoordinate() == zombie.getY() + 1)
+                            || (this.getYCoordinate() == zombie.getY() - 1)||
+                            (this.getYCoordinate() == zombie.getY() ))) {
+                        zombie.setLife(0);
+                    }
+                    if ((this.getXCoordinate() == zombie.getX()-1) && ((this.getYCoordinate() == zombie.getY() + 1)
+                            || (this.getYCoordinate() == zombie.getY() - 1)||
+                            (this.getYCoordinate() == zombie.getY() ))) {
+                        zombie.setLife(0);
+                        //todo magnet
+                    }
                     }
                 case ("Jalapeno"):
-                    if (this.getXCoordinate() == zombie.getX() && this.getYCoordinate() == zombie.getY()) {
+                    if (this.getYCoordinate() == zombie.getY() ) {
                         zombie.setLife(0);
-                        // zombie.setX(-1);
-                        //zombie.setY(-1);
                     }
             }
+            //todo finishingmineZombie except magnet
 
         }
     }

@@ -25,8 +25,6 @@ public class GiantZombie extends Zombie {
             if ("Giga-gargantuar".equals(name)) {
                 if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
                     plant.setLife(0);
-                    //    plant.setX(-1);
-                  //  plant.setY(-1);
                     return;
                 }else {
                     move();

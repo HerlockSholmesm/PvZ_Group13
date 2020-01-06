@@ -24,54 +24,53 @@ public class MovingZombie extends Zombie {
                     if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
                         plant.setLife(plant.getLife() - 1);
                     }else {
+                        if(plant.getLife()==0)
                         move();
                     }
                 case ("Football Zombie"):
                     if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
                         plant.setLife(plant.getLife() - 1);
                     }else {
+                        if(plant.getLife()==0)
                         move();
                     }
                 case ("BucketHead Zombie"):
                     if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
                         plant.setLife(plant.getLife() - 1);
                     }else {
+                        if(plant.getLife()==0)
                         move();
                     }
                 case ("ConeHead Zombie"):
                     if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
                         plant.setLife(plant.getLife() - 1);
                     }else {
+                        if(plant.getLife()==0)
                         move();
                     }
                 case ("Zomboni"):
                     if ( this.getY() == plant.getYCoordinate()) {
-                        plant.setX(-1);
-                        plant.setY(-1);
+                      plant.setLife(0);
                     }else {
+                        if(plant.getLife()==0)
                         move();
                     }
                 case ("Catapult Zombie"):
                     if ( this.getY() == plant.getYCoordinate()) {
-                        plant.setX(-1);
-                        plant.setY(-1);
+                        plant.setLife(0);
                     }else {
+                        if(plant.getLife()==0)
                         move();
                     }
                 case ("Bungee Zombie"):
                     if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
-                        plant.setX(-1);
-                        plant.setY(-1);
+                        plant.setLife(0);
                         //todo random appeare
                     }else {
+                        if(plant.getLife()==0)
                         move();
                     }
-                case ("Balloon Zombie"):
-                    if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
-                        plant.setLife(plant.getLife() - 1);
-                    }else {
-                        move();
-                    }
+
 
             }
         }

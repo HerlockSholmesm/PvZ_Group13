@@ -26,6 +26,7 @@ public class FlyingZombie extends Zombie {
                     if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
                         this.setX(plant.getXCoordinate()-1);
                     }else {
+                        if(plant.getLife()==0)
                         move();
                     }
             }
