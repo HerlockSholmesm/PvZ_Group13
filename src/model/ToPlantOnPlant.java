@@ -12,7 +12,7 @@ public class ToPlantOnPlant extends Plant {
         String name = this.getName();
         switch (name) {
             case ("bobo"):
-                //todo
+                //todo yoplantOnPlant
         }
 
     }

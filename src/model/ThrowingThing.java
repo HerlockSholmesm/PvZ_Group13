@@ -45,9 +45,7 @@ public class ThrowingThing {
         this.setX(-1);
         this.setY(-1);
     }
-
-    //todo
-    //finding nearest
+    //todo random attack
     public void action(Game game, int power) {
         this.move();
         this.power=power;

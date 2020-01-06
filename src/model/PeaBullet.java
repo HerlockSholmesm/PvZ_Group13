@@ -5,7 +5,7 @@ import in_game.Game;
 public class PeaBullet {
     private int x;
     private int y;
-    private int power;
+    private int power=1;
 
     public int getPower() {
         return power;
