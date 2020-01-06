@@ -8,6 +8,7 @@ import model.Sun;
 import java.util.ArrayList;
 
 public class PvPGame extends Game {
+    private Coin coin;
     /**
      * Constructor:
      *

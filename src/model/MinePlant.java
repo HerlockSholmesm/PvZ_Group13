@@ -2,7 +2,7 @@ package model;
 
 import in_game.Game;
 
-class MinePlant extends Plant {
+public class MinePlant extends Plant {
     public MinePlant(String name, int cells, int sun, int rest, int life) {
 
         super(name, 0, sun, rest, life);

@@ -1,10 +1,6 @@
 package in_game;
 
-import model.Card;
-import model.Coin;
-import model.Shop;
-import model.Zombie;
-
+import model.*;
 import java.util.ArrayList;
 
 public class ZombieGame extends Game {

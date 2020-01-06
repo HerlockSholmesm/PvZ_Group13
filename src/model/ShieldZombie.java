@@ -2,7 +2,7 @@ package model;
 
 import in_game.Game;
 
-class ShieldZombie extends Zombie {
+public class ShieldZombie extends Zombie {
 
     int life;
 
