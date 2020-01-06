@@ -1,11 +1,10 @@
 package in_game;
 
-import model.Card;
-import model.Plant;
-import model.Zombie;
+import model.*;
+
+import java.util.ArrayList;
 
 public class DynamicPVP {
-
 
     private PvPGame pvpGame;
 
@@ -59,6 +58,17 @@ public class DynamicPVP {
      * Turn ending
      */
     public void goOn() {
+        for (Plant plant:pvpGame.getPlants()){
+            if(plant.getLife() <= 0){
+                Dynamic.removePlant(plant.getXCoordinate(), plant.getYCoordinate(), pvpGame);
+            }
+        }
+        for (Zombie zombie:pvpGame.getZombies()){
+            if(zombie.getLife() <= 0 ){
+                pvpGame.getZombies().remove(zombie);
+            }
+        }
+
         pvpGame.addSuns(1);
         for (Plant plant : pvpGame.getPlants()) {
             if (plant.getLife() <= 0) {
@@ -67,11 +77,27 @@ public class DynamicPVP {
         }
         pvpGame.addTurn();
 
+        for (Zombie zombie:pvpGame.getZombies()){
+            zombie.action(pvpGame);
+        }
+        for (Plant plant:pvpGame.getPlants()){
+            plant.action(pvpGame);
+        }
+        for (Chamanzan chamanzan:pvpGame.getChamanzans()){
+            chamanzan.action(pvpGame);
+        }
+        for (PeaBullet peaBullet:pvpGame.getPeaBullets()){
+            peaBullet.action(pvpGame);
+        }
+
+
     }
 
     public boolean isWaveFinished(){
+        pvpGame.waveAdder();
         if (pvpGame.getZombies().size() == 0){
             pvpGame.addPlantWins();
+            pvpGame.setWaveCondition(GamePvPCondition.PLANTWINNIG);
             return true;
         }
         else{
@@ -79,6 +105,7 @@ public class DynamicPVP {
                 if (zombie.getX() == 0){
                     pvpGame.addZombieCoin(200);
                     pvpGame.addZombieWins();
+                    pvpGame.setWaveCondition(GamePvPCondition.ZOMBIEWINNING);
                     return true;
                 }
             }

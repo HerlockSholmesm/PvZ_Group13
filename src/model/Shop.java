@@ -4,6 +4,7 @@ import in_game.Account;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Shop implements Serializable {
     private static ArrayList<Card> collection;
@@ -12,9 +13,14 @@ public class Shop implements Serializable {
     private static ArrayList<Card> cards;
     private static ArrayList<Card> boughtCards;
     private static ArrayList<Card> notBoughtCards;
+    private static HashMap<String,String> WaterTypeOrDay = new HashMap<>();
 
     public static ArrayList<Card> getCollection() {
         return collection;
+    }
+
+    public static HashMap<String, String> getWaterTypeOrDay() {
+        return WaterTypeOrDay;
     }
 
     public void showCollection(){
@@ -70,59 +76,83 @@ public class Shop implements Serializable {
         Plant plant = new shootingPlant("Peashooter", 2, 1, 2, 2, 2);
         plants.add(plant);
         collection.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new shootingPlant("Snow Pea", 3, 1, 3, 3, 3);
         plants.add(plant);
         collection.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new throwingPlant("Cabbage-pult", 2, 1, 2, 2, 3, 2);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new shootingPlant("Repeater", 3, 2, 3, 4, 4);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new shootingPlant("Threepeater", 4, 1, 4, 4, 5);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new shootingPlant("Cactus", 2, 1, 5, 4, 5);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new shootingPlant("Gatling Pea", 5, 4, 5, 4, 3);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new shootingPlant("Scaredy-shroom", 2, 1, 1, 2, 1);
         plants.add(plant);
         collection.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new throwingPlant("Kernel-pult", 4, 1, 0, 3, 3, 2);
         plants.add(plant);
         collection.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new shootingPlant("Split Pea", 1, 2, 4, 4, 3);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new EatablePlant("Explode-o-nut", 4, 5, 3);
         plants.add(plant);
         collection.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new throwingPlant("Melon-pult", 4, 1, 3, 3, 3, 3);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new ToPlantOnPlant("Lily Pad", 0, 1, 1);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "W");
         plant = new throwingPlant("Winter Melon", 4, 1, 3, 4, 5, 3);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new EatablePlant("Wall-nut", 2, 4, 4);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new EatablePlant("Tangle Kelp", 3, 3, 0);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "W");
         plant = new EatablePlant("Tall-nut", 4, 6, 6);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new EatablePlant("Cattail", 5, 5, 3);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new MinePlant("Potato Mine", 1, 2, 3, 1);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new MinePlant("Cherry Bomb", 8, 2, 4, 2);
         plants.add(plant);
         collection.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new MinePlant("Magnet-shroom", 8, 2, 4, 4);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new ProducerPlant("Sunflower", 2, 1, 1, 2, 2);
         plants.add(plant);
         collection.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new ProducerPlant("Twin Sunflower", 2, 2, 3, 5, 2);
         plants.add(plant);
+        WaterTypeOrDay.put(plant.getName(), "D");
         plant = new MinePlant("Jalapeno", 19, 4, 5, 2);
         plants.add(plant);
         cards.addAll(plants);
+        WaterTypeOrDay.put(plant.getName(), "D");
         notBoughtCards.addAll(cards);
 
     }

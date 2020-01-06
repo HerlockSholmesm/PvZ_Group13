@@ -66,7 +66,16 @@ public class DynamicDay extends Dynamic {
         int numberOfZombies = MathFunctions.getRandomNumber(4, 10);
         for (int i = 0; i < numberOfZombies; i++) {
             int randomIndex = rand.nextInt(Shop.getZombies().size());
-            randomZombies.add((Zombie) Shop.getZombies().get(randomIndex));
+            Zombie zombie =  Shop.getZombies().get(randomIndex);
+            if (zombie instanceof FlyingZombie) {
+                randomZombies.add(new FlyingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense()));
+            } else if (zombie instanceof GiantZombie) {
+                randomZombies.add(new GiantZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense()));
+            } else if (zombie instanceof MovingZombie) {
+                randomZombies.add(new MovingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense()));
+            } else {
+                randomZombies.add(new SwimmingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense()));
+            }
         }
         playerDay.setZombies(randomZombies);
         return randomZombies;
@@ -117,7 +126,7 @@ public class DynamicDay extends Dynamic {
             }
         }
         for (Zombie zombie:playerDay.getZombies()){
-            if(zombie.getLife() <= 0 || ((zombie.getX() <= -1) && zombie.getY() <= -1)){
+            if(zombie.getLife() <= 0 ){
                 playerDay.getZombies().remove(zombie);
             }
         }
@@ -130,6 +139,7 @@ public class DynamicDay extends Dynamic {
             attack();
         }
         playerDay.addTurn();
+
         for (Zombie zombie:playerDay.getZombies()){
             zombie.action(playerDay);
         }

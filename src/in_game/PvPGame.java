@@ -1,9 +1,6 @@
 package in_game;
 
-import model.Card;
-import model.Coin;
-import model.Shop;
-import model.Sun;
+import model.*;
 
 import java.util.ArrayList;
 
@@ -19,6 +16,13 @@ public class PvPGame extends Game {
 
     public GamePvPCondition getGamePvPCondition() {
         return gamePvPCondition;
+    }
+
+
+    private ArrayList<Chamanzan> chamanzans = new ArrayList<>();
+
+    public ArrayList<Chamanzan> getChamanzans() {
+        return chamanzans;
     }
 
     public void setGamePvPCondition(GamePvPCondition gamePvPCondition) {
@@ -99,11 +103,38 @@ public class PvPGame extends Game {
         this.coin = new Coin(50, 0);
 
         this.totalWaves = totalWaves;
+
+        this.chamanzans.add(new Chamanzan(0, 0, this.yard));
+        this.chamanzans.add(new Chamanzan(0, 1, this.yard));
+        this.chamanzans.add(new Chamanzan(0, 2, this.yard));
+        this.chamanzans.add(new Chamanzan(0, 3, this.yard));
+        this.chamanzans.add(new Chamanzan(0, 4, this.yard));
+        this.chamanzans.add(new Chamanzan(0, 5, this.yard));
+
+
     }
 
 
+    private GamePvPCondition waveCondition = GamePvPCondition.PLAYING;
+    private int waveCounter = 0;
     private int totalWaves;
     private Sun suns;//must init with 2
+
+    public GamePvPCondition getWaveCondition() {
+        return waveCondition;
+    }
+
+    public void setWaveCondition(GamePvPCondition waveCondition) {
+        this.waveCondition = waveCondition;
+    }
+
+    public int getWaveCounter() {
+        return waveCounter;
+    }
+
+    public void waveAdder(){
+        waveCounter++;
+    }
 
     public int getSuns() {
         return suns.getSunStore();

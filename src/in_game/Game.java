@@ -6,13 +6,13 @@ import java.util.ArrayList;
 
 public class Game {
 
-    public ArrayList<PeaBullet> peaBullets = new ArrayList<PeaBullet>();
+    private ArrayList<PeaBullet> peaBullets = new ArrayList<PeaBullet>();
 
-    public ArrayList<ThrowingThing> ThrowingThings= new ArrayList<ThrowingThing>();
+    private ArrayList<ThrowingThing> ThrowingThings= new ArrayList<ThrowingThing>();
 
-    public Sun sun;
+    private Sun sun;
 
-    public ArrayList<Plant> plants = new ArrayList<Plant>();
+    protected ArrayList<Plant> plants = new ArrayList<Plant>();
 
     ArrayList<Card> cards = new ArrayList<>();
 
@@ -20,7 +20,7 @@ public class Game {
 
     Account account;
 
-    public Coin coin = new Coin(0, 0);
+    protected Coin coin = new Coin(0, 0);
 
     protected ArrayList<Zombie> zombies = new ArrayList<>();
 

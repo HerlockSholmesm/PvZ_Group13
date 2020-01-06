@@ -15,23 +15,27 @@ public class MinePlant extends Plant {
             switch (name) {
                 case ("Potato Mine"):
                     if (this.getXCoordinate() == zombie.getX() && this.getYCoordinate() == zombie.getY()) {
-                        zombie.setX(-1);
-                        zombie.setY(-1);
+                        zombie.setLife(0);
+                        //zombie.setX(-1);
+                        //zombie.setY(-1);
                     }
                 case ("Cherry Bomb"):
                     if (this.getXCoordinate() == zombie.getX() && this.getYCoordinate() == zombie.getY()) {
-                        zombie.setX(-1);
-                        zombie.setY(-1);
+                       zombie.setLife(0);
+                        // zombie.setX(-1);
+                        //zombie.setY(-1);
                     }
                 case ("Magnet-shroom"):
                     if (this.getXCoordinate() == zombie.getX() && this.getYCoordinate() == zombie.getY()) {
-                        zombie.setX(-1);
-                        zombie.setY(-1);
+                        zombie.setLife(0);
+                        // zombie.setX(-1);
+                        //zombie.setY(-1);
                     }
                 case ("Jalapeno"):
                     if (this.getXCoordinate() == zombie.getX() && this.getYCoordinate() == zombie.getY()) {
-                        zombie.setX(-1);
-                        zombie.setY(-1);
+                        zombie.setLife(0);
+                        // zombie.setX(-1);
+                        //zombie.setY(-1);
                     }
             }
 

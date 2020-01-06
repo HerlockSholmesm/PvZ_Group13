@@ -74,8 +74,7 @@ public class Chamanzan {
                 if (zombie.getX() == 0 && zombie.getY() == whichCell.getY()) {
                     used = true;
                     game.getZombies().remove(zombie);
-                    zombie.setY(-1);
-                    zombie.setX(-1);
+                    zombie.setLife(0);
                 }
             }
             return;

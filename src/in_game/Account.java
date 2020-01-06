@@ -154,4 +154,8 @@ public class Account implements Serializable{
         Account account1 = new Account(this.getName(), this.getPassword());
         return account1;
     }
+
+    public void saveGame(Game game){
+        this.money = game.getCoin().getCoinOutOfTheGame();
+    }
 }

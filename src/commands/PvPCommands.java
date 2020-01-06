@@ -1,6 +1,8 @@
 package commands;
 
 import commands.Menu.Menu;
+import commands.Menu.PlayMenu;
+import commands.Menu.PvPMenu;
 import in_game.*;
 import model.Card;
 import model.Plant;
@@ -240,6 +242,7 @@ class Ready extends PvPCommands {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
             pvpGame.setReady(true);
+
         }
         return menuPtr;
     }
@@ -375,7 +378,31 @@ class EndTurnPvP extends PvPCommands {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
             DynamicPVP dynamicPVP = new DynamicPVP(pvpGame);
-            dynamicPVP.goOn();
+            if (dynamicPVP.hasGameEnded()){
+                System.out.println("Game is finished!");
+                if (pvpGame.getGamePvPCondition() == GamePvPCondition.PLANTWINNIG)
+                    System.out.println("Plants won!!!!!!");
+                else
+                    System.out.println("Zombies Won!!!");
+                menuPtr = new PlayMenu();
+            }
+            else if (dynamicPVP.isWaveFinished()){
+                System.out.println("Wave "+ pvpGame.getWaveCounter() + "finished and the winner of the wave are:");
+                if (pvpGame.getWaveCondition() == GamePvPCondition.PLANTWINNIG){
+                    System.out.println("Plants");
+                }
+                else{
+                    System.out.println("Plants");
+                }
+                menuPtr = new PvPMenu();
+            }
+            else if(pvpGame.isStart()){
+                dynamicPVP.goOn();
+            }
+            else{
+                System.out.println("you haven't started the game!");
+                menuPtr = new PvPMenu();
+            }
         }
         return  menuPtr;
     }
