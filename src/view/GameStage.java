@@ -1,22 +1,31 @@
 package view;
 
-import in_game.Account;
+
 import javafx.application.Application;
-import java.io.IOException;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.image.ImageView;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.stage.WindowEvent;
+import java.io.IOException;
+
 import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+
 public class GameStage extends Application{
     private Group root;
+    private int difficulty;
+    static Stage initiateStage = new Stage();
 
+
+    @Override
     public void start(Stage primaryStage) throws IOException {
 
         primaryStage.setTitle( "Plants VS Zombies" );
@@ -96,26 +105,16 @@ public class GameStage extends Application{
         primaryStage.setResizable(false);
         primaryStage.show();
         // initialize enemy and player
-        // initialize enemy and player
-        Account account 
-        // set detection
-        s1.setOnDragDetected(new PlantDragController(s1, peashooter));
-        s2.setOnDragDetected(new PlantDragController(s2, sunflower));
-        s3.setOnDragDetected(new PlantDragController(s3, wallnut));
-        theScene.setOnDragOver(new PlantDragOverController());
-        theScene.setOnDragDropped(new PlantDragDropController(root, player));
-        theScene.setOnMouseClicked(new SunController(player,root,sun1));
-        initiateStage = primaryStage;
-        GameController controller = new GameController(1,player,enemy,initiateStage);
-        controller.initialize();
 
-        }
+    }
 
-     public Stage getInitiateStage() {
+    /**
+     * get the stage of this screen
+     */
+    public Stage getInitiateStage() {
         return initiateStage;
     }
-        public static void main(String[] args) {launch(args);}
 
+
+    public static void main(String[] args) {launch(args);}
 }
-
-

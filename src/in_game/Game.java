@@ -68,8 +68,8 @@ public class Game {
         return this.plants;
     }
 
-    public Sun getSun() {
-        return sun;
+    public int getSun() {
+        return sun.getSunStore();
     }
 
     public void setSun(int sun) {
