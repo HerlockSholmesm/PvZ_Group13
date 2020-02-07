@@ -1,79 +1,57 @@
 package model;
 
 import in_game.Game;
+import javafx.scene.image.Image;
 
-public class Yard {
+public abstract class Yard {
+    int width;
+    int height;
+    Image background;
     private Cell yard[][] = new Cell[6][19];
-    private Cell waterYard[][] = new Cell[2][19];
     private Game game;
     private boolean isItWater;
+    private int x1;
+    private int x2;
+    private int y1;
+    private int y2;
+
+    public Yard(Image background, Cell[][] yard, Game game, boolean isItWater, int x1, int x2, int y1, int y2) {
+        this.background = background;
+        this.yard = yard;
+        this.game = game;
+        this.isItWater = isItWater;
+        this.x1 = x1;
+        this.x2 = x2;
+        this.y1 = y1;
+        this.y2 = y2;
+        width = x2 - x1;
+        height = y2 - y1;
+    }
 
     public Game getGame() {
         return game;
     }
 
-    public Yard() {
-    }
-
-    private boolean isItPerson1Tern;
-    private boolean isItPerson2Tern;
-
     public Cell[][] getYard() {
         return yard;
     }
 
-    public Cell[][] getWaterYard() {
-        return waterYard;
-    }
-
-    private boolean isItPerson1Win;
-    private boolean isItPerson2Win;
-
-
     public boolean isItWater() {
         return isItWater;
-    }
-
-    public void setItWater(boolean itWater) {
-        isItWater = itWater;
     }
 
     public void setYard(Cell[][] yard) {
         this.yard = yard;
     }
 
-    public void setItPerson1Tern(boolean itPerson1Tern) {
-        isItPerson1Tern = itPerson1Tern;
-    }
 
-    public void setItPerson2Tern(boolean itPerson2Tern) {
-        isItPerson2Tern = itPerson2Tern;
-    }
 
-    public void setItPerson1Win(boolean itPerson1Win) {
-        isItPerson1Win = itPerson1Win;
-    }
 
-    public void setItPerson2Win(boolean itPerson2Win) {
-        isItPerson2Win = itPerson2Win;
-    }
 
-    public boolean isItPerson1Tern() {
-        return isItPerson1Tern;
-    }
 
-    public boolean isItPerson2Tern() {
-        return isItPerson2Tern;
-    }
 
-    public boolean isItPerson1Win() {
-        return isItPerson1Win;
-    }
 
-    public boolean isItPerson2Win() {
-        return isItPerson2Win;
-    }
 
-    public void getZombies() {
-    }
+
+
 }
