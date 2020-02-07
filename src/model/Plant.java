@@ -92,6 +92,9 @@ public abstract class Plant extends Card {
         this.image = image;
     }
 
+    public void setImage(Image image) {
+        this.image = image;
+    }
 
     //<<<<<<< HEAD
     public void action(Game game) {

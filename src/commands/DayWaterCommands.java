@@ -2,9 +2,13 @@ package commands;
 
 import commands.Menu.*;
 import in_game.*;
-import model.Card;
-import model.Plant;
-import model.Shop;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -294,5 +298,27 @@ class HelpDay extends DayWaterCommands {
             menuPtr.help();
         }
         return menuPtr;
+    }
+}
+
+class PlayDay extends Application{
+    private Group root;
+    private DayYard dayYard;
+
+    public void setDayYard(DayYard dayYard) {
+        this.dayYard = dayYard;
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("Plants VS Zombies");
+        this.root = new Group();
+        Scene scene = new Scene(root,1116, 602);
+        Image background = new Image("/png/wallp.png");
+        ImageView backgroundView = new ImageView(background);
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
     }
 }

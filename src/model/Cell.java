@@ -2,15 +2,13 @@ package model;
 
 public class Cell {
     private boolean dryness;
-    private boolean aqua;
     private int x1;
     private int x2;
     private int y1;
     private int y2;
 
-    public Cell(boolean dryness, boolean aqua, int x1, int x2, int y1, int y2) {
-        this.dryness = dryness;
-        this.aqua = aqua;
+    public Cell(boolean dry, int x1, int x2, int y1, int y2) {
+        this.dryness = dry;
         this.x1 = x1;
         this.x2 = x2;
         this.y1 = y1;
@@ -41,13 +39,7 @@ public class Cell {
         this.dryness = dryness;
     }
 
-    public boolean isAqua() {
-        return aqua;
-    }
 
-    public void setAqua(boolean aqua) {
-        this.aqua = aqua;
-    }
 
 
 }

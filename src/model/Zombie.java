@@ -104,6 +104,10 @@ public abstract class Zombie extends Card {
         this.image = image;
     }
 
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
     public int getLife() {
         return life;
     }
