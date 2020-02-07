@@ -99,7 +99,7 @@ public abstract class Zombie extends Card {
         this.defense = defense;
         this.name = name;
         shop = new Shop();
-        this.cell = new Cell(x, y);
+      //  this.cell = new Cell(x, y);
         canmove=0;
         this.image = image;
     }
@@ -120,7 +120,7 @@ public abstract class Zombie extends Card {
     public void setZombie(int x, int y) {
         this.x = x;
         this.y = y;
-        cell = new Cell(x, y);
+       // cell = new Cell(x, y);
     }
 
     public void attack(Card card) {
@@ -128,7 +128,7 @@ public abstract class Zombie extends Card {
     }
 
     public void move() {
-        cell = new Cell(x + speed, y);
+        this.x=(x + speed);
     }
 
     public abstract void action(Game game);
