@@ -8,15 +8,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import model.Zombie;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
-/**
- * @author YanhanLyu, Lucy Wu
- * Class that updates the status of game in general
- */
 
 public class GameController implements EventHandler<KeyEvent> {
     final private double FRAMES_PER_SECOND = 60.0;
@@ -28,13 +21,7 @@ public class GameController implements EventHandler<KeyEvent> {
     private Stage stage;
     private Timer timer;
 
-    /**
-     * Constructor
-     * @param difficulty the difficulty level of this game
-     * @param player the player
-     * @param enemy the enemy
-     * @param initStage the stage
-     */
+
     public GameController(int difficulty, Player player, Enemy enemy, Stage initStage) {
         this.difficulty = difficulty;
         this.player = player;
@@ -73,26 +60,23 @@ public class GameController implements EventHandler<KeyEvent> {
         return player;
     }
 
-    /**
-     * Update animation in this method
-     */
     private void updateAnimation() {
-            ArrayList<Plant> listOfPlants = checkPlants();
-            ArrayList<Zombie> listOfZombies = checkZombies();
-            ArrayList<Pea> listOfPeas = checkPeas();
-            runFight(listOfPlants, listOfZombies, listOfPeas);
-            for (Pea pea: listOfPeas) {
-                pea.step();
-            }
-            // Update plant animation
-            for (Plant plant : listOfPlants) {
-                plant.step();
-            }
-            // Update Zombie animation
-            for (Zombie zombie : enemy.getZombies()) {
-                zombie.step();
-            }
+        ArrayList<Plant> listOfPlants = checkPlants();
+        ArrayList<Zombie> listOfZombies = checkZombies();
+        ArrayList<Pea> listOfPeas = checkPeas();
+        runFight(listOfPlants, listOfZombies, listOfPeas);
+        for (Pea pea: listOfPeas) {
+            pea.step();
         }
+        // Update plant animation
+        for (Plant plant : listOfPlants) {
+            plant.step();
+        }
+        // Update Zombie animation
+        for (Zombie zombie : enemy.getZombies()) {
+            zombie.step();
+        }
+    }
 
 
     private ArrayList<Plant> checkPlants(){
@@ -116,7 +100,7 @@ public class GameController implements EventHandler<KeyEvent> {
     private void runFight(ArrayList<Plant> plants, ArrayList<Zombie> zombies, ArrayList<Pea> peas){
         boolean plantDie = false;
         // this is the list containing the zombies blocked by plants
-        ArrayList<Zombie> blockZombie = new ArrayList<Zombie>();
+        ArrayList<Zombie> blockZombie = new  ArrayList<Zombie>();
         for (Iterator<Zombie> iterator2 = zombies.iterator(); iterator2.hasNext(); ) {
             Zombie zombie = iterator2.next();
             if (zombie.getImagePositionX()<60){
@@ -212,9 +196,7 @@ public class GameController implements EventHandler<KeyEvent> {
         }
     }
 
-    /**
-     * handle events
-     */
+
     @Override
     public void handle(KeyEvent keyEvent) {
 

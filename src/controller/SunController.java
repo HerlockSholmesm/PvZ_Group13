@@ -1,22 +1,18 @@
 package controller;
-
-import game.model.*;
+import in_game.DynamicDay;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.Group;
 
-/**
- * @author YanhanLyu, Lucy Wu
- * If the star of the sunflower is clicked, the controller will reset the sun of the layer
- */
+
 public class SunController implements EventHandler<MouseEvent> {
-    Player player;
+   DynamicDay dinamicday;
     Group root;
     Label sun;
     Label sunOriginal;
 
-    public SunController(Player player, Group root, Label sunOriginal) {
+    public SunController(, Group root, Label sunOriginal) {
         this.root = root;
         this.player = player;
         this.sunOriginal = sunOriginal;
