@@ -1,6 +1,7 @@
 package model;
 
 import in_game.Game;
+import javafx.scene.image.Image;
 
 import javax.swing.*;
 
@@ -69,7 +70,7 @@ public class MovingZombie extends Zombie {
         }
     }
 
-    public MovingZombie(String name, int life, int speed, int defense) {
-        super(life, speed, defense, name);
+    public MovingZombie(String name, int life, int speed, int defense, Image image ) {
+        super(life, speed, defense, name,image);
     }
 }

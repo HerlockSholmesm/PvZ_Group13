@@ -2,6 +2,7 @@ package model;
 
 import in_game.DynamicDay;
 import in_game.Game;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -11,6 +12,11 @@ public class Chamanzan {
     private int whichRow;
     private Cell whichCell;
     private Yard yard;
+    private Image image;
+
+    public Image getImage() {
+        return image;
+    }
 
     public Chamanzan(int x, int y, Yard yard) {
         this.whichCell = new Cell(x, y);

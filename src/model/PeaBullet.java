@@ -1,11 +1,17 @@
 package model;
 
 import in_game.Game;
+import javafx.scene.image.Image;
 
 public class PeaBullet {
     private int x;
     private int y;
     private int power=1;
+    private Image image;
+
+    public Image getImage() {
+        return image;
+    }
 
     public int getPower() {
         return power;

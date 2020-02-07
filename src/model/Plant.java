@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 import in_game.*;
+import javafx.scene.image.Image;
 
 public abstract class Plant extends Card {
     private int x;
@@ -10,7 +11,11 @@ public abstract class Plant extends Card {
     private int sun;
     private int rest;
     private int price;
+    private Image image;
 
+    public Image getImage() {
+        return image;
+    }
 
     public void setX(int x) {
         this.x = x;
@@ -77,14 +82,16 @@ public abstract class Plant extends Card {
         return speed;
     }
 
-    public Plant(String name, int clock, int sun, int rest, int life) {
+    public Plant(String name, int clock, int sun, int rest, int life,Image image) {
         this.name = name;
         this.sun = sun;
         this.rest = rest;
         this.life = life;
         this.clock = clock;
         suni = new Sun();
+        this.image = image;
     }
+
 
     //<<<<<<< HEAD
     public void action(Game game) {

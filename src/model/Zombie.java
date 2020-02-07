@@ -1,6 +1,7 @@
 package model;
 
 import in_game.Game;
+import javafx.scene.image.Image;
 
 public abstract class Zombie extends Card {
 
@@ -8,6 +9,9 @@ public abstract class Zombie extends Card {
     private int life;
     private int speed;
     private int attackPower;
+
+    private Image image;
+
 
     public int getCanmove() {
         return canmove;
@@ -48,6 +52,9 @@ public abstract class Zombie extends Card {
         return shop;
     }
 
+    public Image getImage() {
+        return image;
+    }
     @Override
     public void setLife(int life) {
         this.life = life;
@@ -86,7 +93,7 @@ public abstract class Zombie extends Card {
         this.name = name;
     }
 
-    public Zombie(int life, int speed, int defense, String name) {
+    public Zombie(int life, int speed, int defense, String name,Image image) {
         this.life = life;
         this.speed = speed;
         this.defense = defense;
@@ -94,6 +101,7 @@ public abstract class Zombie extends Card {
         shop = new Shop();
         this.cell = new Cell(x, y);
         canmove=0;
+        this.image = image;
     }
 
     public int getLife() {

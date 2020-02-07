@@ -1,10 +1,11 @@
 package model;
 
 import in_game.Game;
+import javafx.scene.image.Image;
 
 public class EatablePlant extends Plant {
-    public EatablePlant(String name, int sun, int rest, int life) {
-        super(name, 0, sun, rest, life);
+    public EatablePlant(String name, int sun, int rest, int life, Image image) {
+        super(name, 0, sun, rest, life,image);
     }
 
     public void action(Game game) {

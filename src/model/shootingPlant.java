@@ -1,12 +1,13 @@
 package model;
 
 import in_game.Game;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
 public class shootingPlant extends Plant {
-    public shootingPlant(String name, int clock, int numberOfPea, int sun, int rest, int life) {
-        super(name, clock, sun, rest, life);
+    public shootingPlant(String name, int clock, int numberOfPea, int sun, int rest, int life, Image image) {
+        super(name, clock, sun, rest, life,image);
     }
 
     public void shoot(int number, int x, int y) {

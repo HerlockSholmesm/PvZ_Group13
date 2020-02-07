@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import model.Zombie;
 
 import java.util.ArrayList;
 import java.util.Iterator;

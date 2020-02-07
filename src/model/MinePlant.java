@@ -1,11 +1,12 @@
 package model;
 
 import in_game.Game;
+import javafx.scene.image.Image;
 
 public class MinePlant extends Plant {
-    public MinePlant(String name, int cells, int sun, int rest, int life) {
+    public MinePlant(String name, int cells, int sun, int rest, int life, Image image) {
 
-        super(name, 0, sun, rest, life);
+        super(name, 0, sun, rest, life,image );
     }
 
     @Override

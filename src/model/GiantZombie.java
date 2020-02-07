@@ -1,10 +1,11 @@
 package model;
 
 import in_game.Game;
+import javafx.scene.image.Image;
 
 public class GiantZombie extends Zombie {
-    public GiantZombie(String name, int life, int speed, int defense) {
-        super(life, speed, defense, name);
+    public GiantZombie(String name, int life, int speed, int defense, Image image) {
+        super(life, speed, defense, name,image);
     }
 
     @Override

@@ -1,12 +1,13 @@
 package model;
 
 import in_game.Game;
+import javafx.scene.image.Image;
 
 public class ProducerPlant extends Plant {
 
-    public ProducerPlant(String name, int clock, int numberOfSun, int sun, int rest, int life) {
+    public ProducerPlant(String name, int clock, int numberOfSun, int sun, int rest, int life, Image image) {
 
-        super(name, clock, sun, rest, life);
+        super(name, clock, sun, rest, life,image);
     }
 
     @Override
