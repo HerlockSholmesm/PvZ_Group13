@@ -3,28 +3,34 @@ package model;
 public class Cell {
     private boolean dryness;
     private boolean aqua;
-    private int x;
-    private int y;
+    private int x1;
+    private int x2;
+    private int y1;
+    private int y2;
 
-    public void setX(int x) {
-        this.x = x;
+    public Cell(boolean dryness, boolean aqua, int x1, int x2, int y1, int y2) {
+        this.dryness = dryness;
+        this.aqua = aqua;
+        this.x1 = x1;
+        this.x2 = x2;
+        this.y1 = y1;
+        this.y2 = y2;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public int getX1() {
+        return x1;
     }
 
-    public Cell(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public int getX2() {
+        return x2;
     }
 
-    public int getX() {
-        return x;
+    public int getY1() {
+        return y1;
     }
 
-    public int getY() {
-        return y;
+    public int getY2() {
+        return y2;
     }
 
     public boolean isDryness() {
