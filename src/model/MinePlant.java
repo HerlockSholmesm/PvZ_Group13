@@ -11,41 +11,44 @@ public class MinePlant extends Plant {
 
     @Override
     public void action(Game game) {
-        String name = this.getName();
         for (Zombie zombie : game.getZombies()) {
-            switch (name) {
+            switch (this.getName()) {
                 case ("Potato Mine"):
-                    if (this.getXCoordinate() == zombie.getX() && this.getYCoordinate() == zombie.getY()) {
+                    if (this.getClock() <= game.getTurn() && this.getXCoordinate() == zombie.getX() && this.getYCoordinate() == zombie.getY()) {
                         zombie.setLife(0);
+                        this.setLife(0);
                     }
                 case ("Cherry Bomb"): {
-                    if ((this.getXCoordinate() == zombie.getX()) && ((this.getYCoordinate() == zombie.getY() + 1)
-                            || (this.getYCoordinate() == zombie.getY() - 1))) {
+                    if ((this.getClock() <= game.getTurn()) && ((this.getXCoordinate() == zombie.getX()) && ((this.getYCoordinate() == zombie.getY() + 1)
+                            || (this.getYCoordinate() == zombie.getY() - 1)))) {
                         zombie.setLife(0);
+                        this.setLife(0);
                     }
-                    if ((this.getXCoordinate() == zombie.getX()+1) && ((this.getYCoordinate() == zombie.getY() + 1)
-                            || (this.getYCoordinate() == zombie.getY() - 1))) {
+                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate() == zombie.getX()+1) && ((this.getYCoordinate() == zombie.getY() + 1)
+                            || (this.getYCoordinate() == zombie.getY() - 1)))) {
                         zombie.setLife(0);
+                        this.setLife(0);
                     }
-                    if ((this.getXCoordinate() == zombie.getX()-1) && ((this.getYCoordinate() == zombie.getY() + 1)
-                            || (this.getYCoordinate() == zombie.getY() - 1))) {
+                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate() == zombie.getX()-1) && ((this.getYCoordinate() == zombie.getY() + 1)
+                            || (this.getYCoordinate() == zombie.getY() - 1)))) {
                         zombie.setLife(0);
+                        this.setLife(0);
                     }
                 }
                 case ("Magnet-shroom"):{
-                    if ((this.getXCoordinate() == zombie.getX()) && ((this.getYCoordinate() == zombie.getY() + 1)
+                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate() == zombie.getX()) && ((this.getYCoordinate() == zombie.getY() + 1)
                             || (this.getYCoordinate() == zombie.getY() - 1)||
-                            (this.getYCoordinate() == zombie.getY() ))) {
+                            (this.getYCoordinate() == zombie.getY() )))) {
                         zombie.setLife(0);
                     }
-                    if ((this.getXCoordinate() == zombie.getX()+1) && ((this.getYCoordinate() == zombie.getY() + 1)
+                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate() == zombie.getX()+1) && ((this.getYCoordinate() == zombie.getY() + 1)
                             || (this.getYCoordinate() == zombie.getY() - 1)||
-                            (this.getYCoordinate() == zombie.getY() ))) {
+                            (this.getYCoordinate() == zombie.getY() )))) {
                         zombie.setLife(0);
                     }
-                    if ((this.getXCoordinate() == zombie.getX()-1) && ((this.getYCoordinate() == zombie.getY() + 1)
+                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate() == zombie.getX()-1) && ((this.getYCoordinate() == zombie.getY() + 1)
                             || (this.getYCoordinate() == zombie.getY() - 1)||
-                            (this.getYCoordinate() == zombie.getY() ))) {
+                            (this.getYCoordinate() == zombie.getY() )))) {
                         zombie.setLife(0);
                         //todo magnet
                     }

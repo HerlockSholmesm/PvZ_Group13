@@ -17,6 +17,10 @@ public class shootingPlant extends Plant {
         }
     }
 
+    public ArrayList<PeaBullet> getPeaBullets() {
+        return peaBullets;
+    }
+
     @Override
     public void action(Game game) {
         String name = this.getName();

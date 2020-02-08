@@ -1,11 +1,12 @@
 package model;
 
 import in_game.Game;
+import in_game.GameDay;
 import javafx.scene.image.Image;
 
 public class DayYard extends Yard {
 
-    public DayYard( Game game) {
+    public DayYard( GameDay game) {
         super(game, false);
         this.background = new Image("/png/wallp.png");
 

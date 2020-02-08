@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Game {
 
-    private ArrayList<PeaBullet> peaBullets = new ArrayList<PeaBullet>();
 
     private ArrayList<ThrowingThing> ThrowingThings= new ArrayList<ThrowingThing>();
 
@@ -27,6 +26,11 @@ public class Game {
     protected Yard yard;
 
     public ArrayList<PeaBullet> getPeaBullets() {
+        ArrayList<PeaBullet> peaBullets = new ArrayList<>();
+        for(int i = 0; i < plants.size(); i++){
+            peaBullets.add(plants.get(i).getPea)
+        }
+
         return peaBullets;
     }
 

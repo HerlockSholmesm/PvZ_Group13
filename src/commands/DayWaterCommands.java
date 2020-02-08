@@ -320,7 +320,6 @@ class PlayDay extends Application{
         root.getChildren().add(backgroundView);
         GameDay gameDay = GameDay.getGame();
         DayYard dayYard = new DayYard(gameDay);
-        Game
 
 
         primaryStage.setScene(scene);
