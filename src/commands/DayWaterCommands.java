@@ -3,6 +3,7 @@ package commands;
 import commands.Menu.*;
 import in_game.*;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -303,7 +304,7 @@ class HelpDay extends DayWaterCommands {
 
 class PlayDay extends Application{
     private Group root;
-    private DayYard dayYard;
+    private Yard dayYard;
 
     public void setDayYard(DayYard dayYard) {
         this.dayYard = dayYard;
@@ -316,6 +317,11 @@ class PlayDay extends Application{
         Scene scene = new Scene(root,1116, 602);
         Image background = new Image("/png/wallp.png");
         ImageView backgroundView = new ImageView(background);
+        root.getChildren().add(backgroundView);
+        GameDay gameDay = GameDay.getGame();
+        DayYard dayYard = new DayYard(gameDay);
+        Game
+
 
         primaryStage.setScene(scene);
         primaryStage.show();

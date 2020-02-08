@@ -1,6 +1,7 @@
 package view;
 
 
+import in_game.Game;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

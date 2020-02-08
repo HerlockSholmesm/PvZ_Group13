@@ -1,31 +1,25 @@
 package controller;
 
-import game.model.*;
-import game.view.*;
+import in_game.Game;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import model.Zombie;
+import model.*;
 
 import java.util.*;
 
 
-public class GameController implements EventHandler<KeyEvent> {
+public class GameController{
     final private double FRAMES_PER_SECOND = 60.0;
-    private int difficulty;
-    private Player player;
-    private Enemy enemy;
-    private boolean playerWin = false;
-    private boolean zombieWin = false;
+    private model.Yard yard;
+    private Game game;
     private Stage stage;
     private Timer timer;
 
 
-    public GameController(int difficulty, Player player, Enemy enemy, Stage initStage) {
-        this.difficulty = difficulty;
-        this.player = player;
-        this.enemy = enemy;
+    public GameController(Yard Yard, Stage initStage) {
+        this.yard = Yard;
+        this.game = Yard.getGame();
         this.stage = initStage;
     }
 
@@ -41,7 +35,7 @@ public class GameController implements EventHandler<KeyEvent> {
      * run starterTimer
      */
     private void startTimer() {
-        this.timer = new java.util.Timer();
+        this.timer = new Timer();
         TimerTask timerTask = new TimerTask() {
             public void run() {
                 Platform.runLater(new Runnable() {
@@ -56,14 +50,11 @@ public class GameController implements EventHandler<KeyEvent> {
         this.timer.schedule(timerTask, 0, frameTimeInMilliseconds);
     }
 
-    public Player getPlayer(){
-        return player;
-    }
 
     private void updateAnimation() {
-        ArrayList<Plant> listOfPlants = checkPlants();
-        ArrayList<Zombie> listOfZombies = checkZombies();
-        ArrayList<Pea> listOfPeas = checkPeas();
+        ArrayList<Plant> listOfPlants = yard.getGame().getPlants();
+        ArrayList<Zombie> listOfZombies = yard.getGame().getZombies();
+        ArrayList<PeaBullet> listOfPeas = ;
         runFight(listOfPlants, listOfZombies, listOfPeas);
         for (Pea pea: listOfPeas) {
             pea.step();
