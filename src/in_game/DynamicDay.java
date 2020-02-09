@@ -68,13 +68,13 @@ public class DynamicDay extends Dynamic {
             int randomIndex = rand.nextInt(Shop.getZombies().size());
             Zombie zombie =  Shop.getZombies().get(randomIndex);
             if (zombie instanceof FlyingZombie) {
-                randomZombies.add(new FlyingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense()));
+                randomZombies.add(new FlyingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense(), zombie.getImage()));
             } else if (zombie instanceof GiantZombie) {
-                randomZombies.add(new GiantZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense()));
+                randomZombies.add(new GiantZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense(), zombie.getImage()));
             } else if (zombie instanceof MovingZombie) {
-                randomZombies.add(new MovingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense()));
+                randomZombies.add(new MovingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense(), zombie.getImage()));
             } else {
-                randomZombies.add(new SwimmingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense()));
+                randomZombies.add(new SwimmingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense(), zombie.getImage()));
             }
         }
         playerDay.setZombies(randomZombies);

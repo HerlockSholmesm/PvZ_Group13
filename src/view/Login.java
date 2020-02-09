@@ -53,8 +53,8 @@ public class Login extends Application {
         GridPane.setHalignment(aButton, HPos.LEFT);
         GridPane.setHalignment(bButton, HPos.LEFT);
         aButton.setOnAction(e -> {
-                    String s = Account.findAccount(firstValue.getText(), secondValue.getText());
-                    if (s.equals("find")) {
+                    String s = Account.findAccount2(firstValue.getText(), secondValue.getText());
+                    if (s.equalsIgnoreCase("find")) {
                         mainAccount[0] = new Account(firstValue.getText(), secondValue.getText());
                     } else if (s.equals("invalid password")) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);

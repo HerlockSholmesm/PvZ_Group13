@@ -34,15 +34,15 @@ public class Profile extends Application {
         box.setAlignment(Pos.CENTER);
         box.setSpacing(50);
         Text title = new Text("Profile");
-        Button addChangeButton = addChangeButton(webView);
-        Button addDeleteButton = addDeleteButton(webView);
-        Button addRenameButton = addRenameButton(webView);
-        Button addCreateButton = addCreateButton(webView);
+        Button ChangeButton = addChangeButton(webView);
+        Button DeleteButton = addDeleteButton(webView);
+        Button RenameButton = addRenameButton(webView);
+        Button CreateButton = addCreateButton(webView);
         Button ZombieButton = addShowButton(webView);
         Button ExitButton = addExitButton(webView);
         title.setFont(Font.font("Verdana", 50));
         title.setId("fancytext");
-        box.getChildren().addAll(title, DayButton, WaterButton, RailButton, ZombieButton, PvPButton, ExitButton);
+        box.getChildren().addAll(title, DeleteButton, RenameButton, CreateButton, ZombieButton, ChangeButton, ExitButton);
         return box;
     }
 

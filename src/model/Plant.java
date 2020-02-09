@@ -66,6 +66,8 @@ public abstract class Plant extends Card {
         return sun;
     }
 
+
+
     public int getRest() {
         return rest;
     }

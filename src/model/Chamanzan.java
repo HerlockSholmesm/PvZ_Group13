@@ -19,7 +19,7 @@ public class Chamanzan {
     }
 
     public Chamanzan(int x, int y, Yard yard) {
-        this.whichCell = new Cell(x, y);
+        this.whichCell = new Cell(false, x, x, y, y);
         this.yard = yard;
         used = false;
     }
@@ -63,21 +63,21 @@ public class Chamanzan {
 
     public void action(Game game){
         if (used) {
-            whichCell.setX(whichCell.getX() + SPEED);
-            whichCell.setY(whichCell.getY() + SPEED);
+            whichCell.setX1(whichCell.getX1() + SPEED);
+            whichCell.setY1(whichCell.getY1() + SPEED);
             for (Zombie zombie : game.getZombies()) {
-                if ((whichCell.getX() - 3 <= zombie.getX() || zombie.getX() <= whichCell.getX()) && zombie.getY() == whichCell.getY()) {
+                if ((whichCell.getX1() - 3 <= zombie.getX() || zombie.getX() <= whichCell.getX1()) && zombie.getY() == whichCell.getY1()) {
                     zombie.setX(-1);
                     zombie.setY(-1);
                 }
             }
-            if (whichCell.getX() >= 19){
-                whichCell.setX(-1);
-                whichCell.setY(-1);
+            if (whichCell.getX1() >= 19){
+                whichCell.setX1(-1);
+                whichCell.setY1(-1);
             }
         } else {
             for (Zombie zombie : game.getZombies()) {
-                if (zombie.getX() == 0 && zombie.getY() == whichCell.getY()) {
+                if (zombie.getX() == 0 && zombie.getY() == whichCell.getY1()) {
                     used = true;
                     game.getZombies().remove(zombie);
                     zombie.setLife(0);

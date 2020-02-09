@@ -12,10 +12,10 @@ import java.util.Map;
 public class Account implements Serializable{
     public static ArrayList<Account> allAccounts = new ArrayList<>();
     public static int NumberOfKilledZombie;
-    private static HashMap<Object, Object> LeaderBoard;
+    private static transient HashMap<Object, Object> LeaderBoard = new HashMap<>();
     private Shop shop;
 
-    private ArrayList<Game> games = new ArrayList<>();
+    private transient ArrayList<Game> games = new ArrayList<>();
     private String name;
     private String password;
     private int score;
@@ -25,6 +25,7 @@ public class Account implements Serializable{
         return shop;
     }
 
+
     private Collection collection;
 
 
@@ -32,7 +33,7 @@ public class Account implements Serializable{
     public Account(String name, String password) {
         this.name = name;
         this.password = password;
-        this.money = 0;
+        this.money = 100;
         this.score = 0;
         this.collection = new Collection();
         this.shop = new Shop();
@@ -44,28 +45,18 @@ public class Account implements Serializable{
         LeaderBoard.put(number, name);
     }
 
-    public void showLeaderBoard() {
-        for (Map.Entry m : LeaderBoard.entrySet()) {
-            System.out.println(m.getKey() + " " + m.getValue());
+    public static void showLeaderBoard() {
+        for (Account m : allAccounts) {
+            System.out.println(m.getName() + " is account name " + " With this score : " + m.getScore());
         }
     }
 
-    public static void restoreAccounts() throws IOException, ClassNotFoundException {
-        FileInputStream f = new FileInputStream(new File("Accounts.txt"));
-        ObjectInputStream o = new ObjectInputStream(f);
-        while (o.available() > 0) { //todo : checked
-            allAccounts.add((Account) o.readObject());
+    public static String showLeaderBoard1() {
+        String s = new String();
+        for (Account m : allAccounts) {
+            s.concat(m.getName() + " is account name " + " With this score : " + m.getScore() +"\n");
         }
-        o.close();
-        f.close();
-    }
-
-    public void saveAccount() throws IOException {
-        FileOutputStream f = new FileOutputStream("Accounts.txt");
-        ObjectOutputStream o = new ObjectOutputStream(f);
-        o.writeObject(this);
-        o.close();
-        f.close();
+        return s;
     }
 
     public static Account addAccount(String name, String password) {
@@ -96,8 +87,21 @@ public class Account implements Serializable{
                 }
             }
         }
-        System.out.println("no account found!");
         return null;
+    }
+
+    public static String findAccount2(String name, String password) {
+        for (Account account : allAccounts) {
+            if (account.getName().equals(name)) {
+                if (account.getPassword().equals(password)) {
+                    return "find";
+                } else {
+                    Invalid.invalidPasswordAction();
+                    return "invalid password";
+                }
+            }
+        }
+        return "no account found!";
     }
 
     public ArrayList<Game> getGames() {

@@ -2,17 +2,9 @@ package commands;
 
 import commands.Menu.*;
 import in_game.*;
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
-import model.*;
+import model.Card;
+import model.Plant;
+import model.Shop;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -68,7 +60,7 @@ class ShowHandDay extends DayWaterCommands {
 class SelectDay extends DayWaterCommands {
     SelectDay(String input, Menu menuPtr) {
         super(input, menuPtr);
-        pattern = Pattern.compile("select (.)+", Pattern.CASE_INSENSITIVE);
+        pattern = Pattern.compile("select (.+)", Pattern.CASE_INSENSITIVE);
     }
 
     @Override
@@ -112,7 +104,7 @@ class SelectDay extends DayWaterCommands {
 class PlantDay extends DayWaterCommands {
     PlantDay(String input, Menu menuPtr) {
         super(input, menuPtr);
-        pattern = Pattern.compile("Plant ((.),(.))+");
+        pattern = Pattern.compile("Plant (\\d+),(\\d+)");
 
 
     }
@@ -129,8 +121,8 @@ class PlantDay extends DayWaterCommands {
                 };
                 invalidPrompt.action();
             } else {
-                String num1 = matcher.group(2);
-                String num2 = matcher.group(3);
+                String num1 = matcher.group(1);
+                String num2 = matcher.group(2);
                 try {
                     int x = Integer.parseInt(num1);
                     int y = Integer.parseInt(num2);
@@ -176,7 +168,7 @@ class PlantDay extends DayWaterCommands {
 class RemoveDay extends DayWaterCommands {
     RemoveDay(String input, Menu menuPtr) {
         super(input, menuPtr);
-        pattern = Pattern.compile("remove ((.),(.))+", Pattern.CASE_INSENSITIVE);
+        pattern = Pattern.compile("remove (\\d+),(\\d+)", Pattern.CASE_INSENSITIVE);
 
     }
 
@@ -184,8 +176,8 @@ class RemoveDay extends DayWaterCommands {
     public Menu action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
-            String num1 = matcher.group(2);
-            String num2 = matcher.group(3);
+            String num1 = matcher.group(1);
+            String num2 = matcher.group(2);
             try {
                 int x = Integer.parseInt(num1);
                 int y = Integer.parseInt(num2);
@@ -273,7 +265,7 @@ class ShowLawnDay extends DayWaterCommands {
 class ExitDay extends DayWaterCommands {
     ExitDay(String input, Menu menuPtr) {
         super(input, menuPtr);
-        pattern = Pattern.compile("exit (.)+");
+        pattern = Pattern.compile("exit");
 
     }
 
@@ -298,48 +290,8 @@ class HelpDay extends DayWaterCommands {
     public Menu action(Menu menuPtr, GameDay playerDay) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            menuPtr = new ShopMenu();
             menuPtr.help();
         }
         return menuPtr;
-    }
-}
-
-class PlayDay extends Application{
-    private Group root;
-    private Yard dayYard;
-
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                Platform.exit();
-                System.exit(0);
-            }
-        });
-
-        primaryStage.setTitle("Plants VS Zombies");
-        this.root = new Group();
-        Scene scene = new Scene(root,1116, 602);
-        Image background = new Image("/png/wallp.png");
-        ImageView backgroundView = new ImageView(background);
-        root.getChildren().add(backgroundView);
-        GameDay gameDay = GameDay.getGame();
-        DayYard dayYard = new DayYard(gameDay);
-        StackPane stackPane = new StackPane();
-        for (int i = 0; i < gameDay.getCards().size(); i++){
-            Plant plant  = (Plant) gameDay.getCards().get(i);
-            ImageView imageView = new ImageView(plant.getImage());
-            stackPane.getChildren().add(imageView);
-            imageView.setTranslateY(100*i);
-        }
-        for (){
-
-        }
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
     }
 }

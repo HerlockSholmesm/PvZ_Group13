@@ -2,8 +2,11 @@ package commands;
 
 import commands.Menu.*;
 import in_game.Account;
+import model.Shop;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,7 +31,7 @@ public abstract class MainMenuCommand {
         allCommand.add(new ShopCommand(input, menuPtr));
     }
 
-    abstract public Menu action(Menu menuPtr, Account account);
+    abstract public Menu action(Menu menuPtr, Account account) throws IOException;
 
 }
 
@@ -81,6 +84,8 @@ class ShopCommand extends MainMenuCommand {
     public Menu action(Menu menu, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
+            Shop.importZombie();
+            Shop.importPlant();
             return new ShopMenu();
         }
         return menu;
@@ -113,10 +118,15 @@ class ExitMain extends MainMenuCommand {
     }
 
     @Override
-    public Menu action(Menu menuPtr, Account account) {
+    public Menu action(Menu menuPtr, Account account) throws IOException {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            return menuPtr.exit(menuPtr);
+            try {
+                return menuPtr.exit(menuPtr);
+            }
+        catch (Exception e){
+            System.out.println(e.getMessage() + " " + Arrays.toString(e.getStackTrace()));
+            }
         }
         return menuPtr;
     }

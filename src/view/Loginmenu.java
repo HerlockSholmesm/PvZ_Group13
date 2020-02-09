@@ -1,5 +1,6 @@
 package view;
 
+import in_game.Account;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -114,8 +115,7 @@ public class Loginmenu extends Application {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Plants vs. Zombies");
             alert.setHeaderText("LeaderBoard");
-            Login account =new Login();
-            alert.setContentText(account.getMainAccount()[0].showLeaderBoard());
+            alert.setContentText(Account.showLeaderBoard1());
             alert.showAndWait();
         });
         return startGameButton;

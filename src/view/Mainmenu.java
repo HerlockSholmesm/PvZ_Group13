@@ -109,13 +109,12 @@ public class Mainmenu extends Application {
     }
 
     private Button addShopButton(WebView webView) {
-        Button ShopButton = new Shopmenu("Shopmenu", webView);
+        Button ShopButton = new Shopmenu("Shop menu", webView);
         ShopButton.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Plants vs. Zombies");
             alert.setHeaderText("LeaderBoard");
             Login account =new Login();
-            alert.setContentText(account.getMainAccount()[0].showLeaderBoard());
             alert.showAndWait();
         });
         return ShopButton;

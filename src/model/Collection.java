@@ -61,10 +61,6 @@ public class Collection {
         }
     }
 
-    public ArrayList<Card> getCollection() {
-       return shop.getCollection();
-    }
-
     public Collection(Shop shop) {
       this.shop=shop;
     }
