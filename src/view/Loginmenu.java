@@ -11,8 +11,7 @@ import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
-public class Mainmenu extends Application {
-
+public class Loginmenu extends Application {
     static Stage welcomeStage;
 
     @Override
@@ -21,7 +20,7 @@ public class Mainmenu extends Application {
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
         scene.getStylesheets().add(Loginmenu.class.getResource("static/welcome.css").toExternalForm());
-        primaryStage.setTitle("Mainmenu");
+        primaryStage.setTitle("Welcome!");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
@@ -33,21 +32,22 @@ public class Mainmenu extends Application {
         box.prefWidth(500);
         box.setAlignment(Pos.CENTER);
         box.setSpacing(50);
-        Text title = new Text("MainMenu");
-        Button PlayButton = addPlayButton(webView);
-        Button ProfileButton = addProfileButton(webView);
+        Text title = new Text("Plants vs. Zombies");
+        Button LoginButton = addLoginButton(webView);
+        Button createAccountButton = addCreateAccountButton(webView);
         Button helpButton = addHelpButton();
-        Button ShopButton = addShopButton(webView);
-        Button ExitButton = addExitButton(webView);
+        Button leaderBoardButton = addLeaderBoardButton(webView);
         title.setFont(Font.font("Verdana", 50));
         title.setId("fancytext");
-        box.getChildren().addAll(title, PlayButton,ProfileButton,helpButton,ShopButton,ExitButton);
+        box.getChildren().addAll(title, LoginButton,createAccountButton
+                , helpButton, leaderBoardButton);
+        // leaderBoardButton);
         return box;
     }
 
-    private Button addPlayButton(WebView webView) {
-        Button playButton = new PlayBotton("PlayMenu", webView);
-        playButton.setOnAction(event -> {
+    private Button addLoginButton(WebView webView) {
+        Button startGameButton = new LoginButton("LoginMenu", webView);
+        startGameButton.setOnAction(event -> {
             Login login = new Login();
             try {
 
@@ -57,19 +57,19 @@ public class Mainmenu extends Application {
                 System.err.println("Can not initiate game");
             }
         });
-        return playButton;
+        return startGameButton;
     }
 
-    private class PlayBotton extends Button {
-        public PlayBotton(String textOnButton, WebView webView) {
+    private class LoginButton extends Button {
+        public LoginButton(String textOnButton, WebView webView) {
             setText(textOnButton);
             webView.getEngine().load(textOnButton);
         }
     }
 
-    private Button addProfileButton(WebView webView) {
-        Button ProfileButton = new ProfileButton("Profile", webView);
-        ProfileButton.setOnAction(event -> {
+    private Button addCreateAccountButton(WebView webView) {
+        Button startGameButton = new CreateAccountButton("CreateAccount", webView);
+        startGameButton.setOnAction(event -> {
             CreateAccount account=new CreateAccount();
             try {
 
@@ -79,11 +79,11 @@ public class Mainmenu extends Application {
                 System.err.println("Can not initiate game");
             }
         });
-        return ProfileButton;
+        return startGameButton;
     }
 
-    private class ProfileButton extends Button {
-        public ProfileButton(String textOnButton, WebView webView) {
+    private class CreateAccountButton extends Button {
+        public CreateAccountButton(String textOnButton, WebView webView) {
             setText(textOnButton);
             webView.getEngine().load(textOnButton);
         }
@@ -108,9 +108,9 @@ public class Mainmenu extends Application {
         return helpButton;
     }
 
-    private Button addShopButton(WebView webView) {
-        Button ShopButton = new Shopmenu("Shopmenu", webView);
-        ShopButton.setOnAction(event -> {
+    private Button addLeaderBoardButton(WebView webView) {
+        Button startGameButton = new LeaderBoard("LeaderBoard", webView);
+        startGameButton.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Plants vs. Zombies");
             alert.setHeaderText("LeaderBoard");
@@ -118,30 +118,11 @@ public class Mainmenu extends Application {
             alert.setContentText(account.getMainAccount()[0].showLeaderBoard());
             alert.showAndWait();
         });
-        return ShopButton;
+        return startGameButton;
     }
 
-    private class Shopmenu extends Button {
-        public Shopmenu(String textOnButton, WebView webView) {
-            setText(textOnButton);
-            webView.getEngine().load(textOnButton);
-        }
-    }
-    private Button addExitButton(WebView webView) {
-        Button ExitBotton = new Exit("Shopmenu", webView);
-        Loginmenu loginmenu = new Loginmenu();
-        ExitBotton.setOnAction(event -> {
-            try {
-                loginmenu.start(welcomeStage);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        return ExitBotton;
-    }
-
-    private class Exit extends Button {
-        public Exit(String textOnButton, WebView webView) {
+    private class LeaderBoard extends Button {
+        public LeaderBoard(String textOnButton, WebView webView) {
             setText(textOnButton);
             webView.getEngine().load(textOnButton);
         }
