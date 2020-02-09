@@ -48,10 +48,10 @@ public class Mainmenu extends Application {
     private Button addPlayButton(WebView webView) {
         Button playButton = new PlayBotton("PlayMenu", webView);
         playButton.setOnAction(event -> {
-            Login login = new Login();
+            Play play = new Play();
             try {
 
-                login.start(welcomeStage);
+                play.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("Can not initiate game");
