@@ -6,6 +6,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -45,14 +46,30 @@ public class CreateAccount extends Application {
         GridPane.setHalignment(aButton, HPos.LEFT);
 
         aButton.setOnAction(e -> {
-
-            mainAccount = (new Account(firstValue.getText(), secondValue.getText()));
+            String s = Account.findAccount2(firstValue.getText(), secondValue.getText());
+            if (s.equals("find") || s.equals("invalid password")){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Plants vs. Zombies");
+                alert.setHeaderText("error:(");
+                alert.setContentText("this account already existed");
+                System.out.println(s);
+                alert.showAndWait();
+                Loginmenu loginmenu = new Loginmenu();
+                try {
+                    loginmenu.start(myStage);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            } else {
+                mainAccount = new Account(firstValue.getText(), secondValue.getText());
+            }
             Loginmenu mainmenu = new Loginmenu();
             try {
                 mainmenu.start(myStage);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+
         });
 
         myStage.setScene(myScene);
