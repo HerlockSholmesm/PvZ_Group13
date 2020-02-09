@@ -96,7 +96,11 @@ public class Loginmenu extends Application {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Plants vs. Zombies");
             alert.setHeaderText("Help");
-            alert.setContentText("if you want create account or login or see leader Board so easy");
+            alert.setContentText("help : showing commands\n" +
+                    "Create account : to create an account\n" +
+                    "Login : to logi\n" +
+                    "Leader board : to show leader Board\n" +
+                    "exit : to exit game");
 
             alert.showAndWait();
         });
