@@ -39,15 +39,19 @@ public class Login extends Application {
         rootNode.add(secondValue, 1, 1);
         rootNode.add(new Label("Login Account"), 0, 2);
         Button aButton = new Button("Login Account");
-        Button bButton = new Button("Create Account");
         rootNode.add(aButton, 1, 2);
-        rootNode.add(bButton, 1, 3);
         GridPane.setHalignment(aButton, HPos.LEFT);
-        GridPane.setHalignment(bButton, HPos.LEFT);
         aButton.setOnAction(e -> {
+                    Mainmenu mainmenu;
                     String s = Account.findAccount2(firstValue.getText(), secondValue.getText());
                     if (s.equalsIgnoreCase("find")) {
-                        mainAccount = new Account(firstValue.getText(), secondValue.getText());
+                        new Account(firstValue.getText(), secondValue.getText());
+                        mainmenu = new Mainmenu();
+                        try {
+                            mainmenu.start(myStage);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                     } else if (s.equals("invalid password")) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Plants vs. Zombies");
@@ -55,24 +59,25 @@ public class Login extends Application {
                         alert.setContentText("invalid password");
                         System.out.println(s);
                         alert.showAndWait();
+                        Loginmenu loginmenu = new Loginmenu();
+                        try {
+                            loginmenu.start(myStage);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                     } else if (s.equals("no account found!")) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Plants vs. Zombies");
                         alert.setHeaderText("Help");
                         alert.setContentText("no account found!");
                         alert.showAndWait();
+                        Loginmenu loginmenu = new Loginmenu();
+                        try {
+                            loginmenu.start(myStage);
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                     }
-                    Mainmenu mainmenu =new Mainmenu();
-            try {
-                mainmenu.start(myStage);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        });
-        bButton.setOnAction(e -> {
-            CreateAccount account=new CreateAccount();
-
-                account.start(myStage);
         });
 
         myStage.setScene(myScene);

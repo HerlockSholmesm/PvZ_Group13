@@ -16,13 +16,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class CreateAccount extends Application {
     static Stage initiateStage;
-
-    public static Account[] getMainAccount() {
-        return mainAccount;
-    }
-
-    static Account[] mainAccount = {null};
-
+    public static Account mainAccount;
     public static void main(String[] args) {
         launch(args);
     }
@@ -30,7 +24,7 @@ public class CreateAccount extends Application {
     @Override
     public void start(Stage myStage) {
         myStage.setTitle("CreateAccount");
-        final Account[] mainAccount = {null};
+
         GridPane rootNode = new GridPane();
         rootNode.setPadding(new Insets(15));
         rootNode.setHgap(5);
@@ -52,7 +46,7 @@ public class CreateAccount extends Application {
 
         aButton.setOnAction(e -> {
 
-            mainAccount[0] = (new Account(firstValue.getText(), secondValue.getText()));
+            mainAccount = (new Account(firstValue.getText(), secondValue.getText()));
             Loginmenu mainmenu = new Loginmenu();
             try {
                 mainmenu.start(myStage);
