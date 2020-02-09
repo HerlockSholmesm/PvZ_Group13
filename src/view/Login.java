@@ -55,7 +55,7 @@ public class Login extends Application {
                     } else if (s.equals("invalid password")) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Plants vs. Zombies");
-                        alert.setHeaderText("eror:(");
+                        alert.setHeaderText("error:(");
                         alert.setContentText("invalid password");
                         System.out.println(s);
                         alert.showAndWait();
@@ -68,7 +68,7 @@ public class Login extends Application {
                     } else if (s.equals("no account found!")) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Plants vs. Zombies");
-                        alert.setHeaderText("Help");
+                        alert.setHeaderText("!!!!!!!!!!!!!");
                         alert.setContentText("no account found!");
                         alert.showAndWait();
                         Loginmenu loginmenu = new Loginmenu();

@@ -52,9 +52,9 @@ public class Account implements Serializable{
     }
 
     public static String showLeaderBoard1() {
-        String s = new String();
+        String s = "";
         for (Account m : allAccounts) {
-            s.concat(m.getName() + " is account name " + " With this score : " + m.getScore() +"\n");
+            s = s.concat(m.getName() + " is account name " + " With this score : " + m.getScore() +"\n");
         }
         return s;
     }
@@ -96,13 +96,13 @@ public class Account implements Serializable{
                 if (account.getPassword().equals(password)) {
                     return "find";
                 } else {
-                    Invalid.invalidPasswordAction();
                     return "invalid password";
                 }
             }
         }
         return "no account found!";
     }
+
 
     public ArrayList<Game> getGames() {
         return games;
