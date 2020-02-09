@@ -4,11 +4,14 @@ import commands.Menu.*;
 import in_game.*;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.*;
 
 import java.util.ArrayList;
@@ -306,12 +309,17 @@ class PlayDay extends Application{
     private Group root;
     private Yard dayYard;
 
-    public void setDayYard(DayYard dayYard) {
-        this.dayYard = dayYard;
-    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+
         primaryStage.setTitle("Plants VS Zombies");
         this.root = new Group();
         Scene scene = new Scene(root,1116, 602);
@@ -320,8 +328,16 @@ class PlayDay extends Application{
         root.getChildren().add(backgroundView);
         GameDay gameDay = GameDay.getGame();
         DayYard dayYard = new DayYard(gameDay);
+        StackPane stackPane = new StackPane();
+        for (int i = 0; i < gameDay.getCards().size(); i++){
+            Plant plant  = (Plant) gameDay.getCards().get(i);
+            ImageView imageView = new ImageView(plant.getImage());
+            stackPane.getChildren().add(imageView);
+            imageView.setTranslateY(100*i);
+        }
+        for (){
 
-
+        }
         primaryStage.setScene(scene);
         primaryStage.show();
 

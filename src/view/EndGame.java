@@ -1,4 +1,4 @@
-package game.view;
+package view;
 
 import game.controller.*;
 import javafx.application.Application;

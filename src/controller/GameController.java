@@ -8,7 +8,7 @@ import javafx.application.Platform;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import model.*;
-
+import view.EndGame;
 import java.util.*;
 
 
@@ -111,7 +111,7 @@ public class GameController{
     public void endGame(){
         if (gameDay.getGameCondition() == GameCondition.WINNER) {
             String result = "You win the Game";
-            EndGameShow endGameShow = new EndGameShow(result);
+            EndGame endGameShow = new EndGame(result);
             try {
                 this.timer.cancel();
                 endGameShow.start(endGameShow.getEndStage());
@@ -123,7 +123,7 @@ public class GameController{
         if (gameDay.getGameCondition() == GameCondition.LOSER){
             System.out.println("here");
             String result = "You lose the Game";
-            EndGameShow endGameShow = new EndGameShow(result);
+            EndGame endGameShow = new EndGame(result);
             try{
                 this.timer.cancel();
                 endGameShow.start(endGameShow.getEndStage());
@@ -136,8 +136,5 @@ public class GameController{
     }
 
 
-    @Override
-    public void handle(KeyEvent keyEvent) {
 
-    }
 }
