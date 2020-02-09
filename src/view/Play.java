@@ -21,7 +21,7 @@ public class Play extends Application {
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
         scene.getStylesheets().add(Loginmenu.class.getResource("static/welcome.css").toExternalForm());
-        primaryStage.setTitle("Mainmenu");
+        primaryStage.setTitle("Play");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();

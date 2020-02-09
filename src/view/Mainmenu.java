@@ -95,12 +95,7 @@ public class Mainmenu extends Application {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Plants vs. Zombies");
             alert.setHeaderText("Help");
-            alert.setContentText("In this game you will fight against zombies by plant different plants on your plant.\n" +
-                    "Each plant has their own special skill:\n" +
-                    "-Peashooter: attacks zombies by continuously shoot out peas once you put it down\n" +
-                    "-Sunflower: produce one star at intervals. You can click on the plant to collect the stars. Each star worth 50 value, which you would use to buy more plants.\n" +
-                    "-Wallnut: put it on the ground to slow down zombie's movement.\n" +
-                    "Good luck and have fun!");
+            alert.setContentText("go to play mode to play");
 
             alert.showAndWait();
         });

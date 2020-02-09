@@ -34,19 +34,19 @@ public class Collection extends Application {
         box.setAlignment(Pos.CENTER);
         box.setSpacing(50);
         Text title = new Text("Play");
-        Button DayButton = addDayButton(webView);
-        Button WaterButton = addWaterButton(webView);
-        Button RailButton = addRailButton(webView);
-        Button ZombieButton = addZombieButton(webView);
-        Button PvPButton = addPvPButton(webView);
+       // Button ShowHand = showHandBotton(webView);
+        Button Showcollection = ShowcollectionButton(webView);
+       // Button RailButton = SelectButton(webView);
+        //Button ZombieButton = PlayButton(webView);
+       // Button PvPButton = addPvPButton(webView);
         Button ExitButton = addExitButton(webView);
         title.setFont(Font.font("Verdana", 50));
         title.setId("fancytext");
-        box.getChildren().addAll(title, DayButton, WaterButton, RailButton, ZombieButton, PvPButton, ExitButton);
+    //    box.getChildren().addAll(title, DayButton, WaterButton, RailButton, ZombieButton, PvPButton, ExitButton);
         return box;
     }
 
-    private Button addDayButton(WebView webView) {
+    private Button ShowcollectionButton(WebView webView) {
         Button dayButton = new Show("Day", webView);
         dayButton.setOnAction(event -> {
             Login login = new Login();
@@ -67,7 +67,7 @@ public class Collection extends Application {
         }
     }
 
-    private Button addWaterButton(WebView webView) {
+    private Button SelectButton(WebView webView) {
         Button waterButton = new Show("Water", webView);
         waterButton.setOnAction(event -> {
             Login login = new Login();
@@ -81,7 +81,7 @@ public class Collection extends Application {
         return waterButton;
     }
 
-    private Button addRailButton(WebView webView) {
+    private Button PlayButton(WebView webView) {
         Button railButton = new Show("Rail", webView);
         railButton.setOnAction(event -> {
             Login login = new Login();

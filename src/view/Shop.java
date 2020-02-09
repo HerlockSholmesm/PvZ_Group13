@@ -21,20 +21,20 @@ public class Shop extends Application {
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
         scene.getStylesheets().add(Loginmenu.class.getResource("static/welcome.css").toExternalForm());
-        primaryStage.setTitle("Mainmenu");
+        primaryStage.setTitle("ShopMenu");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
         welcomeStage = primaryStage;
     }
 
-    private VBox addContent(WebView webView) {
+     private VBox addContent(WebView webView) {
         VBox box = new VBox();
         box.prefWidth(500);
         box.setAlignment(Pos.CENTER);
         box.setSpacing(50);
-        Text title = new Text("Play");
-        Button DayButton = addDayButton(webView);
+        Text title = new Text("Shop");
+        Button ShowShopButton = addShowShopButton(webView);
         Button WaterButton = addWaterButton(webView);
         Button RailButton = addRailButton(webView);
         Button ZombieButton = addZombieButton(webView);
@@ -42,13 +42,13 @@ public class Shop extends Application {
         Button ExitButton = addExitButton(webView);
         title.setFont(Font.font("Verdana", 50));
         title.setId("fancytext");
-        box.getChildren().addAll(title, DayButton, WaterButton, RailButton, ZombieButton, PvPButton, ExitButton);
+        box.getChildren().addAll(title, ShowShopButton, WaterButton, RailButton, ZombieButton, PvPButton, ExitButton);
         return box;
     }
 
-    private Button addDayButton(WebView webView) {
-        Button dayButton = new Show("Day", webView);
-        dayButton.setOnAction(event -> {
+    private Button addShowShopButton(WebView webView) {
+        Button ShowShopButton = new Show("Day", webView);
+        ShowShopButton.setOnAction(event -> {
             Login login = new Login();
             try {
                 //todo
@@ -57,7 +57,7 @@ public class Shop extends Application {
                 System.err.println("Can not initiate game");
             }
         });
-        return dayButton;
+        return ShowShopButton;
     }
 
     private class Show extends Button {
