@@ -18,15 +18,7 @@ public class Login extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    static Account[] mainAccount = {null};
-
-    public static Account[] getMainAccount() {
-        return mainAccount;
-    }
-
-    public static void setMainAccount(Account[] mainAccount) {
-        Login.mainAccount = mainAccount;
-    }
+    public static Account mainAccount = null;
 
     @Override
     public void start(Stage myStage) {
@@ -55,7 +47,7 @@ public class Login extends Application {
         aButton.setOnAction(e -> {
                     String s = Account.findAccount2(firstValue.getText(), secondValue.getText());
                     if (s.equalsIgnoreCase("find")) {
-                        mainAccount[0] = new Account(firstValue.getText(), secondValue.getText());
+                        mainAccount = new Account(firstValue.getText(), secondValue.getText());
                     } else if (s.equals("invalid password")) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Plants vs. Zombies");
