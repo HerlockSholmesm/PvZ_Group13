@@ -1,31 +1,27 @@
 package controller;
 
-import game.model.*;
-import game.view.*;
+import in_game.DynamicDay;
+import in_game.Game;
+import in_game.GameDay;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import model.Zombie;
+import model.*;
 
 import java.util.*;
 
 
-public class GameController implements EventHandler<KeyEvent> {
+public class GameController{
     final private double FRAMES_PER_SECOND = 60.0;
-    private int difficulty;
-    private Player player;
-    private Enemy enemy;
-    private boolean playerWin = false;
-    private boolean zombieWin = false;
+    private DayYard dayYard;
+    private GameDay gameDay;
     private Stage stage;
     private Timer timer;
 
 
-    public GameController(int difficulty, Player player, Enemy enemy, Stage initStage) {
-        this.difficulty = difficulty;
-        this.player = player;
-        this.enemy = enemy;
+    public GameController(DayYard dayYard, Stage initStage) {
+        this.dayYard = dayYard;
+        this.gameDay = (GameDay)dayYard.getGame();
         this.stage = initStage;
     }
 
@@ -41,29 +37,52 @@ public class GameController implements EventHandler<KeyEvent> {
      * run starterTimer
      */
     private void startTimer() {
-        this.timer = new java.util.Timer();
+        this.timer = new Timer();
         TimerTask timerTask = new TimerTask() {
             public void run() {
-                Platform.runLater(new Runnable() {
-                    public void run() {
-                        updateAnimation();
-                    }
-                });
+                updateAnimation();
             }
         };
 
         long frameTimeInMilliseconds = (long)(1);
-        this.timer.schedule(timerTask, 0, frameTimeInMilliseconds);
+        this.timer.schedule(timerTask,0,frameTimeInMilliseconds);
     }
 
-    public Player getPlayer(){
-        return player;
-    }
 
     private void updateAnimation() {
-        ArrayList<Plant> listOfPlants = checkPlants();
-        ArrayList<Zombie> listOfZombies = checkZombies();
-        ArrayList<Pea> listOfPeas = checkPeas();
+        /*
+        ArrayList<Zombie> listOfZombies = dayYard.getGame().getZombies();
+
+        for (shootingPlant shootingPlant: shootingPlants){
+            listOfPeas.addAll(shootingPlant.getPeaBullets());
+        }*/
+        for (Plant plant:gameDay.getPlants()){
+            plant.action(gameDay);
+        }
+        for (Zombie zombie:gameDay.getZombies()){
+            zombie.action(gameDay);
+        }
+        for(Chamanzan chamanzan:gameDay.getChamanzans()){
+            chamanzan.action(gameDay);
+        }
+        ArrayList<Plant> listOfPlants = dayYard.getGame().getPlants();
+        ArrayList<shootingPlant> shootingPlants = new ArrayList<>();
+        for (Plant plant: listOfPlants){
+            if (plant instanceof shootingPlant){
+                shootingPlants.add((shootingPlant)plant);
+            }
+        }
+
+        ArrayList<PeaBullet> listOfPeas = new ArrayList<>();
+        for (shootingPlant shootingPlant: shootingPlants){
+            listOfPeas.addAll(shootingPlant.getPeaBullets());
+        }
+
+        for(PeaBullet peaBullet:listOfPeas){
+            peaBullet.action(gameDay);
+        }
+
+
         runFight(listOfPlants, listOfZombies, listOfPeas);
         for (Pea pea: listOfPeas) {
             pea.step();
@@ -97,13 +116,15 @@ public class GameController implements EventHandler<KeyEvent> {
     }
 
     /** Simulate the fight between plants and zombies and update animation accordingly*/
-    private void runFight(ArrayList<Plant> plants, ArrayList<Zombie> zombies, ArrayList<Pea> peas){
+    private void runFight(ArrayList<Plant> plants, ArrayList<Zombie> zombies, ArrayList<PeaBullet> peas){
         boolean plantDie = false;
         // this is the list containing the zombies blocked by plants
+
+        DynamicDay dynamicDay = new DynamicDay(this.game);
         ArrayList<Zombie> blockZombie = new  ArrayList<Zombie>();
         for (Iterator<Zombie> iterator2 = zombies.iterator(); iterator2.hasNext(); ) {
             Zombie zombie = iterator2.next();
-            if (zombie.getImagePositionX()<60){
+            if (zombie.getX() <= 1){
                 this.zombieWin = true;
             }
             for (Iterator<Plant> iterator = plants.iterator(); iterator.hasNext(); ) {

@@ -3,6 +3,8 @@ package model;
 import in_game.Game;
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
+
 public class FlyingZombie extends Zombie {
     public FlyingZombie(String name, int life, int speed, int defense, Image image) {
         super(life, speed, defense, name,image);
@@ -20,15 +22,14 @@ public class FlyingZombie extends Zombie {
 
     @Override
     public void action(Game game) {
-        String name = this.getName();
-        for (Plant plant : game.getPlants()) {
-            switch (name) {
-                case ("Pogo Zombie"):
-                    if (this.getX() == plant.getXCoordinate()+1 && this.getY() == plant.getYCoordinate()) {
-                        this.setX(plant.getXCoordinate()-1);
-                    }else {
-                        move();
-                    }
+        ArrayList<Plant> plants = game.getPlants();
+        for (Plant plant : plants) {
+            if ("Pogo Zombie".equals(plant.getName())) {
+                if (this.getX() == plant.getXCoordinate() + 1 && this.getY() == plant.getYCoordinate()) {
+                    this.setX(plant.getXCoordinate() - 1);
+                } else {
+                    move();
+                }
             }
         }
     }

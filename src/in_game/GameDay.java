@@ -9,6 +9,11 @@ import java.util.ArrayList;
 
 public class GameDay extends Game {
     public ArrayList<Chamanzan> chamanzans = new ArrayList<>(5);
+    public static GameDay game;
+
+    public static GameDay getGame() {
+        return game;
+    }
 
     private GameCondition gameCondition = GameCondition.PLAYING;
 
@@ -73,7 +78,7 @@ public class GameDay extends Game {
 
     public GameDay(String name, String password) {
         super(name, password);
-
+        game = this;
         this.chamanzans.add(new Chamanzan(0, 0, this.yard));
         this.chamanzans.add(new Chamanzan(0, 1, this.yard));
         this.chamanzans.add(new Chamanzan(0, 2, this.yard));

@@ -6,15 +6,19 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public class shootingPlant extends Plant {
+    ArrayList<PeaBullet> peaBullets = new ArrayList<>();
     public shootingPlant(String name, int clock, int numberOfPea, int sun, int rest, int life, Image image) {
         super(name, clock, sun, rest, life,image);
     }
 
     public void shoot(int number, int x, int y) {
-        ArrayList<PeaBullet> peaBullets = null;
         for (int i = 0; i < number; i++) {
             peaBullets.add(new PeaBullet(x, y));
         }
+    }
+
+    public ArrayList<PeaBullet> getPeaBullets() {
+        return peaBullets;
     }
 
     @Override
