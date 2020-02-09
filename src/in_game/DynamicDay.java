@@ -120,16 +120,6 @@ public class DynamicDay extends Dynamic {
     }
 
     public void endTurn() {
-        for (Plant plant:playerDay.getPlants()){
-            if(plant.getLife() <= 0){
-                Dynamic.removePlant(plant.getXCoordinate(), plant.getYCoordinate(), playerDay);
-            }
-        }
-        for (Zombie zombie:playerDay.getZombies()){
-            if(zombie.getLife() <= 0 ){
-                playerDay.getZombies().remove(zombie);
-            }
-        }
 
         addSunRandomly();
         if (playerDay.getZombies().size() == 0 && playerDay.getTurn() != 0) {
@@ -140,18 +130,7 @@ public class DynamicDay extends Dynamic {
         }
         playerDay.addTurn();
 
-        for (Zombie zombie:playerDay.getZombies()){
-            zombie.action(playerDay);
-        }
-        for (Plant plant:playerDay.getPlants()){
-            plant.action(playerDay);
-        }
-        for (Chamanzan chamanzan:playerDay.getChamanzans()){
-            chamanzan.action(playerDay);
-        }
-        for (PeaBullet peaBullet:playerDay.getPeaBullets()){
-            peaBullet.action(playerDay);
-        }
+
 
 
     }
