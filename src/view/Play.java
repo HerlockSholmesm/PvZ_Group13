@@ -116,7 +116,7 @@ public class Play extends Application {
 
 
     private Button addPvPButton(WebView webView) {
-        Button pvPButton = new Show("Day", webView);
+        Button pvPButton = new Show("PvP", webView);
         pvPButton.setOnAction(event -> {
             Login login = new Login();
             try {
