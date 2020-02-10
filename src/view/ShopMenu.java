@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
-public class Collection extends Application {
+public class ShopMenu extends Application {
 
     static Stage welcomeStage;
 
@@ -21,43 +21,43 @@ public class Collection extends Application {
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
         scene.getStylesheets().add(Loginmenu.class.getResource("static/welcome.css").toExternalForm());
-        primaryStage.setTitle("Collection");
+        primaryStage.setTitle("ShopMenu");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
         welcomeStage = primaryStage;
     }
 
-    private VBox addContent(WebView webView) {
+     private VBox addContent(WebView webView) {
         VBox box = new VBox();
         box.prefWidth(500);
         box.setAlignment(Pos.CENTER);
         box.setSpacing(50);
-        Text title = new Text("Play");
-       // Button ShowHand = showHandBotton(webView);
-        Button Showcollection = ShowcollectionButton(webView);
-       // Button RailButton = SelectButton(webView);
-        //Button ZombieButton = PlayButton(webView);
-       // Button PvPButton = addPvPButton(webView);
+        Text title = new Text("Shop");
+        Button ShowShopButton = addShowShopButton(webView);
+        Button WaterButton = addWaterButton(webView);
+        Button RailButton = addRailButton(webView);
+        Button ZombieButton = addZombieButton(webView);
+        Button PvPButton = addPvPButton(webView);
         Button ExitButton = addExitButton(webView);
         title.setFont(Font.font("Verdana", 50));
         title.setId("fancytext");
-    //    box.getChildren().addAll(title, DayButton, WaterButton, RailButton, ZombieButton, PvPButton, ExitButton);
+        box.getChildren().addAll(title, ShowShopButton, WaterButton, RailButton, ZombieButton, PvPButton, ExitButton);
         return box;
     }
 
-    private Button ShowcollectionButton(WebView webView) {
-        Button dayButton = new Show("Day", webView);
-        dayButton.setOnAction(event -> {
+    private Button addShowShopButton(WebView webView) {
+        Button ShowShopButton = new Show("Day", webView);
+        ShowShopButton.setOnAction(event -> {
             Login login = new Login();
             try {
-                //todo
+
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("Can not initiate game");
             }
         });
-        return dayButton;
+        return ShowShopButton;
     }
 
     private class Show extends Button {
@@ -67,7 +67,7 @@ public class Collection extends Application {
         }
     }
 
-    private Button SelectButton(WebView webView) {
+    private Button addWaterButton(WebView webView) {
         Button waterButton = new Show("Water", webView);
         waterButton.setOnAction(event -> {
             Login login = new Login();
@@ -81,7 +81,7 @@ public class Collection extends Application {
         return waterButton;
     }
 
-    private Button PlayButton(WebView webView) {
+    private Button addRailButton(WebView webView) {
         Button railButton = new Show("Rail", webView);
         railButton.setOnAction(event -> {
             Login login = new Login();
