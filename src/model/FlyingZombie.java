@@ -26,10 +26,13 @@ public class FlyingZombie extends Zombie {
         for (Plant plant : plants) {
             if ("Pogo Zombie".equals(plant.getName())) {
                 if (this.getX() == plant.getXCoordinate() + 1 && this.getY() == plant.getYCoordinate()) {
-                    this.setX(plant.getXCoordinate() - 1);
+                    this.setX(- 1);
                 } else {
                     move();
                 }
+            }
+            else if ("Balloon Zombie".equals(plant.getName())){
+
             }
         }
     }
