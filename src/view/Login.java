@@ -33,7 +33,6 @@ public class Login extends Application {
         rootNode.setAlignment(Pos.CENTER);
 
         Scene myScene = new Scene(rootNode, 300, 200);
-
         rootNode.add(new Label("userName"), 0, 0);
         TextField firstValue = new TextField();
         rootNode.add(firstValue, 1, 0);
