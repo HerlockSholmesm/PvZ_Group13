@@ -85,6 +85,7 @@ public abstract class Plant extends Card {
     }
 
     public Plant(String name, int clock, int sun, int rest, int life,Image image) {
+        super(name);
         this.name = name;
         this.sun = sun;
         this.rest = rest;

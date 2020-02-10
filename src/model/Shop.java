@@ -17,28 +17,6 @@ public class Shop implements Serializable {
     private static ArrayList<Card> notBoughtCards = new ArrayList<>();
     private static HashMap<String, String> WaterTypeOrDay = new HashMap<>();
 
-//    public Shop() {
-//        this.importZombie();
-//        this.importPlant();
-//    }
-
-
-    public ArrayList<Card> getPlantHand() {
-        return plantHand;
-    }
-
-    public void setPlantHand(ArrayList<Card> plantHand) {
-        this.plantHand = plantHand;
-    }
-
-    public ArrayList<Card> getZombieHand() {
-        return zombieHand;
-    }
-
-    public void setZombieHand(ArrayList<Card> zombieHand) {
-        this.zombieHand = zombieHand;
-    }
-
     public ArrayList<Plant> getPlants() {
         return plants;
     }
@@ -49,30 +27,6 @@ public class Shop implements Serializable {
 
     public void setZombies(ArrayList<Zombie> zombies) {
         this.zombies = zombies;
-    }
-
-    public void setCards(ArrayList<Card> cards) {
-        this.cards = cards;
-    }
-
-    public static ArrayList<Card> getBoughtCards() {
-        return boughtCards;
-    }
-
-    public void setBoughtCards(ArrayList<Card> boughtCards) {
-        this.boughtCards = boughtCards;
-    }
-
-    public ArrayList<Card> getNotBoughtCards() {
-        return notBoughtCards;
-    }
-
-    public void setNotBoughtCards(ArrayList<Card> notBoughtCards) {
-        this.notBoughtCards = notBoughtCards;
-    }
-
-    public void setWaterTypeOrDay(HashMap<String, String> waterTypeOrDay) {
-        WaterTypeOrDay = waterTypeOrDay;
     }
 
     public static HashMap<String, String> getWaterTypeOrDay() {
@@ -101,15 +55,6 @@ public class Shop implements Serializable {
             }
         }
         for (Card card : cards){
-            System.out.println(card.toString());
-        }
-    }
-
-    public static void showHand(){
-        for (Card card: plantHand){
-            System.out.println(card.toString());
-        }
-        for (Card card: zombieHand){
             System.out.println(card.toString());
         }
     }
@@ -167,6 +112,7 @@ public class Shop implements Serializable {
 
 
     public static void importPlant() {
+        plants.clear();
         Plant plant = new shootingPlant("Peashooter", 2, 1, 2, 2, 2,
                 new Image("Plants vs Zombies/Peashooter/Peashooter_transparent_gif.webp"));
         plants.add(plant);
@@ -208,7 +154,7 @@ public class Shop implements Serializable {
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-     //   plant = new EatablePlant("Explode-o-nut", 4, 5, 3 ,new Image("Plants vs Zombies/xplode-o-nut/HDExplode-o-nut.webp"));
+        plant = new EatablePlant("Explode-o-nut", 4, 5, 3 , new Image("Plants vs Zombies/explode-o-nut/HDExplode-o-nut.webp"));
         plants.add(plant);
         boughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
@@ -265,9 +211,12 @@ public class Shop implements Serializable {
         cards.addAll(plants);
         WaterTypeOrDay.put(plant.getName(), "D");
 
+        System.out.println("in shop is " + plants.size());
+
     }
 
     public static void importZombie() {
+        zombies.clear();
         Zombie zombie = new MovingZombie("Zombie", 2, 2, 0 ,new Image("Plants vs Zombies/Zombie/ZombieHD.webp"));
         zombies.add(zombie);
         boughtCards.add(zombie);
