@@ -35,8 +35,6 @@ public class ShowCollection extends Application {
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
         scene.getStylesheets().add(Shop.class.getResource("static/welcome1.css").toExternalForm());
-        model.Shop.importZombie();
-        model.Shop.importPlant();
         primaryStage.setTitle("Collection");
         ArrayList<Card> cards = model.Shop.showCollection1();
         ImageView imageView;

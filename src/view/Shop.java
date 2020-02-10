@@ -36,8 +36,6 @@ public class Shop extends Application {
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
          scene.getStylesheets().add(Shop.class.getResource("static/welcome1.css").toExternalForm());
-        model.Shop.importZombie();
-        model.Shop.importPlant();
         primaryStage.setTitle("Shop");
         ArrayList<Plant> plants = model.Shop.getAllPlants();
         ImageView imageView;

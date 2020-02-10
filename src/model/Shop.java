@@ -160,8 +160,6 @@ public class Shop implements Serializable {
     }
 
     public static ArrayList<Plant> getAllPlants() {
-        Shop.importPlant();
-        Shop.importZombie();
         return plants;
     }
 
