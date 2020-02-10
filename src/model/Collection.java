@@ -43,7 +43,6 @@ public class Collection {
             System.out.println(card.getName());
         }
     }
-
     public void showCollection() {
         for (Card card:collection) {
             System.out.println(card.getName());
@@ -60,7 +59,19 @@ public class Collection {
             }
         }
     }
-
+    public String addToHand1(String name) {
+        ArrayList<Card> cards=shop.getCards();
+        for (Card card :shop.getCards()) {
+            if(card.getName().equals(name)){
+                hand.add(card);
+                return ("added");
+            }
+            else {
+                return ("invalid name");
+            }
+        }
+        return null;
+    }
     public Collection(Shop shop) {
       this.shop=shop;
     }

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import javafx.scene.web.WebView;
 import sun.rmi.runtime.Log;
 
-public class ShowCollection extends Application {
+public class Hand extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -35,25 +35,21 @@ public class ShowCollection extends Application {
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
         scene.getStylesheets().add(Shop.class.getResource("static/welcome1.css").toExternalForm());
-        primaryStage.setTitle("Collection");
-        ArrayList<Card> cards = model.Shop.showCollection1();
+        primaryStage.setTitle("Hand");
+        ArrayList<Card> cards = Login.mainAccount.getCollection().getHand();
         ImageView imageView;
         GridPane gridPane = new GridPane();
         gridPane.setVgap(1);
         gridPane.setHgap(1);
         for (int i = 0; i < cards.size(); i++) {
+            if(cards.get(i)!=null)
             if (cards.get(i) instanceof Plant) {
                 imageView = new ImageView(((Plant) cards.get(i)).getCardImage());
-                String s = cards.get(i).getName();
                 gridPane.add(imageView, i % 10 + 100, i / 10 + 10);
-                imageView.setOnMouseClicked(event -> {
-                    Login.mainAccount.getCollection().addToHand1(s);
-                });
-                }
             }
+        }
         root.getChildren().addAll(gridPane);
         primaryStage.setScene(scene);
-
         primaryStage.show();
         welcomeStage = primaryStage;
     }
@@ -69,7 +65,7 @@ public class ShowCollection extends Application {
         Button ExitButton = addExitButton(webView);
         title.setFont(Font.font("Verdana", 50));
         title.setId("fancyText");
-        box.getChildren().addAll(title, CollectionButton, showHandButton,ExitButton);
+        box.getChildren().addAll(title, CollectionButton, ExitButton);
         return box;
     }
 
@@ -89,13 +85,18 @@ public class ShowCollection extends Application {
         return startGameButton;
     }
     private Button addShowHandButton(WebView webView) {
-        Button startGameButton = new Show("Hand", webView);
+        Button startGameButton = new Show("Play", webView);
         startGameButton.setOnAction(event -> {
             AudioClip audioClip = new AudioClip(getClass().getResource("/png/shoot.wav").toString());
             audioClip.play();
-      Hand hand =new Hand();
-      hand.start(welcomeStage);
-    });
+            Play play =new Play();
+            try {
+                play.start(welcomeStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        });
         return startGameButton;
     }
     private Button addExitButton(WebView webView) {
