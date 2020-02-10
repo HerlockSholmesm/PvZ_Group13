@@ -138,15 +138,6 @@ class Put extends ZombieCommands {
                     Zombie zombie = Dynamic.findZombie(card);
                     if (zombie == null) {
                         System.out.println("Such a zombie doesn't exist on your list!");
-                    } else {
-                        if (row >= 0 && row <= 5) {
-                            if (DynamicZombie.howManyZombiesAreThere(row, zombieGame.getYard()) <= 1)
-                                DynamicZombie.put(zombieGame, zombie, row);
-                            else
-                                System.out.println("the row " + row + " is full.");
-                        } else {
-                            System.out.println("Such a row doesn't exist!");
-                        }
                     }
 
                 }

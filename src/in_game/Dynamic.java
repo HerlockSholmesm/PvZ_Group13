@@ -214,7 +214,7 @@ public abstract class Dynamic {
     /*public static int howManyZombiesInTheColumn(int X, int Y, Game game) {
         int numOfZombiesInCol = 0;
         for (Zombie zombie : game.getZombies()) {
-            if (zombie.getX() == X && zombie.getY() == Y) {
+            if (zombie.getX(game.yard) == X && zombie.getY(game.yard) == Y) {
                 numOfZombiesInCol++;
             }
         }
@@ -224,10 +224,10 @@ public abstract class Dynamic {
 
     /*public static void put(Game game, Zombie zombie, int x) {
         game.addZombie(zombie);
-        zombie.setX(x);
+        zombie.setX(x, game.yard);
         for (int y = 18; y >= 0; y--) {
             if (howManyZombiesInTheColumn(x, y, game) == 0) {
-                zombie.setY(y);
+                zombie.setY(y, game.yard);
             }
         }
         game.removeCard(findCard(game, zombie.getName()));

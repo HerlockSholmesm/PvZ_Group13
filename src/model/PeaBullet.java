@@ -60,7 +60,7 @@ public class PeaBullet {
         } else {
             for (Zombie zombie : game.getZombies()) {
                 if (!(zombie instanceof ShieldZombie)) {
-                    if (zombie.getX() == x && zombie.getY() == y) {
+                    if (zombie.getX(game.getYard()) == x && zombie.getY(game.getYard()) == y) {
                         zombie.setLife(zombie.getLife() - this.getPower());
                         this.removeBullet();
                         return;
@@ -76,7 +76,7 @@ public class PeaBullet {
         } else {
             for (Zombie zombie : game.getZombies()) {
                 if (!(zombie instanceof ShieldZombie)) {
-                    if (zombie.getX() == x && zombie.getY() == y) {
+                    if (zombie.getX(game.getYard()) == x && zombie.getY(game.getYard()) == y) {
                         zombie.setLife(zombie.getLife() - this.getPower());
                         this.removeBullet();
                         return;

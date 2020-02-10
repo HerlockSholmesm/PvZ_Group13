@@ -30,13 +30,13 @@ public class shootingPlant extends Plant {
                     case ("Peashooter"):
                         if (game.getTurn() >= this.getClock()) {
                             if (this.getYCoordinate() == zombie.getY()) {
-                                game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(), game);
+                                game.setPeaBullets((int) this.getXCoordinate(), (int) this.getYCoordinate(), game);
                             }
                         }
                     case ("Snow Pea"):
                         if (game.getTurn() >= this.getClock()) {
                             if (this.getYCoordinate() == zombie.getY()) {
-                                game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(), game);
+                                game.setPeaBullets((int)this.getXCoordinate(), (int)this.getYCoordinate(), game);
                                 zombie.setSpeed(zombie.getSpeed() / 2);
                             }
                         }
@@ -45,7 +45,7 @@ public class shootingPlant extends Plant {
                         if (game.getTurn() >= this.getClock()) {
                             if (this.getYCoordinate() == zombie.getY()) {
                                 for (int i = 0; i < 2; i++) {
-                                    game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(), game);
+                                    game.setPeaBullets((int)this.getXCoordinate(), (int)this.getYCoordinate(), game);
 
                                 }
                             }
@@ -53,15 +53,15 @@ public class shootingPlant extends Plant {
                     case ("Threepeater"):
                         if (game.getTurn() >= this.getClock()) {
                             if (this.getYCoordinate() == zombie.getY()) {
-                                game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(), game);
-                                game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate() + 1, game);
-                                game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate() - 1, game);
+                                game.setPeaBullets((int)this.getXCoordinate(), (int)this.getYCoordinate(), game);
+                                game.setPeaBullets((int)this.getXCoordinate(), (int)this.getYCoordinate() + 1, game);
+                                game.setPeaBullets((int)this.getXCoordinate(), (int)this.getYCoordinate() - 1, game);
                             }
                         }
                     case ("Cactus"):
                         if (game.getTurn() >= this.getClock()) {
                             if (this.getYCoordinate() == zombie.getY()) {
-                                game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(), game);
+                                game.setPeaBullets((int)this.getXCoordinate(), (int)this.getYCoordinate(), game);
                                 if (this.getXCoordinate() == zombie.getX()-1) {
                                     if (!zombie.getName().equals("Football Zombie"))
                                         zombie.setLife(zombie.getLife() - 1);
@@ -72,7 +72,7 @@ public class shootingPlant extends Plant {
                         if (game.getTurn() >= this.getClock()) {
                             if (this.getYCoordinate() == zombie.getY()) {
                                 for (int i = 0; i < 5; i++) {
-                                    game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(), game);
+                                    game.setPeaBullets((int)this.getXCoordinate(), (int)this.getYCoordinate(), game);
                                 }
                             }
                         }
@@ -80,14 +80,14 @@ public class shootingPlant extends Plant {
                         if (game.getTurn() >= this.getClock()) {
                             if (this.getYCoordinate() == zombie.getY()) {
                                 if (this.getXCoordinate() - zombie.getX() >= 2)
-                                    game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(), game);
+                                    game.setPeaBullets((int)this.getXCoordinate(), (int)this.getYCoordinate(), game);
                             }
                         }
                     case ("Split Pea"):
                         if (game.getTurn() >= this.getClock()) {
                             if (this.getYCoordinate() == zombie.getY()) {
-                                game.setPeaBullets(this.getXCoordinate(), this.getYCoordinate(), game);
-                                game.setPeaBulletsNegetive(this.getXCoordinate(), this.getYCoordinate(), game);
+                                game.setPeaBullets((int)this.getXCoordinate(), (int)this.getYCoordinate(), game);
+                                game.setPeaBulletsNegetive((int)this.getXCoordinate(), (int)this.getYCoordinate(), game);
                             }
                         }
                     case "Cattail":

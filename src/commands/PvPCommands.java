@@ -310,14 +310,6 @@ class PutPvP extends PvPCommands {
                     if (zombie == null) {
                         System.out.println("Such a zombie doesn't exist on your list!");
                     } else {
-                        if (row >= 0 && row <= 5) {
-                            if (Dynamic.howManyZombiesAreThere(row, pvpGame.getYard()) <= 1)
-                                DynamicZombie.put(pvpGame, zombie, row);
-                            else
-                                System.out.println("the row " + row + " is full.");
-                        } else {
-                            System.out.println("Such a row doesn't exist!");
-                        }
                     }
 
                 }

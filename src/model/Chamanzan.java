@@ -97,7 +97,7 @@ public class Chamanzan {
         if (!used) {
             boolean toUse = true;
             for(Plant plant:game.getPlants()){
-                if(plant.getYCoordinate() == DayYard.whichCoordinateAmI(new DayYard((GameDay)game), this.getX(), this.getY())[1]){
+                if(plant.getYCoordinate(game.getYard()) == DayYard.whichCoordinateAmI(new DayYard((GameDay)game), this.getX(), this.getY())[1]){
                     toUse = false;
                     break;
                 }
@@ -105,7 +105,7 @@ public class Chamanzan {
             int flag = 0;
             if (toUse){
                 for (Zombie zombie : game.getZombies()) {
-                    if ((this.getX() >= zombie.getX() - 15 && (zombie.getY() - this.getY() <= 10 || this.getY() - zombie.getY()  <= 10))) {
+                    if ((this.getX() >= zombie.getX(game.getYard()) - 15 && (zombie.getY(game.getYard()) - this.getY() <= 10 || this.getY() - zombie.getY(game.getYard())  <= 10))) {
                         flag++;
                         break;
                     }

@@ -53,7 +53,7 @@ public class ThrowingThing {
             this.removeBullet();
         } else {
             for (Zombie zombie : game.getZombies()) {
-                if (zombie.getX() == x && zombie.getY() == y) {
+                if (zombie.getX(game.getYard()) == x && zombie.getY(game.getYard()) == y) {
                     zombie.setLife(zombie.getLife() - this.getPower());
                     this.removeBullet();
                     return;

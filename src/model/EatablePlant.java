@@ -14,7 +14,7 @@ public class EatablePlant extends Plant {
         ArrayList<Zombie> zombies = game.getZombies();
         for (Zombie zombie : zombies) {
             if ("Explode-o-nut".equals(zombie.getName())) {
-                if (this.getClock() <= game.getTurn() && this.getYCoordinate() == zombie.getY() && this.getXCoordinate() == zombie.getX() - 1) {
+                if (this.getClock() <= game.getTurn() && this.getYCoordinate(game.getYard()) == zombie.getY(game.getYard()) && this.getXCoordinate(game.getYard()) == zombie.getX(game.getYard()) - 1) {
                     zombie.setLife(zombie.getLife() - 1);
                 }
             }

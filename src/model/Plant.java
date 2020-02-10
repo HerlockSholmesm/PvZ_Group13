@@ -47,8 +47,7 @@ public abstract class Plant extends Card {
         return x;
     }
 
-    public double getXCoordinate() {
-
+    public int getXCoordinate() {
         return 0;
     }
     public double getYCoordinate(Yard yard) { double pixelX  = stackPane.getTranslateX();
@@ -57,7 +56,7 @@ public abstract class Plant extends Card {
         return y;
     }
 
-    public double getYCoordinate() { double pixelX  = stackPane.getTranslateX();
+    public int getYCoordinate() { double pixelX  = stackPane.getTranslateX();
 
         return 0;
     }
