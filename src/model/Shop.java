@@ -78,12 +78,12 @@ public class Shop implements Serializable {
                     break;
                 }
             }
-            for (Card card1 :zombieHand){
-                if (card.getName().equals(card1.getName())){
-                    b = false;
-                    break;
-                }
-            }
+//            for (Card card1 :zombieHand){
+//                if (card.getName().equals(card1.getName())){
+//                    b = false;
+//                    break;
+//                }
+//            }
             if (b){
                 cards.add(card);
             }
