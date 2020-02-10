@@ -30,32 +30,41 @@ public abstract class Zombie extends Card {
         this.canmove = canmove;
     }
 
-    private int x;
+    //private int x;
     private int canmove;
     public static void setShop(Shop shop) {
         Zombie.shop = shop;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
 
     private int y;
     Cell cell;
     private int defense;
     private String name;
 
-    public int getX() {
+    public void setX(int x,Yard yard) {
+        double pace = x*yard.getDelta_x();
+        stackPane.setTranslateX(pace);
+    }
+
+    public void setY(int y,Yard yard) {
+        double pace = y*yard.getDelta_y();
+        this.stackPane.setTranslateY(pace);
+    }
+    public double getX(Yard yard) {
+        double pixelX  = stackPane.getTranslateX();
+        double pixelY = stackPane.getTranslateY();
+        double x = yard.whichCoordinateAmI(yard, pixelX, pixelY)[0];
         return x;
     }
 
-    public int getY() {
+    public double getY(Yard yard) { double pixelX  = stackPane.getTranslateX();
+        double pixelY = stackPane.getTranslateY();
+        double y = yard.whichCoordinateAmI(yard, pixelX, pixelY)[1];
         return y;
     }
+
+
 
     public static Shop getShop() {
         return shop;
@@ -134,18 +143,14 @@ public abstract class Zombie extends Card {
         return speed;
     }
 
-    public void setZombie(int x, int y) {
-        this.x = x;
-        this.y = y;
-       // cell = new Cell(x, y);
-    }
+
 
     public void attack(Card card) {
         card.setLife(card.getLife() - attackPower);
     }
 
-    public void move() {
-        this.x=(x + speed);
+    public void move(Yard yard) {
+        this.setX(speed, yard);
     }
 
     public abstract void action(Game game);
@@ -170,7 +175,7 @@ public abstract class Zombie extends Card {
     }
 
     public String toStringPrime() {
-        return name + ": " + life + ", " + "(" + x + "," + y + ")";
+        return name + ": " + life + ", " + "(" + stackPane.getTranslateX() + "," + stackPane.getTranslateY() + ")";
     }
 
 

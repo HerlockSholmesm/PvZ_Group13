@@ -16,7 +16,6 @@ public class EatablePlant extends Plant {
             if ("Explode-o-nut".equals(zombie.getName())) {
                 if (this.getClock() <= game.getTurn() && this.getYCoordinate() == zombie.getY() && this.getXCoordinate() == zombie.getX() - 1) {
                     zombie.setLife(zombie.getLife() - 1);
-                    game.getZombies().remove(zombie);
                 }
             }
         }

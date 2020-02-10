@@ -45,51 +45,34 @@ public class Shop implements Serializable {
     public static void showCollection() {
         ArrayList<Card> cards = new ArrayList<>();
         System.out.println(boughtCards.size());
-        for (Card card : boughtCards){
+        for (Card card : boughtCards) {
             boolean b = true;
-            for (Card card1 : plantHand){
-                if (card.getName().equals(card1.getName())){
+            for (Card card1 : plantHand) {
+                if (card.getName().equals(card1.getName())) {
                     b = false;
                     break;
                 }
             }
-            for (Card card1 :zombieHand){
-                if (card.getName().equals(card1.getName())){
+            for (Card card1 : zombieHand) {
+                if (card.getName().equals(card1.getName())) {
                     b = false;
                     break;
                 }
             }
-            if (b){
+            if (b) {
                 cards.add(card);
             }
         }
-        for (Card card : cards){
+        for (Card card : cards) {
             System.out.println(card.toString());
         }
     }
+
     public static ArrayList<Card> showCollection1() {
-        ArrayList<Card> cards = new ArrayList<>();
         System.out.println(boughtCards.size());
-        for (Card card : boughtCards){
-            boolean b = true;
-            for (Card card1 : plantHand){
-                if (card.getName().equals(card1.getName())){
-                    b = false;
-                    break;
-                }
-            }
-//            for (Card card1 :zombieHand){
-//                if (card.getName().equals(card1.getName())){
-//                    b = false;
-//                    break;
-//                }
-//            }
-            if (b){
-                cards.add(card);
-            }
-        }
-        return cards;
+        return new ArrayList<>(boughtCards);
     }
+
     public static void BuyCard(String name, Account account) {
         boolean b = true;
         for (Card card : notBoughtCards) {
@@ -146,7 +129,7 @@ public class Shop implements Serializable {
     }
 
     public void showNotBoughtCard() {
-        for (Card card : notBoughtCards){
+        for (Card card : notBoughtCards) {
             System.out.println(card.toString());
         }
     }
@@ -183,58 +166,58 @@ public class Shop implements Serializable {
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new shootingPlant("Repeater", 3, 2, 3, 4, 4,new Image("Plants vs Zombies/Repeater/1769829-plant_peashooter_thumb.webp"));
+        plant = new shootingPlant("Repeater", 3, 2, 3, 4, 4, new Image("Plants vs Zombies/Repeater/1769829-plant_peashooter_thumb.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new shootingPlant("Threepeater", 4, 1, 4, 4, 5,new Image("Plants vs Zombies/Threepeater/Threepeater2009HD.webp"));
+        plant = new shootingPlant("Threepeater", 4, 1, 4, 4, 5, new Image("Plants vs Zombies/Threepeater/Threepeater2009HD.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new shootingPlant("Cactus", 2, 1, 5, 4, 5,new Image("Plants vs Zombies/Cactus/Cactus.webp"));
+        plant = new shootingPlant("Cactus", 2, 1, 5, 4, 5, new Image("Plants vs Zombies/Cactus/Cactus.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new shootingPlant("Gatling Pea", 5, 4, 5, 4, 3,new Image("Plants vs Zombies/Gatling Pea/GatlingPea2009HD.webp"));
+        plant = new shootingPlant("Gatling Pea", 5, 4, 5, 4, 3, new Image("Plants vs Zombies/Gatling Pea/GatlingPea2009HD.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new shootingPlant("Scaredy-shroom", 2, 1, 1, 2, 1,new Image("Plants vs Zombies/Scared-shroom/Scaredy-shroom.webp"));
+        plant = new shootingPlant("Scaredy-shroom", 2, 1, 1, 2, 1, new Image("Plants vs Zombies/Scared-shroom/Scaredy-shroom.webp"));
         plants.add(plant);
         boughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new throwingPlant("Kernel-pult", 4, 1, 0, 3, 3, 2,new Image("Plants vs Zombies/Kernel-pult/Kernelpult2009HD.webp"));
+        plant = new throwingPlant("Kernel-pult", 4, 1, 0, 3, 3, 2, new Image("Plants vs Zombies/Kernel-pult/Kernelpult2009HD.webp"));
         plants.add(plant);
         boughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new shootingPlant("Split Pea", 1, 2, 4, 4, 3,new Image("Plants vs Zombies/Split Pea/Splitpea2009HD.webp"));
+        plant = new shootingPlant("Split Pea", 1, 2, 4, 4, 3, new Image("Plants vs Zombies/Split Pea/Splitpea2009HD.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new EatablePlant("Explode-o-nut", 4, 5, 3 , new Image("Plants vs Zombies/explode-o-nut/HDExplode-o-nut.webp"));
+        plant = new EatablePlant("Explode-o-nut", 4, 5, 3, new Image("Plants vs Zombies/explode-o-nut/HDExplode-o-nut.webp"));
         plants.add(plant);
         boughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new throwingPlant("Melon-pult", 4, 1, 3, 3, 3, 3,new Image("Plants vs Zombies/Melon-pult/Melonpult2009HD.webp"));
+        plant = new throwingPlant("Melon-pult", 4, 1, 3, 3, 3, 3, new Image("Plants vs Zombies/Melon-pult/Melonpult2009HD.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new ToPlantOnPlant("Lily Pad", 0, 1, 1,new Image("Plants vs Zombies/Lily Pad/Lilypad.webp"));
+        plant = new ToPlantOnPlant("Lily Pad", 0, 1, 1, new Image("Plants vs Zombies/Lily Pad/Lilypad.webp"));
         plants.add(plant);
         WaterTypeOrDay.put(plant.getName(), "W");
-        plant = new throwingPlant("Winter Melon", 4, 1, 3, 4, 5, 3,new Image("Plants vs Zombies/Winter Melon/Winter_Melon.webp"));
+        plant = new throwingPlant("Winter Melon", 4, 1, 3, 4, 5, 3, new Image("Plants vs Zombies/Winter Melon/Winter_Melon.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new EatablePlant("Wall-nut", 2, 4, 4,new Image("Plants vs Zombies/Wall-nut/2zfsax5_th.webp"));
+        plant = new EatablePlant("Wall-nut", 2, 4, 4, new Image("Plants vs Zombies/Wall-nut/2zfsax5_th.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new MinePlant("Tangle Kelp", 3, 3, 0,0,new Image("Plants vs Zombies/Tangle Kelp/Tangle-kelp.webp"));
+        plant = new MinePlant("Tangle Kelp", 3, 3, 0, 0, new Image("Plants vs Zombies/Tangle Kelp/Tangle-kelp.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "W");
-        plant = new EatablePlant("Tall-nut", 4, 6, 6,new Image("Plants vs Zombies/Tall-nut/Tallnut_body.webp"));
+        plant = new EatablePlant("Tall-nut", 4, 6, 6, new Image("Plants vs Zombies/Tall-nut/Tallnut_body.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
@@ -242,27 +225,27 @@ public class Shop implements Serializable {
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new MinePlant("Potato Mine", 1, 2, 3, 1,new Image("Plants vs Zombies/Potato Mine/PotatoMineHD.webp"));
+        plant = new MinePlant("Potato Mine", 1, 2, 3, 1, new Image("Plants vs Zombies/Potato Mine/PotatoMineHD.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new MinePlant("Cherry Bomb", 8, 2, 4, 2 ,new Image("Plants vs Zombies/Cherry Bomb/Catail.png"));
+        plant = new MinePlant("Cherry Bomb", 8, 2, 4, 2, new Image("Plants vs Zombies/Cherry Bomb/Catail.png"));
         plants.add(plant);
         boughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new MinePlant("Magnet-shroom", 8, 2, 4, 4,new Image("Plants vs Zombies/Magnet-shroom/HD_MAGNET.webp"));
+        plant = new MinePlant("Magnet-shroom", 8, 2, 4, 4, new Image("Plants vs Zombies/Magnet-shroom/HD_MAGNET.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new ProducerPlant("Sunflower", 2, 1, 1, 2, 2,new Image("Plants vs Zombies/Sunflower/Sunflower_transparent.webp"));
+        plant = new ProducerPlant("Sunflower", 2, 1, 1, 2, 2, new Image("Plants vs Zombies/Sunflower/Sunflower_transparent.webp"));
         plants.add(plant);
         boughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new ProducerPlant("Twin Sunflower", 2, 2, 3, 5, 2,new Image("Plants vs Zombies/Sunflower/Sunflower_transparent.webp"));
+        plant = new ProducerPlant("Twin Sunflower", 2, 2, 3, 5, 2, new Image("Plants vs Zombies/Sunflower/Sunflower_transparent.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new MinePlant("Jalapeno", 19, 4, 5, 2,new Image("Plants vs Zombies/Jalapeno/Jalapeno.webp"));
+        plant = new MinePlant("Jalapeno", 19, 4, 5, 2, new Image("Plants vs Zombies/Jalapeno/Jalapeno.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         cards.addAll(plants);
@@ -274,68 +257,68 @@ public class Shop implements Serializable {
 
     public static void importZombie() {
         zombies.clear();
-        Zombie zombie = new MovingZombie("Zombie", 2, 2, 0 ,new Image("Plants vs Zombies/Zombie/ZombieHD.webp"));
+        Zombie zombie = new MovingZombie("Zombie", 2, 2, 0, new Image("Plants vs Zombies/Zombie/ZombieHD.webp"));
         zombies.add(zombie);
         boughtCards.add(zombie);
-        zombie = new MovingZombie("Football Zombie", 3, 4, 0,new Image("Plants vs Zombies/Football Zombie/Cherry_Bomb_Seed.webp"));
+        zombie = new MovingZombie("Football Zombie", 3, 4, 0, new Image("Plants vs Zombies/Football Zombie/Cherry_Bomb_Seed.webp"));
         zombies.add(zombie);
         boughtCards.add(zombie);
-        zombie = new MovingZombie("BucketHead Zombie", 2, 3, 0,new Image("Plants vs Zombies/Buckethead Zombie/Buckethead_Zombie.webp"));
+        zombie = new MovingZombie("BucketHead Zombie", 2, 3, 0, new Image("Plants vs Zombies/Buckethead Zombie/Buckethead_Zombie.webp"));
         zombies.add(zombie);
         notBoughtCards.add(zombie);
-        zombie = new MovingZombie("ConeHead Zombie", 2, 3, 0,new Image("Plants vs Zombies/Conehead Zombie/Conehead_Zombie.png"));
+        zombie = new MovingZombie("ConeHead Zombie", 2, 3, 0, new Image("Plants vs Zombies/Conehead Zombie/Conehead_Zombie.png"));
         zombies.add(zombie);
         boughtCards.add(zombie);
-        zombie = new MovingZombie("Zomboni", 2, 3, 0,new Image("Plants vs Zombies/Zomboni/HDplus_zamboni.webp"));
+        zombie = new MovingZombie("Zomboni", 2, 3, 0, new Image("Plants vs Zombies/Zomboni/HDplus_zamboni.webp"));
         zombies.add(zombie);
         notBoughtCards.add(zombie);
-        zombie = new MovingZombie("Catapult Zombie", 2, 3, 0,new Image("Plants vs Zombies/Snorkel Zombies/SnorkleZombie2009HD.webp"));
+        zombie = new MovingZombie("Catapult Zombie", 2, 3, 0, new Image("Plants vs Zombies/Snorkel Zombies/SnorkleZombie2009HD.webp"));
         zombies.add(zombie);
         notBoughtCards.add(zombie);
-        zombie = new MovingZombie("Bungee Zombie", 0, 3, 0,new Image("Plants vs Zombies/Bungee Zombie/Bungeed.webp"));
+        zombie = new MovingZombie("Bungee Zombie", 0, 3, 0, new Image("Plants vs Zombies/Bungee Zombie/Bungeed.webp"));
         zombies.add(zombie);
         boughtCards.add(zombie);
-        zombie = new MovingZombie("Balloon Zombie", 2, 2, 0 ,new Image("Plants vs Zombies/Ballon Zombie/Zombie_balloon_.webp"));
+        zombie = new MovingZombie("Balloon Zombie", 2, 2, 0, new Image("Plants vs Zombies/Ballon Zombie/Zombie_balloon_.webp"));
         zombies.add(zombie);
         boughtCards.add(zombie);
-        zombie = new ShieldZombie("Newspaper Zombie", 2, 2, 2,new Image("Plants vs Zombies/Newspaper Zombie/Newspaper_Zombie.webp"));
+        zombie = new ShieldZombie("Newspaper Zombie", 2, 2, 2, new Image("Plants vs Zombies/Newspaper Zombie/Newspaper_Zombie.webp"));
         zombies.add(zombie);
         notBoughtCards.add(zombie);
-        zombie = new ShieldZombie("Target Zombie", 2, 3, 3,new Image("Plants vs Zombies/Screen Door Zombie/HDplus_screendoor.png"));
+        zombie = new ShieldZombie("Target Zombie", 2, 3, 3, new Image("Plants vs Zombies/Screen Door Zombie/HDplus_screendoor.png"));
         zombies.add(zombie);
         notBoughtCards.add(zombie);
-        zombie = new ShieldZombie("Screen Door Zombie", 2, 2, 4 ,new Image("Plants vs Zombies/Giga-gargantaur/Gargantuar.webp"));
+        zombie = new ShieldZombie("Screen Door Zombie", 2, 2, 4, new Image("Plants vs Zombies/Giga-gargantaur/Gargantuar.webp"));
         zombies.add(zombie);
         boughtCards.add(zombie);
-        zombie = new GiantZombie("Giga-gargantuar", 6, 1, 0,new Image("Plants vs Zombies/Snorkel Zombies/SnorkleZombie2009HD.webp"));
+        zombie = new GiantZombie("Giga-gargantuar", 6, 1, 0, new Image("Plants vs Zombies/Snorkel Zombies/SnorkleZombie2009HD.webp"));
         zombies.add(zombie);
         notBoughtCards.add(zombie);
-        zombie = new FlyingZombie("Pogo Zombie", 2, 2, 0 ,new Image("Plants vs Zombies/Dolphin Rider Zombie/DolphinRider2009HD.png"));
+        zombie = new FlyingZombie("Pogo Zombie", 2, 2, 0, new Image("Plants vs Zombies/Dolphin Rider Zombie/DolphinRider2009HD.png"));
         zombies.add(zombie);
         notBoughtCards.add(zombie);
-        zombie = new SwimmingZombie("Snorkel Zombie", 2, 2, 0,new Image("Plants vs Zombies/Snorkel Zombies/SnorkleZombie2009HD.webp"));
+        zombie = new SwimmingZombie("Snorkel Zombie", 2, 2, 0, new Image("Plants vs Zombies/Snorkel Zombies/SnorkleZombie2009HD.webp"));
         zombies.add(zombie);
         notBoughtCards.add(zombie);
-        zombie = new SwimmingZombie("Dolphin Rider Zombie", 2, 2, 2 ,new Image("Plants vs Zombies/Dolphin Rider Zombie/DolphinRider2009HD.png"));
+        zombie = new SwimmingZombie("Dolphin Rider Zombie", 2, 2, 2, new Image("Plants vs Zombies/Dolphin Rider Zombie/DolphinRider2009HD.png"));
         zombies.add(zombie);
         notBoughtCards.add(zombie);
         cards.addAll(zombies);
     }
 
-    public static void addToBought(String name){
-        for (Zombie zombie : zombies){
-            if (zombie.getName().equalsIgnoreCase(name)){
-                for (Card card : notBoughtCards){
-                    if (card.getName().equalsIgnoreCase(name)){
+    public static void addToBought(String name) {
+        for (Zombie zombie : zombies) {
+            if (zombie.getName().equalsIgnoreCase(name)) {
+                for (Card card : notBoughtCards) {
+                    if (card.getName().equalsIgnoreCase(name)) {
                         boughtCards.add(zombie);
                     }
                 }
             }
         }
-        for (Plant plant : plants){
-            if (plant.getName().equalsIgnoreCase(name)){
-                for (Card card : notBoughtCards){
-                    if (card.getName().equalsIgnoreCase(name)){
+        for (Plant plant : plants) {
+            if (plant.getName().equalsIgnoreCase(name)) {
+                for (Card card : notBoughtCards) {
+                    if (card.getName().equalsIgnoreCase(name)) {
                         boughtCards.add(plant);
                     }
                 }

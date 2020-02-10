@@ -152,7 +152,7 @@ public abstract class Dynamic {
         System.out.println(title1P + "\t\t" + title2P);
         int i = 1;
         for (Plant plant : plants) {
-            System.out.println(i + "." + plant.toStringPrime());
+            System.out.println(i + "." + plant.toString());
             i++;
         }
         i = 1;
@@ -184,7 +184,7 @@ public abstract class Dynamic {
     public static int howManyZombiesAreThere(int row, Yard yard) {
         int numOfZombiesInRow = 0;
         for (Zombie zombie : yard.getGame().getZombies()) {
-            if (row == zombie.getX()) {
+            if (row == zombie.getX(yard)) {
                 numOfZombiesInRow++;
             }
         }
@@ -211,7 +211,7 @@ public abstract class Dynamic {
         return null;
     }
 
-    public static int howManyZombiesInTheColumn(int X, int Y, Game game) {
+    /*public static int howManyZombiesInTheColumn(int X, int Y, Game game) {
         int numOfZombiesInCol = 0;
         for (Zombie zombie : game.getZombies()) {
             if (zombie.getX() == X && zombie.getY() == Y) {
@@ -219,10 +219,10 @@ public abstract class Dynamic {
             }
         }
         return numOfZombiesInCol;
-    }
+    }*/
 
 
-    public static void put(Game game, Zombie zombie, int x) {
+    /*public static void put(Game game, Zombie zombie, int x) {
         game.addZombie(zombie);
         zombie.setX(x);
         for (int y = 18; y >= 0; y--) {
@@ -231,7 +231,7 @@ public abstract class Dynamic {
             }
         }
         game.removeCard(findCard(game, zombie.getName()));
-    }
+    }*/
 
     public static Card findCard(Game game, String name) {
         for (Card card : game.getCards()) {
