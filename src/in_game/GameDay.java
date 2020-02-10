@@ -78,7 +78,6 @@ public class GameDay extends Game {
 
     public GameDay(String name, String password) {
         super(name, password);
-        game = this;
         this.chamanzans.add(new Chamanzan( this.yard));
         this.chamanzans.add(new Chamanzan( this.yard));
         this.chamanzans.add(new Chamanzan( this.yard));
@@ -96,6 +95,7 @@ public class GameDay extends Game {
         this.suns = new Sun(2);
         wavesOfAttack = 3;
         turn = 0;
+        game = this;
     }
 
 }

@@ -53,7 +53,7 @@ class PlayDay extends Application {
         StackPane bar = new StackPane();
         for (int i = 0; i < gameDay.getCards().size(); i++){
             Plant plant  = (Plant) gameDay.getCards().get(i);
-            stackPanes.set(i, plant.getStackPane());
+            stackPanes.add(plant.getStackPane());
             bar.getChildren().add(stackPanes.get(i));
             stackPanes.get(i).setTranslateY(90*i);
             stackPanes.get(i).setId(plant.getName());

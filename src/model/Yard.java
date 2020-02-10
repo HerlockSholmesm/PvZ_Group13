@@ -6,8 +6,8 @@ import javafx.scene.image.Image;
 public abstract class Yard {
     double width;
     double height;
-    protected Image background;
-    protected Cell cells[][] = new Cell[6][19];
+    Image background;
+    Cell[][] cells = new Cell[6][19];
     private Game game;
     private boolean isItWater;
     private static final int delta_x = 0;

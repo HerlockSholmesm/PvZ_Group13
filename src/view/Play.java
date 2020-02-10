@@ -1,5 +1,6 @@
 package view;
 
+import in_game.GameDay;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -50,17 +51,18 @@ public class Play extends Application {
         Button dayButton = new Show("Day", webView);
         dayButton.setOnAction(event -> {
             Login login = new Login();
-            try {
                 PlayDay playDay =new PlayDay();
+                new GameDay(Login.mainAccount.getName(), Login.mainAccount.getPassword());
+            try {
                 playDay.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
-                System.err.println("Can not initiate game");
             }
-        });
+
+
+    });
         return dayButton;
     }
-
     private class Show extends Button {
         public Show(String textOnButton, WebView webView) {
             setText(textOnButton);
