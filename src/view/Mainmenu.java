@@ -24,7 +24,7 @@ public class Mainmenu extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         AudioClip audioClip = new AudioClip(getClass().getResource("/media/b.mp3").toString());
-        audioClip.play();
+        audioClip.play(100, 13, 434, 34, 1);
         WebView webView = new WebView();
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
