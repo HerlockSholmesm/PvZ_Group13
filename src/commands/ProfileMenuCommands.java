@@ -112,7 +112,6 @@ class DeleteUserName extends ProfileMenuCommands {
     }
 }
 
-
 class ShowUserName extends ProfileMenuCommands {
 
     ShowUserName(String input, Menu menuPtr) {

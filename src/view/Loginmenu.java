@@ -98,13 +98,12 @@ public class Loginmenu extends Application {
             alert.setHeaderText("Help");
             alert.setContentText("help : showing commands\n" +
                     "Create account : to create an account\n" +
-                    "Login : to logi\n" +
+                    "Login : to login\n" +
                     "Leader board : to show leader Board\n" +
                     "exit : to exit game");
 
             alert.showAndWait();
         });
-
         return helpButton;
     }
 
