@@ -79,12 +79,12 @@ public class GameDay extends Game {
     public GameDay(String name, String password) {
         super(name, password);
         game = this;
-        this.chamanzans.add(new Chamanzan(0, 0, this.yard));
-        this.chamanzans.add(new Chamanzan(0, 1, this.yard));
-        this.chamanzans.add(new Chamanzan(0, 2, this.yard));
-        this.chamanzans.add(new Chamanzan(0, 3, this.yard));
-        this.chamanzans.add(new Chamanzan(0, 4, this.yard));
-        this.chamanzans.add(new Chamanzan(0, 5, this.yard));
+        this.chamanzans.add(new Chamanzan(0, this.yard));
+        this.chamanzans.add(new Chamanzan(1, this.yard));
+        this.chamanzans.add(new Chamanzan(2, this.yard));
+        this.chamanzans.add(new Chamanzan(3, this.yard));
+        this.chamanzans.add(new Chamanzan(4,  this.yard));
+        this.chamanzans.add(new Chamanzan(5,this.yard));
 
         this.cards.add(Shop.getAllPlants().get(0));
         this.cards.add(Shop.getAllPlants().get(1));

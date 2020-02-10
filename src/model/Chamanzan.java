@@ -2,7 +2,9 @@ package model;
 
 import in_game.DynamicDay;
 import in_game.Game;
+import in_game.GameDay;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
@@ -10,18 +12,40 @@ public class Chamanzan {
     public static final int SPEED = 3;
     boolean used;
     private int whichRow;
-    private Cell whichCell;
     private Yard yard;
     private Image image;
+    private int x;
+    private int y;
+    private ImageView imageView;
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 
     public Image getImage() {
         return image;
     }
 
-    public Chamanzan(int x, int y, Yard yard) {
-        this.whichCell = new Cell(x, y);
+    public Chamanzan( Yard yard) {
         this.yard = yard;
         used = false;
+        this.image = new Image("png/lawn_mower.gif");
+        this.imageView = new ImageView(image);
     }
 
     public boolean isUsed() {
@@ -30,6 +54,16 @@ public class Chamanzan {
 
     public void setUsed(boolean used) {
         this.used = used;
+    }
+
+    public boolean dead = false;
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead() {
+        this.dead = true;
     }
 
     public int getWhichRow() {
@@ -62,28 +96,31 @@ public class Chamanzan {
 
 
     public void action(Game game){
-        if (used) {
-            whichCell.setX(whichCell.getX() + SPEED);
-            whichCell.setY(whichCell.getY() + SPEED);
-            for (Zombie zombie : game.getZombies()) {
-                if ((whichCell.getX() - 3 <= zombie.getX() || zombie.getX() <= whichCell.getX()) && zombie.getY() == whichCell.getY()) {
-                    zombie.setX(-1);
-                    zombie.setY(-1);
+        if (!used) {
+            boolean toUse = true;
+            for(Plant plant:game.getPlants()){
+                if(plant.getYCoordinate() == DayYard.whichCoordinateAmI(new DayYard((GameDay)game), this.getX(), this.getY())[1]){
+                    toUse = false;
+                    break;
                 }
             }
-            if (whichCell.getX() >= 19){
-                whichCell.setX(-1);
-                whichCell.setY(-1);
-            }
-        } else {
-            for (Zombie zombie : game.getZombies()) {
-                if (zombie.getX() == 0 && zombie.getY() == whichCell.getY()) {
-                    used = true;
-                    game.getZombies().remove(zombie);
-                    zombie.setLife(0);
+            int flag = 0;
+            if (toUse){
+                for (Zombie zombie : game.getZombies()) {
+                    if ((this.getX() >= zombie.getX() - 15 && (zombie.getY() - this.getY() <= 10 || this.getY() - zombie.getY()  <= 10)) {
+                        flag++;
+                        break;
+                    }
+                }
+                if (flag > 0){
+                    this.setUsed(true);
+                    this.setX(this.getX() + DayYard.getDelta_x());
                 }
             }
-            return;
+            if (this.getX() >= 19*DayYard.getDelta_x()){
+                this.setDead();
+            }
+        }
         }
 
     }

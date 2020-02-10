@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import in_game.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 
 public abstract class Plant extends Card {
     private int x;
@@ -12,6 +14,12 @@ public abstract class Plant extends Card {
     private int rest;
     private int price;
     private Image image;
+    private ImageView imageView;
+    private StackPane stackPane = new StackPane();
+
+    public StackPane getStackPane() {
+        return stackPane ;
+    }
 
     public Image getImage() {
         return image;
@@ -90,6 +98,9 @@ public abstract class Plant extends Card {
         this.clock = clock;
         suni = new Sun();
         this.image = image;
+        this.imageView = new ImageView(image);
+        stackPane.getChildren().add(imageView);
+
     }
 
     public void setImage(Image image) {

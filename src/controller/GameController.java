@@ -5,7 +5,10 @@ import in_game.Game;
 import in_game.GameCondition;
 import in_game.GameDay;
 import javafx.application.Platform;
+import javafx.scene.Group;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.*;
 import view.EndGame;
@@ -18,12 +21,13 @@ public class GameController{
     private GameDay gameDay;
     private Stage stage;
     private Timer timer;
+    private Group root;
 
-
-    public GameController(DayYard dayYard, Stage initStage) {
+    public GameController(DayYard dayYard, Stage initStage, Group root) {
         this.dayYard = dayYard;
         this.gameDay = (GameDay)dayYard.getGame();
         this.stage = initStage;
+        this.root = root;
     }
 
     /**
@@ -51,14 +55,23 @@ public class GameController{
 
 
     private void updateAnimation() {
-        /*
-        ArrayList<Zombie> listOfZombies = dayYard.getGame().getZombies();
 
-        for (shootingPlant shootingPlant: shootingPlants){
-            listOfPeas.addAll(shootingPlant.getPeaBullets());
-        }*/
         for (Plant plant:gameDay.getPlants()){
             plant.action(gameDay);
+        }
+
+
+        DynamicDay dynamicDay = new DynamicDay(gameDay);
+        if(dynamicDay.canIStartTheNextAttack()){
+            dynamicDay.attack();
+            StackPane stackPane = new StackPane();
+            for (Zombie zombie:gameDay.getZombies()){
+                stackPane.getChildren().add(zombie.getStackPane());
+                stackPane.setTranslateX(dayYard.whichPixelAmI(zombie.getCell())[0]);
+                stackPane.setTranslateY(dayYard.whichPixelAmI(zombie.getCell())[1]);
+                root.getChildren().add(stackPane);
+            }
+
         }
         for (Zombie zombie:gameDay.getZombies()){
             zombie.action(gameDay);
@@ -94,8 +107,12 @@ public class GameController{
                 gameDay.getZombies().remove(zombie);
             }
         }
-
-        DynamicDay dynamicDay = new DynamicDay(gameDay);
+        ArrayList<Chamanzan> chamanzanArrayList = gameDay.getChamanzans();
+        for (Chamanzan chamanzan:chamanzanArrayList){
+            if (chamanzan.isDead()){
+                gameDay.getChamanzans().remove(chamanzan);
+            }
+        }
         if(dynamicDay.hasGameEnded()){
             this.endGame();
         }

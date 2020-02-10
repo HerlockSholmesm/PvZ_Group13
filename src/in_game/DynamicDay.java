@@ -49,6 +49,7 @@ public class DynamicDay extends Dynamic {
         int lastTurnServed = playerDay.getTurnServed();
         if (turn - lastTurnServed > 1) {
             playerDay.addSuns(n);
+
         } else if (turn - lastTurnServed == 1) {
             int rnd = MathFunctions.getRandomNumber(0, 1);
             if (rnd == 1) {
