@@ -152,7 +152,7 @@ public abstract class Dynamic {
         System.out.println(title1P + "\t\t" + title2P);
         int i = 1;
         for (Plant plant : plants) {
-            System.out.println(i + "." + plant.toStringPrime());
+            System.out.println(i + "." + plant.toString());
             i++;
         }
         i = 1;

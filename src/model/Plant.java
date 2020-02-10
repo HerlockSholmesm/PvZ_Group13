@@ -8,8 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
 public abstract class Plant extends Card {
-    private int x;
-    private int y;
+
     private int sun;
     private int rest;
     private int price;
@@ -25,12 +24,31 @@ public abstract class Plant extends Card {
         return image;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public void setX(int x,Yard yard) {
+        double pace = x*yard.getDelta_x();
+        stackPane.setTranslateX(pace);
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public void setY(int y,Yard yard) {
+        double pace = y*yard.getDelta_y();
+        this.stackPane.setTranslateY(pace);
+    }
+    public double getXCoordinate(Yard yard) {
+        double pixelX  = stackPane.getTranslateX();
+        double pixelY = stackPane.getTranslateY();
+        double x = yard.whichCoordinateAmI(yard, pixelX, pixelY)[0];
+        return x;
+    }
+
+    public double getYCoordinate(Yard yard) { double pixelX  = stackPane.getTranslateX();
+        double pixelY = stackPane.getTranslateY();
+        double y = yard.whichCoordinateAmI(yard, pixelX, pixelY)[1];
+        return y;
+    }
+
+    public void setCoordinates(int x, int y) {
+        stackPane.setTranslateX(x);
+        stackPane.setTranslateY(y);
     }
 
     @Override
@@ -57,18 +75,6 @@ public abstract class Plant extends Card {
 
     private String name;
 
-    public int getXCoordinate() {
-        return x;
-    }
-
-    public int getYCoordinate() {
-        return y;
-    }
-
-    public void setCoordinates(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
 
     public int getSun() {
         return sun;
@@ -123,7 +129,7 @@ public abstract class Plant extends Card {
     }
 
     public String toStringPrime() {
-        return name + ": " + life + ", " + "(" + x + "," + y + ")";
+        return name + ": " + life + ", " + "(" + stackPane.getTranslateX() + "," + stackPane.getTranslateY() + ")";
     }
 
     abstract public Image getCardImage();
