@@ -51,7 +51,8 @@ public class Play extends Application {
         dayButton.setOnAction(event -> {
             Login login = new Login();
             try {
-                //todo
+                PlayDay playDay =new PlayDay();
+                playDay.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("Can not initiate game");
