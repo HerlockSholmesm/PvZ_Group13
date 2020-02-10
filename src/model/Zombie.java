@@ -94,6 +94,7 @@ public abstract class Zombie extends Card {
     }
 
     public Zombie(int life, int speed, int defense, String name,Image image) {
+        super(name);
         this.life = life;
         this.speed = speed;
         this.defense = defense;

@@ -6,8 +6,8 @@ public abstract class Card {
     private boolean select;
     private int life;
 
-    public Card() {
-
+    public Card(String name) {
+        this.name = name;
     }
 
     public int getPrice() {
