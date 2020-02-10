@@ -3,7 +3,6 @@ package view;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
@@ -27,14 +26,22 @@ public class Shop extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        Group root = new Group();
+        Scene scene = new Scene(root, 1000, 900);
+        scene.getStylesheets().add(Shop.class.getResource("static/welcome.css").toExternalForm());
         model.Shop.importZombie();
         model.Shop.importPlant();
         ArrayList<Plant> plants = model.Shop.getAllPlants();
         ImageView imageView;
         GridPane gridPane = new GridPane();
-        gridPane.setVgap(30);
-        gridPane.setHgap(30);
-        System.out.println(plants.size());
+        gridPane.setVgap(1);
+        gridPane.setHgap(1);
+        Text title = new Text("Plants vs. Zombies");
+        title.setTranslateX(159);
+        title.setTranslateY(559);
+        title.setFont(Font.font("Verdana", 50));
+        title.setId("fancytext");
+       // Button LoginButton = addCollectionButton(webView);
         ArrayList<Plant> toBeDeleted = new ArrayList<>();
         for (Plant plant : plants) {
             if (plant.getCardImage() == null) {
@@ -45,11 +52,12 @@ public class Shop extends Application {
         System.out.println(toBeDeleted.size());
         for (int i = 0; i < plants.size(); i++) {
             imageView = new ImageView(plants.get(i).getCardImage());
-            gridPane.add(imageView, i % 10 + 1, i / 10 + 5);
+            gridPane.add(imageView, i % 10 + 100, i / 10 + 10);
+            imageView.setOnMouseClicked(event->{
+                System.out.println("%");
+            });
         }
-        Group root = new Group();
-        Scene scene = new Scene(root, 1000, 900);
-        root.getChildren().add(gridPane);
+        root.getChildren().addAll(gridPane,title);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

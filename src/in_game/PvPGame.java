@@ -104,12 +104,12 @@ public class PvPGame extends Game {
 
         this.totalWaves = totalWaves;
 
-        this.chamanzans.add(new Chamanzan(0, 0, this.yard));
-        this.chamanzans.add(new Chamanzan(0, 1, this.yard));
-        this.chamanzans.add(new Chamanzan(0, 2, this.yard));
-        this.chamanzans.add(new Chamanzan(0, 3, this.yard));
-        this.chamanzans.add(new Chamanzan(0, 4, this.yard));
-        this.chamanzans.add(new Chamanzan(0, 5, this.yard));
+        this.chamanzans.add(new Chamanzan(  this.yard));
+        this.chamanzans.add(new Chamanzan(  this.yard));
+        this.chamanzans.add(new Chamanzan(  this.yard));
+        this.chamanzans.add(new Chamanzan( this.yard));
+        this.chamanzans.add(new Chamanzan(  this.yard));
+        this.chamanzans.add(new Chamanzan(  this.yard));
 
 
     }
