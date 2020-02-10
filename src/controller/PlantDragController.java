@@ -23,17 +23,8 @@ public class PlantDragController implements EventHandler<MouseEvent> {
     public void handle(MouseEvent event) {
         Dragboard drag = this.stackPane.startDragAndDrop(TransferMode.MOVE);
         ClipboardContent content = new ClipboardContent();
-        String id = this.stackPane.getId();
         content.putImage(this.image);
-        if (id == "peashooter") {
-            content.putString("peashooter");
-        } else if (id == "sunflower"){
-            content.putString("sunflower");
-        } else if (id == "wallnut"){
-            content.putString("wallnut");
-        } else if (id == "potatoMine"){
-            content.putString("potatoMine");
-        }
+        content.putString(this.stackPane.getId());
         drag.setContent(content);
 
     }

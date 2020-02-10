@@ -2,6 +2,8 @@ package model;
 
 import in_game.Game;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 
 public abstract class Zombie extends Card {
 
@@ -11,6 +13,13 @@ public abstract class Zombie extends Card {
     private int attackPower;
 
     private Image image;
+    private ImageView imageView;
+    private StackPane stackPane = new StackPane();
+
+
+    public StackPane getStackPane() {
+        return stackPane ;
+    }
 
 
     public int getCanmove() {
@@ -103,6 +112,9 @@ public abstract class Zombie extends Card {
       //  this.cell = new Cell(x, y);
         canmove=0;
         this.image = image;
+        this.imageView = new ImageView(image);
+        stackPane.getChildren().add(imageView);
+
     }
 
     public void setImage(Image image) {
