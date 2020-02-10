@@ -13,6 +13,15 @@ public class Shop implements Serializable {
     private static ArrayList<Plant> plants = new ArrayList<>();
     private static ArrayList<Zombie> zombies = new ArrayList<>();
     private static ArrayList<Card> cards = new ArrayList<>();
+
+    public static ArrayList<Card> getBoughtCards() {
+        return boughtCards;
+    }
+
+    public static ArrayList<Card> getNotBoughtCards() {
+        return notBoughtCards;
+    }
+
     private static ArrayList<Card> boughtCards = new ArrayList<>();
     private static ArrayList<Card> notBoughtCards = new ArrayList<>();
     private static HashMap<String, String> WaterTypeOrDay = new HashMap<>();
@@ -58,7 +67,29 @@ public class Shop implements Serializable {
             System.out.println(card.toString());
         }
     }
-
+    public static ArrayList<Card> showCollection1() {
+        ArrayList<Card> cards = new ArrayList<>();
+        System.out.println(boughtCards.size());
+        for (Card card : boughtCards){
+            boolean b = true;
+            for (Card card1 : plantHand){
+                if (card.getName().equals(card1.getName())){
+                    b = false;
+                    break;
+                }
+            }
+            for (Card card1 :zombieHand){
+                if (card.getName().equals(card1.getName())){
+                    b = false;
+                    break;
+                }
+            }
+            if (b){
+                cards.add(card);
+            }
+        }
+        return cards;
+    }
     public static void BuyCard(String name, Account account) {
         boolean b = true;
         for (Card card : notBoughtCards) {
@@ -84,6 +115,34 @@ public class Shop implements Serializable {
             }
         }
         if (b) System.out.println("the name is not valid");
+    }
+
+    public static String BuyCard1(String name, Account account) {
+        boolean b = true;
+        for (Card card : notBoughtCards) {
+            if (card.getName().equalsIgnoreCase(name)) {
+                b = false;
+                if (card instanceof Plant) {
+                    if (card.getPrice() <= account.getMoney()) {
+                        boughtCards.add(card);
+                        notBoughtCards.remove(card);
+                        account.setMoney(account.getMoney() - card.getPrice());
+                        break;
+                    } else return "Money is not enough";
+                }
+                if (card instanceof Zombie) {
+                    if (card.getPrice() <= account.getMoney()) {
+                        boughtCards.add(card);
+                        notBoughtCards.remove(card);
+                        account.setMoney(account.getMoney() - card.getPrice());
+                        break;
+                    } else return "Money is not enough";
+                }
+                break;
+            }
+        }
+        if (b) return "the name is not valid";
+        return null;
     }
 
     public void showNotBoughtCard() {
@@ -265,21 +324,21 @@ public class Shop implements Serializable {
         cards.addAll(zombies);
     }
 
-    public static void addToHand(String name){
+    public static void addToBought(String name){
         for (Zombie zombie : zombies){
             if (zombie.getName().equalsIgnoreCase(name)){
-                for (Card card : boughtCards){
+                for (Card card : notBoughtCards){
                     if (card.getName().equalsIgnoreCase(name)){
-                        zombieHand.add(zombie);
+                        boughtCards.add(zombie);
                     }
                 }
             }
         }
-        for (Plant zombie : plants){
-            if (zombie.getName().equalsIgnoreCase(name)){
-                for (Card card : boughtCards){
+        for (Plant plant : plants){
+            if (plant.getName().equalsIgnoreCase(name)){
+                for (Card card : notBoughtCards){
                     if (card.getName().equalsIgnoreCase(name)){
-                        plantHand.add(zombie);
+                        boughtCards.add(plant);
                     }
                 }
             }
