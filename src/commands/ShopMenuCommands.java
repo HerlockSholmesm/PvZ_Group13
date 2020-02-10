@@ -1,9 +1,7 @@
 package commands;
-
-import commands.Menu.MainMenu;
 import commands.Menu.Menu;
-import commands.Menu.ShopMenu;
 import in_game.Account;
+import model.Shop;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -98,7 +96,7 @@ class ShowCollection extends ShopMenuCommands {
     public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            account.getShop().showCollection();
+            Shop.showCollection();
         }
         return menuPtr;
     }
@@ -134,7 +132,7 @@ class Money extends ShopMenuCommands {
     public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input.toLowerCase());
         if (matcher.matches()) {
-            account.getShop().showMoney(account);
+            Shop.showMoney(account);
         }
         return menuPtr;
     }

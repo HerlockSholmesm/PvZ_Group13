@@ -18,8 +18,7 @@ public class Loginmenu extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        AudioClip audioClip = new AudioClip(getClass().getResource("/media/a.mp3").toString());
-        audioClip.play();
+        new AudioClip(getClass().getResource("/media/a.mp3").toString()).play();
         WebView webView = new WebView();
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
@@ -45,7 +44,6 @@ public class Loginmenu extends Application {
         title.setId("fancytext");
         box.getChildren().addAll(title, LoginButton,createAccountButton
                 , helpButton, leaderBoardButton);
-        // leaderBoardButton);
         return box;
     }
 

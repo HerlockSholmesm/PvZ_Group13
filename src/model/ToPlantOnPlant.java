@@ -12,8 +12,9 @@ public class ToPlantOnPlant extends Plant {
     public void action(Game game) {
         String name = this.getName();
         switch (name) {
-            case ("bobo"):
-                //todo yoplantOnPlant
+            case ("Lily Pad"):
+                return;
+            default:
         }
 
     }
