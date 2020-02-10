@@ -74,9 +74,6 @@ public class Chamanzan {
         this.whichRow = whichRow;
     }
 
-    public void setWhichCell(Cell whichCell) {
-        this.whichCell = whichCell;
-    }
 
     public Yard getYard() {
         return yard;
@@ -107,7 +104,7 @@ public class Chamanzan {
             int flag = 0;
             if (toUse){
                 for (Zombie zombie : game.getZombies()) {
-                    if ((this.getX() >= zombie.getX() - 15 && (zombie.getY() - this.getY() <= 10 || this.getY() - zombie.getY()  <= 10)) {
+                    if ((this.getX() >= zombie.getX() - 15 && (zombie.getY() - this.getY() <= 10 || this.getY() - zombie.getY()  <= 10))) {
                         flag++;
                         break;
                     }
@@ -125,4 +122,4 @@ public class Chamanzan {
 
     }
 
-}
+
