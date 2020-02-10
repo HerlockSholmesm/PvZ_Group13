@@ -1,6 +1,7 @@
 package model;
 
 import in_game.Game;
+import in_game.GameDay;
 import javafx.scene.image.Image;
 
 public abstract class Yard {
@@ -15,7 +16,7 @@ public abstract class Yard {
     public void setWidth(double width) {
         this.width = width;
     }
-
+    public static DayYard dayYard = new DayYard(GameDay.getGame())
     public void setHeight(double height) {
         this.height = height;
     }
@@ -58,8 +59,8 @@ public abstract class Yard {
                 if(dayYard.cells[i][j].getX1() <= x && dayYard.cells[i][j].getX2() >= x
                         && dayYard.cells[i][j].getY1() <= y && dayYard.cells[i][j].getY2() >= y){
                     int[] ans = new int[2];
-                    ans[1] = i + 1;
-                    ans[2] = j + 1;
+                    ans[0] = i + 1;
+                    ans[1] = j + 1;
                     return ans;
                 }
             }

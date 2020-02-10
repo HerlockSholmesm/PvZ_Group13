@@ -1,6 +1,7 @@
 package model;
 
 import in_game.Game;
+import in_game.GameDay;
 import javafx.scene.image.Image;
 
 public class throwingPlant extends Plant {
@@ -16,14 +17,14 @@ public class throwingPlant extends Plant {
             switch (name) {
                 case ("Cabbage-pult"):
                     if (game.getTurn() >= this.getClock()) {
-                        if (this.getYCoordinate() == zombie.getY()) {
-                            game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(), 2, game);
+                        if (this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game))) {
+                            game.setThrowingThings((int) this.getXCoordinate(new DayYard((GameDay)game)), (int) this.getYCoordinate(new DayYard((GameDay)game)), 2, game);
                         }
                     }
                 case ("Kernel-pult"):
                     if (game.getTurn() >= this.getClock()) {
-                        if (this.getYCoordinate() == zombie.getY()) {
-                            game.setThrowingThings(this.getXCoordinate(), this.getYCoordinate(), 0, game);
+                        if (this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game))) {
+                            game.setThrowingThings((int) this.getXCoordinate(new DayYard((GameDay)game)), (int) this.getYCoordinate(new DayYard((GameDay)game)), 0, game);
                             zombie.setCanmove(2);
                         }
                     }

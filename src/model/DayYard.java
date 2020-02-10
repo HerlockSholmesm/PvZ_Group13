@@ -72,8 +72,8 @@ public class DayYard extends Yard {
                 if (dayYard.cells[i][j].getX1() <= x && dayYard.cells[i][j].getX2() >= x
                         && dayYard.cells[i][j].getY1() <= y && dayYard.cells[i][j].getY2() >= y) {
                     int[] ans = new int[2];
-                    ans[1] = j + 1;
-                    ans[2] = i + 1;
+                    ans[0] = j ;
+                    ans[1] = i ;
                     return ans;
                 }
             }
@@ -97,11 +97,18 @@ public class DayYard extends Yard {
 
 
     public static int[] whichPixelAmI(Cell cell) {
-        int x = (cell.getX1() + cell.getX2()) / 2;
-        int y = (cell.getY1() + cell.getY2()) / 2;
-        int res[] = new int[2];
-        res[0] = x;
-        res[1] = y;
+        if (cell != null){
+            int x = (cell.getX1() + cell.getX2()) / 2;
+
+            int y = (cell.getY1() + cell.getY2()) / 2;
+            int res[] = new int[2];
+            res[0] = x;
+            res[1] = y;
+            return res;
+        }
+        int[] res = new int[2];
+        res[0] = 1;
+        res[1] = 1;
         return res;
     }
 

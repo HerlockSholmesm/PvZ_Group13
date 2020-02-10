@@ -1,6 +1,7 @@
 package model;
 
 import in_game.Game;
+import in_game.GameDay;
 import javafx.scene.image.Image;
 
 public class MinePlant extends Plant {
@@ -14,14 +15,14 @@ public class MinePlant extends Plant {
         for (Zombie zombie : game.getZombies()) {
             switch (this.getName()) {
                 case ("Potato Mine"):
-                    if (this.getClock() <= game.getTurn() && this.getXCoordinate() == zombie.getX() && this.getYCoordinate() == zombie.getY()) {
+                    if (this.getClock() <= game.getTurn() && this.getXCoordinate(new DayYard((GameDay)game)) == zombie.getX(new DayYard((GameDay)game)) && this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game))) {
                         zombie.setLife(0);
                         this.setLife(0);
                     }
                     break;
                 case ("Cherry Bomb"): {
-                    if ((this.getClock() <= game.getTurn()) && ((this.getXCoordinate() == zombie.getX()) && ((this.getYCoordinate() == zombie.getY() + 1)
-                            || (this.getYCoordinate() == zombie.getY() - 1)))) {
+                    if ((this.getClock() <= game.getTurn()) && ((this.getXCoordinate(new DayYard((GameDay)game)) == zombie.getX(new DayYard((GameDay)game))) && ((this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game)) + 1)
+                            || (this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game)) - 1)))) {
                         zombie.setLife(0);
                         this.setLife(0);
                     }
@@ -30,33 +31,33 @@ public class MinePlant extends Plant {
                         zombie.setLife(0);
                         this.setLife(0);
                     }
-                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate() == zombie.getX()-1) && ((this.getYCoordinate() == zombie.getY() + 1)
-                            || (this.getYCoordinate() == zombie.getY() - 1)))) {
+                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate(new DayYard((GameDay)game)) == zombie.getX(new DayYard((GameDay)game))-1) && ((this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game)) + 1)
+                            || (this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game)) - 1)))) {
                         zombie.setLife(0);
                         this.setLife(0);
                     }
                 }
                 break;
                 case ("Magnet-shroom"):{
-                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate() == zombie.getX()) && ((this.getYCoordinate() == zombie.getY() + 1)
+                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate(new DayYard((GameDay)game)) == zombie.getX(new DayYard((GameDay)game))) && ((this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game)) + 1)
                             || (this.getYCoordinate() == zombie.getY() - 1)||
                             (this.getYCoordinate() == zombie.getY() )))) {
                         zombie.setLife(0);
                     }
-                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate() == zombie.getX()+1) && ((this.getYCoordinate() == zombie.getY() + 1)
-                            || (this.getYCoordinate() == zombie.getY() - 1)||
-                            (this.getYCoordinate() == zombie.getY() )))) {
+                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate(new DayYard((GameDay)game)) == zombie.getX(new DayYard((GameDay)game))+1) && ((this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game)) + 1)
+                            || (this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game)) - 1)||
+                            (this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game)) )))) {
                         zombie.setLife(0);
                     }
-                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate() == zombie.getX()-1) && ((this.getYCoordinate() == zombie.getY() + 1)
-                            || (this.getYCoordinate() == zombie.getY() - 1)||
-                            (this.getYCoordinate() == zombie.getY() )))) {
+                    if (this.getClock() <= game.getTurn() && ((this.getXCoordinate(new DayYard((GameDay)game)) == zombie.getX(new DayYard((GameDay)game))-1) && ((this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game)) + 1)
+                            || (this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game)) - 1)||
+                            (this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game)) )))) {
                         zombie.setDefense(0);
                     }
                     }
                     break;
                 case ("Jalapeno"):
-                    if (this.getYCoordinate() == zombie.getY() ) {
+                    if (this.getYCoordinate(new DayYard((GameDay)game)) == zombie.getY(new DayYard((GameDay)game)) ) {
                         zombie.setLife(0);
                     }
                     break;

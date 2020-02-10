@@ -1,6 +1,7 @@
 package view;
 
 import controller.*;
+import in_game.DynamicDay;
 import in_game.GameDay;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -53,18 +54,18 @@ class PlayDay extends Application {
         StackPane bar = new StackPane();
         for (int i = 0; i < gameDay.getCards().size(); i++){
             Plant plant  = (Plant) gameDay.getCards().get(i);
-            stackPanes.add(plant.getStackPane());
+            stackPanes.add(plant.getAndMakeCardStackPane());
             bar.getChildren().add(stackPanes.get(i));
             stackPanes.get(i).setTranslateY(90*i);
             stackPanes.get(i).setId(plant.getName());
-            stackPanes.get(i).setOnDragDetected(new PlantDragController(stackPanes.get(i), plant.getImage()));
+            stackPanes.get(i).setOnDragDetected(new PlantDragController(stackPanes.get(i), plant.getCardImage()));
         }
 
         for (int i = 0; i < 6; i++){
             Chamanzan chamanzan = gameDay.getChamanzans().get(i);
             StackPane stackPane = new StackPane(chamanzan.getImageView());
             bar.getChildren().add(stackPane);
-            stackPane.setTranslateX(270 - 5);
+            stackPane.setTranslateX(270 - 110);
             stackPane.setTranslateY(20 + DayYard.getDelta_y()*i);
         }
         Label sunNumber = new Label("Sun Numbers\n" + 2);
@@ -86,7 +87,8 @@ class PlayDay extends Application {
         scene.setOnDragDropped(new PlantDragDropController(root, gameDay,dayYard));
         scene.setOnMouseClicked(new SunController(dayYard,gameDay, root, sunNumber));
         initialStage = primaryStage;
-        GameController controller = new GameController(dayYard, initialStage,root);
+        DynamicDay dynamicDay = new DynamicDay(gameDay);
+        GameController controller = new GameController(dayYard, initialStage,root,dynamicDay);
         controller.initialize();
     }
 

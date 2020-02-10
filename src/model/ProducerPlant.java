@@ -1,6 +1,7 @@
 package model;
 
 import in_game.Game;
+import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -35,6 +36,15 @@ public class ProducerPlant extends Plant {
 
     }
 
+
+    public ProducerPlant(String name, int clock, int numberOfSun, int sun, int rest, int life, Image image, Group root) {
+
+        super(name, clock, sun, rest, life,image);
+        starImage = new Image("/png/star.png");
+        starImageView = new ImageView(starImage);
+        root.getChildren().add(this.getImageView());
+
+    }
 
     @Override
     public void action(Game game) {

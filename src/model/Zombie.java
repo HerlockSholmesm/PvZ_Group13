@@ -22,9 +22,6 @@ public abstract class Zombie extends Card {
     }
 
 
-    public int getCanmove() {
-        return canmove;
-    }
 
     public void setCanmove(int canmove) {
         this.canmove = canmove;
@@ -42,7 +39,7 @@ public abstract class Zombie extends Card {
     private int defense;
     private String name;
 
-    public void setX(int x,Yard yard) {
+    public void setX(int x,DayYard yard) {
         double pace = x*yard.getDelta_x();
         stackPane.setTranslateX(pace);
     }
@@ -50,7 +47,7 @@ public abstract class Zombie extends Card {
     public void setX(int x) {
         stackPane.setTranslateX(x);
     }
-    public void setY(int y,Yard yard) {
+    public void setY(int y,DayYard yard) {
         double pace = y*yard.getDelta_y();
         this.stackPane.setTranslateY(pace);
     }
@@ -165,6 +162,9 @@ public abstract class Zombie extends Card {
 
     public void move() {
         this.setX(speed);
+    }
+    public void move(DayYard dayYard){
+        this.setX(speed, dayYard);
     }
 
     public abstract void action(Game game);

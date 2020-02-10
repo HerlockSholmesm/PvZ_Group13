@@ -1,6 +1,7 @@
 package model;
 
 import in_game.Game;
+import in_game.GameDay;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class GiantZombie extends Zombie {
         ArrayList<Plant> plants = game.getPlants();
         for (Plant plant : plants) {
             if ("Giga-gargantuar".equals(plant.getName())) {
-                if (this.getX() == plant.getXCoordinate()+1 && this.getY() == plant.getYCoordinate()) {
+                if (this.getX() == plant.getXCoordinate(new DayYard((GameDay)game))+1 && this.getY(new DayYard((GameDay)game)) == plant.getYCoordinate(new DayYard((GameDay)game))) {
                     plant.setLife(0);
                 }
                 move();

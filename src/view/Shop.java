@@ -18,7 +18,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import jdk.internal.dynalink.beans.StaticClass;
 import model.Card;
 import model.Plant;
 

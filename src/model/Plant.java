@@ -14,26 +14,40 @@ public abstract class Plant extends Card {
     private int price;
     private Image image;
     private ImageView imageView;
-    private StackPane stackPane = new StackPane();
 
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    private StackPane stackPane = new StackPane();
+    private StackPane cardStackPane = new StackPane();
     public StackPane getStackPane() {
         return stackPane ;
+    }
+
+    public StackPane getCardStackPane() {
+        return cardStackPane;
     }
 
     public Image getImage() {
         return image;
     }
 
-    public void setX(int x,Yard yard) {
-        double pace = x*yard.getDelta_x();
+    public StackPane getAndMakeCardStackPane(){
+        ImageView imageView = new ImageView(this.getCardImage());
+        this.cardStackPane.getChildren().add(imageView);
+        return cardStackPane;
+    }
+    public void setX(int x,DayYard dayYard) {
+        double pace = x*dayYard.getDelta_x();
         stackPane.setTranslateX(pace);
     }
     public void setX(int x) {
         stackPane.setTranslateX(x);
     }
 
-    public void setY(int y,Yard yard) {
-        double pace = y*yard.getDelta_y();
+    public void setY(int y,DayYard dayYard) {
+        double pace = y*dayYard.getDelta_y();
         this.stackPane.setTranslateY(pace);
     }
 
@@ -52,7 +66,7 @@ public abstract class Plant extends Card {
     }
     public double getYCoordinate(Yard yard) { double pixelX  = stackPane.getTranslateX();
         double pixelY = stackPane.getTranslateY();
-        double y = yard.whichCoordinateAmI(yard, pixelX, pixelY)[1];
+        double y = DayYard.whichCoordinateAmI(yard, pixelX, pixelY)[1];
         return y;
     }
 
