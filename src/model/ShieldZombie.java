@@ -8,7 +8,7 @@ public class ShieldZombie extends Zombie {
     int life;
 
     public ShieldZombie(String name, int life, int speed, int defense, Image image) {
-        super(life, speed, defense, name,image);
+        super(life, speed, defense, name, image);
     }
 
     public void addLife(int addNumber) {
@@ -44,12 +44,7 @@ public class ShieldZombie extends Zombie {
                     }
                     break;
                 case ("Balloon Zombie"):
-                    if (this.getX() == plant.getXCoordinate() && this.getY() == plant.getYCoordinate()) {
-                        plant.setLife(plant.getLife() - 1);
-                    } else {
-                        if (plant.getLife() == 0)
-                            move();
-                    }
+                    move();
                     break;
             }
         }

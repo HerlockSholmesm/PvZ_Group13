@@ -100,7 +100,6 @@ public class Account implements Serializable{
         this.name = name;
     }
 
-
     public String getPassword() {
         return password;
     }
