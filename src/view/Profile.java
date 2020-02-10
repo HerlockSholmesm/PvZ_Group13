@@ -70,7 +70,7 @@ public class Profile extends Application {
     private Button addDeleteButton(WebView webView) {
         Button waterButton = new Show("Delete", webView);
         waterButton.setOnAction(event -> {
-            Delete delete =new Delete();
+            Delete delete = new Delete();
             try {
                 delete.start(welcomeStage);
             } catch (Exception e) {

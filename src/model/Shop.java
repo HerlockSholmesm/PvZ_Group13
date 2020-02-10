@@ -67,6 +67,7 @@ public class Shop implements Serializable {
             System.out.println(card.toString());
         }
     }
+
     public static ArrayList<Card> showCollection1() {
         ArrayList<Card> cards = new ArrayList<>();
         System.out.println(boughtCards.size());
