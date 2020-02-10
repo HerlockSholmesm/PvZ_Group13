@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
@@ -51,8 +52,9 @@ public class Loginmenu extends Application {
         startGameButton.setOnAction(event -> {
             Login login = new Login();
             try {
-
                 login.start(welcomeStage);
+                AudioClip audioClip = new AudioClip(getClass().getResource("/png/shoot.wav").toString());
+                audioClip.play();
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("Can not initiate game");
@@ -73,7 +75,8 @@ public class Loginmenu extends Application {
         startGameButton.setOnAction(event -> {
             CreateAccount account=new CreateAccount();
             try {
-
+                AudioClip audioClip = new AudioClip(getClass().getResource("/png/shoot.wav").toString());
+                audioClip.play();
                 account.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -93,6 +96,8 @@ public class Loginmenu extends Application {
     private Button addHelpButton() {
         Button helpButton = new Button("Help");
         helpButton.setOnAction(event -> {
+            AudioClip audioClip = new AudioClip(getClass().getResource("/png/shoot.wav").toString());
+            audioClip.play();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Plants vs. Zombies");
             alert.setHeaderText("Help");
@@ -110,12 +115,14 @@ public class Loginmenu extends Application {
     private Button addLeaderBoardButton(WebView webView) {
         Button startGameButton = new LeaderBoard("LeaderBoard", webView);
         startGameButton.setOnAction(event -> {
+            AudioClip audioClip = new AudioClip(getClass().getResource("/png/shoot.wav").toString());
+            audioClip.play();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Plants vs. Zombies");
             alert.setHeaderText("LeaderBoard");
             alert.setContentText(Account.showLeaderBoard1());
             alert.showAndWait();
-        });
+    });
         return startGameButton;
     }
 
