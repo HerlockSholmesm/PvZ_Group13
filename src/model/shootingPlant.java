@@ -95,5 +95,30 @@ public class shootingPlant extends Plant {
 
         }
     }
+
+    @Override
+    public Image getCardImage() {
+        String name = this.getName();
+        switch (name) {
+            case ("Peashooter"):
+                return new Image("Plants vs Zombies/Peashooter/Peashooter_HD_Seed.webp");
+            case ("Snow Pea"):
+                return new Image("Plants vs Zombies/Snow Pea/Snow_Pea_HD_Seed.webp");
+            case ("Repeater"):
+                return new Image("Plants vs Zombies/Repeater/Repeater_Seed.webp");
+            case ("Threepeater"):
+                return new Image("Plants vs Zombies/Threepeater/1769829-plant_peashooter_thumb.webp");
+            case ("Cactus"):
+                return new Image("Plants vs Zombies/Cactus/Cactus_Seed.webp");
+            case ("Gatling Pea"):
+                return new Image("Plants vs Zombies/Gatling Pea/Gatling_Pea_Seed.webp");
+            case ("Scaredy-shroom"):
+                return new Image("Plants vs Zombies/Scared-shroom/Threepeater.webp");
+                case ("Split Pea"):
+                    return new Image("Plants vs Zombies/Split Pea/ScaredyShroomhide2009HD.webp");
+            default:
+                return null;
+        }
+    }
 }
 
