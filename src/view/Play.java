@@ -130,11 +130,13 @@ public class Play extends Application {
         Button ExitBotton = new Show("Exit", webView);
         Loginmenu loginmenu = new Loginmenu();
         ExitBotton.setOnAction(event -> {
+            Mainmenu mainmenu =new Mainmenu();
             try {
-                loginmenu.start(welcomeStage);
+                mainmenu.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         });
         return ExitBotton;
     }

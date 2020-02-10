@@ -29,13 +29,13 @@ public class Shop extends Application {
     }
 
     static Stage welcomeStage;
-
+    static Text text;
     @Override
     public void start(Stage primaryStage) {
         WebView webView = new WebView();
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
-         scene.getStylesheets().add(Shop.class.getResource("static/welcome1.css").toExternalForm());
+        scene.getStylesheets().add(Shop.class.getResource("static/welcome1.css").toExternalForm());
         model.Shop.importZombie();
         model.Shop.importPlant();
         primaryStage.setTitle("Shop");
@@ -53,25 +53,25 @@ public class Shop extends Application {
         plants.removeAll(toBeDeleted);
         for (int i = 0; i < plants.size(); i++) {
             imageView = new ImageView(plants.get(i).getCardImage());
-            Plant plant =plants.get(i) ;
+            Plant plant = plants.get(i);
             gridPane.add(imageView, i % 10 + 100, i / 10 + 10);
             imageView.setOnMouseClicked(event -> {
-                     String s = model.Shop.BuyCard1(plant.getName(), Login.mainAccount);
-                     if (s == null){
-                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                         alert.setTitle("Bought");
-                         alert.setHeaderText("Bought");
-                         alert.setContentText("Bought");
-                         alert.showAndWait();
-                         System.out.println(Login.mainAccount.getMoney());
-                     }
-                     else if (s.contains("enough")){
-                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                         alert.setTitle("not Bought");
-                         alert.setHeaderText("buying not successful");
-                         alert.setContentText("not enough money");
-                         alert.showAndWait();
-                     }
+                String s = model.Shop.BuyCard1(plant.getName(), Login.mainAccount);
+                if (s == null) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Bought");
+                    alert.setHeaderText("Bought");
+                    alert.setContentText("Bought");
+                    alert.showAndWait();
+                    text.setText(String.valueOf(Login.mainAccount.getMoney()));
+                    System.out.println(Login.mainAccount.getMoney());
+                } else if (s.contains("enough")) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("not Bought");
+                    alert.setHeaderText("buying not successful");
+                    alert.setContentText("not enough money");
+                    alert.showAndWait();
+                }
             });
         }
         root.getChildren().addAll(gridPane);
@@ -86,13 +86,14 @@ public class Shop extends Application {
         box.setAlignment(Pos.CENTER);
         box.setSpacing(50);
         Text title = new Text("Shop");
-        Text title1 = new Text(String.valueOf(Login.mainAccount.getMoney()));
+        text = new Text(String.valueOf(Login.mainAccount.getMoney()));
         Button CollectionButton = addCollectionButton(webView);
+        Button ExitButton = addExitButton(webView);
         title.setFont(Font.font("Verdana", 50));
         title.setId("fancytext");
-        title1.setFont(Font.font("Verdana", 50));
-        title1.setId("fancytext");
-        box.getChildren().addAll(title,title1, CollectionButton);
+        text.setFont(Font.font("Verdana", 50));
+        text.setId("fancytext");
+        box.getChildren().addAll(title, text, CollectionButton,ExitButton);
         return box;
     }
 
@@ -101,8 +102,24 @@ public class Shop extends Application {
         startGameButton.setOnAction(event -> {
             AudioClip audioClip = new AudioClip(getClass().getResource("/png/shoot.wav").toString());
             audioClip.play();
-            ShowCollection showCollection=new ShowCollection();
+            ShowCollection showCollection = new ShowCollection();
             showCollection.start(welcomeStage);
+
+        });
+        return startGameButton;
+    }
+
+    private Button addExitButton(WebView webView) {
+        Button startGameButton = new Show("Exit", webView);
+        startGameButton.setOnAction(event -> {
+            AudioClip audioClip = new AudioClip(getClass().getResource("/png/shoot.wav").toString());
+            audioClip.play();
+            Mainmenu mainmenu =new Mainmenu();
+            try {
+                mainmenu.start(welcomeStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         });
         return startGameButton;

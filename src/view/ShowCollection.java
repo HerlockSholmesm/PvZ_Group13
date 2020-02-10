@@ -65,6 +65,7 @@ public class ShowCollection extends Application {
         Text title = new Text("Collection");
 //        Text title1 = new Text(String.valueOf(Login.mainAccount.getMoney()));
         Button CollectionButton = addCollectionButton(webView);
+    //    Button ExitButton = addExitButton(webView);
         title.setFont(Font.font("Verdana", 50));
         title.setId("fancytext");
   //      title1.setFont(Font.font("Verdana", 50));
