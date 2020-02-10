@@ -42,7 +42,6 @@ public class Change extends Application {
         rootNode.add(aButton, 1, 2);
         GridPane.setHalignment(aButton, HPos.LEFT);
         aButton.setOnAction(e -> {
-            System.out.println(Login.mainAccount);
             Login.mainAccount.setName(firstValue.getText());
             Login.mainAccount.setPassword(secondValue.getText());
             Profile profile=new Profile();
