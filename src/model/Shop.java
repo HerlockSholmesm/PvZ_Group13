@@ -78,12 +78,12 @@ public class Shop implements Serializable {
                     break;
                 }
             }
-            for (Card card1 :zombieHand){
-                if (card.getName().equals(card1.getName())){
-                    b = false;
-                    break;
-                }
-            }
+//            for (Card card1 :zombieHand){
+//                if (card.getName().equals(card1.getName())){
+//                    b = false;
+//                    break;
+//                }
+//            }
             if (b){
                 cards.add(card);
             }
@@ -160,8 +160,6 @@ public class Shop implements Serializable {
     }
 
     public static ArrayList<Plant> getAllPlants() {
-        Shop.importPlant();
-        Shop.importZombie();
         return plants;
     }
 
@@ -232,7 +230,7 @@ public class Shop implements Serializable {
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new EatablePlant("Tangle Kelp", 3, 3, 0,new Image("Plants vs Zombies/Tangle Kelp/Tangle-kelp.webp"));
+        plant = new MinePlant("Tangle Kelp", 3, 3, 0,0,new Image("Plants vs Zombies/Tangle Kelp/Tangle-kelp.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "W");
@@ -240,7 +238,7 @@ public class Shop implements Serializable {
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new EatablePlant("Cattail", 5, 5, 3, new Image("Plants vs Zombies/Cattail/Cattail2009HD.webp"));
+        plant = new shootingPlant("Cattail", 5, 1, 5, 5, 3, new Image("Plants vs Zombies/Cattail/Cattail2009HD.webp"));
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");

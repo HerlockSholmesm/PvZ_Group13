@@ -23,8 +23,6 @@ import sun.rmi.runtime.Log;
 
 public class ShowCollection extends Application {
 
-    private Object Plant;
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -37,9 +35,7 @@ public class ShowCollection extends Application {
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
         scene.getStylesheets().add(Shop.class.getResource("static/welcome1.css").toExternalForm());
-        model.Shop.importZombie();
-        model.Shop.importPlant();
-        primaryStage.setTitle("Shop");
+        primaryStage.setTitle("Collection");
         ArrayList<Card> cards = model.Shop.showCollection1();
         ImageView imageView;
         GridPane gridPane = new GridPane();
@@ -47,7 +43,7 @@ public class ShowCollection extends Application {
         gridPane.setHgap(1);
         for (int i = 0; i < cards.size(); i++) {
             if (cards.get(i) instanceof  Plant) {
-                imageView = new ImageView(((Plant) cards.get(i)).getImage());
+                imageView = new ImageView(((Plant) cards.get(i)).getCardImage());
                 gridPane.add(imageView, i % 10 + 100, i / 10 + 10);
             }
         }
@@ -63,13 +59,10 @@ public class ShowCollection extends Application {
         box.setAlignment(Pos.CENTER);
         box.setSpacing(50);
         Text title = new Text("Collection");
-//        Text title1 = new Text(String.valueOf(Login.mainAccount.getMoney()));
         Button CollectionButton = addCollectionButton(webView);
     //    Button ExitButton = addExitButton(webView);
         title.setFont(Font.font("Verdana", 50));
-        title.setId("fancytext");
-  //      title1.setFont(Font.font("Verdana", 50));
-    //    title1.setId("fancytext");
+        title.setId("fancyText");
         box.getChildren().addAll(title, CollectionButton);
         return box;
     }
