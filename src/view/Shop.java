@@ -13,6 +13,7 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import jdk.internal.dynalink.beans.StaticClass;
 import model.Card;
 import model.Plant;
 
@@ -27,7 +28,7 @@ public class Shop extends Application {
     }
 
     static Stage welcomeStage;
-
+    static Text text;
     @Override
     public void start(Stage primaryStage) {
         WebView webView = new WebView();
@@ -61,7 +62,7 @@ public class Shop extends Application {
                          alert.setHeaderText("Bought");
                          alert.setContentText("Bought");
                          alert.showAndWait();
-                         System.out.println(Login.mainAccount.getMoney());
+                         text.setText(String.valueOf(Login.mainAccount.getMoney()));
                      }
                      else if (s.contains("enough")){
                          Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -84,13 +85,13 @@ public class Shop extends Application {
         box.setAlignment(Pos.CENTER);
         box.setSpacing(50);
         Text title = new Text("Shop");
-        Text title1 = new Text(String.valueOf(Login.mainAccount.getMoney()));
+        text = new Text(String.valueOf(Login.mainAccount.getMoney()));
         Button CollectionButton = addCollectionButton(webView);
         title.setFont(Font.font("Verdana", 50));
         title.setId("fancytext");
-        title1.setFont(Font.font("Verdana", 50));
-        title1.setId("fancytext");
-        box.getChildren().addAll(title,title1, CollectionButton);
+        text.setFont(Font.font("Verdana", 50));
+        text.setId("fancytext");
+        box.getChildren().addAll(title,text, CollectionButton);
         return box;
     }
 

@@ -58,6 +58,9 @@ public class ShowCollection extends Application {
 
     private VBox addContent(WebView webView) {
         VBox box = new VBox();
+
+
+
         box.prefWidth(500);
         box.setAlignment(Pos.CENTER);
         box.setSpacing(50);
