@@ -52,4 +52,17 @@ public class ProducerPlant extends Plant {
 
         }
     }
+
+    @Override
+    public Image getCardImage() {
+        String name = this.getName();
+        switch (name) {
+            case ("Sunflower"):
+                return new Image("Plants vs Zombies/Sunflower/Tallnut_cracked1.webp");
+            case ("Twin Sunflower"):
+                return new Image("Plants vs Zombies/Twin Sunflower/Twin_Sunfower_Seed.webp");
+            default:
+                return null;
+        }
+    }
 }

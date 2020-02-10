@@ -58,19 +58,19 @@ public class DynamicRail extends Dynamic {
         Zombie zombie = Shop.getZombies().get(rnd);
         if (zombie instanceof FlyingZombie)
         {
-            return new FlyingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
+            return new FlyingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense(), zombie.getImage());
         }
         else if (zombie instanceof GiantZombie)
         {
-            return new GiantZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
+            return new GiantZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense(), zombie.getImage());
         }
         else if (zombie instanceof MovingZombie)
         {
-            return new MovingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
+            return new MovingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense(), zombie.getImage());
         }
         else
         {
-            return new SwimmingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
+            return new SwimmingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense(), zombie.getImage());
         }
 
 

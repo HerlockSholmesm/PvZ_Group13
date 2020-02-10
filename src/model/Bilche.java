@@ -14,8 +14,8 @@ public class Bilche {
 
     public void action(Game game, int x, int y){
         for (Plant plant : game.getPlants()){
-            if (plant.getCell().getX() == x){
-                if (plant.getCell().getY() == y){
+            if (plant.getCell().getX1() == x){
+                if (plant.getCell().getY1() == y){
                     plant.setX(-1);
                     plant.setY(-1);
                     return;

@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,7 +11,7 @@ import in_game.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         Menu menuPointer = new LoginMenu();
         Account mainAccount = null;
@@ -162,14 +163,13 @@ public class Main {
                                 }
                             }
                             if (string.equalsIgnoreCase("play")) {
-                                menuPointer = new PlayMenu();
+                                System.out.println("das;lfj;asdkljf;asdjf;");
                                 break;
                             }
                             else if (!isValidCommand) {
                                 InvalidPrompt invalidCommand = () -> System.out.println("invalid command");
                                 invalidCommand.action();
                             }
-
                         }
                         menuPointer = new DayAndWater();
                         break;
@@ -205,6 +205,12 @@ public class Main {
                         break;
                     case "zombie":
                         menuPointer = new ZombieMenu();
+                        break;
+                    case "help":
+                        System.out.println("Day\nWater\nRail\nZombie\nPvP");
+                        break;
+                    case "exit":
+                        menuPointer = new MainMenu();
                         break;
                 }
                 Pattern pattern = Pattern.compile("pvp (\\d)+", Pattern.CASE_INSENSITIVE);
@@ -318,17 +324,27 @@ public class Main {
                     Pattern pattern = Pattern.compile(
                             "create account (.+) (.+)", Pattern.CASE_INSENSITIVE);
                     Matcher matcher = pattern.matcher(string);
+                    boolean b = true;
                     if (matcher.matches()) {
+                        for (Account account : Account.allAccounts) {
+                            if (account.getName().equals(matcher.group(1))) {
+                                System.out.println("already existed");
+                                b = false;
+                            }
+                        }
+                        if (b){
                         mainAccount = new Account(matcher.group(1), matcher.group(2));
                         System.out.println("account created : " + mainAccount.getName());
-                    }
+                    }}
                 } else if (string.contains("login")) {
                     Pattern pattern = Pattern.compile(
                             "login (.+) (.+)", Pattern.CASE_INSENSITIVE);
                     Matcher matcher = pattern.matcher(string);
                     if (matcher.matches()) {
                         mainAccount = Account.findAccount(matcher.group(1), matcher.group(2));
-                        menuPointer = new MainMenu();
+                        if (mainAccount != null){
+                            menuPointer = new MainMenu();
+                        }
                     }
                 } else {
                     InvalidPrompt invalidCommand = () -> System.out.println("invalid command");

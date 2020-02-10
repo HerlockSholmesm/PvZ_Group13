@@ -7,9 +7,11 @@ import java.util.ArrayList;
 public class Game {
 
 
-    private ArrayList<ThrowingThing> ThrowingThings= new ArrayList<ThrowingThing>();
+    private ArrayList<ThrowingThing> ThrowingThings = new ArrayList<ThrowingThing>();
 
     private Sun sun;
+
+    private ArrayList<PeaBullet> peaBullets = new ArrayList<>();
 
     protected ArrayList<Plant> plants = new ArrayList<Plant>();
 
@@ -27,15 +29,13 @@ public class Game {
 
     public ArrayList<PeaBullet> getPeaBullets() {
         ArrayList<PeaBullet> peaBullets = new ArrayList<>();
-        for(int i = 0; i < plants.size(); i++){
-            peaBullets.add(plants.get(i).getPea)
+        for (int i = 0; i < plants.size(); i++) {
+            if (plants.get(i) instanceof shootingPlant) {
+                peaBullets.addAll(((shootingPlant) plants.get(i)).getPeaBullets());
+            }
         }
 
         return peaBullets;
-    }
-
-    public void setPeaBullets(ArrayList<PeaBullet> peaBullets) {
-        this.peaBullets = peaBullets;
     }
 
 
@@ -43,20 +43,22 @@ public class Game {
         return ThrowingThings;
     }
 
-    public void setThrowingThings(int xCoordinate, int yCoordinate,int power,Game game) {
-        ThrowingThing throwingThing= new ThrowingThing(xCoordinate,yCoordinate);
-        this.getThrowingThings().add(new ThrowingThing(xCoordinate,yCoordinate));
-        throwingThing.action(game,power);
+    public void setThrowingThings(int xCoordinate, int yCoordinate, int power, Game game) {
+        ThrowingThing throwingThing = new ThrowingThing(xCoordinate, yCoordinate);
+        this.getThrowingThings().add(new ThrowingThing(xCoordinate, yCoordinate));
+        throwingThing.action(game, power);
     }
 
-    public void setPeaBullets(int xCoordinate, int yCoordinate,Game game) {
-        PeaBullet peaBullet= new PeaBullet(xCoordinate,yCoordinate);
-        this.peaBullets.add(new PeaBullet(xCoordinate,yCoordinate));
+    public void setPeaBullets(int xCoordinate, int yCoordinate, Game game) {
+        PeaBullet peaBullet = new PeaBullet(xCoordinate, yCoordinate);
+        this.peaBullets.add(new PeaBullet(xCoordinate, yCoordinate));
         peaBullet.action(game);
+
     }
-    public void setPeaBulletsNegetive(int xCoordinate, int yCoordinate,Game game) {
-        PeaBullet peaBullet= new PeaBullet(xCoordinate,yCoordinate);
-        this.peaBullets.add(new PeaBullet(xCoordinate,yCoordinate));
+
+    public void setPeaBulletsNegetive(int xCoordinate, int yCoordinate, Game game) {
+        PeaBullet peaBullet = new PeaBullet(xCoordinate, yCoordinate);
+        this.peaBullets.add(new PeaBullet(xCoordinate, yCoordinate));
         peaBullet.actionNegetive(game);
     }
 
@@ -84,7 +86,7 @@ public class Game {
         this.zombies = zombies;
     }
 
-    public void addZombie(Zombie zombie){
+    public void addZombie(Zombie zombie) {
         zombies.add(zombie);
     }
 
@@ -150,7 +152,6 @@ public class Game {
     public void setYard(Yard yard) {
         this.yard = yard;
     }
-
 
 
 }

@@ -59,22 +59,22 @@ public abstract class Dynamic {
         for (Plant plant : Shop.getAllPlants()) {
             if (plant.getName().equals(card.getName())) {
                 if (plant instanceof EatablePlant){
-                    return new EatablePlant(plant.getName(), plant.getSun(), plant.getRest(), plant.getLife());
+                    return new EatablePlant(plant.getName(), plant.getSun(), plant.getRest(), plant.getLife(), plant.getImage());
                 }
                 else if (plant instanceof MinePlant){
-                    return new MinePlant(plant.getName(),plant.getClock(),plant.getSun(),plant.getRest(),plant.getLife());
+                    return new MinePlant(plant.getName(),plant.getClock(),plant.getSun(),plant.getRest(),plant.getLife(), plant.getImage());
                 }
                 else if (plant instanceof ProducerPlant){
-                    return new ProducerPlant(plant.getName(),plant.getClock(),plant.getSun(),plant.getSun(),plant.getRest(),plant.getLife());
+                    return new ProducerPlant(plant.getName(),plant.getClock(),plant.getSun(),plant.getSun(),plant.getRest(),plant.getLife(), plant.getImage());
                 }
                 else if (plant instanceof shootingPlant){
-                    return new shootingPlant(plant.getName(),plant.getClock(),0,plant.getSun(),plant.getRest(),plant.getLife());
+                    return new shootingPlant(plant.getName(),plant.getClock(),0,plant.getSun(),plant.getRest(),plant.getLife(), plant.getImage());
                 }
                 else if (plant instanceof throwingPlant){
-                    return new throwingPlant(plant.getName(),plant.getClock(),0,0,plant.getSun(),plant.getRest(),plant.getLife());
+                    return new throwingPlant(plant.getName(),plant.getClock(),0,0,plant.getSun(),plant.getRest(),plant.getLife(), plant.getImage());
                 }
                 else {
-                    return new ToPlantOnPlant(plant.getName(), plant.getSun(), plant.getRest(), plant.getLife());
+                    return new ToPlantOnPlant(plant.getName(), plant.getSun(), plant.getRest(), plant.getLife(), plant.getImage());
                 }
 
             }
@@ -197,13 +197,13 @@ public abstract class Dynamic {
         for (Zombie zombie : Shop.getZombies()) {
             if (zombie.getName().equals(card.getName())) {
                 if (zombie instanceof FlyingZombie) {
-                    return new FlyingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
+                    return new FlyingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense(), zombie.getImage());
                 } else if (zombie instanceof GiantZombie) {
-                    return new GiantZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
+                    return new GiantZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense(), zombie.getImage());
                 } else if (zombie instanceof MovingZombie) {
-                    return new MovingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
+                    return new MovingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense(), zombie.getImage());
                 } else {
-                    return new SwimmingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense());
+                    return new SwimmingZombie(zombie.getName(), zombie.getLife(), zombie.getSpeed(), zombie.getDefense(), zombie.getImage());
                 }
 
             }

@@ -79,7 +79,7 @@ class ShowShop extends ShopMenuCommands {
     public Menu action(Menu menuPtr, Account account) {
         Matcher matcher = pattern.matcher(input);
         if (matcher.matches()) {
-            account.getShop().showNotBaughtCard(account);
+            account.getShop().showNotBoughtCard();
 
         }
         return menuPtr;

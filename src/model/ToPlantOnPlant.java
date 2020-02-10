@@ -17,5 +17,10 @@ public class ToPlantOnPlant extends Plant {
         }
 
     }
+
+    @Override
+    public Image getCardImage() {
+        return null;
+    }
 }
 

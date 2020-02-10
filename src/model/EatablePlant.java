@@ -22,5 +22,10 @@ public class EatablePlant extends Plant {
         }
     }
 
+    @Override
+    public Image getCardImage() {
+        return new Image("Plants vs Zombies/Explode-o-nut/Explode-o-nutSeedPacket.webp");
+    }
+
 
 }

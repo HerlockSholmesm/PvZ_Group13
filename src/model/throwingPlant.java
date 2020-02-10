@@ -45,4 +45,22 @@ public class throwingPlant extends Plant {
             }
         }
     }
+
+    @Override
+    public Image getCardImage() {
+        String name = this.getName();
+        switch (name) {
+            case ("Cabbage-pult"):
+                return new Image("Plants vs Zombies/Cabbage-pult/Cabbage_Pult_Seed.webp");
+            case ("Kernel-pult"):
+                return new Image("Plants vs Zombies/Kernel-pult/Kernel-Pult_Seed.webp");
+            case ("Melon-pult"):
+                return new Image("Plants vs Zombies/Melon-pult/Melon_Pult_Seed.webp");
+            case ("Winter Melon"):
+                return new Image("Plants vs Zombies/Winter Melon/Winter_HD.webp");
+            default:
+                return null;
+
+        }
+    }
 }
