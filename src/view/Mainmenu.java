@@ -21,6 +21,7 @@ public class Mainmenu extends Application {
 
     static Stage welcomeStage;
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         AudioClip audioClip = new AudioClip(getClass().getResource("/media/b.mp3").toString());

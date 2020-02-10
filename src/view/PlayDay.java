@@ -27,6 +27,10 @@ class PlayDay extends Application {
     private Yard dayYard;
     static Stage initialStage = new Stage();
 
+    public static Stage getInitialStage() {
+        return initialStage;
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {

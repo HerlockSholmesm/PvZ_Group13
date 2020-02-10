@@ -19,8 +19,6 @@ import model.Plant;
 import java.util.ArrayList;
 
 import javafx.scene.web.WebView;
-import sun.plugin2.main.client.WMozillaServiceDelegate;
-import sun.rmi.runtime.Log;
 
 public class Shop extends Application {
 

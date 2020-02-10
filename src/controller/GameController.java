@@ -11,6 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.*;
+import view.EndGame;
 //import view.EndGame;
 import java.util.*;
 
@@ -109,7 +110,7 @@ public class GameController{
             }
         }
         if(dynamicDay.hasGameEnded()){
-            //this.endGame();
+            this.endGame();
         }
         else{
              dynamicDay.endTurn();
@@ -119,10 +120,9 @@ public class GameController{
     }
 
 
-/*    public void endGame(){
+  public void endGame(){
         if (gameDay.getGameCondition() == GameCondition.WINNER) {
-            String result = "You win the Game";
-            EndGame endGameShow = new EndGame(result);
+            EndGame endGameShow = new EndGame(gameDay.getGameCondition());
             try {
                 this.timer.cancel();
                 endGameShow.start(endGameShow.getEndStage());
@@ -132,9 +132,7 @@ public class GameController{
             }
         }
         if (gameDay.getGameCondition() == GameCondition.LOSER){
-            System.out.println("here");
-            String result = "You lose the Game";
-            EndGame endGameShow = new EndGame(result);
+            EndGame endGameShow = new EndGame(gameDay.getGameCondition());
             try{
                 this.timer.cancel();
                 endGameShow.start(endGameShow.getEndStage());
@@ -145,5 +143,5 @@ public class GameController{
 
         }
     }
-*/
+
 }

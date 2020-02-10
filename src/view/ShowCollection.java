@@ -1,6 +1,5 @@
 package view;
 
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -19,7 +18,6 @@ import model.Plant;
 import java.util.ArrayList;
 
 import javafx.scene.web.WebView;
-import sun.rmi.runtime.Log;
 
 public class ShowCollection extends Application {
 
