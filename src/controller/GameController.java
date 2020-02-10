@@ -11,7 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.*;
-import view.EndGame;
+//import view.EndGame;
 import java.util.*;
 
 
@@ -30,17 +30,12 @@ public class GameController{
         this.root = root;
     }
 
-    /**
-     * initialize timer
-     */
+
     public void initialize() {
         this.startTimer();
 
     }
 
-    /**
-     * run starterTimer
-     */
     private void startTimer() {
         this.timer = new Timer();
         TimerTask timerTask = new TimerTask() {
@@ -114,7 +109,7 @@ public class GameController{
             }
         }
         if(dynamicDay.hasGameEnded()){
-            this.endGame();
+            //this.endGame();
         }
         else{
              dynamicDay.endTurn();
@@ -124,8 +119,7 @@ public class GameController{
     }
 
 
-    /** check if we win the game*/
-    public void endGame(){
+/*    public void endGame(){
         if (gameDay.getGameCondition() == GameCondition.WINNER) {
             String result = "You win the Game";
             EndGame endGameShow = new EndGame(result);
@@ -151,7 +145,5 @@ public class GameController{
 
         }
     }
-
-
-
+*/
 }
