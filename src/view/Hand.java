@@ -34,17 +34,16 @@ public class Hand extends Application {
         Scene scene = new Scene(root, 900, 800);
         scene.getStylesheets().add(Shop.class.getResource("static/welcome1.css").toExternalForm());
         primaryStage.setTitle("Hand");
-        ArrayList<Card> cards = Login.mainAccount.getCollection().getHand();
+        ArrayList<Card> cards = model.Shop.getPlantHand();
         ImageView imageView;
         GridPane gridPane = new GridPane();
         gridPane.setVgap(1);
         gridPane.setHgap(1);
         for (int i = 0; i < cards.size(); i++) {
-            if(cards.get(i)!=null)
-                if (cards.get(i) instanceof Plant) {
-                    imageView = new ImageView(((Plant) cards.get(i)).getCardImage());
-                    gridPane.add(imageView, i % 10 + 100, i / 10 + 10);
-                }
+            if (cards.get(i) instanceof Plant) {
+                imageView = new ImageView(((Plant) cards.get(i)).getCardImage());
+                gridPane.add(imageView, i % 10 + 100, i / 10 + 10);
+            }
         }
         root.getChildren().addAll(gridPane);
         primaryStage.setScene(scene);

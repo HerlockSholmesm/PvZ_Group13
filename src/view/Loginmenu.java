@@ -114,6 +114,8 @@ public class Loginmenu extends Application {
 
     private Button addLeaderBoardButton(WebView webView) {
         Button startGameButton = new LeaderBoard("LeaderBoard", webView);
+        model.Shop.importPlant();
+        model.Shop.importZombie();
         startGameButton.setOnAction(event -> {
             AudioClip audioClip = new AudioClip(getClass().getResource("/png/shoot.wav").toString());
             audioClip.play();

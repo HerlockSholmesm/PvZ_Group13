@@ -123,8 +123,6 @@ public class Mainmenu extends Application {
 
     private class Show extends Button {
         public Show(String textOnButton, WebView webView) {
-            model.Shop.importPlant();
-            model.Shop.importZombie();
             setText(textOnButton);
             webView.getEngine().load(textOnButton);
         }
