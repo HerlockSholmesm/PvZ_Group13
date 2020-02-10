@@ -27,7 +27,7 @@ public class GameDay extends Game {
 
     private int turnServed = 0;
 
-    private Sun suns;//must init with 2
+    private Sun suns;
 
     public ArrayList<Chamanzan> getChamanzans() {
         return chamanzans;
@@ -81,8 +81,8 @@ public class GameDay extends Game {
         this.chamanzans.add(new Chamanzan( this.yard));
         this.chamanzans.add(new Chamanzan( this.yard));
         this.chamanzans.add(new Chamanzan( this.yard));
-        this.chamanzans.add(new Chamanzan( this.yard));
-        this.chamanzans.add(new Chamanzan(  this.yard));
+        this.chamanzans.add(new Chamanzan(this.yard));
+        this.chamanzans.add(new Chamanzan(this.yard));
         this.chamanzans.add(new Chamanzan(this.yard));
 
         this.cards.add(Shop.getAllPlants().get(0));
