@@ -46,6 +46,12 @@ public class Delete extends Application {
                     if (Login.mainAccount.getName().equals(firstValue.getText())) {
                         if (secondValue.getText().equals(Login.mainAccount.getPassword())) {
                             Account.deleteAccount(Login.mainAccount);
+                            Loginmenu loginmenu = new Loginmenu();
+                            try {
+                                loginmenu.start(myStage);
+                            } catch (Exception e1) {
+                                e1.getStackTrace();
+                            }
                         } else {
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Plants vs. Zombies");
