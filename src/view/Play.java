@@ -75,7 +75,8 @@ public class Play extends Application {
         waterButton.setOnAction(event -> {
             Login login = new Login();
             try {
-                //todo
+                PlayWater playWater =new PlayWater();
+                playWater.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("Can not initiate game");
