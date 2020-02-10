@@ -32,12 +32,12 @@ public class Shop extends Application {
         GridPane gridPane = new GridPane();
         gridPane.setVgap(30);
         gridPane.setHgap(30);
-        System.out.println(plants.size());
-        for (int i=0;i<plants.size() ;i++){
-            imageView=new ImageView(plants.get(i).getCardImage());
-            gridPane.add(imageView,i,i);
-
-        }
+     //   System.out.println(plants.size());
+//        for (int i=0;i<plants.size() ;i++){
+//            imageView=new ImageView(plants.get(i).getCardImage());
+//            gridPane.add(imageView,i,i);
+//
+//        }
         Group root = new Group();
         Scene scene = new Scene(root, 900, 800);
         //Image image = new Image("Plants vs Zombies/Snow Pea/Snow-Pea.webp");

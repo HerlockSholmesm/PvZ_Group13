@@ -208,7 +208,7 @@ public class Shop implements Serializable {
         plants.add(plant);
         notBoughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");
-        plant = new EatablePlant("Explode-o-nut", 4, 5, 3 ,new Image("Plants vs Zombies/xplode-o-nut/HDExplode-o-nut.webp"));
+     //   plant = new EatablePlant("Explode-o-nut", 4, 5, 3 ,new Image("Plants vs Zombies/xplode-o-nut/HDExplode-o-nut.webp"));
         plants.add(plant);
         boughtCards.add(plant);
         WaterTypeOrDay.put(plant.getName(), "D");

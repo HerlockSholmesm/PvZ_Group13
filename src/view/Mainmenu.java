@@ -1,5 +1,6 @@
 package view;
 
+import commands.Menu.LoginMenu;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -74,10 +75,10 @@ public class Mainmenu extends Application {
     private Button addProfileButton(WebView webView) {
         Button ProfileButton = new ProfileButton("Profile", webView);
         ProfileButton.setOnAction(event -> {
-            CreateAccount account=new CreateAccount();
+           Profile profile =new Profile();
             try {
 
-                account.start(welcomeStage);
+                profile.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("Can not initiate game");
@@ -108,7 +109,7 @@ public class Mainmenu extends Application {
     }
 
     private Button addShopButton(WebView webView) {
-        Button ShopButton = new Shopmenu("Shop menu", webView);
+        Button ShopButton = new Show("Shop menu", webView);
         ShopButton.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Plants vs. Zombies");
@@ -119,8 +120,8 @@ public class Mainmenu extends Application {
         return ShopButton;
     }
 
-    private class Shopmenu extends Button {
-        public Shopmenu(String textOnButton, WebView webView) {
+    private class Show extends Button {
+        public Show(String textOnButton, WebView webView) {
             model.Shop.importPlant();
             model.Shop.importZombie();
             setText(textOnButton);
@@ -128,22 +129,15 @@ public class Mainmenu extends Application {
         }
     }
     private Button addExitButton(WebView webView) {
-        Button ExitBotton = new Exit("Shopmenu", webView);
-        Loginmenu loginmenu = new Loginmenu();
+        Button ExitBotton = new Show("Exit", webView);
+        Loginmenu login =new Loginmenu();
         ExitBotton.setOnAction(event -> {
             try {
-                loginmenu.start(welcomeStage);
+                login.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
         return ExitBotton;
     }
-
-    private class Exit extends Button {
-        public Exit(String textOnButton, WebView webView) {
-            setText(textOnButton);
-            webView.getEngine().load(textOnButton);
-        }
     }
-}
