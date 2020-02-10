@@ -25,7 +25,7 @@ public class shootingPlant extends Plant {
     public void action(Game game) {
         String name = this.getName();
         for (Zombie zombie : game.getZombies()) {
-            if (!zombie.equals("Balloon Zombie")) {
+            if (!zombie.getName().equals("Balloon Zombie")) {
                 switch (name) {
                     case ("Peashooter"):
                         if (game.getTurn() >= this.getClock()) {
@@ -90,6 +90,18 @@ public class shootingPlant extends Plant {
                                 game.setPeaBulletsNegetive(this.getXCoordinate(), this.getYCoordinate(), game);
                             }
                         }
+                    case "Cattail":
+                        Zombie zombie2 = null;
+                        for (Zombie zombie1 : game.getZombies()){
+                            if (zombie2 == null)
+                            {
+                                zombie2 = zombie1;
+                            }
+                            if ((Math.abs(zombie1.getX() - this.getXCoordinate()) + Math.abs(zombie1.getY() - this.getYCoordinate())) <
+                                    (Math.abs(zombie2.getX() - this.getXCoordinate()) + Math.abs(zombie2.getY() - this.getYCoordinate()))){
+                                zombie2 = zombie1;
+                            }
+                        }
                 }
             }
 
@@ -116,6 +128,8 @@ public class shootingPlant extends Plant {
                 return new Image("Plants vs Zombies/Scared-shroom/Threepeater.webp");
                 case ("Split Pea"):
                     return new Image("Plants vs Zombies/Split Pea/ScaredyShroomhide2009HD.webp");
+            case ("Cattail"):
+                return new Image("Plants vs Zombies/Cattail/Catail.webp");
             default:
                 return null;
         }

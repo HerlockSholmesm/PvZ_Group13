@@ -63,12 +63,9 @@ public class ShowCollection extends Application {
         box.setAlignment(Pos.CENTER);
         box.setSpacing(50);
         Text title = new Text("Collection");
-//        Text title1 = new Text(String.valueOf(Login.mainAccount.getMoney()));
         Button CollectionButton = addCollectionButton(webView);
         title.setFont(Font.font("Verdana", 50));
         title.setId("fancytext");
-  //      title1.setFont(Font.font("Verdana", 50));
-    //    title1.setId("fancytext");
         box.getChildren().addAll(title, CollectionButton);
         return box;
     }
