@@ -1,142 +1,58 @@
 package view;
 
 import javafx.application.Application;
-import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import model.Plant;
+import model.shootingPlant;
+
+import java.awt.*;
 
 public class Shop extends Application {
 
-    static Stage welcomeStage;
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        WebView webView = new WebView();
-        VBox root = addContent(webView);
+    public void start(Stage primaryStage) {
+        Group root = new Group();
         Scene scene = new Scene(root, 900, 800);
-        scene.getStylesheets().add(Loginmenu.class.getResource("static/welcome.css").toExternalForm());
-        primaryStage.setTitle("ShopMenu");
+        GridPane gridPane = new GridPane();
+        gridPane.setVgap(30);
+        gridPane.setHgap(30);
+        Image image = new Image("Plants vs Zombies/Snow Pea/Snow-Pea.webp");
+        Image image2 = new Image("Plants vs Zombies/Snow Pea/Snow-Pea.webp");
+        ImageView imageView = new ImageView(image);
+        int money = 100;
+        //ImageView imageView2=new ImageView(image2);
+        Plant plant = new shootingPlant("Repeater", 3, 2, 3, 4, 4,
+                new Image("Plants vs Zombies/Repeater/1769829-plant_peashooter_thumb.webp"));
+        ImageView imageView2 = new ImageView(plant.getImage());
+        gridPane.add(imageView, 1, 1);
+        gridPane.add(imageView2, 1, 2);
+      //  Text title1=toText(imageView2,100,20);
+        imageView.setOnMouseClicked(event -> {
+            Text text = new Text(String.valueOf(money - plant.getPrice()));
+            text.setFont(Font.font("Verdana", 50));
+            text.setTranslateX(20);
+            text.setTranslateY(40);
+            text.setId("fancytext");
+            root.getChildren().add(text);
+        });
+        root.getChildren().add(gridPane);
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
         primaryStage.show();
-        welcomeStage = primaryStage;
-    }
-
-     private VBox addContent(WebView webView) {
-        VBox box = new VBox();
-        box.prefWidth(500);
-        box.setAlignment(Pos.CENTER);
-        box.setSpacing(50);
-        Text title = new Text("Shop");
-        Button ShowShopButton = addShowShopButton(webView);
-        Button WaterButton = addWaterButton(webView);
-        Button RailButton = addRailButton(webView);
-        Button ZombieButton = addZombieButton(webView);
-        Button PvPButton = addPvPButton(webView);
-        Button ExitButton = addExitButton(webView);
-        title.setFont(Font.font("Verdana", 50));
-        title.setId("fancytext");
-        box.getChildren().addAll(title, ShowShopButton, WaterButton, RailButton, ZombieButton, PvPButton, ExitButton);
-        return box;
-    }
-
-    private Button addShowShopButton(WebView webView) {
-        Button ShowShopButton = new Show("Day", webView);
-        ShowShopButton.setOnAction(event -> {
-            Login login = new Login();
-            try {
-                //todo
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("Can not initiate game");
-            }
-        });
-        return ShowShopButton;
-    }
-
-    private class Show extends Button {
-        public Show(String textOnButton, WebView webView) {
-            setText(textOnButton);
-            webView.getEngine().load(textOnButton);
-        }
-    }
-
-    private Button addWaterButton(WebView webView) {
-        Button waterButton = new Show("Water", webView);
-        waterButton.setOnAction(event -> {
-            Login login = new Login();
-            try {
-                //todo
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("Can not initiate game");
-            }
-        });
-        return waterButton;
-    }
-
-    private Button addRailButton(WebView webView) {
-        Button railButton = new Show("Rail", webView);
-        railButton.setOnAction(event -> {
-            Login login = new Login();
-            try {
-                //todo
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("Can not initiate game");
-            }
-        });
-        return railButton;
-    }
-
-
-    private Button addZombieButton(WebView webView) {
-        Button zombieButton = new Show("Zombie", webView);
-        zombieButton.setOnAction(event -> {
-            Login login = new Login();
-            try {
-                //todo
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("Can not initiate game");
-            }
-        });
-        return zombieButton;
-    }
-
-
-    private Button addPvPButton(WebView webView) {
-        Button pvPButton = new Show("Day", webView);
-        pvPButton.setOnAction(event -> {
-            Login login = new Login();
-            try {
-                //todo
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("Can not initiate game");
-            }
-        });
-        return pvPButton;
-    }
-
-
-    private Button addExitButton(WebView webView) {
-        Button ExitBotton = new Show("Exit", webView);
-        Loginmenu loginmenu = new Loginmenu();
-        ExitBotton.setOnAction(event -> {
-            try {
-                loginmenu.start(welcomeStage);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-        return ExitBotton;
     }
 
 }
