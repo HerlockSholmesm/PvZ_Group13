@@ -51,8 +51,7 @@ public class MinePlant extends Plant {
                     if (this.getClock() <= game.getTurn() && ((this.getXCoordinate() == zombie.getX()-1) && ((this.getYCoordinate() == zombie.getY() + 1)
                             || (this.getYCoordinate() == zombie.getY() - 1)||
                             (this.getYCoordinate() == zombie.getY() )))) {
-                        zombie.setLife(0);
-                        //todo magnet
+                        zombie.setDefense(0);
                     }
                     }
                     break;
@@ -62,8 +61,6 @@ public class MinePlant extends Plant {
                     }
                     break;
             }
-            //todo finishingmineZombie except magnet
-
         }
     }
 
@@ -77,7 +74,6 @@ public class MinePlant extends Plant {
             }
             case ("Magnet-shroom"):{
                 return new Image("Plants vs Zombies/Magnet-shroom/Melon-pult.webp");
-
             }
             case ("Jalapeno"):
                 return new Image("Plants vs Zombies/Jalapeno/Magnetshroom_head4.webp");

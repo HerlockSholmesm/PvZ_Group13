@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
@@ -21,6 +22,8 @@ public class Mainmenu extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        AudioClip audioClip = new AudioClip(getClass().getResource("/media/b.mp3").toString());
+        audioClip.play();
         WebView webView = new WebView();
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
