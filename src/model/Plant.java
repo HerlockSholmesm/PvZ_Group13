@@ -113,4 +113,6 @@ public abstract class Plant extends Card {
     public String toStringPrime() {
         return name + ": " + life + ", " + "(" + x + "," + y + ")";
     }
+
+    abstract public Image getCardImage();
 }
