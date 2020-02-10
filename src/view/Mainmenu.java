@@ -11,6 +11,10 @@ import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
+import model.*;
+import in_game.*;
+import commands.*;
+
 public class Mainmenu extends Application {
 
     static Stage welcomeStage;
@@ -117,6 +121,8 @@ public class Mainmenu extends Application {
 
     private class Shopmenu extends Button {
         public Shopmenu(String textOnButton, WebView webView) {
+            model.Shop.importPlant();
+            model.Shop.importZombie();
             setText(textOnButton);
             webView.getEngine().load(textOnButton);
         }
