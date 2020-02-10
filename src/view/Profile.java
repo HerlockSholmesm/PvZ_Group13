@@ -38,20 +38,20 @@ public class Profile extends Application {
         Button DeleteButton = addDeleteButton(webView);
         Button RenameButton = addRenameButton(webView);
         Button CreateButton = addCreateButton(webView);
-        Button ZombieButton = addShowButton(webView);
+        Button ShowButton = addShowButton(webView);
         Button ExitButton = addExitButton(webView);
         title.setFont(Font.font("Verdana", 50));
         title.setId("fancytext");
-        box.getChildren().addAll(title, DeleteButton, RenameButton, CreateButton, ZombieButton, ChangeButton, ExitButton);
+        box.getChildren().addAll(title, ChangeButton,DeleteButton, RenameButton, CreateButton, ShowButton, ExitButton);
         return box;
     }
 
     private Button addChangeButton(WebView webView) {
         Button changeButton = new Show("Change", webView);
         changeButton.setOnAction(event -> {
-            Login login = new Login();
+            Change change =new Change();
             try {
-                //todo
+             change.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("Can not initiate game");
@@ -68,11 +68,11 @@ public class Profile extends Application {
     }
 
     private Button addDeleteButton(WebView webView) {
-        Button waterButton = new Show("Show name", webView);
+        Button waterButton = new Show("Delete", webView);
         waterButton.setOnAction(event -> {
-            Login login = new Login();
+            Delete delete =new Delete();
             try {
-                //todo
+                delete.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("Can not initiate game");
@@ -84,11 +84,11 @@ public class Profile extends Application {
 
 
     private Button addRenameButton(WebView webView) {
-        Button zombieButton = new Show("rename", webView);
+        Button zombieButton = new Show("Rename", webView);
         zombieButton.setOnAction(event -> {
-            Login login = new Login();
+            Rename rename =new Rename();
             try {
-                //todo
+                rename.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("Can not initiate game");
@@ -99,11 +99,11 @@ public class Profile extends Application {
 
 
     private Button addCreateButton(WebView webView) {
-        Button pvPButton = new Show("", webView);
+        Button pvPButton = new Show("Create", webView);
         pvPButton.setOnAction(event -> {
-            Login login = new Login();
+            Create create =new Create();
             try {
-                //todo
+                create.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("Can not initiate game");
@@ -113,11 +113,17 @@ public class Profile extends Application {
     }
 
     private Button addShowButton (WebView webView) {
-        Button pvPButton = new Show("Day", webView);
+        Button pvPButton = new Show("Show", webView);
         pvPButton.setOnAction(event -> {
-            Login login = new Login();
+
             try {
-                //todo
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Plants vs. Zombies");
+                alert.setHeaderText("you're account is");
+                alert.setContentText(Login.mainAccount.getName());
+                alert.showAndWait();
+                Profile profile =new Profile();
+                profile.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.err.println("Can not initiate game");
@@ -128,10 +134,10 @@ public class Profile extends Application {
 
     private Button addExitButton(WebView webView) {
         Button ExitBotton = new Show("Exit", webView);
-        Loginmenu loginmenu = new Loginmenu();
+        Mainmenu mainmenu =new Mainmenu();
         ExitBotton.setOnAction(event -> {
             try {
-                loginmenu.start(welcomeStage);
+                mainmenu.start(welcomeStage);
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -48,7 +48,7 @@ public class Login extends Application {
                     Mainmenu mainmenu;
                     String s = Account.findAccount2(firstValue.getText(), secondValue.getText());
                     if (s.equalsIgnoreCase("find")) {
-                        new Account(firstValue.getText(), secondValue.getText());
+                        mainAccount = new Account(firstValue.getText(), secondValue.getText());
                         mainmenu = new Mainmenu();
                         try {
                             mainmenu.start(myStage);
