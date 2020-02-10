@@ -68,7 +68,7 @@ public class Profile extends Application {
     }
 
     private Button addDeleteButton(WebView webView) {
-        Button waterButton = new Show("Water", webView);
+        Button waterButton = new Show("Show name", webView);
         waterButton.setOnAction(event -> {
             Login login = new Login();
             try {
@@ -81,23 +81,10 @@ public class Profile extends Application {
         return waterButton;
     }
 
-    private Button addRailButton(WebView webView) {
-        Button railButton = new Show("Rail", webView);
-        railButton.setOnAction(event -> {
-            Login login = new Login();
-            try {
-                //todo
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.err.println("Can not initiate game");
-            }
-        });
-        return railButton;
-    }
 
 
     private Button addRenameButton(WebView webView) {
-        Button zombieButton = new Show("Zombie", webView);
+        Button zombieButton = new Show("rename", webView);
         zombieButton.setOnAction(event -> {
             Login login = new Login();
             try {
@@ -112,7 +99,7 @@ public class Profile extends Application {
 
 
     private Button addCreateButton(WebView webView) {
-        Button pvPButton = new Show("Day", webView);
+        Button pvPButton = new Show("", webView);
         pvPButton.setOnAction(event -> {
             Login login = new Login();
             try {
