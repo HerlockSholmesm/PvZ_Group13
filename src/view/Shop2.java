@@ -1,4 +1,4 @@
-package view;
+/*package view;
 
 import in_game.Account;
 import javafx.application.Application;
@@ -70,3 +70,4 @@ public class Shop2 extends Application {
         }
     }
 }
+*/
