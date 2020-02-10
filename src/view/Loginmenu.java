@@ -18,6 +18,8 @@ public class Loginmenu extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        AudioClip audioClip = new AudioClip(getClass().getResource("/media/a.mp3").toString());
+        audioClip.play();
         WebView webView = new WebView();
         VBox root = addContent(webView);
         Scene scene = new Scene(root, 900, 800);
