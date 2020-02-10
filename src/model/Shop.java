@@ -14,6 +14,46 @@ public class Shop implements Serializable {
     private static ArrayList<Zombie> zombies = new ArrayList<>();
     private static ArrayList<Card> cards = new ArrayList<>();
 
+    public static void addToPlantHand(Card card){
+        plantHand.add(card);
+    }
+
+    public static ArrayList<Card> getPlantHand() {
+        return plantHand;
+    }
+
+    public static void setPlantHand(ArrayList<Card> plantHand) {
+        Shop.plantHand = plantHand;
+    }
+
+    public static ArrayList<Card> getZombieHand() {
+        return zombieHand;
+    }
+
+    public static void setZombieHand(ArrayList<Card> zombieHand) {
+        Shop.zombieHand = zombieHand;
+    }
+
+    public static void setCards(ArrayList<Card> cards) {
+        Shop.cards = cards;
+    }
+
+    public static void setBoughtCards(ArrayList<Card> boughtCards) {
+        Shop.boughtCards = boughtCards;
+    }
+
+    public static void setNotBoughtCards(ArrayList<Card> notBoughtCards) {
+        Shop.notBoughtCards = notBoughtCards;
+    }
+
+    public static void setWaterTypeOrDay(HashMap<String, String> waterTypeOrDay) {
+        WaterTypeOrDay = waterTypeOrDay;
+    }
+
+    public static void addToZombieHand(Card card){
+        zombieHand.add(card);
+    }
+
     public static ArrayList<Card> getBoughtCards() {
         return boughtCards;
     }
@@ -250,9 +290,6 @@ public class Shop implements Serializable {
         notBoughtCards.add(plant);
         cards.addAll(plants);
         WaterTypeOrDay.put(plant.getName(), "D");
-
-        System.out.println("in shop is " + plants.size());
-
     }
 
     public static void importZombie() {

@@ -44,10 +44,10 @@ public class ShowCollection extends Application {
         for (int i = 0; i < cards.size(); i++) {
             if (cards.get(i) instanceof Plant) {
                 imageView = new ImageView(((Plant) cards.get(i)).getCardImage());
-                String s = cards.get(i).getName();
+                Card card = cards.get(i);
                 gridPane.add(imageView, i % 10 + 100, i / 10 + 10);
                 imageView.setOnMouseClicked(event -> {
-                    Login.mainAccount.getCollection().addToHand1(s);
+                    model.Shop.addToPlantHand(card);
                 });
                 }
             }

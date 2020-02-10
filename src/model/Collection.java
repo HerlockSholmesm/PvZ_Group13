@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Collection {
-    private  ArrayList<Card> hand;
+    private  ArrayList<Card> hand = new ArrayList<>();
     private static ArrayList<Card> baughtCards;
     private static ArrayList<Card> notBaughtCards;
 
@@ -53,6 +53,7 @@ public class Collection {
         for (Card card :shop.getCards()) {
             if(card.getName().equals(name)){
                 hand.add(card);
+                System.out.println("%");
             }
             else {
                 System.out.println("invalid name");
