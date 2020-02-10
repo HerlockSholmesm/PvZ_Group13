@@ -59,17 +59,6 @@ public class Account implements Serializable{
         return s;
     }
 
-    public static Account addAccount(String name, String password) {
-        for (Account account : allAccounts) {
-            if (account.getName().equals(name)) {
-                Invalid.existedAccountAction();
-                return null;
-            }
-        }
-        Account account = new Account(name, password);
-        allAccounts.add(account);
-        return account;
-    }
 
     public static void deleteAccount(Account account){
         allAccounts.remove(account);
@@ -101,15 +90,6 @@ public class Account implements Serializable{
             }
         }
         return "no account found!";
-    }
-
-
-    public ArrayList<Game> getGames() {
-        return games;
-    }
-
-    public void addPlayer(Game game) {
-        this.games.add(game);
     }
 
     public String getName() {
