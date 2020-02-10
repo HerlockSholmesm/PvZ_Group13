@@ -28,10 +28,17 @@ public abstract class Plant extends Card {
         double pace = x*yard.getDelta_x();
         stackPane.setTranslateX(pace);
     }
+    public void setX(int x) {
+        stackPane.setTranslateX(x);
+    }
 
     public void setY(int y,Yard yard) {
         double pace = y*yard.getDelta_y();
         this.stackPane.setTranslateY(pace);
+    }
+
+    public void setY(int y) {
+        this.stackPane.setTranslateY(y);
     }
     public double getXCoordinate(Yard yard) {
         double pixelX  = stackPane.getTranslateX();
@@ -40,10 +47,19 @@ public abstract class Plant extends Card {
         return x;
     }
 
+    public double getXCoordinate() {
+
+        return 0;
+    }
     public double getYCoordinate(Yard yard) { double pixelX  = stackPane.getTranslateX();
         double pixelY = stackPane.getTranslateY();
         double y = yard.whichCoordinateAmI(yard, pixelX, pixelY)[1];
         return y;
+    }
+
+    public double getYCoordinate() { double pixelX  = stackPane.getTranslateX();
+
+        return 0;
     }
 
     public void setCoordinates(int x, int y) {

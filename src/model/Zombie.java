@@ -47,9 +47,16 @@ public abstract class Zombie extends Card {
         stackPane.setTranslateX(pace);
     }
 
+    public void setX(int x) {
+        stackPane.setTranslateX(x);
+    }
     public void setY(int y,Yard yard) {
         double pace = y*yard.getDelta_y();
         this.stackPane.setTranslateY(pace);
+    }
+
+    public void setY(int y) {
+        this.stackPane.setTranslateY(y);
     }
     public double getX(Yard yard) {
         double pixelX  = stackPane.getTranslateX();
@@ -58,12 +65,19 @@ public abstract class Zombie extends Card {
         return x;
     }
 
+    public double getX() {
+
+        return 0;
+    }
     public double getY(Yard yard) { double pixelX  = stackPane.getTranslateX();
         double pixelY = stackPane.getTranslateY();
         double y = yard.whichCoordinateAmI(yard, pixelX, pixelY)[1];
         return y;
     }
 
+    public double getY() {
+        return 0;
+    }
 
 
     public static Shop getShop() {
@@ -149,8 +163,8 @@ public abstract class Zombie extends Card {
         card.setLife(card.getLife() - attackPower);
     }
 
-    public void move(Yard yard) {
-        this.setX(speed, yard);
+    public void move() {
+        this.setX(speed);
     }
 
     public abstract void action(Game game);
