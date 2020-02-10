@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -46,6 +47,11 @@ public class ShowCollection extends Application {
                 gridPane.add(imageView, i % 10 + 100, i / 10 + 10);
                 imageView.setOnMouseClicked(event -> {
                     model.Shop.addToPlantHand(card);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Plants vs. Zombies");
+                    alert.setHeaderText("added");
+                    alert.setContentText("added" );
+                    alert.showAndWait();
                 });
                 }
             }
